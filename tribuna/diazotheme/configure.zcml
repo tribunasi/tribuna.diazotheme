@@ -11,9 +11,9 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="diazotheme.bootstrap"
+      title="tribuna.diazotheme"
       directory="profiles/default"
-      description='Skin overrides for diazotheme.bootstrap'
+      description='Skin overrides for tribuna.diazotheme'
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

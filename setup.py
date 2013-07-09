@@ -3,7 +3,7 @@ import os
 
 version = '0.4.dev0'
 
-setup(name='diazotheme.bootstrap',
+setup(name='tribuna.diazotheme',
       version=version,
       description="Plone theme based on Twitter's Bootstrap CSS",
       long_description=open("README.rst").read() + "\n" +
@@ -16,7 +16,7 @@ setup(name='diazotheme.bootstrap',
       keywords='plone diazo theme',
       author='Izhar Firdaus',
       author_email='izhar@inigo-tech.com',
-      url='https://github.com/kagesenshi/diazotheme.bootstrap',
+      url='https://github.com/kagesenshi/tribuna.diazotheme',
       license='Apache License 2.0',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['diazotheme'],

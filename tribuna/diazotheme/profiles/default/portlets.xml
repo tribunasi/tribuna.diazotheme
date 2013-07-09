@@ -2,7 +2,7 @@
 <portlets>
 
    <portlet
-     addview="diazotheme.bootstrap.portlet.carousel"
+     addview="tribuna.diazotheme.portlet.carousel"
      title="Carousel portlet"
      description="A portlet that show images using Bootstrap's carousel"
    />
