@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
-version = '0.4.dev0'
+version = '0.1'
 
 setup(
     name='tribuna.diazotheme',
     version=version,
-    description="Plone theme based on Twitter's Bootstrap CSS",
+    description="Theme package for Tribuna project",
     long_description=open("README.rst").read() + "\n" +
                      open("HISTORY.txt").read(),
     # Get more strings from
@@ -13,11 +13,10 @@ setup(
     classifiers=[
         "Programming Language :: Python",
     ],
-    keywords='tribuna diazo theme',
-    author='',
-    author_email='',
+    author='Termitnjak Ltd.',
+    author_email='info@termitnjak.com',
     url='',
-    license='Apache License 2.0',
+    license='BSD',
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages=['tribuna'],
     include_package_data=True,
