@@ -7,6 +7,9 @@
     >
 
     <xsl:if test="dl[contains(@class,'portlet')]">
+        <replace css:content=".portletSidebar">
+            <xsl:apply-templates css:select=".portletSidebar > *"/>
+        </replace>
         <div><xsl:attribute name="class">
                 <xsl:value-of select="dl/@class"/>
             </xsl:attribute>
