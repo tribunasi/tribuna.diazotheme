@@ -12,7 +12,7 @@
     <drop css:content="meta[http-equiv='X-UA-Compatible']"/>
     <rules css:if-content="#content.dialog-wrapper">
         <prepend theme="/html/head" content="/html/head/base"/>
-        <after css:theme="meta[http-equiv='X-UA-Compatible']" 
+        <after css:theme="meta[http-equiv='X-UA-Compatible']"
             content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" />
         <replace theme="/html/body"
             content="/html/body"/>
@@ -32,19 +32,20 @@
          </replace>
     </rules>
 
-    <!--    
+    <!--
     <notheme if-content="html/head/link[@href='/manage_page_style.css']"/>
     <notheme css:if-content="#content.dialog-wrapper"/>
     <notheme css:if-content="body.popup"/>
     -->
     <rules css:if-content="#visual-portal-wrapper">
-   
-   
+
+
     <prepend theme="/html/head" content="/html/head/base"/>
+    <merge attributes="class" css:content="body" css:theme="body"/>
 
     <replace theme="//*[@id='logo']/h1" content="//*[@id='content']/h1"/>
 
-    <after css:theme="meta[http-equiv='X-UA-Compatible']" 
+    <after css:theme="meta[http-equiv='X-UA-Compatible']"
         content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" />
 
     <append css:theme="#header">
@@ -170,9 +171,9 @@
             <xi:include href="navigation-rules.xml"/>
         </xsl:for-each>
     </replace>
-    <replace css:theme-children="#personaltool-menu" 
+    <replace css:theme-children="#personaltool-menu"
         css:content-children="#portal-personaltools ul"/>
-    <replace css:theme-children="#personaltool-menuheader" 
+    <replace css:theme-children="#personaltool-menuheader"
         css:content-children="#portal-personaltools .actionMenuHeader a"/>
     <replace css:theme-children="#secondary-nav" css:if-content="#anon-personalbar">
         <li><xsl:copy-of css:select="#personaltools-login"/></li>

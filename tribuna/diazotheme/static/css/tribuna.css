@@ -1,0 +1,4 @@
+/* Hide top nav for annonymous users */
+.userrole-anonymous .navbar {
+    display: none;
+}
