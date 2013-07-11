@@ -278,4 +278,8 @@
     <xi:include href="facetednavigation-rules.xml"/>
     <append css:theme="#site-scripts" css:content="#portal-footer-wrapper > div > script"/>
     </rules>
+
+    <!-- TRIBUNA specific rules -->
+    <xi:include href="tribuna-rules.xml" />
+
 </rules>
