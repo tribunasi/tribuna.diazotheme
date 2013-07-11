@@ -3,8 +3,8 @@
     xmlns="http://namespaces.plone.org/diazo"
     xmlns:css="http://namespaces.plone.org/diazo/css"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xi="http://www.w3.org/2001/XInclude"
-    >
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
     <replace theme="/html/head/title" content="/html/head/title" />
 
     <theme href="base.html" css:if-content="#visual-portal-wrapper"/>
@@ -17,7 +17,8 @@
         <replace theme="/html/body"
             content="/html/body"/>
     </rules>
-    <theme href="html5slides/template/index.html" css:if-content=".presentation"/>
+    <theme href="html5slides/template/index.html"
+           css:if-content=".presentation"/>
     <rules css:if-content=".presentation">
          <replace css:theme-children="section">
             <xsl:for-each css:select=".slide">
@@ -38,7 +39,6 @@
     <notheme css:if-content="body.popup"/>
     -->
     <rules css:if-content="#visual-portal-wrapper">
-
 
     <prepend theme="/html/head" content="/html/head/base"/>
     <merge attributes="class" css:content="body" css:theme="body"/>
@@ -71,9 +71,6 @@
             </div>
         </div>
     </prepend>
-
-
-
 
     <copy css:theme="#topsearchbox" css:content="#portal-searchbox form" attributes="action"/>
     <replace css:theme="#center-column">
@@ -162,7 +159,6 @@
     <drop css:theme=".hero-unit" css:if-not-content=".section-front-page"/>
     <drop css:theme="#left-column" css:if-not-content="#portal-column-one"/>
     <drop css:theme="#right-column" css:if-not-content="#portal-column-two"/>
-
 
     <replace css:theme="#logo" css:content="#portal-logo"/>
 
@@ -258,7 +254,6 @@
         <div style="visibility: hidden">.</div>
     </replace>
 
-
     <replace css:theme-children="#portletFooterD">
         <xsl:for-each css:select=".FooterPortletManager4 .portletWrapper">
             <xi:include href="portlet-rules.xml"/>
@@ -272,7 +267,6 @@
         </xsl:for-each>
         <div style="visibility: hidden">.</div>
     </replace>
-
 
     <replace css:theme-children="#portletFooterF">
         <xsl:for-each css:select=".FooterPortletManager6 .portletWrapper">
