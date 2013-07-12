@@ -2,3 +2,32 @@
 .userrole-anonymous .navbar {
     display: none;
 }
+
+/* Entry page */
+#entrypage-form-container {
+    background-color: cyan;
+    margin: 20px 0 0;
+    padding: 0.75em;
+    width: 9em;
+}
+
+#entrypage-form-container.expanded {
+    background-color: white;
+    width: auto;
+}
+
+#entrypage-form-container a {
+    color: black;
+}
+
+#entrypage-form .accordion {
+    margin-top: 2em;
+}
+
+#entrypage-form .accordion-group {
+    border: none;
+}
+
+#entrypage-form .accordion-heading .accordion-toggle {
+    padding: 0;
+}
