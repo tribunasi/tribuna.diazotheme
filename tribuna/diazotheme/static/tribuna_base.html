@@ -48,7 +48,7 @@
 
   <body>
 
-    <!--div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse"
@@ -87,7 +87,7 @@
           </div>
         </div>
       </div>
-    </div-->
+    </div>
 
     <div id="container" class="container">
       <div id="header"></div>
@@ -101,52 +101,48 @@
         </div>
         <div id="content-columns">
           <div class="row">
-            <div id="left-column" class="span3">
+            <div id="left-column" class="span2">
               <div id="left-column-content">
-                <section>
-                  <h4 class="portlet-header">Navigation</h4>
-                  <div>
-                    <ul class="navTree navTreeLevel0">
-                      <li class="navTreeItem navTreeTopNode">
-                        <div>
-                          <a title="" class="contenttype-plone-site " href="#">
-                            Home
-                          </a>
-                        </div>
-                      </li>
-                      <li class="navTreeItem visualNoMarker navTreeFolderish section-news">
-                        <a title="Site News" class="state-published navTreeFolderish contenttype-folder" href="#">
-                          <span>News</span>
-                        </a>
-                      </li>
-                      <li class="navTreeItem visualNoMarker navTreeCurrentNode navTreeFolderish section-events">
-                        <a title="Site Events" class="state-published navTreeCurrentItem navTreeCurrentNode navTreeFolderish contenttype-folder" href="#">
-                          <span>Events</span>
-                        </a>
-                        <ul class="navTree navTreeLevel1">
-                          <li class="navTreeItem visualNoMarker section-fedora-activity-day">
-                            <a title="" class="state-private contenttype-event" href="#">
-                              <span>Fedora Activity Day</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="navTreeItem visualNoMarker navTreeFolderish section-members">
-                        <a title="Site Users" class="state-published navTreeFolderish contenttype-folder" href="#">
-                          <span>Users</span>
-                        </a>
-                      </li>
-                      <li class="navTreeItem visualNoMarker navTreeFolderish section-services">
-                        <a title="" class="state-private navTreeFolderish contenttype-folder" href="#">
-                          <span>Services</span>
-                        </a>
-                      </li>
-                    </ul>
+                <section class="bordered">
+                  <ul class="unstyled" id="tags-list">
+                    <li>
+                      <a href="#">+</a>
+                      <span>Lorem</span>
+                    </li>
+                    <li>
+                      <a href="#">+</a>
+                      <span>Ipsum</span>
+                    </li>
+                    <li>
+                      <a href="#">+</a>
+                      <span>Dolor</span>
+                    </li>
+                    <li>
+                      <a href="#">+</a>
+                      <span>Gabor</span>
+                    </li>
+                    <li>
+                      <a href="#">+</a>
+                      <span>Vitae</span>
+                    </li>
+                    <li class="more-link"><a href="#">vsi tagi &gt;</a></li>
+                  </ul>
+                  <div id="types-list">
+                    <form action="">
+                      <input type="checkbox" name="type" value="vse" />
+                      <span class="red">vse</span><br />
+                      <input class="red" type="checkbox" name="type" value="tekst" />
+                      <span class="red">tekst</span><br />
+                      <input class="red" type="checkbox" name="type" value="fork">
+                      <span class="red">fork</span><br />
+                      <input class="red" type="checkbox" name="type" value="komentar">
+                      <span class="red">komentar</span><br />
+                    </form>
                   </div>
                 </section>
               </div>
             </div>
-            <div id="center-column" class="twocolumns span6">
+            <div id="center-column" class="twocolumns span7">
               <div id="center-column-content">
                 <article>
                   <div id="content">
@@ -187,38 +183,73 @@
             <div id="right-column" class="span3">
               <div id="right-column-content">
                 <section>
-                  <h4 class="portlet-header">Calendar</h4>
-                  <div>
-                    <table summary="Calendar" class="ploneCalendar">
-                      <caption
-                         class="hiddenStructure">November</caption>
-                      <thead>
-                        <tr class="weekdays">
-                          <th scope="col">Su</th>
-                          <th scope="col">Mo</th>
-                          <th scope="col">Tu</th>
-                          <th scope="col">We</th>
-                          <th scope="col">Th</th>
-                          <th scope="col">Fr</th>
-                          <th scope="col">Sa</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
-                        </tr>
-                        <tr><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
-                        </tr>
-                        <tr><td>13</td><td>14</td><td>15</td><td>16</td><td
-                                                                           class="todaynoevent"><strong>17</strong></td><td>18</td><td>19</td>
-                        </tr>
-                        <tr><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
-                        </tr>
-                        <tr><td>27</td><td>28</td><td>29</td><td>30</td><td></td><td></td><td></td>
-                        </tr>
-                      </tbody>
-
-                    </table>
+                  <h4 class="portlet-header">Vsebine:</h4>
+                  <div class="">
+                    <h5>Presek (vsebine z vsemi izbranimi tagi):</h5>
+                    <ul class="unstyled content-list">
+                      <li>
+                        <h5>Lorem ipsum quis est a</h5>
+                        <div class="description">
+                          Nullam commodo, libero et ultrices interdum, tellus tellus ultrices
+                        </div>
+                        <div class="red">
+                          članek
+                        </div>
+                      </li>
+                      <li>
+                        <h5>Lorem ipsum quis est a</h5>
+                        <div class="description">
+                          Nullam commodo, libero et ultrices interdum, tellus tellus ultrices
+                        </div>
+                        <div class="red">
+                          članek
+                        </div>
+                      </li>
+                      <li>
+                        <h5>Lorem ipsum quis est a</h5>
+                        <div class="description">
+                          Nullam commodo, libero et ultrices interdum, tellus tellus ultrices
+                        </div>
+                        <div class="red">
+                          članek
+                        </div>
+                      </li>
+                    </ul>
                   </div>
+
+                  <div>
+                    <h5>Unija (vsebine z enim izmed izbranih tagov:</h5>
+                    <ul class="unstyled content-list">
+                      <li>
+                        <h5>Lorem ipsum quis est a</h5>
+                        <div class="description">
+                          Nullam commodo, libero et ultrices interdum, tellus tellus ultrices
+                        </div>
+                        <div class="red">
+                          članek
+                        </div>
+                      </li>
+                      <li>
+                        <h5>Lorem ipsum quis est a</h5>
+                        <div class="description">
+                          Nullam commodo, libero et ultrices interdum, tellus tellus ultrices
+                        </div>
+                        <div class="red">
+                          članek
+                        </div>
+                      </li>
+                      <li>
+                        <h5>Lorem ipsum quis est a</h5>
+                        <div class="description">
+                          Nullam commodo, libero et ultrices interdum, tellus tellus ultrices
+                        </div>
+                        <div class="red">
+                          članek
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
                 </section>
               </div>
             </div>

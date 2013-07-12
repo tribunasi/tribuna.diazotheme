@@ -7,7 +7,7 @@
 
     <replace theme="/html/head/title" content="/html/head/title" />
 
-    <theme href="base.html" css:if-content="#visual-portal-wrapper"/>
+    <theme href="tribuna_base.html" css:if-content="#visual-portal-wrapper"/>
     <theme href="dialog.html" css:if-content="#content.dialog-wrapper"/>
     <drop css:content="meta[http-equiv='X-UA-Compatible']"/>
     <rules css:if-content="#content.dialog-wrapper">
