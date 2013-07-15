@@ -1,4 +1,6 @@
-/* Entry page */
+/**
+ * Entry page
+ */
 #entrypage-form-container {
     background-color: cyan;
     margin: 20px 0 0;
@@ -26,16 +28,201 @@
 #entrypage-form .accordion-heading .accordion-toggle {
     padding: 0;
 }
+/**
+ * End entry page
+ */
 
-/* Content */
+
+
+/**
+ * Settings for the text view
+ */
+div.text-view {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    background: none;
+    border: none;
+}
+
+div.text-view a {
+    color: black;
+}
+
+div.text-view p{
+    color: black;
+}
+/**
+ * End settings for the text view
+ */
+
+
+
+/**
+ * Settings for the drag view
+ */
+div.drag-view {
+    margin: 0px;
+    float: left;
+    background: none;
+    border: none;
+}
+
+div.drag-view div#text{
+    padding: 15px;
+}
+
+#content a.link-overlay {
+    border-bottom: none !important;
+}
+
+div.drag-view a {
+    color: black;
+    text-decoration: none;
+}
+
+div.drag-view p{
+    color: black;
+}
+
+div.drag-view:hover, div.ui-draggable-dragging {
+    background-color: #E8E8E8;
+    border: 1px solid black;
+}
+
+/*Hide/show stuff on hover and when dragging*/
+div.drag-view a, div.drag-view p, div.drag-view:hover img {
+    display: none;
+}
+
+div.drag-view:hover a, div.drag-view:hover p, div.drag-view img, div.ui-draggable-dragging a, div.ui-draggable-dragging p {
+    display: block;
+}
+
+/*Must be after the previous one so it is not overwritten*/
+div.ui-draggable-dragging img {
+    display: none;
+}
+/**
+ * End settings for the drag view
+ */
+
+
+
+/**
+ * Settings for portlet
+ */
+ul#all-tags-list{
+    position: absolute;
+    z-index: 400;
+    display:none;
+    margin-top: 15px;
+/*    margin-left: 100%;
+    width: 100%;
+    height: 100%;*/
+    background-color: white;
+    padding: 20px;
+    border: 2px solid;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+li.selected{
+    border-style: solid;
+    border-width: 1px 2px 2px 1px;
+    border-color: #ccc;
+}
+
+.bordered {
+    border-style: solid;
+    border-width: 1px 2px 2px 1px;
+    border-color: #ccc;
+    padding: 1em;
+}
+/**
+ * End settings for portlet
+ */
+
+
+
+/**
+ * Content
+ */
 ul.content-list {
     margin: 1em 0 0 1em;
 }
+
 ul.content-list li {
     margin-bottom: 1em;
 }
+
 .red {
     color: red;
+}
+
+div#homepage-div {
+    min-height: 600px;
+    max-width: 100%;
+    position: relative;
+    float: right;
+    margin: 0;
+    padding: 0;
+    /*border:1px solid red;*/
+}
+
+div#tag-description-div {
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    min-height: 600px;
+    float: left;
+    position: relative;
+    /*border:1px solid red;*/
+}
+/**
+ * End content
+ */
+
+
+
+/**
+ * Overlay settings
+ */
+/*Need to remove the !important where they aren't needed :P*/
+div.overlay-iframe{
+    width: 95% !important;
+    height: 95% !important;
+    max-width: 95% !important;
+    max-height: 95% !important;
+    margin-top: 2% !important;
+    margin-bottom: 2% !important;
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+    left: 0 !important;
+    top: 0 !important;
+}
+
+iframe{
+    width: 100% !important;
+    height: 100% !important;
+    border: 1px solid;
+    border-radius: 10px;
+}
+/**
+ * End overlay settings
+ */
+
+
+
+/**
+ * Various settings
+ */
+div.full-width {
+    width: 100%;
+}
+
+div.half-width {
+    width: 50%;
 }
 
 /* Hide top nav for annonymous users */
@@ -58,10 +245,6 @@ ul.content-list li {
 .more-link {
     padding: 0.5em 0 0 1em;
 }
-
-.bordered {
-    border-style: solid;
-    border-width: 1px 2px 2px 1px;
-    border-color: #ccc;
-    padding: 1em;
-}
+/**
+ * End various settings
+ */
