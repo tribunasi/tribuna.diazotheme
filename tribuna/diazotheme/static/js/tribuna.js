@@ -1,7 +1,7 @@
-console.info("Cisto zunaj!");
+// console.info("Cisto zunaj!");
 // (function () {
 //     "use strict";
-    console.info("Badum badum!");
+    // console.info("Badum badum!");
     function selectOne(){
         // When clicking on name, push it to top and remove everything else
         jQuery17('#selected-tags-list > li > span').each( function(index) {
