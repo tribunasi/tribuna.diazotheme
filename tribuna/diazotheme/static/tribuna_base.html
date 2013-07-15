@@ -103,30 +103,100 @@
           <div class="row">
             <div id="left-column" class="span2">
               <div id="left-column-content">
+                <div id="selected-tags">
+                  <ul class="unstyled" id="selected-tags-list">
+                    <li class="selected" id="hlorem">
+                      <a href="#">-</a>
+                      <span><a href="#">HLorem</a></span>
+                    </li>
+                    <li class="selected" id="nhlorem">
+                      <a href="#">-</a>
+                      <span><a href="#">NHLorem</a></span>
+                    </li>
+                  </ul>
+                </div>
                 <section class="bordered">
                   <ul class="unstyled" id="tags-list">
-                    <li>
-                      <a href="#">+</a>
-                      <span>Lorem</span>
+                    <li class="selected" id="hlorem">
+                      <a href="#">-</a>
+                      <span><a href="#">HLorem</a></span>
                     </li>
-                    <li>
+                    <li id="lorem">
                       <a href="#">+</a>
-                      <span>Ipsum</span>
+                      <span><a href="#">Lorem</a></span>
                     </li>
-                    <li>
+                    <li id="ipsum">
                       <a href="#">+</a>
-                      <span>Dolor</span>
+                      <span><a href="#">Ipsum</a></span>
                     </li>
-                    <li>
+                    <li id="dolor">
                       <a href="#">+</a>
-                      <span>Gabor</span>
+                      <span><a href="#">Dolor</a></span>
                     </li>
-                    <li>
+                    <li id="gabor">
                       <a href="#">+</a>
-                      <span>Vitae</span>
+                      <span><a href="#">Gabor</a></span>
                     </li>
-                    <li class="more-link"><a href="#">vsi tagi &gt;</a></li>
+                    <li id="vitae">
+                      <a href="#">+</a>
+                      <span><a href="#">Vitae</a></span>
+                    </li>
                   </ul>
+                  <ul class="unstyled" id="all-tags-list">
+                    <li class="selected" id="nhlorem">
+                      <a href="#">-</a>
+                      <span><a href="#">NHLorem</a></span>
+                    </li>
+                    <li class="selected" id="hlorem">
+                      <a href="#">-</a>
+                      <span><a href="#">HLorem</a></span>
+                    </li>
+                    <li id="lorem">
+                      <a href="#">+</a>
+                      <span><a href="#">Lorem</a></span>
+                    </li>
+                    <li id="ipsum">
+                      <a href="#">+</a>
+                      <span><a href="#">Ipsum</a></span>
+                    </li>
+                    <li id="dolor">
+                      <a href="#">+</a>
+                      <span><a href="#">Dolor</a></span>
+                    </li>
+                    <li id="gabor">
+                      <a href="#">+</a>
+                      <span><a href="#">Gabor</a></span>
+                    </li>
+                    <li id="vitae">
+                      <a href="#">+</a>
+                      <span><a href="#">Vitae</a></span>
+                    </li>
+                    <li id="lorem2">
+                      <a href="#">+</a>
+                      <span><a href="#">Lorem2</a></span>
+                    </li>
+                    <li id="ipsum2">
+                      <a href="#">+</a>
+                      <span><a href="#">Ipsum2</a></span>
+                    </li>
+                    <li id="dolor2">
+                      <a href="#">+</a>
+                      <span><a href="#">Dolor2</a></span>
+                    </li>
+                    <li id="gabor2">
+                      <a href="#">+</a>
+                      <span><a href="#">Gabor2</a></span>
+                    </li>
+                    <li id="vitae2">
+                      <a href="#">+</a>
+                      <span><a href="#">Vitae2</a></span>
+                    </li>
+                    <li id="more_words__test">
+                      <a href="#">+</a>
+                      <span><a href="#">MoRe WORds  teSt</a></span>
+                    </li>
+                  </ul>
+                  <a href="#" id="show-all-tags">vsi tagi &gt;</a>
                   <div id="types-list">
                     <form action="">
                       <input type="checkbox" name="type" value="vse" />
@@ -255,6 +325,7 @@
             </div>
           </div>
         </div>
+      </div>
 
       <div style="clear:both">&nbsp;</div>
 
@@ -271,14 +342,14 @@
 
     <!-- scripts concatenated and minified via ant build script-->
     <script>
-      var jQuery14 = jQuery;
+      // var jQuery14 = jQuery;
     </script>
     <script src="jquery-1.7.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script>
       var jQuery17 = jQuery;
-      $ = jQuery14;
-      jQuery = jQuery14;
+      // $ = jQuery14;
+      // jQuery = jQuery14;
       jQuery17(document).ready(function () {
           jQuery17('.dropdown-toggle').dropdown();
       });
@@ -288,6 +359,7 @@
     <script defer src="js/openid-providers.js"></script>
     <script defer src="js/openid-wrapper.js"></script>
     <script defer src="js/script.js"></script>
+    <script defer src="js/tribuna.js"></script>
     <div id="site-scripts"></div>
 
     <!-- end scripts-->
