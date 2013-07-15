@@ -112,6 +112,39 @@ div.ui-draggable-dragging img {
 /**
  * Settings for portlet
  */
+div#sidebar-portlet a {
+    color: black;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+div#sidebar-portlet span a {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+div#sidebar-portlet a#show-all-tags span {
+    text-decoration: underline;
+}
+
+ul#selected-tags-list li.selected {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #ccc;
+    margin-bottom: -1px;
+    background: blue;
+}
+ul#selected-tags-list li.selected a {
+    color: white;
+}
+ul#selected-tags-list li.selected span a {
+    color: white;
+
+}
+
+ul#tags-list li.selected a, ul#all-tags-list li.selected a{
+    color: blue;
+}
+
 ul#all-tags-list{
     position: absolute;
     z-index: 400;
@@ -125,12 +158,6 @@ ul#all-tags-list{
     border: 2px solid;
     border-radius: 25px;
     box-shadow: 5px 5px 5px #888888;
-}
-
-li.selected{
-    border-style: solid;
-    border-width: 1px 2px 2px 1px;
-    border-color: #ccc;
 }
 
 .bordered {
