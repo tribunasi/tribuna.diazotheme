@@ -244,6 +244,16 @@ iframe{
 /**
  * Various settings
  */
+#content .heading {
+    margin-bottom: 3em;
+}
+#content .heading h2 {
+    line-height: 1em;
+}
+#content .description {
+    font-style: italic;
+    margin-bottom: 2em;
+}
 div.full-width {
     width: 100%;
 }
@@ -274,4 +284,30 @@ div.half-width {
 }
 /**
  * End various settings
+ */
+
+
+/**
+ * Comments
+ */
+#comments input[type='text'] {
+    height: 4em;
+    margin-bottom: 0;
+}
+#comments input[type='button'] {
+    vertical-align: top;
+}
+.comment .documentByLine {
+    font-weight: bold;
+}
+.commentBody {
+    margin: 0 0 0 1em;
+    padding: 0;
+    box-shadow: none;
+}
+.replyTreeLevel1 {
+    margin-left: 1em;
+}
+/**
+ * End of comments
  */
