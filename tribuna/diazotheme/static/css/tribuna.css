@@ -239,11 +239,44 @@ iframe{
  * End overlay settings
  */
 
+/**
+ * Content slider
+ */
+.slider-header {
+    border-bottom: 1px solid black;
+}
+.content-slider ul {
+    margin: 0 0 0 10px;
+    display: inline-block;
+}
+.content-slider ul li {
+    display: inline-block;
+    height: 40px;
+    padding: 20px 0;
+    width: 220px;
+}
+.navigate {
+    display: inline-block;
+}
+.navigate a {
+    /* XXX: this is a bit silly, test if it works in all browsers */
+    vertical-align: bottom;
+}
+.navigate img {
+    width: 30px;
+}
+/**
+ * End of content slider
+ */
 
 
 /**
  * Various settings
  */
+.title a {
+    color: black;
+    cursor: pointer;
+}
 #content .heading {
     margin-bottom: 3em;
 }
@@ -307,6 +340,9 @@ div.half-width {
 }
 .replyTreeLevel1 {
     margin-left: 1em;
+}
+#add-comment textarea {
+    width: 260px;
 }
 /**
  * End of comments
