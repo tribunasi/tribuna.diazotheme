@@ -29,7 +29,13 @@
             <xsl:for-each css:select="#formfield-form-widgets-tags .option">
                 <xsl:element name="li">
                     <xsl:attribute name="id"> <xsl:copy-of select="label/span/text()"/></xsl:attribute>
-                    <a href="#">+</a>
+                    <xsl:if test="input/@checked='checked'">
+                      <xsl:attribute name="class">selected</xsl:attribute>
+                      <a href="#">-</a>
+                    </xsl:if>
+                    <xsl:if test="input/@checked!='checked'">
+                      <a href="#">+</a>
+                    </xsl:if>
                      <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
                  </xsl:element>
             </xsl:for-each>
