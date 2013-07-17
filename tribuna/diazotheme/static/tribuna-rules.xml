@@ -49,6 +49,9 @@
                   <xsl:attribute name="type">checkbox</xsl:attribute>
                   <xsl:attribute name="name"><xsl:value-of select="label/span/text()" /></xsl:attribute>
                   <xsl:attribute name="id"><xsl:value-of select="input/@value" /></xsl:attribute>
+                  <xsl:if test="input/@checked='checked'">
+                    <xsl:attribute name="checked">checked</xsl:attribute>
+                  </xsl:if>
                 </xsl:element>
                 <span class="red"><xsl:copy-of select="label/span/text()"/></span>
                 <br />
