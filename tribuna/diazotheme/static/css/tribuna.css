@@ -61,42 +61,59 @@ div.text-view p{
 /**
  * Settings for the drag view
  */
-div.drag-view {
+div.drag-view-article, div.drag-view-comment {
     margin: 0px;
     float: left;
     background: none;
     border: none;
 }
+div.drag-view-comment {
+    background: white;
+}
 
-div.drag-view div#text{
+div.drag-view-article div#text, div.drag-view-comment div#text {
     padding: 15px;
 }
 
-#content a.link-overlay {
-    border-bottom: none !important;
-}
-
-div.drag-view a {
+div.drag-view-article a, div.drag-view-comment a {
     color: black;
     text-decoration: none;
 }
 
-div.drag-view p{
+div.drag-view-article p, div.drag-view-comment p{
     color: black;
 }
 
-div.drag-view:hover, div.ui-draggable-dragging {
+div.drag-view-article:hover,
+div.drag-view-comment:hover,
+div.ui-draggable-dragging {
     background-color: #E8E8E8;
     border: 1px solid black;
 }
 
 /*Hide/show stuff on hover and when dragging*/
-div.drag-view a, div.drag-view p, div.drag-view:hover img {
+div.drag-view-article a,
+div.drag-view-article p,
+div.drag-view-article:hover img,
+div.drag-view-comment div#drag-view-extras {
     display: none;
 }
 
-div.drag-view:hover a, div.drag-view:hover p, div.drag-view img, div.ui-draggable-dragging a, div.ui-draggable-dragging p {
+/*Change everything to block
+Link should be changed to inline-block so it doesn't stretch over whole div*/
+div.drag-view-article:hover p,
+div.drag-view-article img,
+div.drag-view-comment:hover div#drag-view-extras,
+div.ui-draggable-dragging div#drag-view-extras,
+div.ui-draggable-dragging p {
+    display: block;
+}
+div.drag-view-article:hover a,
+div.ui-draggable-dragging a {
     display: inline-block;
+}
+div.drag-view-comment a {
+    display: block;
 }
 
 /*Must be after the previous one so it is not overwritten*/
@@ -333,6 +350,10 @@ div.half-width {
 
 .more-link {
     padding: 0.5em 0 0 1em;
+}
+
+#content a.link-overlay {
+    border-bottom: none !important;
 }
 /**
  * End various settings
