@@ -51,7 +51,20 @@
                      <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>                     
                  </xsl:element>               
             </xsl:for-each>  
-        </replace>   
+        </replace>
+        <replace css:theme-children="#selected-tags-list">                          
+            <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
+                <xsl:if test="input/@checked='checked'">              
+                  <xsl:element name="li">
+                      <xsl:attribute name="id"> <xsl:copy-of select="label/span/text()"/></xsl:attribute>
+                      <xsl:attribute name="class">selected</xsl:attribute>
+                          <a href="#">-</a>
+                          <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
+                  </xsl:element>  
+                </xsl:if>             
+            </xsl:for-each>
+            
+        </replace>      
 
         <after css:theme="#types-list" css:content="#form" />
 
