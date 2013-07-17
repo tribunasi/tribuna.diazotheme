@@ -96,7 +96,7 @@ div.drag-view a, div.drag-view p, div.drag-view:hover img {
 }
 
 div.drag-view:hover a, div.drag-view:hover p, div.drag-view img, div.ui-draggable-dragging a, div.ui-draggable-dragging p {
-    display: block;
+    display: inline-block;
 }
 
 /*Must be after the previous one so it is not overwritten*/
@@ -166,6 +166,25 @@ ul#all-tags-list{
     border-color: #ccc;
     padding: 1em;
 }
+
+/*Hide the original form*/
+/*For now, hide everything but the buttons*/
+/*form.kssattr-formname-my-form {
+    display: none;
+}
+*/
+div#formfield-form-widgets-tags,
+div#formfield-form-widgets-all_tags,
+div#formfield-form-widgets-sort_on,
+div#formfield-form-widgets-sort_order,
+div#formfield-form-widgets-content_filters {
+    display: none;
+}
+
+/*div.formControls {
+    display: block;
+}*/
+
 /**
  * End settings for portlet
  */

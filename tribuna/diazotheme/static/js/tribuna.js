@@ -8,23 +8,33 @@ jQuery17(function () {
 
     function selectOne(){
         // When clicking on name, push it to top and remove everything else
+        var myname = jQuery17(this).text().toLowerCase().replace(/ /g, '_');
+        var alreadySelected = false;
         jQuery17('#selected-tags-list > li > span').each( function() {
             var name = jQuery17(this).text().toLowerCase().replace(/ /g, '_');
-            jQuery17('#tags-list #' + name + ' > a').text('+');
-            jQuery17('#all-tags-list #' + name + ' > a').text('+');
-            jQuery17('#tags-list #' + name).removeClass("selected");
-            jQuery17('#all-tags-list #' + name).removeClass("selected");
-            jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this).text() + "']").click();
-            jQuery17(this.parentNode).remove();
+            if(name === myname){
+                alreadySelected = true;
+            }
+            else{
+                jQuery17('#tags-list #' + name + ' > a').text('+');
+                jQuery17('#all-tags-list #' + name + ' > a').text('+');
+                jQuery17('#tags-list #' + name).removeClass("selected");
+                jQuery17('#all-tags-list #' + name).removeClass("selected");
+                jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this).text() + "']").click();
+                jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this).text() + "']").click();
+                jQuery17(this.parentNode).remove();
+            }
         });
 
-        var name = jQuery17(this).text().toLowerCase().replace(/ /g, '_');
-        jQuery17('#tags-list #' + name + ' > a').text('-');
-        jQuery17('#all-tags-list #' + name + ' > a').text('-');
-        jQuery17('#tags-list #' + name).addClass("selected");
-        jQuery17('#all-tags-list #' + name).addClass("selected");
-        jQuery17(this.parentNode.parentNode).clone(true).addClass("selected").appendTo('#selected-tags-list');
-        jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this).text() + "']").click();
+        if(!alreadySelected){
+            jQuery17('#tags-list #' + myname + ' > a').text('-');
+            jQuery17('#all-tags-list #' + myname + ' > a').text('-');
+            jQuery17('#tags-list #' + myname).addClass("selected");
+            jQuery17('#all-tags-list #' + myname).addClass("selected");
+            jQuery17(this.parentNode.parentNode).clone(true).addClass("selected").appendTo('#selected-tags-list');
+            jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this).text() + "']").click();
+            jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this).text() + "']").click();
+        }
     }
 
     function moveUpDown(){
@@ -47,7 +57,6 @@ jQuery17(function () {
                 jQuery17('#all-tags-list #' + name).removeClass("selected");
                 item.remove();
             }
-            jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this.parentNode.getElementsByTagName('span')).text() + "']").click();
         }
         else{
             var name = jQuery17(this.parentNode.getElementsByTagName('span')).text().toLowerCase().replace(/ /g, '_');
@@ -57,6 +66,8 @@ jQuery17(function () {
             jQuery17('#all-tags-list #' + name).removeClass("selected");
             jQuery17(this.parentNode).remove();
         }
+        jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this.parentNode.getElementsByTagName('span')).text() + "']").click();
+        jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode.getElementsByTagName('span')).text() + "']").click();
     }
 
     function runEffect() {
@@ -109,9 +120,17 @@ jQuery17(function () {
         });
 
         // Sort_on
-        jQuery17("#form-widgets-sort_on").attr('id', 'blop123');
+        var uniqueName = "thisShouldBeAnUniqueName";
+
+        jQuery17("#form-widgets-sort_on").attr('id', uniqueName);
         jQuery17("#form-widgets-sort_on").attr('id', 'form-widgets-sort_on-noform');
-        jQuery17('#blop123').attr('id', "form-widgets-sort_on");
+        jQuery17('#' + uniqueName).attr('id', "form-widgets-sort_on");
+
+
+        jQuery17("#formfield-form-widgets-sort_on").attr('id', uniqueName);
+        jQuery17("#formfield-form-widgets-sort_on").attr('id', 'formfield-form-widgets-sort_on-noform');
+        jQuery17('#' + uniqueName).attr('id', "formfield-form-widgets-sort_on");
+
         jQuery17("#form-widgets-sort_on-noform").change( function() {
             jQuery17("#form-widgets-sort_on").val(this.value);
         });
