@@ -98,10 +98,6 @@ jQuery17(function () {
         jQuery17("#all-tags-list > li > span > a").click( selectOne);
 
 
-        jQuery17('#entrypage-link').click(function () {
-            jQuery17('#entrypage-form-container').toggleClass('expanded');
-        });
-
         // Click event for show/hide "button" (actually just a link)
         jQuery17("#show-all-tags" ).click(function() {
           runEffect();

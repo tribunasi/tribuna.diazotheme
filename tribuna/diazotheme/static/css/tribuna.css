@@ -28,6 +28,35 @@
 #entrypage-form .accordion-heading .accordion-toggle {
     padding: 0;
 }
+
+div.entrypage-text-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin:10% 10% 10% 10%;
+
+}
+
+#text-container p{
+    text-align: center;
+    color:#000;
+    font: 95px/1 "Times New Roman";
+    display: block;
+    /*text-shadow:#000000 -1px 1px 0,
+    #000000 -2px 2px 0,
+    #000000 -3px 3px 0,
+    #000000 -4px 4px 0;*/
+}
+
+#text-container p.arial {
+    font-family:Arial;
+}
+
+#text-container p.helvetica {
+    font-family:Helvetica;
+}
+
+
 /**
  * End entry page
  */
