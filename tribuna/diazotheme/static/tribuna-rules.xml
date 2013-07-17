@@ -5,7 +5,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xi="http://www.w3.org/2001/XInclude">
     
-    <drop css:theme-children="#header" />
+    <!-- <drop css:theme-children="#header" /> -->
 
     <!-- <after theme-children="/html/head" content="/html/head/script" />
     <after theme-children="/html/head" content="/html/head/link | /html/head/style" />
@@ -24,7 +24,7 @@
     <theme href="tribuna_base.html" if-path="@@home-page"/>
     <rules if-path="@@home-page">
         <!-- <replace css:content=".portlet.portletSidebar" css:theme="#sidebar-portlet" /> -->
-        <drop css:theme=".navbar.navbar-fixed-top" />
+        <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
         <replace css:theme-children="#tags-list">
             <xsl:for-each css:select="#formfield-form-widgets-tags .option">
                 <xsl:element name="li"> 
@@ -53,33 +53,35 @@
             </xsl:for-each>  
         </replace>   
 
-    <!--     <after css:theme="#types-list" css:content="#form" /> -->
+        <after css:theme="#types-list" css:content="#form" />
 
       
         <rules css:if-content="#tag-description-div">
-            <rules css:if-not-content=".articles_intersection">
+          <rules css:if-content=".articles_intersection">
               <before css:theme="#intersection-articles" css:content="#formfield-form-widgets-sort_on" />
               <replace css:content-children=".articles_intersection" css:theme-children="#intersection-articles"/>
               <replace css:content-children=".articles_union" css:theme-children="#union-articles"/>
               <replace css:content-children="#tag-description-div" css:theme-children="#content" />
-            </rules>
-        </rules>
-        <rules css:if-content=".articles_intersection" css:if-not-content="#tag-description-div">
-            <drop css:theme="#right-column" />
-            <before css:theme="#intersection-articles" css:content="#formfield-form-widgets-sort_on" />
-            <replace css:content-children=".articles_intersection" css:theme-children="#content"/>
-            <after css:theme="#content" css:content=".articles_union"/>            
-        </rules> 
-        <rules css:if-not-content=".articles_intersection">
-            <rules css:if-not-content="#tag-description-div" >
-                <drop css:theme="#right-column" />
-                <replace css:content="#homepage-div" css:theme="#content"/>
-            </rules>
-        </rules>
-        <rules css:if-not-content=".articles_intersection" css:if-content="#tag-description-div">
+          </rules>
+          <rules css:if-not-content=".articles_intersection">
             <replace css:content-children="#tag-description-div" css:theme-children="#content" />
             <replace css:content="#homepage-div" css:theme-children="#right-column-content"/>
-        </rules>               
+          </rules>       
+        </rules>
+        <rules css:if-not-content="#tag-description-div">
+          <rules css:if-content=".articles_intersection" > 
+            <drop css:theme="#right-column" />
+            <before css:theme="#content" css:content="#formfield-form-widgets-sort_on" />
+            <replace css:content-children=".articles_intersection" css:theme-children="#content"/>
+            <after css:theme="#content" css:content=".articles_union"/>  
+          </rules>          
+          <rules css:if-not-content=".articles_intersection">
+              <rules css:if-not-content="#tag-description-div" >
+                  <drop css:theme="#right-column" />
+                  <replace css:content="#homepage-div" css:theme="#content"/>
+              </rules>
+          </rules>
+        </rules>       
     </rules>
     <before css:theme="head" content="/html/head/script" />
 </rules>
