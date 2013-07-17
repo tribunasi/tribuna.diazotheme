@@ -1,10 +1,14 @@
-// console.info("Cisto zunaj!");
-// (function () {
-//     "use strict";
-    // console.info("Badum badum!");
+jQuery17(function () {
+    "use strict";
+
+    function makeID(){
+        var name = jQuery17(this).text().toLowerCase().replace(/ /g, '_');
+        jQuery17(this.parentNode).attr('id', name);
+    }
+
     function selectOne(){
         // When clicking on name, push it to top and remove everything else
-        jQuery17('#selected-tags-list > li > span').each( function(index) {
+        jQuery17('#selected-tags-list > li > span').each( function() {
             var name = jQuery17(this).text().toLowerCase().replace(/ /g, '_');
             jQuery17('#tags-list #' + name + ' > a').text('+');
             jQuery17('#all-tags-list #' + name + ' > a').text('+');
@@ -23,10 +27,9 @@
 
     function moveUpDown(){
         // When clicking on +/-, move/remove from top and change sign appropriately
-        if(jQuery17(this.parentNode.parentNode).attr('id') == 'tags-list' ||
-            jQuery17(this.parentNode.parentNode).attr('id') == 'all-tags-list'){
+        if(jQuery17(this.parentNode.parentNode).attr('id') === 'tags-list' ||
+            jQuery17(this.parentNode.parentNode).attr('id') === 'all-tags-list'){
             var name = jQuery17(this.parentNode.getElementsByTagName('span')).text().toLowerCase().replace(/ /g, '_');
-            console.info(name);
             var item = jQuery17('#selected-tags-list #' + name);
             if(!item.attr('id')){
                 jQuery17('#tags-list #' + name + ' > a').text('-');
@@ -53,16 +56,31 @@
         }
     }
 
-    // jQuery17(document).ready(function () {
+    function runEffect() {
+        // Show the div if it's hidden, hide if it it's shown
+        var all_tags = $( "#all-tags-list" );
+        if(all_tags.css("display") === "none"){
+          jQuery17( "#all-tags-list" ).show("fast");
+        }
+        else{
+           jQuery17( "#all-tags-list" ).hide("fast");
+        }
+    }
+
+    jQuery17(document).ready(function () {
+        // Change all ID's
+        jQuery17("#selected-tags-list > li > span").each( makeID);
+        jQuery17("#tags-list > li > span").each( makeID);
+        jQuery17("#all-tags-list > li > span").each( makeID);
 
         // Setup for moving tags up and down via +/-
-        jQuery17("#tags-list > li > a").click( moveUpDown);
         jQuery17("#selected-tags-list > li > a").click( moveUpDown);
+        jQuery17("#tags-list > li > a").click( moveUpDown);
         jQuery17("#all-tags-list > li > a").click( moveUpDown);
 
         // Setup for selecting tag via clicking on name
-        jQuery17("#tags-list > li > span > a").click( selectOne);
         jQuery17("#selected-tags-list > li > span > a").click( selectOne);
+        jQuery17("#tags-list > li > span > a").click( selectOne);
         jQuery17("#all-tags-list > li > span > a").click( selectOne);
 
 
@@ -70,25 +88,11 @@
             jQuery17('#entrypage-form-container').toggleClass('expanded');
         });
 
-    // });
-
-    // $(function() {
-        function runEffect() {
-            // Show the div if it's hidden, hide if it it's shown
-            var all_tags = $( "#all-tags-list" );
-            if(all_tags.css("display") == "none"){
-              $( "#all-tags-list" ).show("fast");
-            }
-            else{
-               $( "#all-tags-list" ).hide("fast");
-            }
-        };
-
         // Click event for show/hide "button" (actually just a link)
-        $( "#show-all-tags" ).click(function() {
+        jQuery17( "#show-all-tags" ).click(function() {
           runEffect();
           return false;
         });
-    // });
+    });
 
-// });
+});
