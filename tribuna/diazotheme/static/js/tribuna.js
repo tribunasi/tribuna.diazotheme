@@ -14,6 +14,7 @@ jQuery17(function () {
             jQuery17('#all-tags-list #' + name + ' > a').text('+');
             jQuery17('#tags-list #' + name).removeClass("selected");
             jQuery17('#all-tags-list #' + name).removeClass("selected");
+            jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this).text() + "']").click();
             jQuery17(this.parentNode).remove();
         });
 
@@ -23,6 +24,7 @@ jQuery17(function () {
         jQuery17('#tags-list #' + name).addClass("selected");
         jQuery17('#all-tags-list #' + name).addClass("selected");
         jQuery17(this.parentNode.parentNode).clone(true).addClass("selected").appendTo('#selected-tags-list');
+        jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this).text() + "']").click();
     }
 
     function moveUpDown(){
@@ -45,6 +47,7 @@ jQuery17(function () {
                 jQuery17('#all-tags-list #' + name).removeClass("selected");
                 item.remove();
             }
+            jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this.parentNode.getElementsByTagName('span')).text() + "']").click();
         }
         else{
             var name = jQuery17(this.parentNode.getElementsByTagName('span')).text().toLowerCase().replace(/ /g, '_');
@@ -89,10 +92,41 @@ jQuery17(function () {
         });
 
         // Click event for show/hide "button" (actually just a link)
-        jQuery17( "#show-all-tags" ).click(function() {
+        jQuery17("#show-all-tags" ).click(function() {
           runEffect();
           return false;
         });
+
+        // Set up the click functions for filters, hardcoded for now
+        jQuery17("#types-list #articles").change( function(){
+            jQuery17("#form-widgets-content_filters-0").click();
+        });
+        jQuery17("#types-list #comments").change( function(){
+            jQuery17("#form-widgets-content_filters-1").click();
+        });
+        jQuery17("#types-list #images").change( function(){
+            jQuery17("#form-widgets-content_filters-2").click();
+        });
+
+        // Sort_on
+        jQuery17("#form-widgets-sort_on").attr('id', 'blop123');
+        jQuery17("#form-widgets-sort_on").attr('id', 'form-widgets-sort_on-noform');
+        jQuery17('#blop123').attr('id', "form-widgets-sort_on");
+        jQuery17("#form-widgets-sort_on-noform").change( function() {
+            jQuery17("#form-widgets-sort_on").val(this.value);
+        });
+
+        // Sort_order
+        // form-widgets-sort_order
+        // jQuery17("#form-widgets-sort_order").attr('id', 'blop123');
+        // jQuery17("#form-widgets-sort_order").attr('id', 'form-widgets-sort_order-noform');
+        // jQuery17('#blop123').attr('id', "form-widgets-sort_order");
+        // jQuery17("#form-widgets-sort_order-noform").change( function() {
+        //     console.info("It's a changin'");
+        //     console.info(this.value);
+        //     jQuery17("#form-widgets-sort_order").val(this.value);
+        // });
+
     });
 
 });

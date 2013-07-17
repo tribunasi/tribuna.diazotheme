@@ -4,7 +4,7 @@
     xmlns:css="http://namespaces.plone.org/diazo/css"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xi="http://www.w3.org/2001/XInclude">
-    
+
     <!-- <drop css:theme-children="#header" /> -->
 
     <!-- <after theme-children="/html/head" content="/html/head/script" />
@@ -27,48 +27,52 @@
         <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
         <replace css:theme-children="#tags-list">
             <xsl:for-each css:select="#formfield-form-widgets-tags .option">
-                <xsl:element name="li"> 
+                <xsl:element name="li">
                     <xsl:attribute name="id"> <xsl:copy-of select="label/span/text()"/></xsl:attribute>
                     <a href="#">+</a>
-                     <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>                     
-                 </xsl:element>               
-            </xsl:for-each>  
-        </replace>   
+                     <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
+                 </xsl:element>
+            </xsl:for-each>
+        </replace>
 
         <replace css:theme-children="#types-list">
             <xsl:for-each css:select="#formfield-form-widgets-content_filters .option">
-                <input type="checkbox" name="type" value="vse" />
+                <xsl:element name="input">
+                  <xsl:attribute name="type">checkbox</xsl:attribute>
+                  <xsl:attribute name="name"><xsl:value-of select="label/span/text()" /></xsl:attribute>
+                  <xsl:attribute name="id"><xsl:value-of select="input/@value" /></xsl:attribute>
+                </xsl:element>
                 <span class="red"><xsl:copy-of select="label/span/text()"/></span>
-                <br />                          
-            </xsl:for-each>  
-        </replace>   
+                <br />
+            </xsl:for-each>
+        </replace>
 
         <replace css:theme-children="#all-tags-list">
             <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
-                <xsl:element name="li"> 
+                <xsl:element name="li">
                     <xsl:attribute name="id"> <xsl:copy-of select="label/span/text()"/></xsl:attribute>
                     <a href="#">+</a>
-                     <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>                     
-                 </xsl:element>               
-            </xsl:for-each>  
+                     <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
+                 </xsl:element>
+            </xsl:for-each>
         </replace>
-        <replace css:theme-children="#selected-tags-list">                          
+        <replace css:theme-children="#selected-tags-list">
             <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
-                <xsl:if test="input/@checked='checked'">              
+                <xsl:if test="input/@checked='checked'">
                   <xsl:element name="li">
                       <xsl:attribute name="id"> <xsl:copy-of select="label/span/text()"/></xsl:attribute>
                       <xsl:attribute name="class">selected</xsl:attribute>
                           <a href="#">-</a>
                           <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
-                  </xsl:element>  
-                </xsl:if>             
+                  </xsl:element>
+                </xsl:if>
             </xsl:for-each>
-            
-        </replace>      
+
+        </replace>
 
         <after css:theme="#types-list" css:content="#form" />
 
-      
+
         <rules css:if-content="#tag-description-div">
           <rules css:if-content=".articles_intersection">
               <before css:theme="#intersection-articles" css:content="#formfield-form-widgets-sort_on" />
@@ -79,22 +83,22 @@
           <rules css:if-not-content=".articles_intersection">
             <replace css:content-children="#tag-description-div" css:theme-children="#content" />
             <replace css:content="#homepage-div" css:theme-children="#right-column-content"/>
-          </rules>       
+          </rules>
         </rules>
         <rules css:if-not-content="#tag-description-div">
-          <rules css:if-content=".articles_intersection" > 
+          <rules css:if-content=".articles_intersection" >
             <drop css:theme="#right-column" />
             <before css:theme="#content" css:content="#formfield-form-widgets-sort_on" />
             <replace css:content-children=".articles_intersection" css:theme-children="#content"/>
-            <after css:theme="#content" css:content=".articles_union"/>  
-          </rules>          
+            <after css:theme="#content" css:content=".articles_union"/>
+          </rules>
           <rules css:if-not-content=".articles_intersection">
               <rules css:if-not-content="#tag-description-div" >
                   <drop css:theme="#right-column" />
                   <replace css:content="#homepage-div" css:theme="#content"/>
               </rules>
           </rules>
-        </rules>       
+        </rules>
     </rules>
     <before css:theme="head" content="/html/head/script" />
 </rules>
