@@ -44,7 +44,7 @@
         </replace>   
 
         <replace css:theme-children="#all-tags-list">
-            <xsl:for-each css:select="#formfield-form-widgets-tags .option">
+            <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
                 <xsl:element name="li"> 
                     <xsl:attribute name="id"> <xsl:copy-of select="label/span/text()"/></xsl:attribute>
                     <a href="#">+</a>
