@@ -67,19 +67,52 @@ div.entrypage-text-container {
  * Settings for the text view
  */
 div.text-view {
-    margin-left: 0px;
+    margin-left: 15px;
     margin-right: 0px;
-    margin-top: 10px;
+    margin-top: 0px;
+    margin-bottom: 50px;
     background: none;
     border: none;
 }
-
-div.text-view a {
-    color: black;
+div.text-view-article,
+div.text-view-comment,
+div.text-view-article-one,
+div.text-view-comment-one,
+div#articles h5 {
+    font-size: 20px;
+    line-height: 25px;
+    font-family: sans-serif;
+}
+div.text-view-comment, div.text-view-comment-one {
+    font-family: serif;
+}
+div.text-view-article-one, div.text-view-comment-one {
+    font-size: 15px;
+    line-height: 20px;
+}
+h3.portlet-header {
+    font-size: 20px;
+    line-height: 25px;
 }
 
-div.text-view p{
+
+div.text-view a, div.text-view p {
     color: black;
+    margin-bottom: 0;
+}
+
+div#gallery-link p, div#gallery-link a {
+    color: black;
+    margin-bottom: 0;
+}
+
+div#content h2 {
+    font-size: 20px;
+    line-height: 25px;
+}
+div#content p {
+    font-size: 16px;
+    line-height: 24px;
 }
 /**
  * End settings for the text view
@@ -208,9 +241,12 @@ ul#all-tags-list{
 
 .bordered {
     border-style: solid;
-    border-width: 1px 2px 2px 1px;
+    /*border-width: 1px 1px 1px 1px;*/
+    border-width: 1px;
     border-color: #ccc;
-    padding: 1em;
+    padding: 10px;
+    padding-left: 15px;
+    box-shadow: 2px 2px 1px #888888;
 }
 
 /*Hide the original form*/
@@ -231,6 +267,20 @@ div#formfield-form-widgets-content_filters {
     display: block;
 }*/
 
+/*Limit button (it's an image) size so it doesn't overflow*/
+input#form-buttons-text, input#form-buttons-drag {
+    width: 42px;
+    height: 42px
+}
+
+/*Hide the label at the selector on top of site*/
+div#formfield-form-widgets-sort_on-noform label {
+    display: none;
+}
+div#formfield-form-widgets-sort_on-noform {
+    margin: 0;
+    padding: 0;
+}
 /**
  * End settings for portlet
  */
@@ -415,4 +465,20 @@ div.half-width {
 }
 /**
  * End of comments
+ */
+
+/**
+ * Basic sice setup
+ */
+div#left-column, div#right-column {
+    margin-top: 10px;
+    padding: 0;
+}
+div#center-column, div#content {
+    margin-top: 0;
+    padding: 0;
+}
+
+/**
+ * End basic site setup
  */

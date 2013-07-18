@@ -12,7 +12,7 @@
  -->
 
 
-    <merge attributes="class" css:content="#homepage-div" css:theme="#center-column" />
+    <merge attributes="class" css:content="#homepage-div" css:theme="#right-column" />
 
     <theme href="tribuna_entrypage.html" css:if-content="#change-form"/>
     <!-- <drop css:content="#change-form" /> -->
@@ -31,7 +31,7 @@
     <rules if-path="@@home-page home-page">
         <!-- <replace css:content=".portlet.portletSidebar" css:theme="#sidebar-portlet" /> -->
         <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
-        <before css:theme="#center-column-content">
+        <before css:theme="#center-column-content" css:if-content="#edit-bar">
           <div id="action-bar">
               <ul class="nav nav-tabs">
               <xsl:for-each css:select="#content-views > li">
@@ -117,27 +117,38 @@
             </xsl:for-each>
         </replace>
 
+        <replace css:content="#form-buttons-text">
+            <input id="form-buttons-text" name="form.buttons.text" class="submit-widget button-field" value="Text" type="image" src="++theme++tribuna.diazotheme/img/sidebar-text.png" />
+        </replace>
+
+        <replace css:content="#form-buttons-drag">
+          <input id="form-buttons-drag" name="form.buttons.drag" class="submit-widget button-field" value="Drag" type="image" src="++theme++tribuna.diazotheme/img/sidebar-drag.png" />
+        </replace>
+
         <after css:theme="#types-list" css:content="#form" />
 
-
-        <rules css:if-content="#tag-description-div">
+        <!-- <rules css:if-content="#tag-description-div"> -->
           <rules css:if-content=".articles_intersection">
-              <before css:theme="#intersection-articles" css:content="#formfield-form-widgets-sort_on" />
+              <after css:theme=".portlet-header" css:content="#formfield-form-widgets-sort_on" />
               <replace css:content-children=".articles_intersection" css:theme-children="#intersection-articles"/>
               <replace css:content-children=".articles_union" css:theme-children="#union-articles"/>
               <replace css:content-children="#tag-description-div" css:theme-children="#content" />
           </rules>
           <rules css:if-not-content=".articles_intersection">
-            <replace css:content-children="#tag-description-div" css:theme-children="#content" />
+            <replace css:content-children="#tag-description-div" css:theme-children="#content" css:if-content="#tag-description-div" />
             <replace css:content="#homepage-div" css:theme-children="#right-column-content"/>
           </rules>
         </rules>
-        <rules css:if-not-content="#tag-description-div">
+
+        <drop css:theme="#center-column-content" css:if-not-content="#tag-description-div" />
+        <drop css:theme="#articles-header" css:if-not-content="#tag-description-div" />
+
+        <!-- <rules css:if-not-content="#tag-description-div">
           <rules css:if-content=".articles_intersection" >
             <drop css:theme="#right-column" />
             <before css:theme="#content" css:content="#formfield-form-widgets-sort_on" />
             <replace css:content-children=".articles_intersection" css:theme-children="#content"/>
-            <after css:theme="#content" css:content=".articles_union"/>
+            <after css:theme=".articles_intersection" css:content=".articles_union"/>
           </rules>
           <rules css:if-not-content=".articles_intersection">
               <rules css:if-not-content="#tag-description-div" >
@@ -146,7 +157,7 @@
               </rules>
           </rules>
         </rules>
-    </rules>
+    </rules> -->
 
     <before css:theme="head" content="/html/head/script" />
 
