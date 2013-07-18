@@ -11,6 +11,9 @@
     <after theme-children="/html/head" content="/html/head/link | /html/head/style" />
  -->
 
+
+    <merge attributes="class" css:content="#homepage-div" css:theme="#center-column" />
+
     <theme href="tribuna_entrypage.html" css:if-content="#change-form"/>
     <!-- <drop css:content="#change-form" /> -->
     <rules css:if-content="#change-form">
@@ -19,15 +22,40 @@
         <replace css:content-children="#text-change" css:theme-children="#collapseTwo"/>
         <replace css:content-children="#old-pages" css:theme-children="#collapseThree"/>
         <rules css:if-content="#text-container">
-          <after css:theme="#entrypage-form-container" css:content="#text-container" />
+            <after css:theme="#entrypage-form-container" css:content="#text-container" />
         </rules>
     </rules>
 
 
-    <theme href="tribuna_base.html" if-path="@@home-page"/>
-    <rules if-path="@@home-page">
+    <theme href="tribuna_base.html" if-path="@@home-page home-page"/>
+    <rules if-path="@@home-page home-page">
         <!-- <replace css:content=".portlet.portletSidebar" css:theme="#sidebar-portlet" /> -->
         <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
+        <before css:theme="#center-column-content">
+          <div id="action-bar">
+              <ul class="nav nav-tabs">
+              <xsl:for-each css:select="#content-views > li">
+                  <xi:include href="navigation-rules.xml"/>
+              </xsl:for-each>
+              <xsl:for-each css:select="#contentActionMenus > li">
+                  <li class="dropdown pull-right" data-dropdown="dropdown">
+                      <a class="dropdown-toggle" href="#"><xsl:attribute name="href">
+                              <xsl:value-of select="dl/dt/a/@href"/>
+                          </xsl:attribute>
+                          <xsl:copy-of select="dl/dt/a/span"/>
+                          <b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu" style="min-width:150px;">
+                          <xsl:for-each css:select=".actionMenuContent > ul > li">
+                              <xsl:copy-of select="current()"/>
+                          </xsl:for-each>
+                      </ul>
+                  </li>
+              </xsl:for-each>
+              </ul>
+          </div>
+        </before>
+
         <replace css:theme-children="#tags-list">
             <xsl:for-each css:select="#formfield-form-widgets-tags .option">
                 <xsl:element name="li">
@@ -45,7 +73,6 @@
                  </xsl:element>
             </xsl:for-each>
         </replace>
-
         <replace css:theme-children="#types-list">
             <xsl:for-each css:select="#formfield-form-widgets-content_filters .option">
                 <xsl:element name="input">
@@ -60,7 +87,6 @@
                 <br />
             </xsl:for-each>
         </replace>
-
         <replace css:theme-children="#all-tags-list">
             <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
                 <xsl:element name="li">
@@ -89,7 +115,6 @@
                   </xsl:element>
                 </xsl:if>
             </xsl:for-each>
-
         </replace>
 
         <after css:theme="#types-list" css:content="#form" />
@@ -122,5 +147,7 @@
           </rules>
         </rules>
     </rules>
+
     <before css:theme="head" content="/html/head/script" />
+
 </rules>
