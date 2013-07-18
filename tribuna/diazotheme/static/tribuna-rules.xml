@@ -158,7 +158,13 @@
           </rules>
         </rules>
     </rules> -->
-
+    <theme href="tribuna_results.html" if-path="@@main-page"/>
+    <rules if-path="@@main-page" >
+      <before css:theme="#head" content="/html/body/script" />
+      <after css:theme="#container" css:content="#gallery-start" />
+      <replace css:theme="#container" css:content="#gallery" />
+    </rules>
     <before css:theme="head" content="/html/head/script" />
+    <before css:theme="head" content="/html/head/link" />
 
 </rules>
