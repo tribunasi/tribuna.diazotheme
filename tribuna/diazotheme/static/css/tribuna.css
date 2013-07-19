@@ -219,6 +219,14 @@ ul#selected-tags-list li.selected span a {
     color: white;
 
 }
+span.selected {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #ccc;
+    margin-bottom: -1px;
+    background: blue;
+    color: white;
+}
 
 ul#tags-list li.selected a, ul#all-tags-list li.selected a{
     color: blue;
@@ -468,6 +476,15 @@ div.half-width {
  * End of comments
  */
 
+/**
+ * Gallery view
+ */
+.gv-frame.current {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    border:1px solid blue;
+}
 /**
  * Basic sice setup
  */
