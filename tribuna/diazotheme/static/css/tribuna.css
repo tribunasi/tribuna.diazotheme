@@ -367,9 +367,15 @@ div#formfield-form-widgets-content_filters {
 }*/
 
 /*Limit button (it's an image) size so it doesn't overflow*/
+input#form-buttons-filter {
+    display:block;
+}
+
 input#form-buttons-text, input#form-buttons-drag {
-    width: 42px;
-    height: 42px
+    width: 22px;
+    height: 22px;
+    margin-right: 10%;
+    margin-top: 5%;
 }
 
 /*Hide the label at the selector on top of site*/
@@ -542,6 +548,10 @@ div.half-width {
 /**
  * Comments
  */
+
+.comment  {
+    font-size: 100%;
+}
 #comments input[type='text'] {
     height: 4em;
     margin-bottom: 0;
@@ -551,12 +561,37 @@ div.half-width {
 }
 .comment .documentByLine {
     font-weight: bold;
+    float: none;
+    margin-left: 0;
 }
 .commentBody {
-    margin: 0 0 0 1em;
+    margin: 1em 0 0 1em;
     padding: 0;
     box-shadow: none;
+    border: none;
+    float: none;
 }
+
+.commentDate {
+    font-weight: bold;
+    font-size: 100%;
+    color: black;
+    float: none;
+    margin-left: 0;
+}
+.commentTag {
+    color: blue;
+    border:1px solid blue;
+    width: auto;
+    float: left;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.comment  ul{
+   margin-left:0;
+}
+
 .replyTreeLevel1 {
     margin-left: 1em;
 }

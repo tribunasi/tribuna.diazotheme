@@ -119,11 +119,11 @@
         </replace>
 
         <replace css:content="#form-buttons-text">
-            <input id="form-buttons-text" name="form.buttons.text" class="submit-widget button-field" value="Text" type="image" src="++theme++tribuna.diazotheme/img/sidebar-text.png" />
+            <input id="form-buttons-text" name="form.buttons.text" class="submit-widget button-field" value="Text" type="image" src="++theme++tribuna.diazotheme/img/textview.png" />
         </replace>
 
         <replace css:content="#form-buttons-drag">
-          <input id="form-buttons-drag" name="form.buttons.drag" class="submit-widget button-field" value="Drag" type="image" src="++theme++tribuna.diazotheme/img/sidebar-drag.png" />
+          <input id="form-buttons-drag" name="form.buttons.drag" class="submit-widget button-field" value="Drag" type="image" src="++theme++tribuna.diazotheme/img/dragdrop.png" />
         </replace>
 
         <after css:theme="#types-list" css:content="#form" />
@@ -137,6 +137,7 @@
           </rules>
           <rules css:if-not-content=".articles_intersection">
             <replace css:content-children="#tag-description-div" css:theme-children="#content" css:if-content="#tag-description-div" />
+            <drop css:content="#formfield-form-widgets-sort_on" />
             <replace css:content="#homepage-div" css:theme-children="#right-column-content"/>
           </rules>
         </rules>
