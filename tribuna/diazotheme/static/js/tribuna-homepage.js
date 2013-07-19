@@ -81,6 +81,17 @@ jQuery17(function () {
         }
     }
 
+    function runEffectClose(e) {
+        // Show the div if it's hidden, hide if it it's shown
+        console.info(e.target);
+        if(jQuery17(e.target).closest('#all-tags-list').length === 0){
+            var all_tags = $( "#all-tags-list" );
+            if(all_tags.css("display") !== "none"){
+              jQuery17( "#all-tags-list" ).hide("fast");
+            }
+        }
+    }
+
     jQuery17(document).ready(function () {
         // Change all ID's
         jQuery17("#selected-tags-list > li > span").each( makeID);
@@ -103,6 +114,10 @@ jQuery17(function () {
           runEffect();
           return false;
         });
+        // jQuery17(document).click( function(e) {
+        //   runEffectClose(e);
+        //   return false;
+        // })
 
         // Set up the click functions for filters, hardcoded for now
         jQuery17("#types-list #articles").change( function(){
@@ -116,16 +131,16 @@ jQuery17(function () {
         });
 
         // Sort_on
-        var uniqueName = "thisShouldBeAnUniqueName";
+        // var uniqueName = "thisShouldBeAnUniqueName";
 
-        jQuery17("#form-widgets-sort_on").attr('id', uniqueName);
         jQuery17("#form-widgets-sort_on").attr('id', 'form-widgets-sort_on-noform');
-        jQuery17('#' + uniqueName).attr('id', "form-widgets-sort_on");
+        // jQuery17("#form-widgets-sort_on").attr('id', 'form-widgets-sort_on-noform');
+        // jQuery17('#' + uniqueName).attr('id', "form-widgets-sort_on");
 
 
-        jQuery17("#formfield-form-widgets-sort_on").attr('id', uniqueName);
-        jQuery17("#formfield-form-widgets-sort_on").attr('id', 'formfield-form-widgets-sort_on-noform');
-        jQuery17('#' + uniqueName).attr('id', "formfield-form-widgets-sort_on");
+        jQuery17("#formfield-form-widgets-sort_on").attr('id', "formfield-form-widgets-sort_on-noform");
+        // jQuery17("#formfield-form-widgets-sort_on").attr('id', 'formfield-form-widgets-sort_on-noform');
+        // jQuery17('#' + uniqueName).attr('id', "formfield-form-widgets-sort_on");
 
         jQuery17("#form-widgets-sort_on-noform").change( function() {
             jQuery17("#form-widgets-sort_on").val(this.value);

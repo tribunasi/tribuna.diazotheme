@@ -13,6 +13,7 @@
 
 
     <merge attributes="class" css:content="#homepage-div" css:theme="#right-column" />
+    <merge attributes="class" css:content="#homepage-div" css:theme="#topside-content" />
 
     <theme href="tribuna_entrypage.html" css:if-content="#change-form"/>
     <!-- <drop css:content="#change-form" /> -->
@@ -129,7 +130,7 @@
 
         <!-- <rules css:if-content="#tag-description-div"> -->
           <rules css:if-content=".articles_intersection">
-              <after css:theme=".portlet-header" css:content="#formfield-form-widgets-sort_on" />
+              <replace css:theme="#topside-content-sort_on" css:content="#formfield-form-widgets-sort_on" />
               <replace css:content-children=".articles_intersection" css:theme-children="#intersection-articles"/>
               <replace css:content-children=".articles_union" css:theme-children="#union-articles"/>
               <replace css:content-children="#tag-description-div" css:theme-children="#content" />
