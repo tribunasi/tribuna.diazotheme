@@ -359,6 +359,7 @@ iframe{
  */
 .slider-header {
     border-bottom: 1px solid black;
+    margin: 50px auto 0;
 }
 .content-slider ul {
     margin: 0 0 0 10px;
