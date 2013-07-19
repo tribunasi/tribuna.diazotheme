@@ -158,8 +158,8 @@
           </rules>
         </rules>
     </rules> -->
-    <theme href="tribuna_results.html" if-path="@@main-page"/>
-    <rules if-path="@@main-page" >
+    <theme href="tribuna_results.html" if-path="@@main-page main-page"/>
+    <rules if-path="@@main-page main-page" >
       <before css:theme="#head" content="/html/body/script" />
       <after css:theme="#container" css:content="#gallery-start" />
       <replace css:theme="#container" css:content="#gallery-container" />
@@ -170,7 +170,7 @@
     <before css:theme="head" content="/html/head/link" />
 
     <replace theme="/html/head/title" content="/html/head/title" />
-    <rules if-not-path="@@main-page and @@home-page" css:if-not-content="#change-form">
+    <rules if-not-path="@@main-page main-page @@home-page home-page" css:if-not-content="#change-form">
       <theme href="tribuna_base.html" css:if-content="#visual-portal-wrapper"/>
       <theme href="dialog.html" css:if-content="#content.dialog-wrapper"/>
       <drop css:content="meta[http-equiv='X-UA-Compatible']"/>

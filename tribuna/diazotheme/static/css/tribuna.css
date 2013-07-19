@@ -205,6 +205,13 @@ div#sidebar-portlet a#show-all-tags span {
     text-decoration: underline;
 }
 
+ul#all-tags-list li,
+ul#selected-tags-list li,
+ul#tags-list li,
+div#selected-tags-list span {
+    display: block;
+}
+
 ul#selected-tags-list li.selected {
     border-style: solid;
     border-width: 1px 1px 1px 1px;
