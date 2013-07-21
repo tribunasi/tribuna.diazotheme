@@ -6,6 +6,27 @@ body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+.field input {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-width: 1px;
+    border-color: #ccc;
+    padding: 10px;
+    padding-left: 15px;
+    box-shadow: 2px 2px 1px #888888;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;   
+}
+
+.submit-widget.button-field {
+    color: white;
+    background-color: blue;
+    background-image: none;
+}
+
 
 /**
  * Entry page
@@ -15,15 +36,32 @@ body {
     margin: 20px 0 0;
     padding: 0.75em;
     width: 9em;
+
 }
 
 #entrypage-form-container.expanded {
     background-color: white;
     width: auto;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-width: 1px;
+    border-color: #ccc;
+    padding: 10px;
+    padding-left: 15px;
+    box-shadow: 2px 2px 1px #888888;
 }
 
 #entrypage-form-container a {
     color: black;
+    font-weight: bold;
+}
+
+#entrypage-form-container #entrypage-link {
+    font-weight: normal;
+}
+
+#entrypage-form-container.expanded #entrypage-link {
+    color: red;
 }
 
 #entrypage-form .accordion {
@@ -63,6 +101,16 @@ div.entrypage-text-container {
 
 #text-container p.helvetica {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#form-widgets-picture-input {
+     border-style: none;
+    border-width: 1px 1px 1px 1px;
+    border-width: 1px;
+    border-color: #ccc;
+    padding: 0;
+    padding-left: 15px;
+    box-shadow: none;
 }
 /**
  * End entry page

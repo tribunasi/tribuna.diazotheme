@@ -50,41 +50,42 @@
   <body >
     <div class="navbar navbar-fixed-top" style="display:none;">
       <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse"
-             data-target="#topnav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/dashboard"><img src="img/home.png"/></a>
+          <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse"
+               data-target="#topnav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/dashboard"><img src="img/home.png"/></a>
 
-          <div class="nav-collapse" id="topnav-collapse">
-            <ul id="nav" class="nav">
-              <li><a href="#about">About</a></li>
-              <li class="dropdown" data-dropdown='dropdown'>
-                <a href="#" class="dropdown-toggle">Services</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#item1">Plone Development</a></li>
-                </ul>
-              </li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-            <ul id="secondary-nav" class="nav pull-right">
-              <li class="dropdown" data-dropdown="dropdown">
-                <a class="dropdown-toggle" href="#">
-                  <span id="personaltool-menuheader">User</span>
-                  <b class="caret"></b></a>
-                <ul class="dropdown-menu" id="personaltool-menu">
-                  <li><a href="#">Dashboard</a></li>
-                  <li><a href="#">Logout</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form id="topsearchbox" class="navbar-search pull-right">
-              <input class="search-query" name="SearchableText" placeholder="Search"/>
-            </form>
-          </div>
+            <div class="nav-collapse" id="topnav-collapse">
+              <ul id="nav" class="nav">
+                <li><a href="#about">About</a></li>
+                <li class="dropdown" data-dropdown='dropdown'>
+                  <a href="#" class="dropdown-toggle">Services</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#item1">Plone Development</a></li>
+                  </ul>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <ul id="secondary-nav" class="nav pull-right">
+                <li class="dropdown" data-dropdown="dropdown">
+                  <a class="dropdown-toggle" href="#">
+                    <span id="personaltool-menuheader">User</span>
+                    <b class="caret"></b></a>
+                  <ul class="dropdown-menu" id="personaltool-menu">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form id="topsearchbox" class="navbar-search pull-right">
+                <input class="search-query" name="SearchableText" placeholder="Search"/>
+              </form>
+            </div>
+          </section>
         </div>
       </div>
     </div>
@@ -101,8 +102,8 @@
            data-target="#entrypage-form">
           Zamenjaj naslovko!</a>
         <div id="entrypage-form" class="collapse">
-
           <div class="accordion" id="accordion1">
+           <!--  <section class="bordered"> -->
             <div class="accordion-group">
               <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
@@ -138,10 +139,9 @@
                   ...
                 </div>
               </div>
+            <!-- </section>  -->           
             </div>
-
           </div>
-
         </div>
       </div>
     </div>
