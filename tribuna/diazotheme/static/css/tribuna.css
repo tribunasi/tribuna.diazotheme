@@ -83,6 +83,25 @@ div.entrypage-text-container {
     margin:10% 10% 10% 10%;
 
 }
+#entrypage-author-title {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+#entrypage-author {
+    font-weight: bold;
+    font-style: italic;
+}
+
+#entrypage-title {
+    font-weight: bold;
+}
+
+}
+#entrypage-text {
+    z-index: -1;
+}
 
 #text-container p{
     text-align: center;
@@ -646,6 +665,24 @@ div.half-width {
 #add-comment textarea {
     width: 260px;
 }
+
+.context.reply-to-comment-button {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-width: 1px;
+    border-color: #ccc;
+    background-color: white;
+    box-shadow: 2px 2px 1px #888888;
+}
+
+/*.submit-widget.button-field {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-width: 1px;
+    border-color: #ccc;
+    background-color: white;
+    box-shadow: 2px 2px 1px #888888;
+}*/
 /**
  * End of comments
  */

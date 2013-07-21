@@ -43,6 +43,8 @@
     <theme href="tribuna_entrypage.html" css:if-content="#change-form"/>
     <!-- <drop css:content="#change-form" /> -->
     <rules css:if-content="#change-form">
+        <replace css:content-children="#entrypage-home-link" css:theme-children="#entrypage-home-link"/>
+        <replace css:content-children="#entrypage-author-title" css:theme-children="#entrypage-author-title"/>
         <merge attributes="style" css:content="#background-placeholder" css:theme="body" />
         <replace css:content-children="#picture-change" css:theme-children="#collapseOne"/>
         <replace css:content-children="#text-change" css:theme-children="#collapseTwo"/>
