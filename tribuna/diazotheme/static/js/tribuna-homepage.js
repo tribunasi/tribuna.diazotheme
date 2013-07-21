@@ -83,13 +83,19 @@ jQuery17(function () {
 
     function runEffectClose(e) {
         // Show the div if it's hidden, hide if it it's shown
-        console.info(e.target);
-        if(jQuery17(e.target).closest('#all-tags-list').length === 0){
+        // console.info(e.target.id);
+        // console.info(e.target.parentNode.id);
+        // if(e.target.id === 'all-tags-list'){
+        //     // console.info("Ne zapret!");
+        // }
+        // else{
+        if(e.target.id != 'all-tags-list'){
             var all_tags = $( "#all-tags-list" );
             if(all_tags.css("display") !== "none"){
               jQuery17( "#all-tags-list" ).hide("fast");
             }
         }
+        // }
     }
 
     jQuery17(document).ready(function () {
@@ -132,30 +138,17 @@ jQuery17(function () {
 
         // Sort_on
         // var uniqueName = "thisShouldBeAnUniqueName";
-
         jQuery17("#form-widgets-sort_on").attr('id', 'form-widgets-sort_on-noform');
-        // jQuery17("#form-widgets-sort_on").attr('id', 'form-widgets-sort_on-noform');
-        // jQuery17('#' + uniqueName).attr('id', "form-widgets-sort_on");
-
-
-        jQuery17("#formfield-form-widgets-sort_on").attr('id', "formfield-form-widgets-sort_on-noform");
-        // jQuery17("#formfield-form-widgets-sort_on").attr('id', 'formfield-form-widgets-sort_on-noform');
-        // jQuery17('#' + uniqueName).attr('id', "formfield-form-widgets-sort_on");
+        if(jQuery17("#form-widgets-sort_on").length === 0){
+            jQuery17("#form-widgets-sort_on-noform").attr('id', 'form-widgets-sort_on');
+        }
+        else{
+            jQuery17("#formfield-form-widgets-sort_on").attr('id', "formfield-form-widgets-sort_on-noform");
+        }
 
         jQuery17("#form-widgets-sort_on-noform").change( function() {
             jQuery17("#form-widgets-sort_on").val(this.value);
         });
-
-        // Sort_order
-        // form-widgets-sort_order
-        // jQuery17("#form-widgets-sort_order").attr('id', 'blop123');
-        // jQuery17("#form-widgets-sort_order").attr('id', 'form-widgets-sort_order-noform');
-        // jQuery17('#blop123').attr('id', "form-widgets-sort_order");
-        // jQuery17("#form-widgets-sort_order-noform").change( function() {
-        //     console.info("It's a changin'");
-        //     console.info(this.value);
-        //     jQuery17("#form-widgets-sort_order").val(this.value);
-        // });
 
     });
 

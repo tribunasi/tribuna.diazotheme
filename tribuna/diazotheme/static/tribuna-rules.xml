@@ -11,6 +11,31 @@
     <after theme-children="/html/head" content="/html/head/link | /html/head/style" />
  -->
 
+    <merge attributes="class" css:content="body" css:theme="body"/>
+    <!-- <replace css:theme="#logo" css:content="#portal-logo"/> -->
+
+    <!-- <replace css:theme-children="#nav">
+        <xsl:for-each css:select="#portal-globalnav > li">
+            <xi:include href="navigation-rules.xml"/>
+        </xsl:for-each>
+    </replace> -->
+    <replace css:theme-children="#personaltool-menu"
+        css:content-children="#portal-personaltools ul"/>
+    <replace css:theme-children="#personaltool-menuheader"
+        css:content-children="#portal-personaltools .actionMenuHeader a"/>
+    <replace css:theme-children="#secondary-nav" css:if-content="#anon-personalbar">
+        <li><xsl:copy-of css:select="#personaltools-login"/></li>
+    </replace>
+
+    <!-- <copy css:theme=".navbar-fixed-top .brand" css:content="#portal-logo" attributes="href"/>
+    <replace css:theme-children=".breadcrumb">
+        <xsl:for-each css:select="#portal-breadcrumbs > span">
+            <li>
+                <xsl:copy-of select="node()"/>
+            </li>
+        </xsl:for-each>
+    </replace> -->
+
 
     <merge attributes="class" css:content="#homepage-div" css:theme="#right-column" />
     <merge attributes="class" css:content="#homepage-div" css:theme="#topside-content" />
@@ -26,6 +51,7 @@
             <after css:theme="#entrypage-form-container" css:content="#text-container" />
         </rules>
     </rules>
+    <copy css:theme="#topsearchbox" css:content="#portal-searchbox form" attributes="action"/>
 
 
     <theme href="tribuna_base.html" if-path="@@home-page home-page"/>
@@ -137,7 +163,6 @@
           </rules>
           <rules css:if-not-content=".articles_intersection">
             <replace css:content-children="#tag-description-div" css:theme-children="#content" css:if-content="#tag-description-div" />
-            <drop css:content="#formfield-form-widgets-sort_on" />
             <replace css:content="#homepage-div" css:theme-children="#right-column-content"/>
           </rules>
         </rules>
@@ -238,7 +263,6 @@
           </div>
       </prepend>
 
-      <copy css:theme="#topsearchbox" css:content="#portal-searchbox form" attributes="action"/>
       <replace css:theme="#center-column">
           <div id="center-column"><xsl:attribute name="class">
                   <xsl:if test='contains(//*[@id="portal-column-content"]/@class,"width-3:4")'>
@@ -326,7 +350,7 @@
       <drop css:theme="#left-column" css:if-not-content="#portal-column-one"/>
       <drop css:theme="#right-column" css:if-not-content="#portal-column-two"/>
 
-      <replace css:theme="#logo" css:content="#portal-logo"/>
+      <!-- <replace css:theme="#logo" css:content="#portal-logo"/>
 
       <replace css:theme-children="#nav">
           <xsl:for-each css:select="#portal-globalnav > li">
@@ -348,7 +372,7 @@
                   <xsl:copy-of select="node()"/>
               </li>
           </xsl:for-each>
-      </replace>
+      </replace> -->
 
       <append css:theme=".footer" css:content-children="#portal-footer"/>
       <append css:theme=".footer" css:content="#portal-colophon"/>
