@@ -280,6 +280,6 @@
     </rules>
 
     <!-- TRIBUNA specific rules -->
-    <xi:include href="tribuna-rules.xml" />
+    <!-- <xi:include href="tribuna-rules.xml" /> -->
 
 </rules>

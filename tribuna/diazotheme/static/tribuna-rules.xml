@@ -11,7 +11,7 @@
     <after theme-children="/html/head" content="/html/head/link | /html/head/style" />
  -->
 
-    <merge attributes="class" css:content="body" css:theme="body"/>
+
     <!-- <replace css:theme="#logo" css:content="#portal-logo"/> -->
 
     <!-- <replace css:theme-children="#nav">
@@ -19,6 +19,8 @@
             <xi:include href="navigation-rules.xml"/>
         </xsl:for-each>
     </replace> -->
+
+    <merge attributes="class" css:content="body" css:theme="body"/>
     <replace css:theme-children="#personaltool-menu"
         css:content-children="#portal-personaltools ul"/>
     <replace css:theme-children="#personaltool-menuheader"
@@ -26,6 +28,13 @@
     <replace css:theme-children="#secondary-nav" css:if-content="#anon-personalbar">
         <li><xsl:copy-of css:select="#personaltools-login"/></li>
     </replace>
+    <copy css:theme="#topsearchbox" css:content="#portal-searchbox form" attributes="action"/>
+
+
+    <after css:theme="meta[http-equiv='X-UA-Compatible']"
+              content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" />
+    <!-- <before css:theme="head" content="/html/head/script" /> -->
+    <!-- <before css:theme="head" content="/html/head/link" /> -->
 
     <!-- <copy css:theme=".navbar-fixed-top .brand" css:content="#portal-logo" attributes="href"/>
     <replace css:theme-children=".breadcrumb">
@@ -53,7 +62,7 @@
             <after css:theme="#entrypage-home-link" css:content="#text-container" />
         </rules>
     </rules>
-    <copy css:theme="#topsearchbox" css:content="#portal-searchbox form" attributes="action"/>
+
 
 
     <theme href="tribuna_base.html" if-path="@@home-page home-page"/>
@@ -157,20 +166,20 @@
         <after css:theme="#types-list" css:content="#form" />
 
         <!-- <rules css:if-content="#tag-description-div"> -->
-          <rules css:if-content=".articles_intersection">
-              <replace css:theme="#topside-content-sort_on" css:content="#formfield-form-widgets-sort_on" />
-              <replace css:content-children=".articles_intersection" css:theme-children="#intersection-articles"/>
-              <replace css:content-children=".articles_union" css:theme-children="#union-articles"/>
-              <replace css:content-children="#tag-description-div" css:theme-children="#content" />
-          </rules>
-          <rules css:if-not-content=".articles_intersection">
-            <replace css:content-children="#tag-description-div" css:theme-children="#content" css:if-content="#tag-description-div" />
-            <replace css:content="#homepage-div" css:theme-children="#right-column-content"/>
-          </rules>
+        <rules css:if-content=".articles_intersection">
+            <replace css:theme="#topside-content-sort_on" css:content="#formfield-form-widgets-sort_on" />
+            <replace css:content-children=".articles_intersection" css:theme-children="#intersection-articles"/>
+            <replace css:content-children=".articles_union" css:theme-children="#union-articles"/>
+            <replace css:content-children="#tag-description-div" css:theme-children="#content" />
         </rules>
+        <rules css:if-not-content=".articles_intersection">
+          <replace css:content-children="#tag-description-div" css:theme-children="#content" css:if-content="#tag-description-div" />
+          <replace css:content="#homepage-div" css:theme-children="#right-column-content"/>
+        </rules>
+    </rules>
 
-        <drop css:theme="#center-column-content" css:if-not-content="#tag-description-div" />
-        <drop css:theme="#articles-header" css:if-not-content="#tag-description-div" />
+    <drop css:theme="#center-column-content" css:if-not-content="#tag-description-div" />
+    <drop css:theme="#articles-header" css:if-not-content="#tag-description-div" />
 
         <!-- <rules css:if-not-content="#tag-description-div">
           <rules css:if-content=".articles_intersection" >
@@ -189,15 +198,14 @@
     </rules> -->
     <theme href="tribuna_results.html" if-path="@@main-page main-page"/>
     <rules if-path="@@main-page main-page" >
-      <before css:theme="#head" content="/html/body/script" />
+      <!-- <before css:theme="#head" content="/html/body/script" /> -->
       <after css:theme="#container" css:content="#gallery-start" />
       <replace css:theme="#container" css:content="#gallery-container" />
       <after css:theme="#container" css:content="#gv-strip_wrapper" />
       <drop css:theme="#header" />
       <replace css:theme="#home-page-link" css:content="#home-page-link" />
     </rules>
-    <before css:theme="head" content="/html/head/script" />
-    <before css:theme="head" content="/html/head/link" />
+
 
     <replace theme="/html/head/title" content="/html/head/title" />
     <rules if-not-path="@@main-page main-page @@home-page home-page" css:if-not-content="#change-form">
@@ -206,8 +214,8 @@
       <drop css:content="meta[http-equiv='X-UA-Compatible']"/>
       <rules css:if-content="#content.dialog-wrapper">
           <prepend theme="/html/head" content="/html/head/base"/>
-          <after css:theme="meta[http-equiv='X-UA-Compatible']"
-              content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" />
+          <!-- <after css:theme="meta[http-equiv='X-UA-Compatible']"
+              content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" /> -->
           <replace theme="/html/body"
               content="/html/body"/>
       </rules>
@@ -239,8 +247,8 @@
 
       <replace theme="//*[@id='logo']/h1" content="//*[@id='content']/h1"/>
 
-      <after css:theme="meta[http-equiv='X-UA-Compatible']"
-          content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" />
+      <!-- <after css:theme="meta[http-equiv='X-UA-Compatible']"
+          content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" /> -->
 
       <append css:theme="#header">
           <xsl:if css:test=".AbovePortletManager1">
