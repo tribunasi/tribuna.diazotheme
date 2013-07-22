@@ -25,6 +25,7 @@ body {
     -o-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
+    width: 95%;
 }
 
 
@@ -39,6 +40,7 @@ body {
 /**
  * Entry page
  */
+
 #entrypage-form-container {
     background-color: cyan;
     margin: 20px 0 0;
@@ -67,6 +69,7 @@ body {
 
 #entrypage-form-container #entrypage-link {
     font-weight: normal;
+    cursor: pointer;
 }
 
 #entrypage-form-container.expanded #entrypage-link {
