@@ -50,7 +50,7 @@
         <replace css:content-children="#text-change" css:theme-children="#collapseTwo"/>
         <replace css:content-children="#old-pages" css:theme-children="#collapseThree"/>
         <rules css:if-content="#text-container">
-            <after css:theme="#entrypage-form-container" css:content="#text-container" />
+            <after css:theme="#entrypage-home-link" css:content="#text-container" />
         </rules>
     </rules>
     <copy css:theme="#topsearchbox" css:content="#portal-searchbox form" attributes="action"/>
@@ -194,6 +194,7 @@
       <replace css:theme="#container" css:content="#gallery-container" />
       <after css:theme="#container" css:content="#gv-strip_wrapper" />
       <drop css:theme="#header" />
+      <replace css:theme="#home-page-link" css:content="#home-page-link" />
     </rules>
     <before css:theme="head" content="/html/head/script" />
     <before css:theme="head" content="/html/head/link" />
