@@ -1,17 +1,12 @@
 jQuery17(function () {
     "use strict";
 
-    function makeID(){
-        var name = jQuery17(this).text().toLowerCase().replace(/ /g, '_');
-        jQuery17(this.parentNode).attr('id', name);
-    }
-
     function selectOne(){
         // When clicking on name, push it to top and remove everything else
-        var myname = jQuery17(this).text().toLowerCase().replace(/ /g, '_');
+        var myname = jQuery17(this.parentNode.parentNode).attr('id');
         var alreadySelected = false;
         jQuery17('#selected-tags-list > li > span').each( function() {
-            var name = jQuery17(this).text().toLowerCase().replace(/ /g, '_');
+            var name = jQuery17(this.parentNode).attr('id');
             if(name === myname){
                 alreadySelected = true;
             }
@@ -20,8 +15,8 @@ jQuery17(function () {
                 jQuery17('#all-tags-list #' + name + ' > a').text('+');
                 jQuery17('#tags-list #' + name).removeClass("selected");
                 jQuery17('#all-tags-list #' + name).removeClass("selected");
-                jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this).text() + "']").click();
-                jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this).text() + "']").click();
+                jQuery17("#formfield-form-widgets-all_tags [value='" + name + "']").click();
+                jQuery17("#formfield-form-widgets-tags [value='" + name + "']").click();
                 jQuery17(this.parentNode).remove();
             }
         });
@@ -32,8 +27,8 @@ jQuery17(function () {
             jQuery17('#tags-list #' + myname).addClass("selected");
             jQuery17('#all-tags-list #' + myname).addClass("selected");
             jQuery17(this.parentNode.parentNode).clone(true).addClass("selected").appendTo('#selected-tags-list');
-            jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this).text() + "']").click();
-            jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this).text() + "']").click();
+            jQuery17("#formfield-form-widgets-all_tags [value='" + myname + "']").click();
+            jQuery17("#formfield-form-widgets-tags [value='" + myname + "']").click();
         }
     }
 
@@ -41,7 +36,7 @@ jQuery17(function () {
         // When clicking on +/-, move/remove from top and change sign appropriately
         if(jQuery17(this.parentNode.parentNode).attr('id') === 'tags-list' ||
             jQuery17(this.parentNode.parentNode).attr('id') === 'all-tags-list'){
-            var name = jQuery17(this.parentNode.getElementsByTagName('span')).text().toLowerCase().replace(/ /g, '_');
+            var name = jQuery17(this.parentNode).attr('id');
             var item = jQuery17('#selected-tags-list #' + name);
             if(!item.attr('id')){
                 jQuery17('#tags-list #' + name + ' > a').text('-');
@@ -59,15 +54,15 @@ jQuery17(function () {
             }
         }
         else{
-            var name = jQuery17(this.parentNode.getElementsByTagName('span')).text().toLowerCase().replace(/ /g, '_');
+            var name = jQuery17(this.parentNode).attr('id');
             jQuery17('#tags-list #' + name + ' > a').text('+');
             jQuery17('#all-tags-list #' + name + ' > a').text('+');
             jQuery17('#tags-list #' + name).removeClass("selected");
             jQuery17('#all-tags-list #' + name).removeClass("selected");
             jQuery17(this.parentNode).remove();
         }
-        jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this.parentNode.getElementsByTagName('span')).text() + "']").click();
-        jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode.getElementsByTagName('span')).text() + "']").click();
+        jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
+        jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
     }
 
     function runEffect() {
@@ -99,11 +94,6 @@ jQuery17(function () {
     }
 
     jQuery17(document).ready(function () {
-        // Change all ID's
-        jQuery17("#selected-tags-list > li > span").each( makeID);
-        jQuery17("#tags-list > li > span").each( makeID);
-        jQuery17("#all-tags-list > li > span").each( makeID);
-
         // Setup for moving tags up and down via +/-
         jQuery17("#selected-tags-list > li > a").click( moveUpDown);
         jQuery17("#tags-list > li > a").click( moveUpDown);

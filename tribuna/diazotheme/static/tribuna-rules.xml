@@ -88,7 +88,7 @@
         <replace css:theme-children="#tags-list">
             <xsl:for-each css:select="#formfield-form-widgets-tags .option">
                 <xsl:element name="li">
-                    <xsl:attribute name="id"> <xsl:copy-of select="label/span/text()"/></xsl:attribute>
+                    <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
                     <xsl:choose>
                       <xsl:when test="input/@checked='checked'">
                         <xsl:attribute name="class">selected</xsl:attribute>
@@ -119,7 +119,7 @@
         <replace css:theme-children="#all-tags-list">
             <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
                 <xsl:element name="li">
-                    <xsl:attribute name="id"> <xsl:copy-of select="label/span/text()"/></xsl:attribute>
+                    <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
                     <xsl:choose>
                       <xsl:when test="input/@checked='checked'">
                         <xsl:attribute name="class">selected</xsl:attribute>
@@ -137,7 +137,7 @@
             <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
                 <xsl:if test="input/@checked='checked'">
                   <xsl:element name="li">
-                      <xsl:attribute name="id"> <xsl:copy-of select="label/span/text()"/></xsl:attribute>
+                      <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
                       <xsl:attribute name="class">selected</xsl:attribute>
                           <a href="#">-</a>
                           <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
