@@ -65,6 +65,7 @@ body {
 #entrypage-form-container a {
     color: black;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #entrypage-form-container #entrypage-link {
@@ -176,7 +177,6 @@ div#topside-tags {
     margin-left: 0;
 }
 div#selected-tags {
-    padding-left: 15px;
 }
 div#topside-content {
     float: right;
@@ -741,6 +741,10 @@ div#left-column, div#right-column {
 div#center-column, div#content {
     margin-top: 0;
     padding: 0;
+}
+
+#selected-tags-list span {
+    padding-left: 15px;
 }
 
 /**
