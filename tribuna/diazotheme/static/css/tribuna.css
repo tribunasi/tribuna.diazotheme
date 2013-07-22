@@ -393,6 +393,12 @@ ul#selected-tags-list li.selected {
     border-color: #ccc;
     margin-bottom: -1px;
     background: blue;
+    margin: 0;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: white;
 }
 ul#selected-tags-list li.selected a {
     color: white;
