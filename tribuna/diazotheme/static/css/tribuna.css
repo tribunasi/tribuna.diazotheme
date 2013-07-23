@@ -762,6 +762,9 @@ div#center-column, div#content {
     padding-left: 15px;
 }
 
+.gv-frame {
+    padding: 0.5em !important;
+}
 /**
  * End basic site setup
  */
