@@ -2,6 +2,16 @@
  * Global settings
  */
 
+/*This will hide scrollbars (they'll still work)*/
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+html {
+    overflow-y: auto;
+}
+
 body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
@@ -548,7 +558,7 @@ div#tag-description-div {
  * Overlay settings
  */
 /*Need to remove the !important where they aren't needed :P*/
-div.overlay-iframe{
+/*div.overlay-iframe{
     width: 95% !important;
     height: 95% !important;
     max-width: 95% !important;
@@ -566,7 +576,7 @@ iframe{
     height: 100% !important;
     border: 1px solid;
     border-radius: 10px;
-}
+}*/
 /**
  * End overlay settings
  */
@@ -576,7 +586,7 @@ iframe{
  */
 .slider-header {
     border-bottom: 1px solid black;
-    margin: 50px auto 0;
+    margin-top: 0;
 }
 .content-slider ul {
     margin: 0 0 0 10px;
@@ -746,6 +756,52 @@ div.half-width {
     box-sizing: border-box;         /* Opera/IE 8+ */
     border:1px solid blue;
 }
+
+.gv-frame {
+    height: 60px !important;
+    margin: 0 !important;
+    margin-top: 10px !important;
+    padding: 0.5em !important;
+}
+
+.gv-strip_wrapper {
+    left: 0 !important;
+    width: 100% !important;
+    border-bottom: 1px solid black !important;
+}
+
+.gv-nav-next {
+    right: 5px !important;
+}
+
+.gv-nav-prev {
+    left: 5px !important;
+}
+
+.gv-filmstrip {
+    left: 50px !important;
+}
+
+.main-page-article-body {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.discussion {
+    font-size: 15px;
+    line-height: 21px;
+}
+
+/*.comment {
+    margin-bottom: 63px;
+}*/
+
+.comment .commentTag {
+    font-size: 12px;
+}
+
+
+
 /**
  * Basic sice setup
  */
@@ -762,9 +818,6 @@ div#center-column, div#content {
     padding-left: 15px;
 }
 
-.gv-frame {
-    padding: 0.5em !important;
-}
 /**
  * End basic site setup
  */
