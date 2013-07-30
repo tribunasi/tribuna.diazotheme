@@ -3,9 +3,9 @@
  */
 
 /*This will hide scrollbars (they'll still work)*/
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
     display: none;
-}
+}*/
 
 
 html {
@@ -750,27 +750,35 @@ div.half-width {
 /**
  * Gallery view
  */
+
+
+div.main-page-comments {
+    height: 100%;
+}
+
+.navbar-fixed-top {
+    position: static;
+}
+
 .gv-frame.current {
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     border:1px solid blue;
 }
 
 .gv-frame {
     height: 60px !important;
-    margin: 0 !important;
+    /*margin: 0 !important;*/
     margin-top: 10px !important;
-    padding: 0.5em !important;
 }
 
-.gv-strip_wrapper {
-    left: 0 !important;
-    width: 100% !important;
-    border-bottom: 1px solid black !important;
+.gv-panel_wrap {
+    border-top: 1px solid black;
+    margin-top: -5px;
 }
 
-.gv-nav-next {
+/*.gv-nav-next {
     right: 5px !important;
 }
 
@@ -780,11 +788,12 @@ div.half-width {
 
 .gv-filmstrip {
     left: 50px !important;
-}
+}*/
 
 .main-page-article-body {
     font-size: 16px;
     line-height: 24px;
+    height: 100%;
 }
 
 .discussion {

@@ -3,10 +3,10 @@
 **	GalleryView - jQuery Content Gallery Plugin
 **	Author: 		Jack Anderson
 **	Version:		3.0b3 (March 15, 2011)
-**	
+**
 **	Please use this development script if you intend to make changes to the
 **	plugin code.  For production sites, it is recommended you use jquery.galleryview-3.0.min.js.
-**	
+**
 **  See README.txt for instructions on how to markup your HTML
 **
 **	See CHANGELOG.txt for a review of changes and LICENSE.txt for the applicable
@@ -23,7 +23,7 @@ $(window).load(function(){
 (function($){
 	$.fn.galleryView = function(options) {
 		var opts = $.extend($.fn.galleryView.defaults,options);
-		
+
 		var id;
 		var iterator = 0;			// INT - Currently visible panel/frame
 		var item_count = 0;			// INT - Total number of panels/frames
@@ -35,7 +35,7 @@ $(window).load(function(){
 		var gallery_images;			// OBJECT - container for images within UL passed to plugin
 		var image_count = 0;		// INT - number of images within gallery
 		var loaded_images = 0;		// INT - number of gallery images that have been loaded in the browser
-		
+
 	// Element dimensions
 		var gallery_width;
 		var gallery_height;
@@ -48,19 +48,19 @@ $(window).load(function(){
 		var f_frame_width;
 		var f_frame_height;
 		var filmstrip_orientation;
-		
-		
+
+
 	// Arrays used to scale frames and panels
 		var frame_img_scale = {};
 		var panel_img_scale = {};
 		var img_h = {};
 		var img_w = {};
-		
+
 	// Flag indicating whether to scale panel images
 		var scale_panel_images = true;
-		
+
 		var panel_nav_displayed = false;
-		
+
 	// Define jQuery objects for reuse
 		var j_gallery;
 		var j_filmstrip;
@@ -69,8 +69,8 @@ $(window).load(function(){
 		var j_panels;
 		var j_pointer;
 		var j_panel_wrapper;
-		
-		
+
+
 /*
 **	Plugin Functions
 */
@@ -87,33 +87,33 @@ $(window).load(function(){
 			var mod_i = i%item_count;
 			var distance;
 			var diststr;
-			
+
 			// Disable next/prev buttons until transition is complete
 			// This prevents overlapping of animations
 			$('.gv-nav-next, .gv-panel-nav-next, .gv-nav-prev, .gv-panel-nav-prev',j_gallery).unbind('click');
 			j_frames.unbind('click');
-			
+
 			// Use timer to rebind navigation buttons when transition ends
 			$(document).oneTime(speed,'bindNavButtons',function(){
 				$('.gv-nav-next, .gv-panel-nav-next',j_gallery).click(showNextItem);
 				$('.gv-nav-prev, .gv-panel-nav-prev',j_gallery).click(showPrevItem);
 				enableFrameClicking();
 			});
-			
+
 			if(opts.show_filmstrip) {
-				
+
 				// Fade out all frames
 				j_frames.removeClass('current').find('img').stop().animate({opacity:opts.frame_opacity},speed);
-				
+
 				// Fade in target frame
 				j_frames.eq(i).addClass('current').find('img').stop().animate({opacity:1},speed);
 			}
-			
+
 			//If necessary, transition between panels
 			if(opts.show_panels) {
 				if(animate_panels) {
 					if(opts.panel_animation=='slide') {
-						
+
 						// Move target frame just to the right of the current frame
 						j_panels.eq(mod_i).css({
 							left: getInt($('.gv-panel.current').eq(0).css('left'))+opts.panel_width+'px',
@@ -123,7 +123,7 @@ $(window).load(function(){
 						},speed,opts.easing,function(){
 							$(this).addClass('current');
 						});
-						
+
 						// Slide current frame and target frame to the left
 						$('.gv-panel.current').css({zIndex:49}).animate({
 							left: '-='+opts.panel_width+'px'
@@ -131,29 +131,29 @@ $(window).load(function(){
 							$(this).removeClass('current').hide();
 						});
 					} else if(opts.panel_animation=='zoomOut') {
-						
+
 						// After zoom is complete, add 'current' class to now visible panel and move it to top of stack via z-index
 						$(document).oneTime(speed,'setCurrentFrame',function(){
 							j_panels.eq(mod_i).addClass('current').css('zIndex',50);
 						});
-						
+
 						// Show target panel and place below current frame via z-index
 						j_panels.eq(mod_i).show().css('zIndex',49);
-						
+
 						// Shrink panel container to center while moving image in opposite direction
 						// End result is an image that remains static while borders of container shrink
 						$('.gv-panel.current img').animate({
 							top: '-='+opts.panel_height/2+'px',
 							left:'-='+opts.panel_width/2+'px'
 						},speed,'swing',function(){
-							
+
 							// After zoom is complete, immediately animate it back to its original position for next time
 							$(this).animate({
 								top: '+='+opts.panel_height/2+'px',
 								left: '+='+opts.panel_width/2+'px'
 							},0);
 						});
-						
+
 						$('.gv-panel.current').animate({
 							top:'+='+opts.panel_height/2+'px',
 							left:'+='+opts.panel_width/2+'px',
@@ -168,11 +168,11 @@ $(window).load(function(){
 							});
 						});
 					} else if(opts.panel_animation == 'crossfade') {
-						
+
 						// Default behavior is to fade panel into view
 						j_panels.removeClass('current').fadeOut(speed,function(){$(this).css('filter','');}).eq(mod_i).addClass('current').fadeIn(speed,function(){$(this).css('filter','');});
 					} else {
-						
+
 						// Fade out panels, and then fade in target panel
 						// Use timer due to inconsistency in fadeIn/fadeOut callback reliability
 						j_panels.removeClass('current').stop().fadeOut(speed/2);
@@ -181,31 +181,31 @@ $(window).load(function(){
 						});
 					}
 				} else {
-					
+
 					// If no animation style is chosen, simply show the new panel instantly
 					$(document).oneTime(speed,'switch_panels',function(){j_panels.hide().eq(mod_i).show();});
 				}
 			}
-			
+
 			// If gallery has a filmstrip, handle animation of frames
 			if(opts.show_filmstrip) {
-				
+
 				// Slide either pointer or filmstrip, depending on transition method
 				if(opts.filmstrip_style == 'scroll' && slide_method=='strip') {
-					
+
 					// Stop filmstrip if it's currently in motion
 					j_filmstrip.stop();
-					
+
 					if(filmstrip_orientation=='horizontal') {
-						
+
 						// Determine distance between pointer (eventual destination) and target frame
 						distance = getPos(j_frames[i]).left - (getPos(j_pointer[0]).left+(pointer_width/2)-(f_frame_width/2));
 						diststr = (distance>=0?'-=':'+=')+Math.abs(distance)+'px';
-						
+
 						// Animate filmstrip and slide target frame under pointer
 						j_filmstrip.animate({left:diststr},speed,opts.easing,function(){
 							var old_i = i;
-							
+
 							// After transition is complete, shift filmstrip so that a sufficient number of frames
 							// remain on either side of the visible filmstrip
 							if(i>item_count) {
@@ -217,7 +217,7 @@ $(window).load(function(){
 								iterator = i;
 								j_filmstrip.css('left','-'+((f_frame_width+opts.frame_gap)*i)+'px');
 							}
-							
+
 							// If the target frame has changed due to filmstrip shifting,
 							// make sure new target frame has 'current' class and correct size/opacity settings
 							if(old_i != i) {
@@ -226,16 +226,16 @@ $(window).load(function(){
 							}
 						});
 					} else {
-						
+
 						//Determine distance between pointer (eventual destination) and target frame
 						distance = getPos(j_frames[i]).top-getPos($('.gv-strip_wrapper',j_gallery)[0]).top;
 						diststr = (distance>=0?'-=':'+=')+Math.abs(distance)+'px';
-						
+
 						// Animate filmstrip and slide target frame under pointer
 						j_filmstrip.animate({
 							'top':diststr
 						},speed,opts.easing,function(){
-							
+
 							// After transition is complete, shift filmstrip so that a sufficient number of frames
 							// remain on either side of the visible filmstrip
 							var old_i = i;
@@ -248,14 +248,14 @@ $(window).load(function(){
 								iterator = i;
 								j_filmstrip.css('top','-'+((f_frame_height+opts.frame_gap)*i)+'px');
 							}
-							
+
 							//If the target frame has changed due to filmstrip shifting,
 							//Make sure new target frame has 'current' class and correct size/opacity settings
 							if(old_i != i) {
 								j_frames.eq(old_i).removeClass('current').find('img').css({opacity:opts.frame_opacity});
 								j_frames.eq(i).addClass('current').find('img').css({opacity:1});
 							}
-							
+
 							// If panels are not set to fade in/out, simply hide all panels and show the target panel
 							if(!animate_panels) {
 								j_panels.hide().eq(mod_i).show();
@@ -263,36 +263,40 @@ $(window).load(function(){
 						});
 					}
 				} else if(slide_method=='pointer') {
-					
+
 					// Stop pointer if it's currently in motion
 					j_pointer.stop();
-					
+
 					// Get screen position of target frame
 					var pos = getPos(j_frames[i]);
-					
+
 					if(filmstrip_orientation=='horizontal') {
-						
+
 						// Slide the pointer over the target frame
 						j_pointer.animate({
 							left:pos.left+(f_frame_width/2)-(pointer_width/2)+'px'
-						},pointer_speed,opts.easing,function(){	
-							if(!animate_panels) {j_panels.hide().eq(mod_i).show();}	
+						},pointer_speed,opts.easing,function(){
+							if(!animate_panels) {j_panels.hide().eq(mod_i).show();}
 						});
 					} else {
-						
+
 						// Slide the pointer over the target frame
 						j_pointer.animate({
 							top:pos.top+(f_frame_height/2)-(pointer_height)+'px'
-						},pointer_speed,opts.easing,function(){	
-							if(!animate_panels) {j_panels.hide().eq(mod_i).show();}	
+						},pointer_speed,opts.easing,function(){
+							if(!animate_panels) {j_panels.hide().eq(mod_i).show();}
 						});
 					}
 				}
 			}
 			if(callback) {$(document).oneTime(speed,'showItemCallback',callback);}
 			current = i;
+
+			// Added by Tribuna because we need it.
+			var selectedID = '@@main-page?article=' + $('.gv-frame.current').attr('id');
+			window.history.replaceState(null, null, selectedID);
 		};
-		
+
 	/*
 	**	extraWidth(jQuery element)
 	**		Return the combined width of the border and padding to the elements left and right.
@@ -310,7 +314,7 @@ $(window).load(function(){
 			ew += getInt(el.css('borderRightWidth'));
 			return ew;
 		};
-		
+
 	/*
 	**	extraHeight(jQuery element)
 	**		Return the combined height of the border and padding above and below the element
@@ -328,45 +332,45 @@ $(window).load(function(){
 			eh += getInt(el.css('borderBottomWidth'));
 			return eh;
 		};
-	
+
 	/*
 	**	showNextItem()
 	**		Transition from current frame to next frame
 	*/
 		function showNextItem() {
-			
+
 			// Cancel any transition timers until we have completed this function
 			$(document).stopTime("transition");
 			if(++iterator==j_frames.length) {iterator=0;}
-			
+
 			// We've already written the code to transition to an arbitrary panel/frame, so use it
 			showItem(iterator,opts.transition_speed);
-			
+
 			// If automated transitions haven't been cancelled by an option or paused on hover, re-enable them
 			if(!paused && opts.transition_interval > 0) {
 				$(document).everyTime(opts.transition_interval,"transition",function(){showNextItem();});
 			}
 		};
-		
+
 	/*
 	**	showPrevItem()
 	**		Transition from current frame to previous frame
 	*/
 		function showPrevItem() {
-			
+
 			// Cancel any transition timers until we have completed this function
 			$(document).stopTime("transition");
 			if(--iterator<0) {iterator = item_count-1;}
-			
+
 			// We've already written the code to transition to an arbitrary panel/frame, so use it
 			showItem(iterator,opts.transition_speed);
-			
+
 			// If automated transitions haven't been cancelled by an option or paused on hover, re-enable them
 			if(!paused && opts.transition_interval > 0) {
 				$(document).everyTime(opts.transition_interval,"transition",function(){showNextItem();});
 			}
 		};
-		
+
 	/*
 	**	getPos(jQuery element)
 	**		Calculate position of an element relative to top/left corner of gallery
@@ -383,20 +387,20 @@ $(window).load(function(){
 					top += el.offsetTop;
 				} while(el = el.offsetParent);
 			}
-			
+
 			//If we want the position of the gallery itself, return it
 			if(el_id == id) {return {'left':left,'top':top};}
-			
+
 			//Otherwise, get position of element relative to gallery
 			else {
 				var gPos = getPos(j_gallery[0]);
 				var gLeft = gPos.left;
 				var gTop = gPos.top;
-				
+
 				return {'left':left-gLeft,'top':top-gTop};
 			}
 		};
-	
+
 	/*
 	**	enableFrameClicking()
 	**		Add an onclick event handler to each frame
@@ -406,7 +410,7 @@ $(window).load(function(){
 			j_frames.each(function(i){
 				if($('a',this).length==0) {
 					$(this).click(function(){
-										   
+
 						// Prevent transitioning to the current frame (unnecessary)
 						if(iterator!=i) {
 							$(document).stopTime("transition");
@@ -420,22 +424,22 @@ $(window).load(function(){
 				}
 			});
 		};
-	
+
 	/*
 	**	buildPanels()
 	**		Construct gallery panels: <div class="gv-panel"> elements
 	**		NOTE - These DIVs are generated automatically from the content of the UL passed to the plugin
 	*/
 		function buildPanels() {
-			
+
 			// If panel overlay content exists, add the necessary overlay background DIV
 			// The overlay content and background are separate elements so the background's opacity isn't inherited by the content
 			j_panels.each(function(i){
 		   		if($('.gv-panel-overlay',this).length>0) {
-					$(this).append('<div class="gv-overlay-background"></div>');	
+					$(this).append('<div class="gv-overlay-background"></div>');
 				}
 		   	});
-			
+
 			// If there is no filmstrip in this gallery, add navigation buttons to the panel itself
 			if(opts.show_panel_nav) {
 				$('<div></div>').addClass('gv-panel-nav-next').appendTo(j_gallery).css({
@@ -453,7 +457,7 @@ $(window).load(function(){
 					display:'none'
 				}).click(showPrevItem);
 			}
-			
+
 			//Set size and position of panel container
 			j_panel_wrapper.css({
 				width:opts.panel_width+'px',
@@ -461,7 +465,7 @@ $(window).load(function(){
 				position:'absolute',
 				overflow:'hidden'
 			});
-			
+
 			if(opts.show_filmstrip) {
 				switch(opts.filmstrip_position) {
 					case 'top': j_panel_wrapper.css({top:wrapper_height+opts.frame_gap+'px'}); break;
@@ -469,7 +473,7 @@ $(window).load(function(){
 					default: break;
 				}
 			}
-			
+
 			// Set the height and width of each panel, and position it appropriately within the gallery
 			j_panels.each(function(i){
 				$(this).css({
@@ -481,7 +485,7 @@ $(window).load(function(){
 					display:'none'
 				});
 			});
-			
+
 			// Position each panel overlay within panel
 			$('.gv-panel-overlay',j_panels).css({
 				position:'absolute',
@@ -503,13 +507,13 @@ $(window).load(function(){
 				$('.gv-panel-overlay',j_panels).css('bottom',0);
 				$('.gv-overlay-background',j_panels).css('bottom',0);
 			}
-			
+
 			$('.gv-panel iframe',j_panels).css({
 				width:opts.panel_width+'px',
 				height:opts.panel_height+'px',
 				border:0
 			});
-			
+
 			// If panel images have to be scaled to fit within frame, do so and position them accordingly
 			if(scale_panel_images) {
 				$('img',j_panels).each(function(i){
@@ -523,14 +527,14 @@ $(window).load(function(){
 				});
 			}
 		};
-	
+
 	/*
 	**	buildFilmstrip()
 	**		Construct filmstrip from <ul class="gv-filmstrip"> element
 	**		NOTE - 'filmstrip' class is automatically added to UL passed to plugin
 	*/
 		function buildFilmstrip() {
-			
+
 			// Add wrapper to filmstrip to hide extra frames
 			j_filmstrip.wrap('<div class="gv-strip_wrapper"></div>');
 			if(opts.filmstrip_style == 'scroll' && slide_method=='strip') {
@@ -538,14 +542,14 @@ $(window).load(function(){
 				j_frames.clone().appendTo(j_filmstrip);
 				j_frames = $('li',j_filmstrip);
 			}
-			
+
 			// If captions are enabled, add caption DIV to each frame and fill with the image titles
 			if(opts.show_captions) {
 				j_frames.append('<div class="gv-caption"></div>').each(function(i){
-					$(this).find('.gv-caption').html($(this).find('img').attr('title'));	
+					$(this).find('.gv-caption').html($(this).find('img').attr('title'));
 				});
 			}
-			
+
 			// Position the filmstrip within the gallery
 			j_filmstrip.css({
 				listStyle:'none',
@@ -558,7 +562,7 @@ $(window).load(function(){
 				left:(filmstrip_orientation=='horizontal' && opts.filmstrip_style == 'scroll' && slide_method=='strip'?-((f_frame_width+opts.frame_gap)*iterator):0)+'px',
 				height:strip_height+'px'
 			});
-			
+
 			j_frames.css({
 				float:'left',
 				position:'relative',
@@ -570,9 +574,9 @@ $(window).load(function(){
 				marginBottom:opts.frame_gap+'px',
 				marginRight:opts.frame_gap+'px'
 			});
-			
+
 			// Apply styling to individual image wrappers. These will eventually hide overflow in the case of cropped filmstrip images
-			$('.gv-img_wrap',j_frames).each(function(i){								  
+			$('.gv-img_wrap',j_frames).each(function(i){
 				$(this).css({
 					height:Math.min(opts.frame_height,img_h[i%item_count]*frame_img_scale[i%item_count])+'px',
 					width:Math.min(opts.frame_width,img_w[i%item_count]*frame_img_scale[i%item_count])+'px',
@@ -582,7 +586,7 @@ $(window).load(function(){
 					overflow:'hidden'
 				});
 			});
-			
+
 			// Scale each filmstrip image if necessary and position it within the image wrapper
 			$('img',j_frames).each(function(i){
 				$(this).css({
@@ -599,13 +603,13 @@ $(window).load(function(){
 					if(!$(this).parent().parent().hasClass('current')){$(this).stop().animate({opacity:opts.frame_opacity},300);}
 				});
 			});
-			
+
 			// Set overflow of filmstrip wrapper to hidden so as to hide frames that don't fit within the gallery
 			$('.gv-strip_wrapper',j_gallery).css({
 				position:'absolute',
 				overflow:'hidden'
 			});
-			
+
 			// Position filmstrip within gallery based on user options
 			if(filmstrip_orientation=='horizontal') {
 				$('.gv-strip_wrapper',j_gallery).css({
@@ -622,7 +626,7 @@ $(window).load(function(){
 					height:wrapper_height+'px'
 				});
 			}
-			
+
 			// Style frame captions
 			$('.gv-caption',j_gallery).css({
 				position:'absolute',
@@ -632,7 +636,7 @@ $(window).load(function(){
 				width:f_caption_width+'px',
 				overflow:'hidden'
 			});
-			
+
 			// Create pointer for current frame
 			var pointer = $('<div></div>');
 			pointer.addClass('gv-pointer').appendTo(j_gallery).css({
@@ -647,10 +651,10 @@ $(window).load(function(){
 				 borderLeftWidth:(pointer_width/2)+'px',
 				 borderStyle:'solid'
 			});
-			
+
 			// For IE6, use predefined color string in place of transparent (IE6 bug fix, see stylesheet)
 			var transColor = $.browser.msie && $.browser.version.substr(0,1) == '6' ? 'pink' : 'transparent';
-			
+
 			// If there are no panels, make pointer transparent (nothing to point to)
 			// This is not the optimal solution, but we need the pointer to exist as a reference for transition animations
 			if(!opts.show_panels) { pointer.css('borderColor',transColor); }
@@ -684,23 +688,23 @@ $(window).load(function(){
 								borderTopColor:transColor
 							}); break;
 			}
-		
+
 			j_pointer = $('.gv-pointer',j_gallery);
-			
+
 			// Add navigation buttons
 			if(opts.show_filmstrip_nav) {
 				var navNext = $('<div></div>');
 				navNext.addClass('gv-nav-next').appendTo(j_gallery).css({
 					position:'absolute'
 				}).click(showNextItem);
-				
+
 				var navPrev = $('<div></div>');
 				navPrev.addClass('gv-nav-prev').appendTo(j_gallery).css({
 					position:'absolute'
 				}).click(showPrevItem);
-				
+
 				if(filmstrip_orientation=='horizontal') {
-					navNext.css({					 
+					navNext.css({
 						top:(opts.show_panels ? (opts.filmstrip_position=='top'?0:opts.panel_height+opts.frame_gap) : 0)+((strip_height-22)/2)+'px',
 						right:((gallery_width)/2)-(wrapper_width/2)-opts.frame_gap-22+'px'
 					});
@@ -709,7 +713,7 @@ $(window).load(function(){
 						left:((gallery_width)/2)-(wrapper_width/2)-opts.frame_gap-22+'px'
 					 });
 				} else {
-					navNext.css({					 
+					navNext.css({
 						left:(opts.show_panels ? (opts.filmstrip_position=='left'?0:opts.panel_width+opts.frame_gap) : 0)+((strip_width-22)/2)+13+'px',
 						top:wrapper_height+opts.frame_gap+'px'
 					});
@@ -720,20 +724,20 @@ $(window).load(function(){
 				}
 			}
 		};
-	
+
 	/*
 	**	mouseIsOverGallery(int,int)
 	**		Check to see if mouse coordinates lie within borders of gallery
 	**		This is a more reliable method than using the mouseover event
 	**		RETURN - boolean
 	*/
-		function mouseIsOverGallery(x,y) {		
+		function mouseIsOverGallery(x,y) {
 			var pos = getPos(j_gallery[0]);
 			var top = pos.top;
 			var left = pos.left;
-			return x > left && x < left+j_gallery.outerWidth() && y > top && y < top+j_gallery.outerHeight();				
+			return x > left && x < left+j_gallery.outerWidth() && y > top && y < top+j_gallery.outerHeight();
 		};
-	
+
 	/*
 	**	mouseIsOverPanel(int,int)
 	**		Check to see if mouse coordinates lie within borders of panel
@@ -741,18 +745,18 @@ $(window).load(function(){
 	**		RETURN - boolean
 	*/
 		function mouseIsOverPanel(x,y) {
-			
+
 			// Get position of panel wrapper in relation to gallery
 			var pos = getPos($('#'+id+' .gv-panel_wrap')[0]);
 			var gPos = getPos(j_gallery[0]);
-			
+
 			// Add wrap position to gallery position
 			var top = pos.top+gPos.top;
 			var left = pos.left+gPos.left;
-			
-			return x > left && x < left+j_panels.outerWidth() && y > top && y < top+j_panels.outerHeight();				
+
+			return x > left && x < left+j_panels.outerWidth() && y > top && y < top+j_panels.outerHeight();
 		};
-	
+
 	/*
 	**	getInt(string)
 	**		Parse a string to obtain the integer value contained
@@ -762,63 +766,63 @@ $(window).load(function(){
 		function getInt(i) {
 			i = parseInt(i,10);
 			if(isNaN(i)) { i = 0; }
-			return i;	
+			return i;
 		};
-	
+
 	/*
 	**	buildGallery()
 	**		Construct HTML and CSS for the gallery, based on user options
 	*/
 		function buildGallery() {
-			
+
 			// Get gallery images
 			var gallery_images = opts.show_filmstrip?$('img',j_frames):$('img',j_panels);
-			
+
 			// For each image in the gallery, add its original dimensions and scaled dimensions to the appropriate arrays for later reference
 			gallery_images.each(function(i){
 				img_h[i] = this.height;
 				img_w[i] = this.width;
-				
+
 				if(opts.frame_scale=='nocrop') {
 					frame_img_scale[i] = Math.min(opts.frame_height/img_h[i],opts.frame_width/img_w[i]);
 				} else {
 					frame_img_scale[i] = Math.max(opts.frame_height/img_h[i],opts.frame_width/img_w[i]);
 				}
-				
+
 				if(opts.panel_scale=='nocrop') {
 					panel_img_scale[i] = Math.min(opts.panel_height/img_h[i],opts.panel_width/img_w[i]);
 				} else {
 					panel_img_scale[i] = Math.max(opts.panel_height/img_h[i],opts.panel_width/img_w[i]);
 				}
 			});
-			
+
 			// Set gallery dimensions
 			j_gallery.css({
 				position:'relative',
 				width:gallery_width+'px',
 				height:gallery_height+'px'
 			});
-			
+
 			// Build filmstrip if necessary
 			if(opts.show_filmstrip) {
 				buildFilmstrip();
 				enableFrameClicking();
 			}
-			
+
 			//Strip out panel overlays if the user does not want to display them
 			if(!opts.show_overlays) {
-				$('.gv-panel-overlay',j_gallery).remove();	
+				$('.gv-panel-overlay',j_gallery).remove();
 			}
-			
+
 			// Build panels if necessary
 			if(opts.show_panels) {
 				buildPanels();
 			}
-			
+
 			// If user opts to pause on hover, or no filmstrip exists, add some mouseover functionality
 			if(opts.pause_on_hover || opts.show_panel_nav) {
 				$(document).mousemove(function(e){
-											   
+
 					// If user wants to pause on hover and mouse is over the gallery, halt any animations
 					if(opts.pause_on_hover) {
 						if(mouseIsOverGallery(e.pageX,e.pageY) && !paused) {
@@ -837,12 +841,12 @@ $(window).load(function(){
 							}
 						}
 					}
-					
+
 					// If panel navigation is turned on, display or hide it based on mouse position
 					if(opts.show_panel_nav) {
 						if(mouseIsOverPanel(e.pageX,e.pageY) && !panel_nav_displayed) {
 							$('.gv-panel-nav-next, .gv-panel-nav-prev',j_gallery).show();
-							panel_nav_displayed = true;	
+							panel_nav_displayed = true;
 						} else if(!mouseIsOverPanel(e.pageX,e.pageY) && panel_nav_displayed) {
 							$('.gv-panel-nav-next, .gv-panel-nav-prev',j_gallery).hide();
 							panel_nav_displayed = false;
@@ -850,89 +854,89 @@ $(window).load(function(){
 					}
 				});
 			}
-			
+
 			// Hide loading box and display gallery
 			j_filmstrip.css('visibility','visible');
 			j_gallery.css('visibility','visible');
-			
+
 			// Show the 'first' item and then fade out the loader box and begin slideshow timer if necessary
 			showItem(iterator,10,function(){
 				$('.gv-loader',j_gallery).fadeOut('1000',function(){
-															   
+
 					// If we have more than one item, begin automated transitions
 					if(item_count > 1 && opts.transition_interval > 0) {
 						$(document).everyTime(opts.transition_interval,"transition",function(){
 							showNextItem();
 						});
-					}	
+					}
 				});
 			});
-			
-				
+
+
 		};
-		
+
 	/*
 	**	MAIN PLUGIN CODE
 	*/
 		return this.each(function() {
-								  
+
 			// Get UL passed to plugin
 			var _t = $(this);
-			
+
 			// Hide the unstyled UL until we've created the gallery
 			_t.css('visibility','hidden');
-			
+
 			// Reference images for later use (we'll wait for each to load before building gallery)
 			gallery_images = $('img',_t);
 			image_count = gallery_images.length;
-			
+
 			// Set the current frame index to that chosen by the user
 			// current is 0-based and opts.start_frame is 1-based
 			current = opts.start_frame-1;
-			
+
 			// Wrap UL in DIV and transfer ID to container DIV
 			_t.wrap("<div></div>");
 			j_gallery = _t.parent();
 			j_gallery.css('visibility','hidden').attr('id',_t.attr('id')).addClass('gv-gallery').addClass(_t.attr('class'));
-			
+
 			// Assign filmstrip class to the UL sent to the plugin
 			_t.removeAttr('id').addClass('gv-filmstrip');
-			
+
 			// If the transition or pause timers exist for any reason, stop them now.
 			$(document).stopTime("transition");
 			$(document).stopTime("animation_pause");
-			
+
 			// Save the id of the UL passed to the plugin
 			id = j_gallery.attr('id');
-			
+
 			// If the UL does not contain any <div class="gv-panel-content"> elements, we will scale the UL images to fill the panels
 			scale_panel_images = $('.gv-panel-content',j_gallery).length==0;
-		
+
 			animate_panels = (opts.panel_animation != 'none');
-			
+
 			// Determine filmstrip orientation (vertical or horizontal)
 			filmstrip_orientation = (opts.filmstrip_position=='top'||opts.filmstrip_position=='bottom'?'horizontal':'vertical');
-			
+
 			// Do not show captions on vertical filmstrips (override user set option)
 			if(filmstrip_orientation=='vertical') { opts.show_captions = false; }
-			
-			
+
+
 			// Make sure pointer does not extend past width of frame
 			if(filmstrip_orientation == 'horizontal' && opts.pointer_size > opts.frame_width/2) {
 				opts.pointer_size = opts.frame_width/2;
 			}
 			if(filmstrip_orientation == 'vertical' && opts.pointer_size > opts.frame_height/2) {
-				opts.pointer_size = opts.frame_height/2;	
+				opts.pointer_size = opts.frame_height/2;
 			}
 
-			
+
 			// Assign elements to variables to minimize calls to jQuery
 			j_filmstrip = $('.gv-filmstrip',j_gallery);
 			j_frames = $('li',j_filmstrip);
 			j_frames.addClass('gv-frame');
 			j_panel_wrapper = $('<div>');
 			j_panel_wrapper.addClass('gv-panel_wrap').prependTo(j_gallery);
-			
+
 			// If the user wants panels, generate them using the filmstrip images
 			if(opts.show_panels) {
 				for(i=j_frames.length-1;i>=0;i--) {
@@ -949,7 +953,7 @@ $(window).load(function(){
 						if(jfimg.parent('a').length > 0){
 							ima = $('<a></a>');
 							ima.attr('href',jfimg.parent('a').eq(0).attr('href'));
-							ima.attr('target',jfimg.parent('a').eq(0).attr('target'));															
+							ima.attr('target',jfimg.parent('a').eq(0).attr('target'));
 							ima.append(im);
 							ima.appendTo(p);
 						} else {
@@ -959,11 +963,11 @@ $(window).load(function(){
 						j_frames.eq(i).find('.gv-panel-overlay').remove().appendTo(p);
 					}
 				}
-			} else { 
-				$('.gv-panel-overlay',j_frames).remove(); 
+			} else {
+				$('.gv-panel-overlay',j_frames).remove();
 				$('.gv-panel-content',j_frames).remove();
 			}
-			
+
 			// If the user doesn't want a filmstrip, delete it
 			if(!opts.show_filmstrip) { j_filmstrip.remove(); }
 			else {
@@ -973,43 +977,43 @@ $(window).load(function(){
 					if($(this).find('a').length>0) {
 						$(this).find('a').wrap('<div class="gv-img_wrap"></div>');
 					} else {
-						$(this).find('img').wrap('<div class="gv-img_wrap"></div>');	
+						$(this).find('img').wrap('<div class="gv-img_wrap"></div>');
 					}
 				});
 				j_frame_img_wrappers = $('.gv-img_wrap',j_frames);
 			}
-			
+
 			j_panels = $('.gv-panel',j_gallery);
-			
+
 			if(!opts.show_panels) {
 				opts.panel_height = 0;
 				opts.panel_width = 0;
 			}
-			
+
 			// Briefly create a caption element so galleryView can determine any padding or borders applied by the user
 			$('<div class="gv-caption"></div>').appendTo(j_frames);
-			
+
 			// Determine final frame dimensions, accounting for user-added padding and border
 			f_frame_width = opts.frame_width+extraWidth(j_frame_img_wrappers);
 			f_frame_height = opts.frame_height+extraHeight(j_frame_img_wrappers);
 			frame_caption_size = getInt($('.gv-caption',j_gallery).css('height'));
 			f_caption_width = f_frame_width - extraWidth($('.gv-caption',j_gallery));
 			f_caption_height = frame_caption_size + extraHeight($('.gv-caption',j_gallery));
-			
+
 			// Delete the temporary caption element
 			$('.gv-caption',j_gallery).remove();
-			
+
 			// Number of frames in filmstrip
 			item_count = opts.show_panels?j_panels.length:j_frames.length;
-			
+
 			// Number of frames that can display within the gallery block
 			// 64 = width of block for navigation button * 2 + 20
 			if(filmstrip_orientation=='horizontal') {
-				strip_size = opts.show_panels?Math.floor((opts.panel_width+opts.frame_gap-(!opts.show_filmstrip_nav?0:(opts.frame_gap+22)*2))/(f_frame_width+opts.frame_gap)):Math.min(item_count,opts.filmstrip_size); 
+				strip_size = opts.show_panels?Math.floor((opts.panel_width+opts.frame_gap-(!opts.show_filmstrip_nav?0:(opts.frame_gap+22)*2))/(f_frame_width+opts.frame_gap)):Math.min(item_count,opts.filmstrip_size);
 			} else {
 				strip_size = opts.show_panels?Math.floor((opts.panel_height+opts.frame_gap-(!opts.show_filmstrip_nav?0:opts.frame_gap+22))/(f_frame_height+opts.frame_gap)):Math.min(item_count,opts.filmstrip_size);
 			}
-			
+
 			// Determine animation method for filmstrip
 			// If more items than strip size, slide filmstrip
 			// Otherwise, slide pointer
@@ -1020,23 +1024,23 @@ $(window).load(function(){
 			else {
 				slide_method = 'strip';
 			}
-			
+
 			// Do not show pointer if there are multiple rows in the filmstrip
 			if(Math.ceil(item_count/strip_size) > 1) { opts.pointer_size = 0; }
-			
+
 			// Define dimensions of pointer <div>
 			pointer_height = opts.pointer_size;
 			pointer_width = opts.pointer_size*2;
-			
+
 			iterator = opts.start_frame-1;
 			if(opts.filmstrip_style == 'scroll' && strip_size < item_count) {
-				iterator += item_count;	
+				iterator += item_count;
 			}
-			
+
 			// Determine dimensions of various gallery elements
 			//_filmstrip_margin = (opts.show_panels?getInt(j_filmstrip.css('marginTop')):0);
 			j_filmstrip.css('margin',0);
-			
+
 			// Width of filmstrip
 			if(filmstrip_orientation=='horizontal') {
 				if(opts.filmstrip_style == 'show all' || (opts.filmstrip_style == 'scroll' && slide_method == 'pointer')) {
@@ -1052,13 +1056,13 @@ $(window).load(function(){
 					strip_width = (f_frame_width);
 				}
 			}
-			
+
 			// Height of filmstrip
 			if(filmstrip_orientation=='horizontal') {
 				if(opts.filmstrip_style == 'show all') {
 					strip_height = ((f_frame_height+(opts.show_captions?f_caption_height:0))*Math.ceil(item_count/strip_size))+(opts.frame_gap*(Math.ceil(item_count/strip_size)-1));
 				} else {
-					strip_height = (f_frame_height+(opts.show_captions?f_caption_height:0));	
+					strip_height = (f_frame_height+(opts.show_captions?f_caption_height:0));
 				}
 			} else {
 				if(opts.filmstrip_style =='show all' || (opts.filmstrip_style == 'scroll' && slide_method == 'pointer')) {
@@ -1068,7 +1072,7 @@ $(window).load(function(){
 					strip_height = (f_frame_height*item_count*3)+(opts.frame_gap*((item_count*3)-1));
 				}
 			}
-			
+
 			// Width of filmstrip wrapper (to hide overflow)
 			if(filmstrip_orientation=='horizontal') {
 				wrapper_width = ((strip_size*f_frame_width)+((strip_size-1)*opts.frame_gap));
@@ -1085,23 +1089,23 @@ $(window).load(function(){
 					wrapper_width = f_frame_width;
 				}
 			}
-			
+
 			// There shouldn't be any padding on the gallery element
 			j_gallery.css('padding',0);
-			
+
 			// Determine final dimensions of gallery
 			if(filmstrip_orientation=='horizontal') {
-				
+
 				// Width of gallery block
 				gallery_width = opts.show_panels?opts.panel_width:wrapper_width+44+(opts.frame_gap*2);
-				
+
 				// Height of gallery block = screen + filmstrip + captions (optional)
 				gallery_height = (opts.show_panels?opts.panel_height+(opts.show_filmstrip?opts.frame_gap:0):0)+(opts.show_filmstrip?wrapper_height:0);
 			} else {
-				
+
 				// Width of gallery block
 				gallery_height = opts.show_panels?opts.panel_height:wrapper_height+22;
-				
+
 				// Height of gallery block = screen + filmstrip + captions (optional)
 				gallery_width = (opts.show_panels?opts.panel_width+(opts.show_filmstrip?opts.frame_gap:0):0)+(opts.show_filmstrip?wrapper_width:0);
 			}
@@ -1117,20 +1121,20 @@ $(window).load(function(){
 				width:gallery_width+'px',
 				height:gallery_height+'px'
 			}).appendTo(j_gallery);
-			
+
 			// We don't want to move to the next frame before the current one is done loading
 			// If the animation speed is greater than the delay between animations, set them equal
 			if(opts.transition_speed > opts.transition_interval && opts.transition_interval > 0) {
-				opts.transition_speed = opts.transition_interval;	
+				opts.transition_speed = opts.transition_interval;
 			}
-			
+
 			// Set pointer animation speed based on user options
 			pointer_speed = opts.animate_pointer ? opts.transition_speed : 0;
-			
+
 			// Build gallery as soon as all images are loaded or pulled from cache
 			if(!window_loaded) {
 				gallery_images.each(function(i){
-											 
+
 					// First, see if image is already loaded (gallery being built after window loads or image is pulled from cache)
 					if($(this).attr('complete')) {
 						loaded_images++;
@@ -1139,7 +1143,7 @@ $(window).load(function(){
 							window_loaded;
 						}
 					} else {
-						
+
 						// Otherwise, increment counter once image loads
 						$(this).load(function(){
 							loaded_images++;
@@ -1152,21 +1156,21 @@ $(window).load(function(){
 				});
 			} else {
 				buildGallery();
-			}		
+			}
 		});
 	};
-	
+
 /*
 **	GalleryView options and default values
 */
 	$.fn.galleryView.defaults = {
-		
+
 		transition_speed: 800,				//INT - duration of panel/frame transition (in milliseconds)
 		transition_interval: 4000,			//INT - delay between panel/frame transitions (in milliseconds)
 		easing: 'swing',					//STRING - easing method to use for animations (jQuery provides 'swing' or 'linear', more available with jQuery UI or Easing plugin)
 		pause_on_hover: false,				//BOOLEAN - flag to pause slideshow when user hovers over the gallery
-	
-		
+
+
 		show_panels: true,					//BOOLEAN - flag to show or hide panel portion of gallery
 		panel_width: 600,					//INT - width of gallery panel (in pixels)
 		panel_height: 400,					//INT - height of gallery panel (in pixels)
@@ -1176,8 +1180,8 @@ $(window).load(function(){
 		panel_scale: 'crop',				//STRING - cropping option for panel images (crop = scale image and fit to aspect ratio determined by panel_width and panel_height, nocrop = scale image and preserve original aspect ratio)
 		show_panel_nav: true,				//BOOLEAN - flag to show or hide panel navigation buttons
 		show_overlays: false,				//BOOLEAN - flag to show or hide panel overlays
-		
-		
+
+
 		show_filmstrip: true,				//BOOLEAN - flag to show or hide filmstrip portion of gallery
 		frame_width: 60,					//INT - width of filmstrip frames (in pixels)
 		frame_height: 40,					//INT - width of filmstrip frames (in pixels)
@@ -1190,10 +1194,10 @@ $(window).load(function(){
 		frame_scale: 'crop',				//STRING - cropping option for filmstrip images (same as above)
 		frame_gap: 5,						//INT - spacing between frames within filmstrip (in pixels)
 		show_captions: false,				//BOOLEAN - flag to show or hide frame captions
-		
-		
+
+
 		pointer_size: 8,					//INT - Height of frame pointer (in pixels)
 		animate_pointer: true				//BOOLEAN - flag to animate pointer or move it instantly to target frame
-		
+
 	};
 })(jQuery);
