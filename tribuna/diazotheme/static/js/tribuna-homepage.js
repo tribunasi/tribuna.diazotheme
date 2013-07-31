@@ -63,6 +63,7 @@ jQuery17(function () {
         }
         jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
         jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
+        scrollToContainer();
     }
 
     function runEffect() {
@@ -75,6 +76,12 @@ jQuery17(function () {
            jQuery17( "#all-tags-list" ).hide("fast");
         }
     }
+
+     function scrollToContainer() {
+                        $('html, body').animate({
+                             scrollTop: $("#container").offset().top
+                         });
+                    }
 
     function runEffectClose(e) {
         // Show the div if it's hidden, hide if it it's shown

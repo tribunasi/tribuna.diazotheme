@@ -180,22 +180,8 @@
 
     <drop css:theme="#center-column-content" css:if-not-content="#tag-description-div" />
     <drop css:theme="#articles-header" css:if-not-content="#tag-description-div" />
+    <before css:theme="#container"  css:content="#tag-picture" css:if-content="#tag-picture" />
 
-        <!-- <rules css:if-not-content="#tag-description-div">
-          <rules css:if-content=".articles_intersection" >
-            <drop css:theme="#right-column" />
-            <before css:theme="#content" css:content="#formfield-form-widgets-sort_on" />
-            <replace css:content-children=".articles_intersection" css:theme-children="#content"/>
-            <after css:theme=".articles_intersection" css:content=".articles_union"/>
-          </rules>
-          <rules css:if-not-content=".articles_intersection">
-              <rules css:if-not-content="#tag-description-div" >
-                  <drop css:theme="#right-column" />
-                  <replace css:content="#homepage-div" css:theme="#content"/>
-              </rules>
-          </rules>
-        </rules>
-    </rules> -->
     <theme href="tribuna_results.html" if-path="@@main-page main-page"/>
     <rules if-path="@@main-page main-page" >
       <!-- <before css:theme="#head" content="/html/body/script" /> -->
@@ -235,20 +221,12 @@
            </replace>
       </rules>
 
-      <!--
-      <notheme if-content="html/head/link[@href='/manage_page_style.css']"/>
-      <notheme css:if-content="#content.dialog-wrapper"/>
-      <notheme css:if-content="body.popup"/>
-      -->
       <rules css:if-content="#visual-portal-wrapper">
 
       <prepend theme="/html/head" content="/html/head/base"/>
       <merge attributes="class" css:content="body" css:theme="body"/>
 
       <replace theme="//*[@id='logo']/h1" content="//*[@id='content']/h1"/>
-
-      <!-- <after css:theme="meta[http-equiv='X-UA-Compatible']"
-          content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" /> -->
 
       <append css:theme="#header">
           <xsl:if css:test=".AbovePortletManager1">
@@ -361,29 +339,6 @@
       <drop css:theme="#left-column" css:if-not-content="#portal-column-one"/>
       <drop css:theme="#right-column" css:if-not-content="#portal-column-two"/>
 
-      <!-- <replace css:theme="#logo" css:content="#portal-logo"/>
-
-      <replace css:theme-children="#nav">
-          <xsl:for-each css:select="#portal-globalnav > li">
-              <xi:include href="navigation-rules.xml"/>
-          </xsl:for-each>
-      </replace>
-      <replace css:theme-children="#personaltool-menu"
-          css:content-children="#portal-personaltools ul"/>
-      <replace css:theme-children="#personaltool-menuheader"
-          css:content-children="#portal-personaltools .actionMenuHeader a"/>
-      <replace css:theme-children="#secondary-nav" css:if-content="#anon-personalbar">
-          <li><xsl:copy-of css:select="#personaltools-login"/></li>
-      </replace>
-
-      <copy css:theme=".navbar-fixed-top .brand" css:content="#portal-logo" attributes="href"/>
-      <replace css:theme-children=".breadcrumb">
-          <xsl:for-each css:select="#portal-breadcrumbs > span">
-              <li>
-                  <xsl:copy-of select="node()"/>
-              </li>
-          </xsl:for-each>
-      </replace> -->
 
       <append css:theme=".footer" css:content-children="#portal-footer"/>
       <append css:theme=".footer" css:content="#portal-colophon"/>

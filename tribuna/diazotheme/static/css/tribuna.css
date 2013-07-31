@@ -690,6 +690,7 @@ div.half-width {
     font-weight: bold;
     float: none;
     margin-left: 0;
+    font-size: 15px;
 }
 .commentBody {
     margin: 1em 0 0 1em;
@@ -699,12 +700,21 @@ div.half-width {
     float: none;
 }
 
+.commentBody p{
+    /*margin: 1em 0 0 1em;*/
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    /*float: none;*/
+}
+
 .commentDate {
     font-weight: bold;
     font-size: 100%;
     color: black;
     float: none;
     margin-left: 0;
+    padding:0;
 }
 .commentTag {
     color: blue;
@@ -733,6 +743,26 @@ div.half-width {
     border-color: #ccc;
     background-color: white;
     box-shadow: 2px 2px 1px #888888;
+    padding:0;
+    padding-left: 2%;
+    padding-right: 2%;
+    float: right;
+}
+
+#form-buttons-comment, #form-buttons-cancel {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-width: 1px;
+    border-color: #ccc;
+    background-color: white;
+    box-shadow: 2px 2px 1px #888888;
+    color: black;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    padding:0;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 /*.submit-widget.button-field {
@@ -807,8 +837,24 @@ div.main-page-comments {
 
 .comment .commentTag {
     font-size: 12px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    font-weight: bold;
 }
 
+#selection-checkbox {
+    position: absolute;
+    top: 20px;
+    right: 20%;
+    background-color: yellow;
+    padding: 2px;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-width: 1px;
+    border-color: yellow;
+    box-shadow: 2px 2px 1px #888888;
+
+}
 
 
 /**
@@ -830,3 +876,8 @@ div#center-column, div#content {
 /**
  * End basic site setup
  */
+
+.twitter-share, .facebook-share {
+    float:right;
+    margin-right: 2px;
+}
