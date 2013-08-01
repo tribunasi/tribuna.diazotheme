@@ -15,13 +15,12 @@ body {
 }
 
 label {
-    float:none; 
+    float:none;
     display:inline;
 }
 
 .field label {
    display:inline;
-   font-weight:bold;
 }
 
 label .required {
@@ -65,7 +64,6 @@ label .required {
 
 #center-column-content {
     padding:0 5px;
-    border-bottom:1px solid #eee;
     vertical-align:top;
 }
 
@@ -173,7 +171,7 @@ li {
 .footer > .container {
 }
 
-#action-bar .nav-tabs a.menu:after, 
+#action-bar .nav-tabs a.menu:after,
 #action-bar .nav-tabs .dropdown-toggle:after {
     margin-top:8px;
 }
@@ -320,7 +318,7 @@ div.row {
     max-height:400px;
 }
 
-#content fieldset { 
+#content fieldset {
    padding-left:20px;
    padding-right:20px;
    border:none;

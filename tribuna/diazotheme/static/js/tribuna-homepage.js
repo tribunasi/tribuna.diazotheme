@@ -30,6 +30,9 @@ jQuery17(function () {
             jQuery17("#formfield-form-widgets-all_tags [value='" + myname + "']").click();
             jQuery17("#formfield-form-widgets-tags [value='" + myname + "']").click();
         }
+         jQuery17("#form-buttons-filter").click();
+
+
     }
 
     function moveUpDown(){
@@ -63,6 +66,7 @@ jQuery17(function () {
         }
         jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
         jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
+        jQuery17("#form-buttons-filter").click();
         scrollToContainer();
     }
 

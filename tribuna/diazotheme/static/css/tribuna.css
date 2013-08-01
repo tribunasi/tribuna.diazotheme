@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family:  Helvetica, Arial, sans-serif;
 }
 
 #entrypage-form #form-widgets-picture-input {
@@ -27,6 +27,7 @@ body {
     border-width: 1px 1px 1px 1px;
     border-width: 1px;
     border-color: #ccc;
+    border-radius: 0;
     /*padding: 10px;
     padding-left: 15px;*/
     box-shadow: 2px 2px 1px #888888;
@@ -66,8 +67,8 @@ body {
     border-width: 1px 1px 1px 1px;
     border-width: 1px;
     border-color: #ccc;
-    padding: 10px;
-    padding-left: 15px;
+    padding: 0.75em;
+    /*padding-left: 15px;*/
     box-shadow: 2px 2px 1px #888888;
     z-index: 99;
 }
@@ -103,7 +104,7 @@ div.entrypage-text-container {
     position: relative;
     width: 100%;
     height: 100%;
-    margin:10% 10% 10% 10%;
+    margin-top: 10%;
     z-index: -1;
 
 }
@@ -129,9 +130,10 @@ div.entrypage-text-container {
 
 #entrypage-home-link {
     background-color: cyan;
-    margin: 20px 0 0;
+    margin: 20px 30% 0;
     padding: 0.75em;
     width: 9em;
+    position: absolute;
 }
 
 #entrypage-home-link a {
@@ -154,7 +156,7 @@ div.entrypage-text-container {
 }
 
 #text-container p.helvetica {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: Helvetica, Arial,sans-serif;
 }
 
 #form-widgets-picture-input {
@@ -165,6 +167,10 @@ div.entrypage-text-container {
     padding: 0;
     padding-left: 15px;
     box-shadow: none;
+}
+
+.accordion-body.collapse form {
+    margin-left: 30px;
 }
 /**
  * End entry page
@@ -216,11 +222,13 @@ div#articles h5 {
     font-family: sans-serif;
 }
 div.text-view-comment, div.text-view-comment-one {
-    font-family: serif;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    line-height: 25px;
 }
 div.text-view-article-one, div.text-view-comment-one {
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 25px;
 }
 h3.portlet-header {
     font-size: 20px;
@@ -262,11 +270,19 @@ div#content p {
  */
 
 a.comment-header {
-    font-family: serif;
+    font-family: Georgia, Arial;
+    font-size: 22px;
+    line-height: 25px;
 }
+
+a.drag-comment-header {
+    font-family: Georgia, Arial;
+}
+
 p.article-body {
     margin-bottom: 0px;
 }
+
 div#drag-view a.comment-header {
     font-size: 16px;
     line-height: 24px;
@@ -280,7 +296,7 @@ div.drag-view-article, div.drag-view-comment {
     color: black;
 }
 div.drag-view-comment {
-    background: white;
+    background: transparent;
 }
 
 div.drag-view-article div#text, div.drag-view-comment div#text {
@@ -296,6 +312,10 @@ div.drag-view-article a, div.drag-view-comment a {
 
 div.drag-view-article p, div.drag-view-comment p{
     color: black;
+}
+
+div.drag-view-comment p{
+    font-family: Georgia, Arial;
 }
 
 div.drag-view-article:hover,
@@ -370,6 +390,7 @@ div#sidebar-portlet {
     font-weight: 300;
     font-size: 12px;
     line-height: 22px;
+    /*position: fixed;*/
 }
 div#sidebar-portlet ul {
     margin-bottom: 0;
@@ -380,6 +401,9 @@ div#types-list {
 }
 div#types-list input {
     margin-right: 5px;
+}
+div#topside-tags {
+    /*position: fixed;*/
 }
 
 div#sidebar-portlet a, div#topside-tags a {
@@ -459,6 +483,10 @@ ul#all-tags-list{
     box-shadow: 2px 2px 1px #888888;
 }
 
+#sidebar-section {
+    width:120px;
+}
+
 /*Hide the original form*/
 /*For now, hide everything but the buttons*/
 /*form.kssattr-formname-my-form {
@@ -479,22 +507,25 @@ div#formfield-form-widgets-content_filters {
 
 /*Limit button (it's an image) size so it doesn't overflow*/
 input#form-buttons-filter {
-    display:block;
+    display:none;
 }
 
 input#form-buttons-text {
-    background-image: url(++theme++tribuna.diazotheme/img/textview.png);
+    background-image: url(++theme++tribuna.diazotheme/img/textview-black.jpg);
 }
 input#form-buttons-drag {
-    background-image: url(++theme++tribuna.diazotheme/img/dragdrop.png);
+    background-image: url(++theme++tribuna.diazotheme/img/dragdrop-black.jpg);
 }
 
 input#form-buttons-text, input#form-buttons-drag {
-    width: 32px;
-    height: 32px;
+    width: 12px;
+    height: 12px;
     /*margin-right: 10%;
     margin-top: 5%;
     */
+    padding: 0;
+    border: none;
+    border-radius: 0;
     background-color: white;
     background-position: center;
     background-size: 100%;
@@ -547,6 +578,19 @@ div#tag-description-div {
     float: left;
     position: relative;
     /*border:1px solid red;*/
+}
+
+#scroll {
+    background-image: url(++theme++tribuna.diazotheme/img/arrowBlackDown.png);
+    background-size: 100%;
+    background-color: white;
+    border: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }
 /**
  * End content
@@ -864,9 +908,15 @@ div#left-column, div#right-column {
     margin-top: 10px;
     padding: 0;
 }
+
+div#right-column {
+    /*margin-left: 200px;*/
+}
+
 div#center-column, div#content {
     margin-top: 0;
     padding: 0;
+    font-family: Georgia, Arial, sans-serif;
 }
 
 .gv-panel #selected-tags-list span {
@@ -880,4 +930,58 @@ div#center-column, div#content {
 .twitter-share, .facebook-share {
     float:right;
     margin-right: 2px;
+}
+
+#form-buttons-search {
+    visibility: hidden;
+}
+
+.button {
+
+   border-top: 1px solid #96d1f8;
+
+   background: #0000ff;
+
+   background: -webkit-gradient(linear, left top, left bottom, from(#0000ff), to(#0000ff));
+
+   background: -webkit-linear-gradient(top, #0000ff, #0000ff);
+
+   background: -moz-linear-gradient(top, #0000ff, #0000ff);
+
+   background: -ms-linear-gradient(top, #0000ff, #0000ff);
+
+   background: -o-linear-gradient(top, #0000ff, #0000ff);
+
+   padding: 7.5px 15px;
+
+   -webkit-border-radius: 0px;
+
+   -moz-border-radius: 0px;
+
+   border-radius: 0px;
+
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+
+   color: #ffffff;
+
+   font-size: 14px;
+
+   font-family: Helvetica, Arial, Sans-Serif;
+
+   text-decoration: none;
+
+   vertical-align: middle;
+
+   }
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
