@@ -193,6 +193,7 @@ div#topside-tags {
     margin-left: 0;
 }
 div#selected-tags {
+    max-width: 150px;
 }
 div#topside-content {
     float: right;
@@ -367,10 +368,43 @@ div.ui-draggable-dragging img {
  */
 
 
+/* XXX: do we need display: table; for editing interface? Because it breaks
+ boostrap layout..
+*/
+.template-home-page #content-columns {
+    display: block;
+}
 
 /**
  * Settings for portlet
  */
+
+/* XXX: temporary, sorting dropdown shouldn't be in the sidebar */
+#form-widgets-sort_on-noform {
+    width: 100%;
+}
+
+/* Fixed position for the sidebar (affix js doesn't seem to work
+so we use this) */
+.sidebar-nav-fixed {
+    position:fixed;
+    top:60px;
+    width:21.97%;
+}
+
+@media (max-width: 767px) {
+    .sidebar-nav-fixed {
+        width:auto;
+    }
+}
+
+@media (max-width: 979px) {
+    .sidebar-nav-fixed {
+        position:static;
+        width: auto;
+    }
+}
+
 
 input#form-buttons-text:hover, input#form-buttons-drag:hover {
     background-position: center;
@@ -484,7 +518,7 @@ ul#all-tags-list{
 }
 
 #sidebar-section {
-    width:120px;
+    max-width: 120px;
 }
 
 /*Hide the original form*/
