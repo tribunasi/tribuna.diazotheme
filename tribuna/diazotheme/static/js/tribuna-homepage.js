@@ -129,12 +129,15 @@ jQuery17(function () {
         // Set up the click functions for filters, hardcoded for now
         jQuery17("#types-list #articles").change( function(){
             jQuery17("#form-widgets-content_filters-0").click();
+            jQuery17("#form-buttons-filter").click();
         });
         jQuery17("#types-list #comments").change( function(){
             jQuery17("#form-widgets-content_filters-1").click();
+            jQuery17("#form-buttons-filter").click();
         });
         jQuery17("#types-list #images").change( function(){
             jQuery17("#form-widgets-content_filters-2").click();
+            jQuery17("#form-buttons-filter").click();
         });
 
         // Sort_on
