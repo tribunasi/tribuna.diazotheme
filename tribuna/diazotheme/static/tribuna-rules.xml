@@ -65,7 +65,12 @@
 
 
 
-    <theme href="tribuna_base.html" if-path="@@home-page home-page"/>
+    <theme href="tribuna_homepage_2cols.html"
+           if-path="@@home-page home-page"
+           css:if-content="#tag-description-div"/>
+    <theme href="tribuna_homepage_1col.html"
+           if-path="@@home-page home-page"
+           css:if-not-content="#tag-description-div"/>
     <rules if-path="@@home-page home-page">
         <replace css:theme-children="#search-form" css:content-children="#search-form" css:if-not-content="#search-view" />
         <before css:theme="#topside-content-sort_on" css:content="#search-form"  css:if-content="#search-view" />
@@ -181,9 +186,7 @@
         </rules>
     </rules>
 
-    <drop css:theme="#center-column-content" css:if-not-content="#tag-description-div" />
-    <drop css:theme="#articles-header" css:if-not-content="#tag-description-div" />
-    <before css:theme="#container"  css:content="#tag-picture" css:if-content="#tag-picture" />
+    <before css:theme="#container" css:content="#tag-picture" css:if-content="#tag-picture" />
 
 
     <theme href="tribuna_results.html" if-path="@@main-page main-page"/>
