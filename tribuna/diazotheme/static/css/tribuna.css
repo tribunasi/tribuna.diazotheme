@@ -390,6 +390,9 @@ div.ui-draggable-dragging img {
 #form-widgets-sort_on-noform {
     width: 100%;
 }
+#center-column #formfield-form-widgets-sort_on {
+    display: block;
+}
 
 /* Fixed position for the sidebar (affix js doesn't seem to work
 so we use this) */
@@ -537,7 +540,8 @@ div#formfield-form-widgets-tags,
 div#formfield-form-widgets-all_tags,
 div#formfield-form-widgets-sort_on,
 div#formfield-form-widgets-sort_order,
-div#formfield-form-widgets-content_filters {
+div#formfield-form-widgets-content_filters,
+#form-widgets-sort_on-noform {
     display: none;
 }
 
