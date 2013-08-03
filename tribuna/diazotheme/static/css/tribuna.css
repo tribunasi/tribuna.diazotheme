@@ -377,7 +377,8 @@ div.ui-draggable-dragging img {
 /* XXX: do we need display: table; for editing interface? Because it breaks
  boostrap layout..
 */
-.template-home-page #content-columns {
+/*.template-home-page #content-columns {*/
+#content-columns {
     display: block;
 }
 
@@ -395,7 +396,6 @@ so we use this) */
 .sidebar-nav-fixed {
     position:fixed;
     top:60px;
-    width:21.97%;
 }
 
 @media (max-width: 767px) {
