@@ -73,7 +73,7 @@
            css:if-not-content="#tag-description-div"/>
     <rules if-path="@@home-page home-page">
         <replace css:theme-children="#search-form" css:content-children="#search-form" css:if-not-content="#search-view" />
-        <before css:theme="#topside-content-sort_on" css:content="#search-form"  css:if-content="#search-view" />
+        <before css:theme="#topside-content-sort_on" css:content="#search-form" css:if-content="#search-view" />
         <!-- <replace css:content=".portlet.portletSidebar" css:theme="#sidebar-portlet" /> -->
         <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
         <before css:theme="#center-column-content" css:if-content="#edit-bar">
@@ -182,7 +182,7 @@
         </rules>
         <rules css:if-not-content=".articles-intersection">
           <replace css:content-children="#tag-description-div" css:theme-children="#content" css:if-content="#tag-description-div" />
-          <replace css:content="#homepage-div" css:theme-children="#right-column-content"/>
+          <replace css:content="#homepage-div" css:theme-children="#articles"/>
         </rules>
     </rules>
 
