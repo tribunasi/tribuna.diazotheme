@@ -175,12 +175,13 @@
 
          <!-- <rules css:if-content="#tag-description-div"> -->
         <rules css:if-content=".articles-intersection">
-            <replace css:theme="#topside-content-sort_on" css:content="#formfield-form-widgets-sort_on" />
+            <replace css:theme-children="#topside-content-sort_on" css:content="#formfield-form-widgets-sort_on" />
             <replace css:content-children=".articles-intersection" css:theme-children="#intersection-articles"/>
             <replace css:content-children=".articles-union" css:theme-children="#union-articles"/>
             <replace css:content-children="#tag-description-div" css:theme-children="#content" />
         </rules>
         <rules css:if-not-content=".articles-intersection">
+          <drop css:theme="#topside-content-sort_on" />
           <replace css:content-children="#tag-description-div" css:theme-children="#content" css:if-content="#tag-description-div" />
           <replace css:content="#homepage-div" css:theme-children="#articles"/>
         </rules>

@@ -413,8 +413,12 @@ div.ui-draggable-dragging img {
 #form-widgets-sort_on-noform {
     width: 100%;
 }
-#center-column #formfield-form-widgets-sort_on {
+
+#topside-content-sort_on #formfield-form-widgets-sort_on {
     display: block;
+}
+#topside-content-sort_on #formfield-form-widgets-sort_on label {
+    display: none;
 }
 
 /* Fixed position for the sidebar (affix js doesn't seem to work
