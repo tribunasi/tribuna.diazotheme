@@ -19,27 +19,32 @@ html, body {
     width: 100%;
     height: 100%;
 }
-.button {
-   border-top: 1px solid #96d1f8;
-   background: #0000ff;
-   background: -webkit-gradient(linear, left top, left bottom, from(#0000ff), to(#0000ff));
-   background: -webkit-linear-gradient(top, #0000ff, #0000ff);
-   background: -moz-linear-gradient(top, #0000ff, #0000ff);
-   background: -ms-linear-gradient(top, #0000ff, #0000ff);
-   background: -o-linear-gradient(top, #0000ff, #0000ff);
-   padding: 7.5px 15px;
-   -webkit-border-radius: 0px;
-   -moz-border-radius: 0px;
-   border-radius: 0px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: #ffffff;
-   font-size: 14px;
-   font-family: Helvetica, Arial, Sans-Serif;
-   text-decoration: none;
-   vertical-align: middle;
+.button,
+input[type="submit"] {
+    font-size: 100%;
+    padding: 0.2em 1.6em;
+    text-transform: lowercase;
+
+    border-top: 1px solid #96d1f8;
+    background: #0000ff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0000ff), to(#0000ff));
+    background: -webkit-linear-gradient(top, #0000ff, #0000ff);
+    background: -moz-linear-gradient(top, #0000ff, #0000ff);
+    background: -ms-linear-gradient(top, #0000ff, #0000ff);
+    background: -o-linear-gradient(top, #0000ff, #0000ff);
+    padding: 7.5px 15px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: Helvetica, Arial, Sans-Serif;
+    text-decoration: none;
+    vertical-align: middle;
 }
 
 .submit-widget.button-field {
@@ -52,6 +57,9 @@ html, body {
 /**
  * Entry page
  */
+#entrypage-form .formControls {
+    margin: 0;
+}
 #change-form-multiple .ui-widget-content {
     height: 200px;
 }
@@ -1025,6 +1033,9 @@ div#center-column, div#content {
 }
 
 #search-form label {
+    display: none;
+}
+#search-form .formControls {
     display: none;
 }
 /**
