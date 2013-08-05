@@ -183,7 +183,7 @@
         <rules css:if-not-content=".articles-intersection">
           <drop css:theme="#topside-content-sort_on" />
           <replace css:content-children="#tag-description-div" css:theme-children="#content" css:if-content="#tag-description-div" />
-          <replace css:content="#homepage-div" css:theme-children="#articles"/>
+          <replace css:content="#homepage-div" css:theme-children="#articles_list"/>
         </rules>
     </rules>
 

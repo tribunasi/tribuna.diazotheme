@@ -680,6 +680,11 @@ div#tag-description-div {
     height: 40px;
     cursor: pointer;
 }
+
+.plusminus {
+    padding-right: 3px;
+}
+
 /**
  * End content
  */
@@ -1018,18 +1023,15 @@ div#center-column, div#content {
 #form-buttons-search {
     visibility: hidden;
 }
-<<<<<<< .mine
+
+#search-form label {
+    display: none;
+}
+/**
+ * End search
 
 /*MOBILE*/
 
 @media only screen and (max-width: 760px) {
   #form-buttons-drag { display: none; }
 }
-=======
-#search-form label {
-    display: none;
-}
-/**
- * End search
- */
->>>>>>> .r83

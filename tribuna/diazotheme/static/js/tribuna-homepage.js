@@ -109,6 +109,11 @@ jQuery17(function () {
 
     jQuery17(document).ready(function () {
         // Setup for moving tags up and down via +/-
+        jQuery17("#articles_list").css("min-height", jQuery17(window).height());
+        jQuery17("div#homepage-div").css("float", "left");
+        jQuery17("div#homepage-div").css("width", "100%");
+
+        console.info(jQuery17("#articles").css("min-height"));
         if (jQuery17(".selected").size() > 0){
             jQuery17(".plusminus").css("display", "inline");
         }
