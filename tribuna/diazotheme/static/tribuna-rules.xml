@@ -72,6 +72,7 @@
            if-path="@@home-page home-page"
            css:if-not-content="#tag-description-div"/>
     <rules if-path="@@home-page home-page">
+        <drop css:theme="#right-column #search-form" css:if-content="#search-view" />
         <replace css:theme-children="#search-form" css:content-children="#search-form" css:if-not-content="#search-view" />
         <before css:theme="#topside-content-sort_on" css:content="#search-form" css:if-content="#search-view" />
         <!-- <replace css:content=".portlet.portletSidebar" css:theme="#sidebar-portlet" /> -->
