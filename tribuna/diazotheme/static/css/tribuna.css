@@ -52,12 +52,18 @@ html, body {
 /**
  * Entry page
  */
+#change-form-multiple .ui-widget-content {
+    height: 200px;
+}
 #entrypage-form #form-widgets-picture-input {
     padding: 0;
     box-shadow: none;
     border: none;
 }
-
+#entrypage-form-close {
+    display: inline-block;
+    float: right;
+}
 #entrypage-form .field input {
     border-style: solid;
     border-width: 1px 1px 1px 1px;
