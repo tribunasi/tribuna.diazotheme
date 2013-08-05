@@ -514,6 +514,8 @@ div#selected-tags-list span {
     display: block;
 }
 
+
+
 ul#selected-tags-list li.selected {
     border-style: solid;
     border-width: 1px 1px 1px 1px;
@@ -1016,9 +1018,18 @@ div#center-column, div#content {
 #form-buttons-search {
     visibility: hidden;
 }
+<<<<<<< .mine
+
+/*MOBILE*/
+
+@media only screen and (max-width: 760px) {
+  #form-buttons-drag { display: none; }
+}
+=======
 #search-form label {
     display: none;
 }
 /**
  * End search
  */
+>>>>>>> .r83

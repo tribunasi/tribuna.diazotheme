@@ -1,11 +1,4 @@
 jQuery17(document).ready(function () {
-    var options = {
-    data: $("#plone-comments-${context/UID}").find("form").serialize(),
-    success:    function() {
-    $("#plone-comments-${context/UID}").parent().load($("#plone-comments-${context/UID}").parent().attr("url"));
-    }
-    };
-    $("#plone-comments-${context/UID}").find("form").ajaxForm(options);
 
      /**********************************************************************
      * If the user hits the "reply" button of an existing comment, create a
