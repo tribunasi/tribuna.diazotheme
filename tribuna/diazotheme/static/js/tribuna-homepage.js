@@ -32,7 +32,13 @@ jQuery17(function () {
             jQuery17("#formfield-form-widgets-tags [value='" + myname + "']").click();
         }
         jQuery17(".plusminus").css("display", "inline-block");
-         jQuery17("#form-buttons-filter").click();
+        if (jQuery17(".selected").size() > 0){
+            jQuery17(".plusminus").css("display", "inline-block");
+        }
+        else {
+            jQuery17(".plusminus").css("display", "none");
+        }
+        jQuery17("#form-buttons-filter").click();
 
 
     }
@@ -70,7 +76,12 @@ jQuery17(function () {
         jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
         jQuery17("#form-buttons-filter").click();
         scrollToContainer();
-        jQuery17(".plusminus").css("display", "inline-block");
+        if (jQuery17(".selected").size() > 0){
+            jQuery17(".plusminus").css("display", "inline-block");
+        }
+        else {
+            jQuery17(".plusminus").css("display", "none");
+        }
     }
 
     function runEffect() {
@@ -79,7 +90,7 @@ jQuery17(function () {
         if(all_tags.css("display") === "none"){
           jQuery17( "#all-tags-list" ).show("fast");
         }
-        else{
+        else {
            jQuery17( "#all-tags-list" ).hide("fast");
         }
     }
@@ -162,8 +173,10 @@ jQuery17(function () {
             jQuery17("#formfield-form-widgets-sort_on").attr('id', "formfield-form-widgets-sort_on-noform");
         }
 
-        jQuery17("#form-widgets-sort_on-noform").change( function() {
-            jQuery17("#form-widgets-sort_on").val(this.value);
+        jQuery17("#form-widgets-sort_on").change( function() {
+            console.info("stvari");
+            jQuery17("#form-widgets-sort_on-noform").val(this.value);
+            jQuery17("#form-buttons-filter").click();
         });
 
     });
