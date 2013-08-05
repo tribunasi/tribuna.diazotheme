@@ -461,10 +461,16 @@ div#sidebar-portlet {
     font-weight: 300;
     font-size: 12px;
     line-height: 22px;
-    /*position: fixed;*/
 }
 div#sidebar-portlet ul {
     margin-bottom: 0;
+}
+div#sidebar-portlet form {
+    margin-bottom: 0;
+}
+div#sidebar-portlet .formControls,
+div#sidebar-portlet #home-link {
+    margin-left: 18px;
 }
 
 div#types-list {
@@ -538,6 +544,7 @@ ul#all-tags-list{
     z-index: 400;
     display: none;
     margin-top: 15px;
+    margin-left: 70px;
 /*    margin-left: 100%;
     width: 100%;
     height: 100%;*/

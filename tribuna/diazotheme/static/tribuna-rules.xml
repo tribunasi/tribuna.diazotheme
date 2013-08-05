@@ -171,7 +171,7 @@
         </replace>
 
         <after css:theme="#types-list" css:content=".kssattr-formname-my-form" />
-        <after css:theme-children="#sidebar-section" css:content="#return-to-home" />
+        <after css:theme-children="#sidebar-section" css:content="#home-link" />
 
          <!-- <rules css:if-content="#tag-description-div"> -->
         <rules css:if-content=".articles-intersection">
