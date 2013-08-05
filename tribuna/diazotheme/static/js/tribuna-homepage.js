@@ -31,7 +31,7 @@ jQuery17(function () {
             jQuery17("#formfield-form-widgets-all_tags [value='" + myname + "']").click();
             jQuery17("#formfield-form-widgets-tags [value='" + myname + "']").click();
         }
-        jQuery17(".plusminus").css("display", "inline");
+        jQuery17(".plusminus").css("display", "inline-block");
          jQuery17("#form-buttons-filter").click();
 
 
@@ -70,7 +70,7 @@ jQuery17(function () {
         jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
         jQuery17("#form-buttons-filter").click();
         scrollToContainer();
-        jQuery17(".plusminus").css("display", "inline");
+        jQuery17(".plusminus").css("display", "inline-block");
     }
 
     function runEffect() {
@@ -115,7 +115,7 @@ jQuery17(function () {
 
         console.info(jQuery17("#articles").css("min-height"));
         if (jQuery17(".selected").size() > 0){
-            jQuery17(".plusminus").css("display", "inline");
+            jQuery17(".plusminus").css("display", "inline-block");
         }
 
         jQuery17("#selected-tags-list > li > a").click( moveUpDown);
