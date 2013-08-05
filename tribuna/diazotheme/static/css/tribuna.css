@@ -214,6 +214,7 @@ div.entrypage-text-container {
  */
 div#topside-tags {
     margin-left: 0;
+    margin-top: 10px;
 }
 div#selected-tags {
     max-width: 150px;
@@ -425,7 +426,7 @@ div.ui-draggable-dragging img {
 so we use this) */
 .sidebar-nav-fixed {
     position: fixed;
-    top: 10px;
+    top: 0;
 }
 
 @media (max-width: 767px) {
@@ -773,7 +774,8 @@ div.half-width {
 
 #left-column,
 #right-column {
-    margin-top: 1em;
+    margin-top: 0;
+    padding: 0;
 }
 
 .more-link {
@@ -969,21 +971,12 @@ div.main-page-comments {
     border-width: 1px;
     border-color: yellow;
     box-shadow: 2px 2px 1px #888888;
-
 }
 
 
 /**
  * Basic site setup
  */
-div#left-column, div#right-column {
-    margin-top: 10px;
-    padding: 0;
-}
-
-div#right-column {
-    /*margin-left: 200px;*/
-}
 
 div#center-column, div#content {
     margin-top: 0;
@@ -1004,6 +997,15 @@ div#center-column, div#content {
     margin-right: 2px;
 }
 
+/**
+ * Search
+ */
 #form-buttons-search {
     visibility: hidden;
 }
+#search-form label {
+    display: none;
+}
+/**
+ * End search
+ */
