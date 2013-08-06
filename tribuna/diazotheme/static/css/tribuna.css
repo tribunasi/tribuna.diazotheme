@@ -1004,6 +1004,16 @@ div.main-page-comments {
 }
 
 
+.twitter-share, .facebook-share,
+.context.reply-to-comment-button
+ {
+    display: none;
+}
+
+.comment ul {
+    visibility: hidden;
+}
+
 /**
  * Basic site setup
  */

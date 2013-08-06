@@ -35,12 +35,6 @@ jQuery17(document).ready(function () {
 
 
     /**********************************************************************
-     * Publish a single comment.
-     **********************************************************************/
-
-
-
-    /**********************************************************************
      * By default, hide the reply and the cancel button for the regular add
      * comment form.
      **********************************************************************/
@@ -55,6 +49,21 @@ jQuery17(document).ready(function () {
      * Otherwise hide it, since the reply functions only work with JS
      * enabled.
      **********************************************************************/
-    $(".reply-to-comment-button").css("display" , "inline");
+    $(".reply-to-comment-button").css("display" , "none");
+
+    $(".comment").hover(
+      function () {
+        $(".twitter-share").show();
+        $(".facebook-share").show();
+        $(".context.reply-to-comment-button.allowMultiSubmit").show();
+        $(".comment ul").css('visibility', 'visible');
+      },
+      function () {
+        $(".twitter-share").hide();
+        $(".facebook-share").hide();
+        $(".context.reply-to-comment-button.allowMultiSubmit").hide();
+        $(".comment ul").css('visibility', 'hidden');
+      }
+    );
 
 });
