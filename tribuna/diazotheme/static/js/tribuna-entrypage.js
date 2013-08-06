@@ -17,5 +17,6 @@ jQuery17(function () {
             });
         });
         $("#entrypage-text").fitText();
+        $('input[type=file]').bootstrapFileInput();
     });
 });
