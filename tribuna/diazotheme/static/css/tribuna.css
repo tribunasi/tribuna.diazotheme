@@ -46,7 +46,9 @@ input[type="submit"] {
     text-decoration: none;
     vertical-align: middle;
 }
-
+a.selected {
+    text-decoration: underline;
+}
 .submit-widget.button-field {
     color: white;
     background-color: blue;
