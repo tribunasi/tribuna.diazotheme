@@ -745,30 +745,56 @@ iframe{
 /**
  * Content slider
  */
-.slider-header {
+#header.slider-header {
     border-bottom: 1px solid black;
-    margin-top: 0;
+    margin-top: 10px;
+}
+
+.content-slider ul li {
+    display: block;
+    float: left;
+}
+.content-slider.responsive {
+	width: auto;
+	margin-left: 0;
+}
+.content-slider .item-inner {
+    padding: 10px;
+    margin: 0 10px 0 0;
+}
+.content-slider .item-inner p {
+    margin: 0;
 }
 .content-slider ul {
-    margin: 0 0 0 10px;
-    display: inline-block;
+    padding: 0 40px;
 }
-.content-slider ul li {
-    display: inline-block;
-    height: 40px;
-    padding: 20px 0;
-    width: 220px;
+.content-slider ul li.selected {
+    border: 1px solid blue;
 }
-.navigate {
-    display: inline-block;
+.caroufredsel_wrapper {
+    margin-left: 0 !important;
 }
-.navigate a {
-    /* XXX: this is a bit silly, test if it works in all browsers */
-    vertical-align: bottom;
+.clearfix {
+	float: none;
+	clear: both;
 }
-.navigate img {
+.prev {
+	float: left;
+	/*margin-left: 10px;*/
+    position: relative;
+    bottom: 60px;
+}
+.next {
+	float: right;
+	/*margin-right: 10px;*/
+    position: relative;
+    bottom: 60px;
+
+}
+img.navigate {
     width: 30px;
 }
+
 /**
  * End of content slider
  */

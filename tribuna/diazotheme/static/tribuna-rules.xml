@@ -193,16 +193,12 @@
     <before css:theme="#container" css:content="#tag-picture" css:if-content="#tag-picture" />
 
 
-    <theme href="tribuna_results.html" if-path="@@main-page main-page"/>
-    <rules if-path="@@main-page main-page" >
-      <!-- <before css:theme="#head" content="/html/body/script" /> -->
-      <after css:theme="#container" css:content="#gallery-start" />
-      <replace css:theme="#container" css:content="#gallery-container" />
-      <after css:theme="#container" css:content="#gv-strip_wrapper" />
-      <drop css:theme="#header" />
+    <theme href="tribuna_mainpage.html" if-path="@@main-page main-page"/>
+    <rules if-path="@@main-page main-page">
+      <replace css:theme-children="#header" css:content-children="#header" />
+      <replace css:theme-children="#main" css:content-children="#article" />
       <replace css:theme="#home-page-link" css:content="#home-page-link" />
     </rules>
-
 
     <replace theme="/html/head/title" content="/html/head/title" />
     <rules if-not-path="@@main-page main-page @@home-page home-page plonebrowser" css:if-not-content="#change-form">

@@ -1,0 +1,335 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8"/>
+
+    <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+         More info: h5bp.com/b/378 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Tribuna results page</title>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+    <!-- CSS: implied media=all -->
+    <!-- CSS concatenated and minified via ant build script-->
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" media="screen"/>
+
+    <link rel="stylesheet" href="openid-selector/css/openid.css"/>
+    <link rel="stylesheet" href="css/theme.css"/>
+    <link rel="stylesheet" href="jqueryui/css/eggplant/jquery-ui-1.8.5.custom.css"/>
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/tribuna.css"/>
+    <!-- end CSS-->
+
+    <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+    <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+         Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+         For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+    <script src="js/libs/modernizr-2.0.6.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse"
+             data-target="#topnav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/dashboard"><img src="img/home.png" alt="Home"/></a>
+
+          <div class="nav-collapse" id="topnav-collapse">
+            <ul id="nav" class="nav">
+              <li><a href="/Tribuna/home-page">Home page</a></li>
+              <li><a href="/Tribuna/articles/++add++tribuna.content.article">Add article</a></li>
+              <li><a href="/Tribuna/tags/++add++tribuna.content.tag">Add tag</a></li>
+              <li><a href="/Tribuna/articles">Manage articles</a></li>
+              <li><a href="/Tribuna/tags">Manage tags</a></li>
+            </ul>
+            <ul id="secondary-nav" class="nav pull-right">
+              <li class="dropdown" data-dropdown="dropdown">
+                <a class="dropdown-toggle" href="#">
+                  <span id="personaltool-menuheader">User</span>
+                  <b class="caret"></b></a>
+                <ul class="dropdown-menu" id="personaltool-menu">
+                  <li><a href="#">Dashboard</a></li>
+                  <li><a href="#">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form id="topsearchbox" class="navbar-search pull-right">
+              <input class="search-query" name="SearchableText" placeholder="Search"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="header" class="slider-header">
+      <div class="content-slider responsive">
+        <ul id="article-slider" class="unstyled">
+          <li id="article0" class="selected">
+            <div class="item-inner">
+              <div class="title"><a>Lorem ipsum 0</a></div>
+              <div class="red">
+                članek
+              </div>
+            </div>
+          </li>
+          <li id="article1">
+            <div class="item-inner">
+              <div class="title"><a>Lorem ipsum 1</a></div>
+              <div class="red">
+                komentar
+              </div>
+            </div>
+          </li>
+          <li id="article2">
+            <div class="item-inner">
+              <div class="title"><a>Lorem ipsum 2</a></div>
+              <div class="red">
+                članek
+              </div>
+            </div>
+          </li>
+          <li id="article3">
+            <div class="item-inner">
+              <div class="title"><a>Lorem ipsum 3</a></div>
+              <div class="red">
+                članek
+              </div>
+            </div>
+          </li>
+          <li id="article4">
+            <div class="item-inner">
+              <div class="title"><a>Lorem ipsum 4</a></div>
+              <div class="red">
+                komentar
+              </div>
+            </div>
+          </li>
+          <li id="article5">
+            <div class="item-inner">
+              <div class="title"><a>Lorem ipsum 5</a></div>
+              <div class="red">
+                članek
+              </div>
+            </div>
+          </li>
+          <li id="article6">
+            <div class="item-inner">
+              <div class="title"><a>Lorem ipsum 6</a></div>
+              <div class="red">
+                članek
+              </div>
+            </div>
+          </li>
+          <li id="article7">
+            <div class="item-inner">
+              <div class="title"><a>Lorem ipsum 7</a></div>
+              <div class="red">
+                komentar
+              </div>
+            </div>
+          </li>
+        </ul>
+        <a href="#" id="prev2" class="prev">
+          <img class="navigate" src="img/arrowBlackLeft.png" alt="Left"/></a>
+        <a href="#" id="next2" class="next">
+          <img class="navigate" src="img/arrowBlackRight.png" alt="Right"/></a>
+		<div class="clearfix"></div>
+      </div>
+    </div>
+
+    <div id="container" class="container-fluid">
+
+      <div id="main" role="main" class="icons-on">
+        <div>
+          <ul class="breadcrumb">
+            <li><a href="#">Home</a><span class="divider">/</span></li>
+            <li class="active">Plone</li>
+          </ul>
+        </div>
+        <div id="content-columns">
+         <div class="row-fluid">
+
+            <div id="left-column" class="span2">
+              <div id="left-column-content">
+                <div id="sidebar-portlet">
+                  <div id="selected-tags">
+                    <ul class="unstyled" id="selected-tags-list">
+                      <li class="selected" id="hlorem">
+                        <a href="#">-</a>
+                        <span><a href="#">HLorem</a></span>
+                      </li>
+                      <li class="selected" id="lorem">
+                        <a href="#">-</a>
+                        <span><a href="#">Lorem</a></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="center-column" class="span10">
+              <div id="center-column-content">
+                <article>
+                  <div id="content">
+                    <!-- Example row of columns -->
+                    <div class="heading row-fluid">
+                      <h2>Lorem ipsum</h2>
+                      <h3>by The Ipsum Master</h3>
+                    </div>
+                    <div class="row-fluid">
+                      <div class="content-core span8">
+                        <p class="description">
+                          Etiam vehicula mauris ac tortor convallis id mollis urna
+                          egestas. Proin lobortis diam sit amet diam ultrices facilisis vitae volutpat
+                          ligula. Quisque nec tellus ac libero pellentesque viverra. Cras at elit justo.
+                          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+                          turpis egestas.
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis erat dolor,
+                          ut tristique ante. Ut rutrum diam et odio interdum luctus. Curabitur convallis
+                          dolor non lacus auctor vitae varius odio dignissim. Pellentesque aliquam
+                          condimentum magna, et placerat orci pretium et. Cras et erat sit amet elit
+                          ultrices scelerisque. Etiam vehicula mauris ac tortor convallis id mollis urna
+                          egestas. Proin lobortis diam sit amet diam ultrices facilisis vitae volutpat
+                          ligula. Quisque nec tellus ac libero pellentesque viverra. Cras at elit justo.
+                          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+                          turpis egestas. Maecenas leo erat, ullamcorper eget venenatis eu, porttitor nec
+                          orci. Praesent rhoncus auctor nulla. Nulla dictum semper ornare.</p>
+                        <p>
+                          Vestibulum volutpat scelerisque accumsan. Aliquam euismod felis eu erat
+                          lobortis vestibulum. Nullam accumsan, orci non dignissim tempus, risus erat
+                          porta dolor, at viverra magna sapien non lacus. Aliquam scelerisque varius
+                          erat, ac placerat felis ultricies quis. Nunc vel imperdiet lorem. Curabitur
+                          consectetur urna in ipsum mollis elementum. Praesent vitae metus justo.
+                          Vestibulum eu ipsum nec justo semper posuere at id lectus. Quisque nulla augue,
+                          congue vitae hendrerit id, euismod nec orci. Class aptent taciti sociosqu ad
+                          litora torquent per conubia nostra, per inceptos himenaeos. Sed feugiat massa
+                          varius libero sodales eget lacinia odio ultrices. Vestibulum ante ipsum primis
+                          in faucibus orci luctus et ultrices posuere cubilia Curae; Duis accumsan
+                          egestas metus id iaculis. Aliquam ut diam massa. Morbi viverra tortor non massa
+                          congue facilisis.</p>
+                        <p>
+                          Suspendisse id condimentum mauris. Curabitur suscipit diam enim, vel
+                          consectetur mi. Curabitur quis est a justo malesuada condimentum laoreet et
+                          orci. Nullam commodo, libero et ultrices interdum, tellus tellus ultrices elit,
+                          id condimentum sapien nisi id nibh. Quisque mattis lectus eget dui ornare eget
+                          eleifend lectus ornare. </p>
+                      </div>
+
+                      <div id="comments" class="span4">
+                        <div id="add-comment">
+                          <form action=".">
+                            <textarea class="span3"></textarea>
+                            <input type="button" value="koment" />
+                          </form>
+                        </div>
+                        <div class="discussion">
+                          <div class="comment replyTreeLevel0">
+                            <div class="documentByLine">
+                              lorem
+                              <div class="commentDate">Jul 15, 2013 08:03 PM</div>
+                            </div>
+                            <div class="commentBody">
+                              <p>foo</p>
+                            </div>
+                          </div>
+                          <div class="comment replyTreeLevel1">
+                            <div class="documentByLine">
+                              admin
+                              <div class="commentDate">Jul 15, 2013 08:03 PM</div>
+                            </div>
+                            <div class="commentBody">
+                              <p>
+                                Suspendisse id condimentum mauris. Curabitur suscipit diam enim, vel
+                                consectetur mi. Curabitur quis est a justo malesuada condimentum laoreet et
+                                orci. Nullam commodo, libero et ultrices interdum, tellus tellus ultrices elit,
+                                id condimentum sapien nisi id nibh. Quisque mattis lectus eget dui ornare eget
+                                eleifend lectus ornare. </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div style="clear:both">&nbsp;</div>
+
+    </div> <!--! end of #container -->
+    <div id="home-page-link"></div>
+
+    <!-- JavaScript at the bottom for fast page loading -->
+
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+         <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+           -->
+
+    <!-- scripts concatenated and minified via ant build script-->
+    <script src="jquery-1.7.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" language="javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+	<script type="text/javascript" language="javascript" src="js/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" language="javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script src="js/purl.js"></script>
+    <!--script src="js/tribuna-mainpage.js"></script-->
+
+    <script>
+      jQuery(document).ready(function () {
+          jQuery('.dropdown-toggle').dropdown();
+      });
+    </script>
+    <script defer src="js/plugins.js"></script>
+    <script defer src="openid-selector/js/openid-jquery.js"></script>
+    <!-- <script defer src="js/openid-providers.js"></script> -->
+    <!-- <script defer src="js/openid-wrapper.js"></script> -->
+    <!--script defer src="js/script.js"></script-->
+    <script defer src="js/tribuna-mainpage.js"></script>
+    <div id="site-scripts"></div>
+
+    <!-- end scripts-->
+
+
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+         chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+
+  </body>
+</html>
