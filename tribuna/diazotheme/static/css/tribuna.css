@@ -436,6 +436,10 @@ div.ui-draggable-dragging img {
     width: 100%;
 }
 
+#form-widgets-sort_on {
+    width:auto;
+}
+
 #topside-content-sort_on #formfield-form-widgets-sort_on {
     display: block;
 }
@@ -1050,15 +1054,27 @@ div#center-column, div#content {
 /**
  * Search
  */
-#form-buttons-search {
-    visibility: hidden;
+#search-form-right .formControls input {
+    display: none;
 }
 
-#search-form label {
+#search-form label, #search-form-right label {
     display: none;
 }
-#search-form .formControls {
+#search-form-right .formControls {
     display: none;
+}
+
+#search-form-right form {
+    float: right;
+    width: auto;
+}
+#search-form form, #search-form form div {
+    display:inline;
+}
+#search-form form div .submit-widget.button-field {
+    background-color: Cyan;
+    color: black;
 }
 /**
  * End search

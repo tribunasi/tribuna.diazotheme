@@ -72,8 +72,8 @@
            if-path="@@home-page home-page"
            css:if-not-content="#tag-description-div"/>
     <rules if-path="@@home-page home-page">
-        <drop css:theme="#right-column #search-form" css:if-content="#search-view" />
-        <replace css:theme-children="#search-form" css:content-children="#search-form" css:if-not-content="#search-view" />
+        <drop css:theme="#right-column #search-form-right" css:if-content="#search-view" />
+        <replace css:theme-children="#search-form-right" css:content-children="#search-form" css:if-not-content="#search-view" />
         <before css:theme="#topside-content-sort_on" css:content="#search-form" css:if-content="#search-view" />
         <!-- <replace css:content=".portlet.portletSidebar" css:theme="#sidebar-portlet" /> -->
         <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
@@ -180,6 +180,7 @@
             <replace css:theme-children="#topside-content-sort_on" css:content="#formfield-form-widgets-sort_on" />
             <replace css:content-children=".articles-intersection" css:theme-children="#intersection-articles"/>
             <replace css:content-children=".articles-union" css:theme-children="#union-articles"/>
+            <replace css:if-content="#empty-results" css:content="#empty-results" css:theme-children="#articles_list"/>
             <replace css:content-children="#tag-description-div" css:theme-children="#content" />
         </rules>
         <rules css:if-not-content=".articles-intersection">
