@@ -90,7 +90,7 @@ a.selected {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     width: 200px;
-    height: 14px;
+    height: 1.5em;
 }
 #entrypage-form .field select {
     width: 210px;
