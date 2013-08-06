@@ -53,16 +53,16 @@ jQuery17(document).ready(function () {
 
     $(".comment").hover(
       function () {
-        $(".twitter-share").show();
-        $(".facebook-share").show();
-        $(".context.reply-to-comment-button.allowMultiSubmit").show();
-        $(".comment ul").css('visibility', 'visible');
+        $("#" + $(this).attr("id") + " .twitter-share").show();
+        $("#" + $(this).attr("id") + " .facebook-share").show();
+        $("#" + $(this).attr("id") + " .context.reply-to-comment-button.allowMultiSubmit").show();
+        $("#" + $(this).attr("id") + "  ul").css('visibility', 'visible');
       },
       function () {
-        $(".twitter-share").hide();
-        $(".facebook-share").hide();
-        $(".context.reply-to-comment-button.allowMultiSubmit").hide();
-        $(".comment ul").css('visibility', 'hidden');
+        $("#" + $(this).attr("id") + " .twitter-share").hide();
+        $("#" + $(this).attr("id") + " .facebook-share").hide();
+        $("#" + $(this).attr("id") + " .context.reply-to-comment-button.allowMultiSubmit").hide();
+        $("#" + $(this).attr("id") + "  ul").css('visibility', 'hidden');
       }
     );
 
