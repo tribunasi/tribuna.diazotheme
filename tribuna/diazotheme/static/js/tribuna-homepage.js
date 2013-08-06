@@ -142,6 +142,7 @@ jQuery17(function () {
 
         if( sessionStorage.getItem("all-tags") == "open") {
             runEffect();
+            jQuery17('#all-tags-list-close').toggle();
         }
         // Click event for show/hide "button" (actually just a link)
         jQuery17("#show-all-tags" ).click(function() {
