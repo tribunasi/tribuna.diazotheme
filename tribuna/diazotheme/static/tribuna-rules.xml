@@ -133,7 +133,8 @@
                 <br />
             </xsl:for-each>
         </replace>
-        <replace css:theme-children="#all-tags-list">
+        <drop css:theme="#all-tags-list li" />
+        <after css:theme="#all-tags-list-close">
             <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
                 <xsl:element name="li">
                     <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
@@ -149,7 +150,7 @@
                      <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
                  </xsl:element>
             </xsl:for-each>
-        </replace>
+        </after>
         <replace css:theme-children="#selected-tags-list">
             <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
                 <xsl:if test="input/@checked='checked'">

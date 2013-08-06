@@ -575,6 +575,11 @@ ul#all-tags-list{
     padding: 20px;
 }
 
+#all-tags-list-close {
+    display: inline-block;
+    float: right;
+    cursor:pointer;
+}
 .bordered {
     border-style: solid;
     /*border-width: 1px 1px 1px 1px;*/

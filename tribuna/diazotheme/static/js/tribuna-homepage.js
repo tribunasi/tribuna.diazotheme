@@ -89,10 +89,12 @@ jQuery17(function () {
         // Show the div if it's hidden, hide if it it's shown
         var all_tags = $( "#all-tags-list" );
         if(all_tags.css("display") === "none"){
+          sessionStorage.setItem("all-tags", "open");
           jQuery17( "#all-tags-list" ).show("fast");
         }
         else {
            jQuery17( "#all-tags-list" ).hide("fast");
+           sessionStorage.setItem("all-tags", "closed");
         }
     }
 
@@ -138,11 +140,18 @@ jQuery17(function () {
         jQuery17("#tags-list > li > span > a").click( selectOne);
         jQuery17("#all-tags-list > li > span > a").click( selectOne);
 
-
+        if( sessionStorage.getItem("all-tags") == "open") {
+            runEffect();
+        }
         // Click event for show/hide "button" (actually just a link)
         jQuery17("#show-all-tags" ).click(function() {
           runEffect();
+          jQuery17('#all-tags-list-close').toggle();
           return false;
+        });
+        jQuery17('#all-tags-list-close').click(function () {
+            runEffect();
+            jQuery17('#all-tags-list-close').toggle();
         });
         // jQuery17(document).click( function(e) {
         //   runEffectClose(e);
