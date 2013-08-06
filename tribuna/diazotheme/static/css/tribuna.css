@@ -945,7 +945,7 @@ div.main-page-comments {
 }
 
 .navbar-fixed-top {
-    position: static;
+    position: relative;
 }
 
 .gv-frame.current {
