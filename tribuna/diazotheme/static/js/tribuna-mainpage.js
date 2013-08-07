@@ -10,15 +10,10 @@ jQuery(function () {
         slider.carouFredSel({
             circular: false,
             infinite: false,
-            responsive: true,
             width: '100%',
+            height: 62,
             items: {
-                width: 200,
-                height: 60,
-                visible: {
-                    min: 2,
-                    max: 6
-                }
+                width: 220
             },
             auto: false,
             prev: '#prev',
