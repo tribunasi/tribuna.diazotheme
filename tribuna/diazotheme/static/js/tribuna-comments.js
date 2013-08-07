@@ -1,4 +1,4 @@
-jQuery17(document).ready(function () {
+$(document).ready(function () {
 
      /**********************************************************************
      * If the user hits the "reply" button of an existing comment, create a
