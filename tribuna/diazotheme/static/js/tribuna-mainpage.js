@@ -1,7 +1,7 @@
-jQuery(function () {
+jQuery17(function () {
     'use strict';
 
-    var slider = jQuery('#article-slider'),
+    var slider = jQuery17('#article-slider'),
         article_id,
         article_uid,
         article_url,
@@ -11,7 +11,7 @@ jQuery(function () {
         comments_url;
 
     function processComment(comments_url) {
-        comments_form = $("#commenting form");
+        comments_form = jQuery17("#commenting form");
         var options = {
             data: comments_form.serialize(),
             success:function() {
@@ -21,29 +21,30 @@ jQuery(function () {
         comments_form.ajaxForm(options);
     }
 
-    //jQuery('.activate-comments').click(function () {
+    //jQuery17('.activate-comments').click(function () {
     function loadComments(article_uid) {
-        comments = jQuery('#comments-' + article_uid);
+        comments = jQuery17('#comments-' + article_uid);
         comments_url = comments.attr('data-url');
         comments.load(comments_url);
-        processComment(comments_url);
+        //processComment(comments_url);
     }
 
-    jQuery('#article-slider li').click(function () {
-        jQuery(this).addClass('selected');
-        article_id = jQuery(this).attr('id');
-        article_uid = jQuery(this).attr('data-uid');
+    jQuery17('#article-slider li').click(function () {
+        var $this = jQuery17(this);
+        $this.addClass('selected');
+        article_id = $this.attr('id');
+        article_uid = $this.attr('data-uid');
         article_url = 'Tribuna/get-article?id=' + article_id;
-        jQuery('#main').load(article_url + " #article", function () {
+        jQuery17('#main').load(article_url + " #article", function () {
             loadComments(article_uid);
         });
 
-        jQuery("#article-slider li").not(this).each(function(){
-            $(this).removeClass('selected');
+        jQuery17("#article-slider li").not(this).each(function() {
+            jQuery17(this).removeClass('selected');
         });
     });
 
-    jQuery(document).ready(function () {
+    jQuery17(document).ready(function () {
         slider.carouFredSel({
             circular: false,
             infinite: false,
@@ -61,17 +62,17 @@ jQuery(function () {
                 onTouch: true
             }
         });
-        article_id = jQuery.url().param('article');
-        selected_article = jQuery('#' + article_id);
+        article_id = jQuery17.url().param('article');
+        selected_article = jQuery17('#' + article_id);
         slider.trigger('slideTo', selected_article);
         selected_article.trigger('click');
 
-        $('#ajax-spinner')
+        jQuery17('#ajax-spinner')
             .ajaxStart(function() {
-                $(this).show();
+                jQuery17(this).show();
             })
             .ajaxStop(function() {
-                $(this).hide();
+                jQuery17(this).hide();
             });
     });
 
