@@ -1098,9 +1098,28 @@ div#center-column, div#content {
 #search-form form, #search-form form div {
     display:inline;
 }
+#search-form form div .text-widget.required.textline-field,
+#search-form-right form div .text-widget.required.textline-field {
+    margin-top: 10px;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-width: 1px;
+    border-color: #ccc;
+    border-radius: 0;
+    box-shadow: 2px 2px 1px #888888;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 200px;
+    height: 2em;
+    }
 #search-form form div .submit-widget.button-field {
     background-color: Cyan;
     color: black;
+    height: 1.5em;
+    border: 0;
 }
 /**
  * End search
