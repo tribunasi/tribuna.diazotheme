@@ -1,0 +1,5 @@
+.sidebar-nav-fixed {
+    /* XXX: This !important failz needs to go away when we properly
+       import all css files into plone_css registry*/
+    top: 40px !important;
+}

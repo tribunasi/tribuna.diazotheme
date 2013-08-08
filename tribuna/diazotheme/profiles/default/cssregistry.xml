@@ -7,4 +7,9 @@
      id="public.css"
      />
 
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="++theme++tribuna.diazotheme/css/tribuna-admin.css" media="screen" rel="stylesheet"
+    rendering="import"/>
+
 </object>
