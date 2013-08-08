@@ -49,10 +49,10 @@
     <merge attributes="class" css:content="#homepage-div" css:theme="#right-column" />
     <merge attributes="class" css:content="#homepage-div" css:theme="#topside-content" />
 
-    <theme href="tribuna_entrypage.html" css:if-content="#change-form"/>
-    <!-- <drop css:content="#change-form" /> -->
-    <rules css:if-content="#change-form">
-        <replace css:content-children="#entrypage-home-link" css:theme-children="#entrypage-home-link"/>
+    <theme href="tribuna_entrypage.html" css:if-content="#entrypage-home-link"/>
+    <replace css:content-children="#entrypage-home-link" css:theme-children="#entrypage-home-link"/>
+    <drop css:theme="#entrypage-form-container" css:if-not-content="#change-form"/>
+    <rules css:if-content="#change-form">       
         <replace css:content-children="#entrypage-author-title" css:theme-children="#entrypage-author-title"/>
         <merge attributes="style" css:content="#background-placeholder" css:theme="body" />
         <replace css:content-children="#picture-change" css:theme-children="#collapseOne"/>
@@ -75,6 +75,7 @@
         <drop css:theme="#right-column #search-form-right" css:if-content="#search-view" />
         <replace css:theme-children="#search-form-right" css:content-children="#search-form" css:if-not-content="#search-view" />
         <before css:theme="#topside-content-sort_on" css:content="#search-form" css:if-content="#search-view" />
+        <replace css:theme="#entry-page-edit" css:content="#entry-page-edit" />
         <!-- <replace css:content=".portlet.portletSidebar" css:theme="#sidebar-portlet" /> -->
         <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
         <before css:theme="#center-column-content" css:if-content="#edit-bar">
