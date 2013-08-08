@@ -748,9 +748,10 @@ iframe{
 #header.slider-header {
     border-bottom: 1px solid black;
     margin-top: 10px;
+    position: relative;
 }
 .content-slider-wrapper {
-    width: 95%;
+    width: 92%;
     margin: 0 auto;
 }
 .content-slider ul li {
@@ -779,14 +780,14 @@ iframe{
 	clear: both;
 }
 .prev {
-	float: left;
-    position: relative;
-    bottom: 60px;
+    position: absolute;
+    top: 14px;
+    left: 0;
 }
 .next {
-	float: right;
-    position: relative;
-    bottom: 60px;
+    position: absolute;
+    top: 14px;
+    right: 0;
 
 }
 img.navigate {
