@@ -1101,7 +1101,9 @@ div#center-column, div#content {
     display:inline;
 }
 #search-form form div .text-widget.required.textline-field,
-#search-form-right form div .text-widget.required.textline-field {
+#search-form-right form div .text-widget.required.textline-field,
+#search-form-right #searchGadget,
+#search-form #searchGadget{
     margin-top: 10px;
     border-style: solid;
     border-width: 1px 1px 1px 1px;
@@ -1122,6 +1124,40 @@ div#center-column, div#content {
     color: black;
     height: 1.5em;
     border: 0;
+}
+.LSBox {
+    position: relative;
+}
+#LSResult {
+    margin: 0 0 0 -7em;
+    /*display: block !important;*/
+}
+.LSTable {
+    margin: 0;
+}
+#center-column #LSResult {
+    left: 90px;
+    right: auto;
+}
+#center-column .advancedsearchlink {
+    display: none;
+}
+#LSResult fieldset {
+    padding: 0;
+    border: 0;
+}
+#LSResult a {
+    color: black;
+    text-decoration: underline;
+}
+.LSRow img {
+    display: none;
+}
+#livesearchLegend {
+    background-color: white;
+    font-size: 14px;
+    padding: 0.2em;
+    margin-bottom: 10px;
 }
 /**
  * End search
