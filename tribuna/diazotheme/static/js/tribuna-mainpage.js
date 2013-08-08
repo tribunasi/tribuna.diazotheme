@@ -7,27 +7,7 @@ jQuery17(function () {
         article_url,
         selected_article,
         comments,
-        comments_form,
         comments_url;
-
-    function processComment(comments_url) {
-        comments_form = jQuery17("#commenting form");
-        var options = {
-            data: comments_form.serialize(),
-            success:function() {
-                comments_form.parent().load(comments_url);
-            }
-        };
-        comments_form.ajaxForm(options);
-    }
-
-    //jQuery17('.activate-comments').click(function () {
-    function loadComments(article_uid) {
-        comments = jQuery17('#comments-' + article_uid);
-        comments_url = comments.attr('data-url');
-        comments.load(comments_url);
-        //processComment(comments_url);
-    }
 
     jQuery17('#article-slider li').click(function () {
         var $this = jQuery17(this);
@@ -35,9 +15,7 @@ jQuery17(function () {
         article_id = $this.attr('id');
         article_uid = $this.attr('data-uid');
         article_url = 'Tribuna/get-article?id=' + article_id;
-        jQuery17('#main').load(article_url + " #article", function () {
-            loadComments(article_uid);
-        });
+        jQuery17('#main').load(article_url + " #article");
 
         jQuery17("#article-slider li").not(this).each(function() {
             jQuery17(this).removeClass('selected');
@@ -74,6 +52,14 @@ jQuery17(function () {
             .ajaxStop(function() {
                 jQuery17(this).hide();
             });
+
+        jQuery17("#main").on("change", ".activate-comments", function () {
+            comments = jQuery17('#comments-' + article_uid);
+            comments_url = comments.attr('data-url');
+            comments.load(comments_url);
+        });
+
+
     });
 
 });
