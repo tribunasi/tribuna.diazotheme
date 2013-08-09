@@ -536,8 +536,9 @@ ul#tags-list li,
 div#selected-tags-list span {
     display: block;
 }
-
-
+div#selected-tags-list span {
+    text-align: center;
+}
 
 ul#selected-tags-list li.selected {
     border-style: solid;
@@ -813,6 +814,35 @@ img.navigate {
     float: right;
     margin-top: 10px;
 }
+.template-articles #main {
+    margin-top: 30px;
+}
+.article-display-options.span4 {
+    background-color: yellow;
+    padding-left: 10px;
+    width: 200px;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-width: 1px;
+    border-color: yellow;
+    box-shadow: 2px 2px 1px #888888;
+}
+.article-heading {
+    padding: 0;
+    margin-bottom: 60px;
+}
+.article-heading h2 {
+    line-height: 1em;
+}
+.article-display-options label {
+    margin-right: 20px;
+}
+
+#article #commenting {
+    margin-top: 0;
+    padding-top: 0;
+    border: none;
+}
 /**
  * End of content slider
  */
@@ -830,15 +860,16 @@ img.navigate {
     color: black;
     cursor: pointer;
 }
-#content .heading {
+.content-core .heading {
     margin-bottom: 3em;
 }
-#content .heading h2 {
+.content-core .heading h2 {
     line-height: 1em;
 }
-#content .description {
+.content-core .description {
     font-style: italic;
     margin-bottom: 2em;
+    padding-top: 10px;
 }
 div.full-width {
     width: 100%;
@@ -1047,21 +1078,6 @@ div.articles-comments {
     margin-bottom: 12px;
     font-weight: bold;
 }
-
-#selection-checkbox {
-    position: absolute;
-    top: 20px;
-    right: 20%;
-    background-color: yellow;
-    padding: 2px;
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    border-width: 1px;
-    border-color: yellow;
-    box-shadow: 2px 2px 1px #888888;
-}
-
-
 .twitter-share, .facebook-share,
 .context.reply-to-comment-button
  {
