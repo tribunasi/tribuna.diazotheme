@@ -75,7 +75,7 @@ a.selected {
     display: inline-block;
     float: right;
 }
-#entrypage-form .field input {
+#entrypage-form .field input, #entrypage-form .text-field {
     border-style: solid;
     border-width: 1px 1px 1px 1px;
     border-width: 1px;
@@ -83,7 +83,7 @@ a.selected {
     border-radius: 0;
     /*padding: 10px;
     padding-left: 15px;*/
-    box-shadow: 2px 2px 1px #888888;
+    box-shadow: -2px 2px 0px #666666;
     -webkit-box-sizing: border-box;
 /*    -moz-box-sizing: border-box;*/
     -o-box-sizing: border-box;
@@ -91,6 +91,9 @@ a.selected {
     box-sizing: border-box;
     width: 200px;
     height: 1.5em;
+}
+#entrypage-form .text-field {
+    height: 3em;
 }
 #entrypage-form .field select {
     width: 210px;
@@ -596,6 +599,7 @@ ul#all-tags-list{
 
 #sidebar-section {
     max-width: 120px;
+    background: white;
 }
 
 /*Hide the original form*/
@@ -623,12 +627,22 @@ input#form-buttons-filter {
 }
 
 input#form-buttons-text {
+    box-shadow: none;
     background-image: url(++theme++tribuna.diazotheme/img/textview-black.jpg);
 }
 input#form-buttons-drag {
+    box-shadow: none;
     background-image: url(++theme++tribuna.diazotheme/img/dragdrop-black.jpg);
 }
 
+input#form-buttons-text.selected {
+    box-shadow: none;
+    background-image: url(++theme++tribuna.diazotheme/img/textview-grey.jpg);
+}
+input#form-buttons-drag.selected {
+    box-shadow: none;
+    background-image: url(++theme++tribuna.diazotheme/img/dragdrop-grey.jpg);
+}
 input#form-buttons-text, input#form-buttons-drag {
     width: 12px;
     height: 12px;

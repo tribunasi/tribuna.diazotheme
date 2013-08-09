@@ -131,6 +131,13 @@ jQuery17(function () {
             jQuery17(".plusminus").css("display", "inline-block");
         }
 
+        if (jQuery17("#homepage-div").size() > 0){
+            jQuery17("#form-buttons-drag").addClass("selected");
+        }
+        else {
+            jQuery17("#form-buttons-text").addClass("selected");
+        }
+
         jQuery17("#selected-tags-list > li > a").click( moveUpDown);
         jQuery17("#tags-list > li > a").click( moveUpDown);
         jQuery17("#all-tags-list > li > a").click( moveUpDown);
