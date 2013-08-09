@@ -7,7 +7,8 @@ jQuery17(function () {
         article_url,
         selected_article,
         comments,
-        comments_url;
+        comments_url,
+        text;
 
 
     jQuery17(document).ready(function () {
@@ -43,9 +44,53 @@ jQuery17(function () {
 
         jQuery17("#main").on("change", ".activate-comments", function () {
             comments = jQuery17('#comments-' + article_uid);
-            comments_url = comments.attr('data-url');
-            comments.load(comments_url);
+            text = jQuery17('.content-core');
+            if (comments.children().length === 0) {
+                comments_url = comments.attr('data-url');
+                comments.load(comments_url);
+            }
+            if (jQuery17(this).prop("checked")) {
+                comments.show();
+                if (text.is(":visible")) {
+                    comments.removeClass("span9");
+                    comments.addClass("span5");
+                    text.removeClass("span9");
+                    text.addClass("span7");
+                }
+                else {
+                    comments.removeClass("span5");
+                    comments.addClass("span9");
+                }
+            }
+            else {
+                comments.hide();
+                text.removeClass("span7");
+                text.addClass("span9");
+            }
         });
+        jQuery17("#main").on("change", ".activate-text", function () {
+            text = jQuery17('.content-core');
+            comments = jQuery17('#comments-' + article_uid);
+            if (jQuery17(this).prop("checked")) {
+                text.show();
+                if (comments.is(":visible")) {
+                    text.removeClass("span9");
+                    text.addClass("span7");
+                    comments.removeClass("span9");
+                    comments.addClass("span5");
+                }
+                else {
+                    text.removeClass("span7");
+                    text.addClass("span9");
+                }
+            }
+            else {
+                text.hide();
+                comments.removeClass("span5");
+                comments.addClass("span9");
+            }
+        });
+
 
     });
 
