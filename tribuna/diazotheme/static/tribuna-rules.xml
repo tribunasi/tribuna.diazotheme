@@ -29,7 +29,7 @@
         <li><xsl:copy-of css:select="#personaltools-login"/></li>
     </replace>
     <copy css:theme="#topsearchbox" css:content="#portal-searchbox form" attributes="action"/>
-
+    <replace css:theme-children="#nav" css:content-children="#navbar-template" />
 
     <after css:theme="meta[http-equiv='X-UA-Compatible']"
               content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" />
@@ -75,7 +75,6 @@
         <drop css:theme="#right-column #search-form-right" css:if-content="#search-view" />
         <replace css:theme-children="#search-form-right" css:content-children="#search-form" css:if-not-content="#search-view" />
         <before css:theme="#topside-content-sort_on" css:content="#search-form" css:if-content="#search-view" />
-        <replace css:theme="#entry-page-edit" css:content="#entry-page-edit" />
         <!-- <replace css:content=".portlet.portletSidebar" css:theme="#sidebar-portlet" /> -->
         <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
         <before css:theme="#center-column-content" css:if-content="#edit-bar">

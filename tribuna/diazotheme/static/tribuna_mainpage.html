@@ -57,15 +57,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/dashboard"><img src="img/home.png" alt="Home"/></a>
 
           <div class="nav-collapse" id="topnav-collapse">
             <ul id="nav" class="nav">
-              <li><a href="/Tribuna/home">Home page</a></li>
-              <li><a href="/Tribuna/articles/++add++tribuna.content.article">Add article</a></li>
-              <li><a href="/Tribuna/tags/++add++tribuna.content.tag">Add tag</a></li>
-              <li><a href="/Tribuna/articles">Manage articles</a></li>
-              <li><a href="/Tribuna/tags">Manage tags</a></li>
+              <li><a class="brand" href=""><img src="img/home.png" alt="Home"/></a></li>
+              <li><a href="">Home page</a></li>
+              <li><a href="">Add article</a></li>
+              <li><a href="">Edit entry page</a></li>
+              <li><a href="">Add tag</a></li>
+              <li><a href="">Manage articles</a></li>
+              <li><a href="">Manage tags</a></li>
             </ul>
             <ul id="secondary-nav" class="nav pull-right">
               <li class="dropdown" data-dropdown="dropdown">
@@ -323,6 +324,15 @@
     <!-- <script defer src="js/openid-providers.js"></script> -->
     <!-- <script defer src="js/openid-wrapper.js"></script> -->
     <!--script defer src="js/script.js"></script-->
+    <script type="text/javascript">    (function($) {
+        $().ready(function() {
+            var newValues = 'http://localhost:8087/Tribuna/articles/json-subjects';
+            var oldValues = [];
+            $('#token-input-form-widgets-subject').data('klass','token-input-widget list-field');
+            keywordTokenInputActivate('token-input-form-widgets-subject', newValues, oldValues);
+        });
+    })(jQuery);
+    </script>
     <script defer src="js/tribuna-mainpage.js"></script>
     <!--script defer src="js/tribuna-comments.js"></script-->
 
