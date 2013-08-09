@@ -1071,11 +1071,23 @@ div.articles-comments {
     font-size: 15px;
     line-height: 21px;
 }
-
+.reply {
+    margin-top: 40px;
+}
+#formfield-form-widgets-comment-text label {
+    display: none;
+}
 /*.comment {
     margin-bottom: 63px;
 }*/
 
+#commenting .formControls {
+    margin-right: 0;
+    text-align: right;
+}
+#commenting textarea {
+    width: 98%;
+}
 .comment .commentTag {
     font-size: 12px;
     margin-right: 12px;
