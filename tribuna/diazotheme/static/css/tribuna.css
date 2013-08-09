@@ -241,7 +241,7 @@ div#topside-tags {
     margin-top: 10px;
 }
 div#selected-tags {
-    max-width: 150px;
+    width: 125px;
 }
 div#topside-content {
     float: right;
@@ -489,6 +489,7 @@ div#sidebar-portlet {
     font-weight: 300;
     font-size: 12px;
     line-height: 22px;
+    margin-bottom: 20px;
 }
 div#sidebar-portlet ul {
     margin-bottom: 0;
