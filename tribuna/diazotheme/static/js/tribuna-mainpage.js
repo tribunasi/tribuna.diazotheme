@@ -106,5 +106,19 @@ jQuery17(function () {
         });
     });
 
+    jQuery17('#article-navigation .next').click(function () {
+        var current = jQuery17('#article-slider li.selected');
+        var next = current.next();
+        slider.trigger('slideTo', next);
+        next.trigger('click');
+    });
+
+    jQuery17('#article-navigation .prev').click(function () {
+        var current = jQuery17('#article-slider li.selected');
+        var prev = current.prev();
+        slider.trigger('slideTo', prev);
+        prev.trigger('click');
+    });
+
 
 });

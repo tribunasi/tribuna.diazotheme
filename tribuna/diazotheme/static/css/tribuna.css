@@ -796,16 +796,21 @@ iframe{
 	float: none;
 	clear: both;
 }
-.prev {
-    position: absolute;
-    top: 14px;
-    left: 0;
-}
+.prev,
 .next {
     position: absolute;
     top: 14px;
+}
+.prev {
+    left: 0;
+}
+.next {
     right: 0;
-
+}
+#article-navigation .next,
+#article-navigation .prev {
+    position: fixed;
+    top: 50%;
 }
 img.navigate {
     width: 30px;
