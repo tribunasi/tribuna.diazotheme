@@ -843,6 +843,10 @@ img.navigate {
     padding-top: 0;
     border: none;
 }
+ul.token-input-list-facebook {
+    width: 100%;
+}
+
 /**
  * End of content slider
  */

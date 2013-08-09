@@ -52,14 +52,14 @@ jQuery17(function () {
             if (jQuery17(this).prop("checked")) {
                 comments.show();
                 if (text.is(":visible")) {
-                    comments.removeClass("span9");
+                    comments.removeClass("span7");
                     comments.addClass("span5");
                     text.removeClass("span9");
                     text.addClass("span7");
                 }
                 else {
                     comments.removeClass("span5");
-                    comments.addClass("span9");
+                    comments.addClass("span7");
                 }
             }
             else {
@@ -76,7 +76,7 @@ jQuery17(function () {
                 if (comments.is(":visible")) {
                     text.removeClass("span9");
                     text.addClass("span7");
-                    comments.removeClass("span9");
+                    comments.removeClass("span7");
                     comments.addClass("span5");
                 }
                 else {
@@ -87,7 +87,7 @@ jQuery17(function () {
             else {
                 text.hide();
                 comments.removeClass("span5");
-                comments.addClass("span9");
+                comments.addClass("span7");
             }
         });
 
