@@ -779,12 +779,13 @@ iframe{
 	margin-left: 0;
 }
 .content-slider .item-inner {
-    padding: 10px;
+    padding: 10px 30px 10px 10px;
+    margin-right: 20px;
 }
 .content-slider .item-inner p {
     margin: 0;
 }
-.content-slider ul li.selected {
+.content-slider ul li.selected .item-inner {
     border: 1px solid blue;
 }
 .caroufredsel_wrapper {
