@@ -9,18 +9,6 @@ jQuery17(function () {
         comments,
         comments_url;
 
-    jQuery17('#article-slider li').click(function () {
-        var $this = jQuery17(this);
-        $this.addClass('selected');
-        article_id = $this.attr('id');
-        article_uid = $this.attr('data-uid');
-        article_url = 'Tribuna/get-article?id=' + article_id;
-        jQuery17('#main').load(article_url + " #article");
-
-        jQuery17("#article-slider li").not(this).each(function() {
-            jQuery17(this).removeClass('selected');
-        });
-    });
 
     jQuery17(document).ready(function () {
         slider.carouFredSel({
@@ -40,7 +28,7 @@ jQuery17(function () {
                 onTouch: true
             }
         });
-        article_id = jQuery17.url().param('article');
+        article_id = jQuery17("#main").attr('data-id');
         selected_article = jQuery17('#' + article_id);
         slider.trigger('slideTo', selected_article);
         selected_article.trigger('click');
@@ -59,7 +47,19 @@ jQuery17(function () {
             comments.load(comments_url);
         });
 
-
     });
+
+    jQuery17('#article-slider li').click(function () {
+        var $this = jQuery17(this);
+        $this.addClass('selected');
+        article_uid = $this.attr('data-uid');
+        article_url = $this.attr('data-url');
+        jQuery17('#main').load(article_url + " #article");
+
+        jQuery17("#article-slider li").not(this).each(function() {
+            jQuery17(this).removeClass('selected');
+        });
+    });
+
 
 });
