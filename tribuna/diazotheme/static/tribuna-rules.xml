@@ -57,7 +57,7 @@
     <rules css:if-content="#text-container">
       <after theme="/html/body" css:content="#text-container" />
     </rules>
-    <rules css:if-content="#change-form">   
+    <rules css:if-content="#change-form">
         <replace css:content-children="#picture-change" css:theme-children="#collapseOne"/>
         <replace css:content-children="#text-change" css:theme-children="#collapseTwo"/>
         <replace css:content-children="#old-pages" css:theme-children="#collapseThree"/>
@@ -198,7 +198,7 @@
     <theme href="tribuna_mainpage.html" if-path="@@main-page main-page"/>
     <rules if-path="@@main-page main-page">
       <replace css:theme-children="#header" css:content-children="#header" />
-      <replace css:theme-children="#main" css:content-children="#article" />
+      <replace css:theme="#main" css:content="#main" />
       <replace css:theme="#home-page-link" css:content="#home-page-link" />
     </rules>
 
