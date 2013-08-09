@@ -293,7 +293,7 @@ $(window).load(function(){
 			current = i;
 
 			// Added by Tribuna because we need it.
-			var selectedID = '@@main-page?article=' + $('.gv-frame.current').attr('id');
+			var selectedID = '@@articles/' + $('.gv-frame.current').attr('id');
 			window.history.replaceState(null, null, selectedID);
 		};
 

@@ -972,7 +972,7 @@ div.half-width {
  */
 
 
-div.main-page-comments {
+div.articles-comments {
     height: 100%;
 }
 
@@ -1010,7 +1010,7 @@ div.main-page-comments {
     left: 50px !important;
 }*/
 
-.main-page-article-body {
+.articles-article-body {
     font-size: 16px;
     line-height: 24px;
     height: 100%;
