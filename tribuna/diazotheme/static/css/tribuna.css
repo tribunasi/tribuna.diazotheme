@@ -598,7 +598,7 @@ ul#all-tags-list{
 }
 
 #sidebar-section {
-    max-width: 120px;
+    width: 95px;
     background: white;
 }
 
