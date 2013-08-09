@@ -422,7 +422,7 @@ div.ui-draggable-dragging img {
 /* XXX: do we need display: table; for editing interface? Because it breaks
  boostrap layout..
 */
-/*.template-home-page #content-columns {*/
+/*.template-home #content-columns {*/
 #content-columns {
     display: block;
 }
@@ -793,7 +793,7 @@ iframe{
 img.navigate {
     width: 30px;
 }
-#home-page-link {
+#close-articles {
     float: right;
     margin-top: 10px;
 }

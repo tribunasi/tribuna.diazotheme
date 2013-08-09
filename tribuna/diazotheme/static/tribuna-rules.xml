@@ -66,12 +66,12 @@
 
 
     <theme href="tribuna_homepage_2cols.html"
-           if-path="@@home-page home-page"
+           if-path="@@home home"
            css:if-content="#tag-description-div"/>
     <theme href="tribuna_homepage_1col.html"
-           if-path="@@home-page home-page"
+           if-path="@@home home"
            css:if-not-content="#tag-description-div"/>
-    <rules if-path="@@home-page home-page">
+    <rules if-path="@@home home">
         <drop css:theme="#right-column #search-form-right" css:if-content="#search-view" />
         <replace css:theme-children="#search-form-right" css:content-children="#search-form" css:if-not-content="#search-view" />
         <before css:theme="#topside-content-sort_on" css:content="#search-form" css:if-content="#search-view" />
@@ -199,11 +199,11 @@
     <rules if-path="@@articles">
       <replace css:theme-children="#header" css:content-children="#header" />
       <replace css:theme="#main" css:content="#main" />
-      <replace css:theme="#home-page-link" css:content="#home-page-link" />
+      <replace css:theme="#close-articles" css:content="#close-articles" />
     </rules>
 
     <replace theme="/html/head/title" content="/html/head/title" />
-    <rules if-not-path="@@articles @@home-page home-page plonebrowser" css:if-not-content="#change-form">
+    <rules if-not-path="@@articles @@home home plonebrowser" css:if-not-content="#change-form">
       <theme href="tribuna_base.html" css:if-content="#visual-portal-wrapper"/>
       <theme href="dialog.html" css:if-content="#content.dialog-wrapper"/>
       <drop css:content="meta[http-equiv='X-UA-Compatible']"/>
