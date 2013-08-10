@@ -178,6 +178,7 @@
          <!-- <rules css:if-content="#tag-description-div"> -->
         <rules css:if-content=".articles-intersection">
             <replace css:if-not-content="#empty-results" css:theme-children="#topside-content-sort_on" css:content="#formfield-form-widgets-sort_on" />
+            <prepend css:if-not-content="#empty-results" css:theme="#topside-content-sort_on" css:content="#results-num" />
             <drop css:if-content="#empty-results" css:theme="#topside-content-sort_on" />
             <replace css:content-children=".articles-intersection" css:theme-children="#intersection-articles"/>
             <replace css:content-children=".articles-union" css:theme-children="#union-articles"/>

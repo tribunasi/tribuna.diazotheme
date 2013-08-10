@@ -261,10 +261,9 @@ div#topside-content {
  * Settings for the text view
  */
 div.text-view {
-    margin-left: 15px;
-    margin-right: 0px;
-    margin-top: 0px;
-    margin-bottom: 50px;
+    margin: 0 0 50px;
+    /* XXX: needed for intersection/union? */
+    /*margin-left: 15px;*/
     background: none;
     border: none;
 }
@@ -443,8 +442,11 @@ div.ui-draggable-dragging img {
     width:auto;
 }
 
+#results-num {
+    margin-right: 16px;
+}
 #topside-content-sort_on #formfield-form-widgets-sort_on {
-    display: block;
+    display: inline-block;
 }
 #topside-content-sort_on #formfield-form-widgets-sort_on label {
     display: none;
@@ -508,9 +510,6 @@ div#types-list {
 }
 div#types-list input {
     margin-right: 5px;
-}
-div#topside-tags {
-    /*position: fixed;*/
 }
 
 div#sidebar-portlet a, div#topside-tags a {
@@ -1146,6 +1145,9 @@ div#center-column, div#content {
 /**
  * Search
  */
+#search-form {
+    margin-bottom: 30px;
+}
 #search-form-right .formControls input {
     display: none;
 }
@@ -1168,7 +1170,6 @@ div#center-column, div#content {
 #search-form-right form div .text-widget.required.textline-field,
 #search-form-right #searchGadget,
 #search-form #searchGadget{
-    margin-top: 10px;
     border-style: solid;
     border-width: 1px 1px 1px 1px;
     border-width: 1px;
@@ -1182,7 +1183,7 @@ div#center-column, div#content {
     box-sizing: border-box;
     width: 200px;
     height: 2em;
-    }
+}
 #search-form form div .submit-widget.button-field {
     background-color: Cyan;
     color: black;
