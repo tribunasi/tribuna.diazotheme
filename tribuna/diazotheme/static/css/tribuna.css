@@ -409,7 +409,7 @@ div.ui-draggable-dragging a {
     display: inline-block;
 }
 div.drag-view-comment a {
-    display: block;
+    display: inline-block;
 }
 
 /*Must be after the previous one so it is not overwritten*/
@@ -629,20 +629,20 @@ input#form-buttons-filter {
 
 input#form-buttons-text {
     box-shadow: none;
-    background-image: url(++theme++tribuna.diazotheme/img/textview-black.jpg);
+    background-image: url(++theme++tribuna.diazotheme/img/textview-grey.jpg);
 }
 input#form-buttons-drag {
     box-shadow: none;
-    background-image: url(++theme++tribuna.diazotheme/img/dragdrop-black.jpg);
+    background-image: url(++theme++tribuna.diazotheme/img/dragdrop-grey.jpg);
 }
 
 input#form-buttons-text.selected {
     box-shadow: none;
-    background-image: url(++theme++tribuna.diazotheme/img/textview-grey.jpg);
+    background-image: url(++theme++tribuna.diazotheme/img/textview-black.jpg);
 }
 input#form-buttons-drag.selected {
     box-shadow: none;
-    background-image: url(++theme++tribuna.diazotheme/img/dragdrop-grey.jpg);
+    background-image: url(++theme++tribuna.diazotheme/img/dragdrop-black.jpg);
 }
 input#form-buttons-text, input#form-buttons-drag {
     width: 12px;
@@ -849,6 +849,7 @@ img.navigate {
 }
 ul.token-input-list-facebook {
     width: 100%;
+    visibility: visible !important;
 }
 a.content-link,
 a.content-link:hover {
@@ -1096,11 +1097,11 @@ div.articles-comments {
     margin-bottom: 63px;
 }*/
 
-#commenting .formControls {
+.articles-comments .formControls {
     margin-right: 0;
     text-align: right;
 }
-#commenting textarea {
+#commenting textarea, .articles-comments textarea {
     width: 98%;
 }
 .comment .commentTag {

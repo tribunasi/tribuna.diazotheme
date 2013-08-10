@@ -4,10 +4,32 @@ $(document).ready(function () {
      * If the user hits the "reply" button of an existing comment, create a
      * reply form right beneath this comment.
      **********************************************************************/
+
+    function deleteAllForms(){
+        $('.reply').each(function(index){
+            if(index > 0){
+                $(this).slideUp("slow", function() {
+                    $(this).remove();
+                });
+            }
+        });
+    }
+
     $(".reply-to-comment-button").bind("click", function (e) {
         var comment_div = $(this).parents().filter(".comment");
-        $.createReplyForm(comment_div);
+        deleteAllForms();
+        $.createReplyForm(comment_div)
         $.clearForm(comment_div);
+
+        var varID = comment_div.attr('id');
+        var varItem = $('#' + varID + ' .reply fieldset form div').children('textarea#form-widgets-subject');
+        varItem.attr('id', varItem.attr('id') + varID);
+        $('#form-widgets-subject' + varID).data('klass', 'token-input-widget list-field');
+        // Need to change the absolute URL depending on the article you're looking at
+        keywordTokenInputActivate('form-widgets-subject' + varID, 'http://localhost:8087/Tribuna/articles/article-1/json-subjects', [])
+
+        // Remove the extra input that is added automatically
+        $('#' + varID + ' .reply fieldset form ul.token-input-list-facebook')[0].remove();
     });
 
 
