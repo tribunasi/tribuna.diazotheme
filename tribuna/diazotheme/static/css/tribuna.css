@@ -759,7 +759,7 @@ iframe{
  */
 
 /**
- * Content slider
+ * Articles (aka main) page
  */
 #header.slider-header {
     border-bottom: 1px solid black;
@@ -851,9 +851,20 @@ img.navigate {
 ul.token-input-list-facebook {
     width: 100%;
 }
-
+a.content-link,
+a.content-link:hover {
+    color: black;
+    font-weight: bold;
+}
+#comment-info {
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+.fit-text {
+    padding-top: 1px;
+}
 /**
- * End of content slider
+ * End of articles (aka main) page
  */
 
 
