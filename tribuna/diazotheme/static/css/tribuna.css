@@ -782,6 +782,9 @@ iframe{
     padding: 10px 30px 10px 10px;
     margin-right: 20px;
 }
+.content-slider .item-inner > div {
+    line-height: 1em;
+}
 .content-slider .item-inner p {
     margin: 0;
 }
