@@ -98,7 +98,6 @@ jQuery17(function () {
             }
         });
 
-
     });
 
     // slide to the selected article and load the contents
@@ -107,9 +106,21 @@ jQuery17(function () {
         $this.addClass('selected');
         article_uid = $this.attr('data-uid');
         article_url = $this.attr('data-url');
+
+        // load content
         jQuery17('#main').load(article_url + " #article", function () {
+
             // increase text size for comments
             jQuery17(".fit-text").textfill(30);
+
+            // show article comments if we have hash in url
+            if(window.location.hash) {
+                jQuery17(".activate-comments").trigger("click");
+                // XXX: this should go to the comment anchor, but it doesn't
+                // seem to work
+                window.location.href = window.location.href;
+            }
+
         });
 
         jQuery17("#article-slider li").not(this).each(function() {
