@@ -19,7 +19,6 @@
             <xi:include href="navigation-rules.xml"/>
         </xsl:for-each>
     </replace> -->
-
     <merge attributes="class" css:content="body" css:theme="body"/>
     <replace css:theme-children="#personaltool-menu"
         css:content-children="#portal-personaltools ul"/>
@@ -49,14 +48,6 @@
     <merge attributes="class" css:content="#homepage-div" css:theme="#right-column" />
     <merge attributes="class" css:content="#homepage-div" css:theme="#topside-content" />
 
-
-
-    <theme href="tribuna_login.html" if-path="@@login login" />
-    <rules if-path="@@login login">
-
-    </rules>
-
-
     <theme href="tribuna_entrypage.html" css:if-content="#entrypage-home-link"/>
     <replace css:content-children="#entrypage-home-link" css:theme-children="#entrypage-home-link"/>
     <drop css:theme="#entrypage-form-container" css:if-not-content="#change-form"/>
@@ -70,8 +61,6 @@
         <replace css:content-children="#text-change" css:theme-children="#collapseTwo"/>
         <replace css:content-children="#old-pages" css:theme-children="#collapseThree"/>
     </rules>
-
-
 
     <theme href="tribuna_homepage_2cols.html"
            if-path="@@home home"
@@ -455,5 +444,6 @@
 
       <drop css:theme="#left-column" />
     </rules>
+
 
 </rules>

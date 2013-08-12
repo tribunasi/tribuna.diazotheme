@@ -36,4 +36,10 @@
         name="tribuna.diazotheme"
         directory="static" />
 
+
+    <include package="z3c.jbot" file="meta.zcml" />
+
+    <browser:jbot
+      directory="jbot_overrides" />
+
 </configure>
