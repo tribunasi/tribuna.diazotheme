@@ -10,8 +10,43 @@ jQuery17(function () {
         comments_url,
         text;
 
+    jQuery17.fn.loadArticle = function() {
+
+        // add/remove 'selected' class
+        this.addClass('selected');
+        jQuery17("#article-slider li").not(this).each(function() {
+            jQuery17(this).removeClass('selected');
+        });
+
+        // slide to the selected element
+        slider.trigger('slideTo', this);
+
+        // load content
+        article_uid = this.attr('data-uid');
+        article_url = this.attr('data-url');
+
+        jQuery17('#main').load(article_url + " #center-column", function () {
+
+            // increase text size for comments
+            jQuery17(".fit-text").textfill(30);
+
+            // set full width for center column and remove the "content" id
+            // XXX: yes, I'm aware that this is bad ;) (we should probably
+            // do this with diazo instead) I'm a perfectionist, but with
+            // a deadline
+            jQuery17("#center-column").attr("class", "");
+            jQuery17("#content").attr("id", "");
+
+            // show article comments if we have hash in url
+            if(window.location.hash) {
+                jQuery17(".activate-comments").trigger("click");
+            }
+
+        });
+    }
 
     jQuery17(document).ready(function () {
+
         // initialize the articles carousel
         slider.carouFredSel({
             circular: false,
@@ -31,11 +66,9 @@ jQuery17(function () {
             }
         });
 
-        // slide to the selected article (from url)
+        // load article (from url)
         article_id = jQuery17("#main").attr('data-id');
-        selected_article = jQuery17('#' + article_id);
-        slider.trigger('slideTo', selected_article);
-        selected_article.trigger('click');
+        jQuery17('#' + 'slider-' + article_id).loadArticle();
 
         // show spinner when loading
         jQuery17('#ajax-spinner')
@@ -100,40 +133,15 @@ jQuery17(function () {
 
     });
 
-    // slide to the selected article, load the contents and change the URL
     jQuery17('#article-slider li').click(function () {
-        var $this = jQuery17(this);
-        $this.addClass('selected');
-        article_uid = $this.attr('data-uid');
-        article_url = $this.attr('data-url');
 
-        // load content
-        jQuery17('#main').load(article_url + " #center-column", function () {
-
-            // increase text size for comments
-            jQuery17(".fit-text").textfill(30);
-
-            // set full width for center column and remove the "content" id
-            // XXX: yes, I'm aware that this is bad ;) (we should probably
-            // do this with diazo instead) I'm a perfectionist, but with
-            // a deadline
-            jQuery17("#center-column").attr("class", "");
-            jQuery17("#content").attr("id", "");
-
-            // show article comments if we have hash in url
-            if(window.location.hash) {
-                jQuery17(".activate-comments").trigger("click");
-            }
-
-        });
-
-        jQuery17("#article-slider li").not(this).each(function() {
-            jQuery17(this).removeClass('selected');
-        });
+        // load content and slide to the selected article
+        $(this).loadArticle();
 
         // Change the URL with HTML5 replaceState. Only needed here
-        var selectedID = $('li.selected').attr('id') + window.location.hash;
-        window.history.replaceState(null, null, selectedID);
+        //var selectedID = $('li.selected').attr('id');
+        //window.history.replaceState(null, null, selectedID);
+        window.history.replaceState(null, null, article_id);
 
     });
 
