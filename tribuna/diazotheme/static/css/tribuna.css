@@ -684,6 +684,7 @@ ul#all-tags-list {
     padding: 20px;
     overflow-x: auto;
     overflow-y: scroll;
+    min-height: 100px;
 }
 ul#all-tags-list li.all-tags-list-caption,
 ul#all-tags-list li.all-tags-list-caption-first {

@@ -149,7 +149,7 @@ jQuery17(function () {
         var allTagsList = jQuery17("ul#all-tags-list");
         // var oldHeight = allTagsList.height();
         var topHeight = jQuery17("div#topside-tags").height();
-        allTagsList.height(jQuery17(window).height()*4/5 - topHeight);
+        allTagsList.css('max-height', (jQuery17(window).height()*4/5 - topHeight));
         allTagsList.css("top", topHeight);
 
         allTagsList.width(jQuery17(window).width()/3);
