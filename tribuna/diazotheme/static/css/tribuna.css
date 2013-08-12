@@ -35,8 +35,7 @@ input[type="submit"] {
     background: -moz-linear-gradient(top, #0000ff, #0000ff);
     background: -ms-linear-gradient(top, #0000ff, #0000ff);
     background: -o-linear-gradient(top, #0000ff, #0000ff);
-    /*padding: 7.5px 15px*/
-    padding: 3px 20px;
+    padding: 7.5px 15px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
@@ -50,7 +49,15 @@ input[type="submit"] {
     text-decoration: none;
     vertical-align: middle;
 }
-form#login_form,
+
+.button:hover, input[type="submit"]:hover {
+   border-top-color: #0000ff;
+   background: #0000ff;
+   color: #ffffff;
+
+   }
+
+form#login-form,
 a.login-page-registration {
     font-size: 20px;
     line-height: 25px;
@@ -113,6 +120,7 @@ a.login-page-forgot-password {
     font-size: 90px;
     line-height: 95px;
 }
+
 a.selected {
     text-decoration: underline;
 }
@@ -142,21 +150,22 @@ a.selected {
     float: right;
 }
 #entrypage-form .field input, #entrypage-form .text-field {
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    border-width: 1px;
-    border-color: #ccc;
+    border-width: 2px;
+    border-right-color: rgb(167, 167, 167);
+    border-top-color: rgb(218, 218, 218);
+    border-left-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(112, 112, 112);
+    box-shadow: none;
     border-radius: 0;
     /*padding: 10px;
     padding-left: 15px;*/
-    box-shadow: -2px 2px 0px #666666;
     -webkit-box-sizing: border-box;
 /*    -moz-box-sizing: border-box;*/
     -o-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     width: 200px;
-    height: 1.5em;
+    height: 1.8em;
 }
 #entrypage-form .text-field {
     height: 3em;
@@ -177,12 +186,15 @@ a.selected {
     background-color: white;
     width: auto;
     border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    border-width: 1px;
-    border-color: #ccc;
+    border-width: 2px;
+    border-left-color: rgb(131, 131, 131);
+    border-top-color: rgb(202, 202, 202);
+    border-right-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(112, 112, 112);
+    box-shadow: none;
     padding: 0.75em;
     /*padding-left: 15px;*/
-    box-shadow: 2px 2px 1px #888888;
+
     z-index: 99;
 }
 
@@ -273,10 +285,12 @@ div.entrypage-text-container {
 }
 
 #form-widgets-picture-input {
-     border-style: none;
-    border-width: 1px 1px 1px 1px;
-    border-width: 1px;
-    border-color: #ccc;
+    border-width: 2px;
+    border-right-color: rgb(167, 167, 167);
+    border-top-color: rgb(218, 218, 218);
+    border-left-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(112, 112, 112);
+    box-shadow: none;
     padding: 0;
     padding-left: 15px;
     box-shadow: none;
@@ -670,12 +684,14 @@ ul#all-tags-list{
 }
 .bordered {
     border-style: solid;
-    /*border-width: 1px 1px 1px 1px;*/
-    border-width: 1px;
-    border-color: #ccc;
+    border-width: 2px;
+    border-left-color: rgb(131, 131, 131);
+    border-top-color: rgb(202, 202, 202);
+    border-right-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(112, 112, 112);
+    box-shadow: none;
     padding: 10px;
     padding-left: 15px;
-    box-shadow: 2px 2px 1px #888888;
 }
 
 #sidebar-section {
@@ -1205,6 +1221,12 @@ div.articles-comments {
 .context.reply-to-comment-button
  {
     display: none;
+}
+.twitter-share, .facebook-share {
+    height: 20px;
+    width: 20px;
+    margin: 2px;
+    margin-top: 3px;
 }
 
 .comment ul {
