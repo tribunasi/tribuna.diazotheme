@@ -27,8 +27,7 @@ $(document).ready(function () {
         $('#form-widgets-subject' + varID).data('klass', 'token-input-widget list-field');
         // Need to change the absolute URL depending on the article you're looking at
 
-        var JsonSubjects = window.location.href + '/json-subjects';
-        console.info(JsonSubjects);
+        var JsonSubjects = portal_url + '/json-subjects';
         keywordTokenInputActivate('form-widgets-subject' + varID, JsonSubjects, [])
 
         // Remove the extra input that is added automatically
