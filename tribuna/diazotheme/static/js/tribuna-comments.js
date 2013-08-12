@@ -26,7 +26,6 @@ $(document).ready(function () {
         var varItem = $('#' + varID + ' .reply fieldset form div').children('textarea#form-widgets-subject');
         varItem.attr('id', varItem.attr('id') + varID);
         $('#form-widgets-subject' + varID).data('klass', 'token-input-widget list-field');
-        // Need to change the absolute URL depending on the article you're looking at
 
         var JsonSubjects = portal_url + '/json-subjects';
         keywordTokenInputActivate('form-widgets-subject' + varID, JsonSubjects, []);

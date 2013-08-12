@@ -128,7 +128,7 @@ jQuery17(function () {
         });
 
         // Change the URL with HTML5 replaceState. Only needed here
-        var selectedID = $('li.selected').attr('id');
+        var selectedID = $('li.selected').attr('id') + window.location.hash;
         window.history.replaceState(null, null, selectedID);
 
     });
