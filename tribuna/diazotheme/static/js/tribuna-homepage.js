@@ -131,7 +131,7 @@ jQuery17(function () {
         var first = true;
         jQuery17("ul#all-tags-list li").each( function() {
             if(jQuery17(this).text()[1]){
-                currentLetter = jQuery17(this).text()[1];
+                currentLetter = jQuery17(this).text()[1].toLowerCase();
             }
             if(currentLetter !== previousLetter){
                 if(first){
