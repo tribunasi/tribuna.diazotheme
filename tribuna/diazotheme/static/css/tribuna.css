@@ -840,6 +840,12 @@ img.navigate {
     border-color: yellow;
     box-shadow: 2px 2px 1px #888888;
 }
+.article-image {
+    margin-bottom: 40px;
+}
+.article-image img {
+    height: auto;
+}
 .article-heading {
     padding: 0;
     margin-bottom: 60px;
