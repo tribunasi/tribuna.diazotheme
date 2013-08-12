@@ -390,6 +390,7 @@ a.article-header {
 div#content h2 {
     font-size: 20px;
     line-height: 25px;
+    font-family:  Helvetica, Arial, sans-serif;
 }
 div#content p {
     font-size: 16px;
@@ -454,7 +455,7 @@ div.drag-view-article a, div.drag-view-comment a {
     text-decoration: none;
 }
 
-div.drag-view-article p, div.drag-view-comment p{
+div.drag-view-article p, div.drag-view-comment p {
     color: black;
 }
 
@@ -490,7 +491,8 @@ div.drag-view-article img,
 div.drag-view-comment:hover div#drag-view-type,
 div.drag-view-article:hover div#drag-view-tags,
 div.drag-view-comment.ui-draggable-dragging div#text,
-div.drag-view-comment.ui-draggable-dragging div#drag-view-type {
+div.drag-view-comment.ui-draggable-dragging div#drag-view-type
+{
     display: block;
 }
 div.drag-view-article.ui-draggable-dragging div#text,
@@ -506,10 +508,11 @@ div.drag-view-comment a {
 }
 
 /*Must be after the previous one so it is not overwritten*/
-div.drag-view-article.ui-draggable-dragging {
+div.drag-view-article.ui-draggable-dragging{
     border: 0;
+    background: transparent;
 }
-div.drag-view-article.ui-draggable-dragging img {
+div.drag-view-article.ui-draggable-dragging img{
     display: block;
 }
 div.drag-view-article img {
