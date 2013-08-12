@@ -1268,6 +1268,11 @@ div#center-column, div#content {
 #search-form {
     margin-bottom: 30px;
 }
+#search-form-right.top {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
 #search-form-right .formControls input {
     display: none;
 }
