@@ -100,7 +100,7 @@ jQuery17(function () {
 
     });
 
-    // slide to the selected article and load the contents
+    // slide to the selected article, load the contents and change the URL
     jQuery17('#article-slider li').click(function () {
         var $this = jQuery17(this);
         $this.addClass('selected');
@@ -126,6 +126,11 @@ jQuery17(function () {
         jQuery17("#article-slider li").not(this).each(function() {
             jQuery17(this).removeClass('selected');
         });
+
+        // Change the URL with HTML5 replaceState. Only needed here
+        var selectedID = $('li.selected').attr('id');
+        window.history.replaceState(null, null, selectedID);
+
     });
 
     // slide to the next article

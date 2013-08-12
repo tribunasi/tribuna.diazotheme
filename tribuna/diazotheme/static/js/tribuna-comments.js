@@ -26,7 +26,10 @@ $(document).ready(function () {
         varItem.attr('id', varItem.attr('id') + varID);
         $('#form-widgets-subject' + varID).data('klass', 'token-input-widget list-field');
         // Need to change the absolute URL depending on the article you're looking at
-        keywordTokenInputActivate('form-widgets-subject' + varID, 'http://localhost:8087/Tribuna/articles/article-1/json-subjects', [])
+
+        var JsonSubjects = window.location.href + '/json-subjects';
+        console.info(JsonSubjects);
+        keywordTokenInputActivate('form-widgets-subject' + varID, JsonSubjects, [])
 
         // Remove the extra input that is added automatically
         $('#' + varID + ' .reply fieldset form ul.token-input-list-facebook')[0].remove();
