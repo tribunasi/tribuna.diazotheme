@@ -1,0 +1,108 @@
+<!doctype html>
+<html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8"/>
+
+    <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+         More info: h5bp.com/b/378 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Tribuna homepage 1 column</title>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+    <!-- CSS: implied media=all -->
+    <!-- CSS concatenated and minified via ant build script-->
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" media="screen"/>
+
+    <link rel="stylesheet" href="openid-selector/css/openid.css"/>
+    <link rel="stylesheet" href="css/theme.css"/>
+    <link rel="stylesheet" href="jqueryui/css/eggplant/jquery-ui-1.8.5.custom.css"/>
+
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/tribuna.css"/>
+    <!-- end CSS-->
+
+    <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+    <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+         Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+         For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+    <script src="js/libs/modernizr-2.0.6.min.js"></script>
+
+  </head>
+
+  <body>
+<article>
+  <div id="content">
+    <form id="login-form">
+      <div id="login-form">
+        <div>
+          <div class="login-form-inside-div">
+            <label class="login-page">ime</label>
+            <input id="login-user" class="login-page" type="text">
+          </div>
+
+          <div class="login-form-inside-div">
+            <label class="login-page">geslo</label>
+            <input id="login-password"class="login-page" type="text">
+          </div>
+        </div>
+        <div class="login-form-inside-div-submit">
+          <input class="login-page" type="submit" value="prijava">
+        </div>
+
+        <div class="login-page-registration login-form-inside-div">
+          <a class="login-page-registration" href="#">registracija</a>
+        </div>
+
+      </div>
+        <div class="login-page-forgot-password login-form-inside-div">
+          <a class="login-page-forgot-password" href="#">pozabil sem geslo!</a>
+        </div>
+    </form>
+</div>
+</article>
+    <!-- JavaScript at the bottom for fast page loading -->
+
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+         <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+           -->
+
+    <!-- scripts concatenated and minified via ant build script-->
+    <script>
+      var jQuery14 = jQuery;
+    </script>
+    <script src="jquery-1.7.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script>
+      var jQuery17 = jQuery;
+      $ = jQuery14;
+      jQuery = jQuery14;
+      jQuery17(document).ready(function () {
+          jQuery17('.dropdown-toggle').dropdown();
+      });
+    </script>
+    <script defer src="js/plugins.js"></script>
+    <script defer src="openid-selector/js/openid-jquery.js"></script>
+    <script defer src="js/openid-providers.js"></script>
+    <script defer src="js/openid-wrapper.js"></script>
+    <script defer src="js/script.js"></script>
+    <script defer src="js/tribuna-homepage.js"></script>
+
+
+    <div id="site-scripts"></div>
+
+
+  </body>
+</html>

@@ -47,6 +47,62 @@ input[type="submit"] {
     text-decoration: none;
     vertical-align: middle;
 }
+form#login-form,
+a.login-page-registration {
+    font-size: 20px;
+    line-height: 25px;
+}
+form#login-form{
+    margin-left: 230px;
+}
+form#login-form label {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    text-align: left;
+}
+input[type="submit"].login-page {
+    background: yellow;
+    color: black;
+    font-size: 20px !important;
+    border: solid 1px #ccc;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: -10px;
+}
+input[type='text'].login-page {
+    margin: 10px 20px 10px 0px;
+    padding: 0;
+    width: 80px;
+    height: 20px;
+    font-size: 20px;
+}
+div.login-page-registration {
+    margin-top: 40px;
+}
+a.login-page-registration {
+    color: black;
+    text-decoration: underline;
+}
+div.login-form-inside-div {
+    float: left;
+    clear: both;
+}
+div.login-form-inside-div-submit {
+    float: left;
+}
+div.login-page-forgot-password {
+    margin-top: 100px;
+    text-align: left;
+}
+a.login-page-forgot-password {
+    margin-top: 100px;
+    color: black;
+    text-decoration: underline;
+    font-size: 90px;
+    line-height: 95px;
+}
 a.selected {
     text-decoration: underline;
 }

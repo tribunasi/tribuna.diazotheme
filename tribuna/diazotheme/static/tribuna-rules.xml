@@ -49,6 +49,14 @@
     <merge attributes="class" css:content="#homepage-div" css:theme="#right-column" />
     <merge attributes="class" css:content="#homepage-div" css:theme="#topside-content" />
 
+
+
+    <theme href="tribuna_login.html" if-path="@@login login" />
+    <rules if-path="@@login login">
+
+    </rules>
+
+
     <theme href="tribuna_entrypage.html" css:if-content="#entrypage-home-link"/>
     <replace css:content-children="#entrypage-home-link" css:theme-children="#entrypage-home-link"/>
     <drop css:theme="#entrypage-form-container" css:if-not-content="#change-form"/>
