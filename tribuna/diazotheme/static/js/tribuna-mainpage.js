@@ -2,6 +2,7 @@ jQuery17(function () {
     'use strict';
 
     var slider = jQuery17('#article-slider'),
+        SLIDER_PREFIX = "slider-",
         article_id,
         article_uid,
         article_url,
@@ -68,7 +69,7 @@ jQuery17(function () {
 
         // load article (from url)
         article_id = jQuery17("#main").attr('data-id');
-        jQuery17('#' + 'slider-' + article_id).loadArticle();
+        jQuery17('#' + SLIDER_PREFIX + article_id).loadArticle();
 
         // show spinner when loading
         jQuery17('#ajax-spinner')
@@ -139,8 +140,7 @@ jQuery17(function () {
         $(this).loadArticle();
 
         // Change the URL with HTML5 replaceState. Only needed here
-        //var selectedID = $('li.selected').attr('id');
-        //window.history.replaceState(null, null, selectedID);
+        article_id = this.id.replace(SLIDER_PREFIX, "");
         window.history.replaceState(null, null, article_id);
 
     });

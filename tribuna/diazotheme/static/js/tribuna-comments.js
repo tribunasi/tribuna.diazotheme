@@ -90,5 +90,8 @@ $(document).ready(function () {
       }
     );
 
-    window.location.href = window.location.hash;
+    // go to the selected comment
+    if(window.location.hash) {
+        window.location.href = window.location.hash;
+    }
 });
