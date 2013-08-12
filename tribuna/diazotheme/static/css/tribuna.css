@@ -364,8 +364,8 @@ div.text-view-comment, div.text-view-comment-one {
     line-height: 25px;
 }
 div.text-view-article-one, div.text-view-comment-one {
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 15px;
+    line-height: 20px;
 }
 h3.portlet-header {
     font-size: 20px;
@@ -395,6 +395,12 @@ div#content p {
     font-size: 16px;
     line-height: 24px;
 }
+
+.tag-description-text {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: serif;
+}
 /**
  * End settings for the text view
  */
@@ -411,8 +417,6 @@ div.ui-widget-content {
 
 a.comment-header {
     font-family: serif;
-    font-size: 22px;
-    line-height: 25px;
 }
 
 a.drag-comment-header {
