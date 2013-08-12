@@ -374,8 +374,8 @@ div.drag-view-comment p{
 
 div.drag-view-article:hover,
 div.drag-view-comment:hover,
-div.ui-draggable-dragging {
-    background-color: #E8E8E8;
+div.drag-view-comment.ui-draggable-dragging {
+    background-color: #E8E8E8 !important;
     border: 1px solid black;
 }
 
@@ -399,13 +399,16 @@ div.drag-view-article:hover p,
 div.drag-view-article img,
 div.drag-view-comment:hover div#drag-view-type,
 div.drag-view-article:hover div#drag-view-tags,
-div.ui-draggable-dragging div#drag-view-type,
-div.ui-draggable-dragging div#drag-view-tags,
-div.ui-draggable-dragging p {
+div.drag-view-comment.ui-draggable-dragging div#text,
+div.drag-view-comment.ui-draggable-dragging div#drag-view-type {
     display: block;
 }
-div.drag-view-article:hover a,
-div.ui-draggable-dragging a {
+div.drag-view-article.ui-draggable-dragging div#text,
+div.drag-view-article.ui-draggable-dragging div#drag-view-tags,
+div.drag-view-article.ui-draggable-dragging p {
+    display: none;
+}
+div.drag-view-article:hover a {
     display: inline-block;
 }
 div.drag-view-comment a {
@@ -413,8 +416,11 @@ div.drag-view-comment a {
 }
 
 /*Must be after the previous one so it is not overwritten*/
-div.ui-draggable-dragging img {
-    display: none;
+div.drag-view-article.ui-draggable-dragging {
+    border: 0;
+}
+div.drag-view-article.ui-draggable-dragging img {
+    display: block;
 }
 /**
  * End settings for the drag view
