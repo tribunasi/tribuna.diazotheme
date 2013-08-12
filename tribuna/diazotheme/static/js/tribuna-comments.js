@@ -90,8 +90,4 @@ $(document).ready(function () {
       }
     );
 
-    // go to the selected comment
-    if(window.location.hash) {
-        window.location.href = window.location.hash;
-    }
 });

@@ -84,9 +84,19 @@ jQuery17(function () {
         jQuery17("#main").on("change", ".activate-comments", function () {
             comments = jQuery17('#comments-' + article_uid);
             text = jQuery17('.content-core');
+
+            // load comments if they haven't been loaded yet
             if (comments.children().length === 0) {
                 comments_url = comments.attr('data-url');
-                comments.load(comments_url);
+
+                comments.load(comments_url, function () {
+
+                    // go to the selected comment
+                    if(window.location.hash) {
+                        window.location.href = window.location.hash;
+                    }
+
+                });
             }
             if (jQuery17(this).prop("checked")) {
                 comments.show();
