@@ -492,6 +492,10 @@ div.drag-view-article.ui-draggable-dragging {
 div.drag-view-article.ui-draggable-dragging img {
     display: block;
 }
+div.drag-view-article img {
+    max-width: none;
+    max-height: none;
+}
 /**
  * End settings for the drag view
  */

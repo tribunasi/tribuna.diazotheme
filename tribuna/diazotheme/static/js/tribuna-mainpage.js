@@ -116,9 +116,6 @@ jQuery17(function () {
             // show article comments if we have hash in url
             if(window.location.hash) {
                 jQuery17(".activate-comments").trigger("click");
-                // XXX: this should go to the comment anchor, but it doesn't
-                // seem to work
-                window.location.href = window.location.href;
             }
 
         });

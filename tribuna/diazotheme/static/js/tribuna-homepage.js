@@ -181,7 +181,6 @@ jQuery17(function () {
         });
 
         // Sort_on
-        // var uniqueName = "thisShouldBeAnUniqueName";
         jQuery17("#form-widgets-sort_on").attr('id', 'form-widgets-sort_on-noform');
         if(jQuery17("#form-widgets-sort_on").length === 0){
             jQuery17("#form-widgets-sort_on-noform").attr('id', 'form-widgets-sort_on');
@@ -194,7 +193,7 @@ jQuery17(function () {
             jQuery17("#form-widgets-sort_on-noform").val(this.value);
             jQuery17("#form-buttons-filter").click();
         });
-        jQuery17("#form-widgets-search").attr("placeholder", "Search...");
+        jQuery17("#form-widgets-search").attr("placeholder", "Search ...");
 
     });
 
