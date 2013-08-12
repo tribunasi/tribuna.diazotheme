@@ -47,7 +47,9 @@ jQuery17(function () {
         // When clicking on +/-, move/remove from top and change sign appropriately
         var name;
         if(jQuery17(this.parentNode.parentNode).attr('id') === 'tags-list' ||
-            jQuery17(this.parentNode.parentNode).attr('id') === 'all-tags-list'){
+            jQuery17(this.parentNode.parentNode).attr('id') === 'all-tags-list' ||
+            // XXX: Here because we change the structure to make multi columns
+            jQuery17(this.parentNode.parentNode.parentNode.parentNode).attr('id') === 'all-tags-list'){
             name = jQuery17(this.parentNode).attr('id');
             var item = jQuery17('#selected-tags-list #' + name);
             if(!item.attr('id')){
@@ -122,11 +124,66 @@ jQuery17(function () {
     }
 
     jQuery17(document).ready(function () {
-        // Setup for moving tags up and down via +/-
+
+        // Setup the alphabetical stuff on all-tags-list ul
+        var previousLetter = 0;
+        var currentLetter = "#";
+        var first = true;
+        jQuery17("ul#all-tags-list li").each( function() {
+            if(jQuery17(this).text()[1]){
+                currentLetter = jQuery17(this).text()[1];
+            }
+            if(currentLetter !== previousLetter){
+                if(first){
+                    jQuery17(this).before("<li class='all-tags-list-caption-first'>" + currentLetter + "</li>");
+                    first = false;
+                }else {
+                    jQuery17(this).before("<li class='all-tags-list-caption'>" + currentLetter + "</li>");
+                }
+                previousLetter = currentLetter;
+            }
+        });
+
+
+        // Setup the all-tags-list height
+        var allTagsList = jQuery17("ul#all-tags-list");
+        // var oldHeight = allTagsList.height();
+        var topHeight = jQuery17("div#topside-tags").height();
+        allTagsList.height(jQuery17(window).height()*4/5 - topHeight);
+        allTagsList.css("top", topHeight);
+
+        allTagsList.width(jQuery17(window).width()/3);
+
         jQuery17("#articles_list").css("min-height", jQuery17(window).height());
         jQuery17("div#homepage-div").css("float", "left");
         jQuery17("div#homepage-div").css("width", "100%");
 
+        // Split the list into columns
+        var columns = Math.floor((allTagsList.width()-40)/160);
+        var columnWidth = Math.floor((allTagsList.width()-40) / columns - 10);
+        var numEntries = jQuery17("ul#all-tags-list li").length;
+        var entriesInColumn = Math.ceil(numEntries/columns);
+
+
+        allTagsList.html(allTagsList.html().replace('</a>', '</a><ul id="tmp-ul-tag" style="width: ' + columnWidth + 'px;">') + "</ul>");
+
+
+        var size = entriesInColumn,
+            $ul  = $("ul#tmp-ul-tag"),
+            $lis = $ul.children().filter(':gt(' + (size - 1) + ')'),
+            loop = columns,
+            i    = 0;
+
+        $ul.css('float', 'left').wrap("<div style='overflow: hidden;'></div>");
+
+        for (; i < loop; i = i + 1) {
+            $ul = $("<ul style='width: " + columnWidth + "px; margin-left: 5px; margin-right: 5px' />").css('float', 'left').append($lis.slice(i * size, (i * size) + size)).insertAfter($ul);
+        }
+
+
+
+
+        // Setup for moving tags up and down via +/-
         if (jQuery17(".selected").size() > 0){
             jQuery17(".plusminus").css("display", "inline-block");
         }
@@ -138,14 +195,14 @@ jQuery17(function () {
             jQuery17("#form-buttons-text").addClass("selected");
         }
 
-        jQuery17("#selected-tags-list > li > a").click( moveUpDown);
-        jQuery17("#tags-list > li > a").click( moveUpDown);
-        jQuery17("#all-tags-list > li > a").click( moveUpDown);
+        jQuery17("#selected-tags-list  li > a").click( moveUpDown);
+        jQuery17("#tags-list  li > a").click( moveUpDown);
+        jQuery17("#all-tags-list  li > a").click( moveUpDown);
 
         // Setup for selecting tag via clicking on name
-        jQuery17("#selected-tags-list > li > span > a").click( selectOne);
-        jQuery17("#tags-list > li > span > a").click( selectOne);
-        jQuery17("#all-tags-list > li > span > a").click( selectOne);
+        jQuery17("#selected-tags-list li > span > a").click( selectOne);
+        jQuery17("#tags-list li > span > a").click( selectOne);
+        jQuery17("#all-tags-list li > span > a").click( selectOne);
 
         if( sessionStorage.getItem("all-tags") == "open") {
             runEffect();

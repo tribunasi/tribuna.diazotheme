@@ -560,6 +560,7 @@ so we use this) */
 .sidebar-nav-fixed {
     position: fixed;
     top: 0;
+    z-index: 100;
 }
 
 @media (max-width: 767px) {
@@ -673,23 +674,36 @@ ul#tags-list li.selected a, ul#all-tags-list li.selected a{
     color: blue;
 }
 
-ul#all-tags-list{
+ul#all-tags-list {
     position: absolute;
     z-index: 400;
     display: none;
-    margin-top: 15px;
-    margin-left: 70px;
-/*    margin-left: 100%;
-    width: 100%;
-    height: 100%;*/
+    margin-top: 19px;
+    margin-left: 125px;
     background-color: white;
     padding: 20px;
+    overflow-x: auto;
+    overflow-y: scroll;
 }
+ul#all-tags-list li.all-tags-list-caption,
+ul#all-tags-list li.all-tags-list-caption-first {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 150%;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+ul#all-tags-list li.all-tags-list-caption-first {
+    margin-top: 0px;
+}
+
 
 #all-tags-list-close {
     display: inline-block;
-    float: right;
     cursor:pointer;
+    position: absolute;
+    float: right;
+    right: 5px;
 }
 .bordered {
     border-style: solid;
