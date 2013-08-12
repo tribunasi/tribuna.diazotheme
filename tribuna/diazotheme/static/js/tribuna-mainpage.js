@@ -117,7 +117,7 @@ jQuery17(function () {
             // XXX: yes, I'm aware that this is bad ;) (we should probably
             // do this with diazo instead) I'm a perfectionist, but with
             // a deadline
-            jQuery17("#center-column").attr("class", "span12");
+            jQuery17("#center-column").attr("class", "");
             jQuery17("#content").attr("id", "");
 
             // show article comments if we have hash in url

@@ -129,7 +129,9 @@ a.selected {
     background-color: blue;
     background-image: none;
 }
-
+.userrole-anonymous #action-bar {
+    display: none;
+}
 
 /**
  * Entry page
