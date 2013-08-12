@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    "use strict";
 
      /**********************************************************************
      * If the user hits the "reply" button of an existing comment, create a
@@ -18,7 +19,7 @@ $(document).ready(function () {
     $(".reply-to-comment-button").bind("click", function (e) {
         var comment_div = $(this).parents().filter(".comment");
         deleteAllForms();
-        $.createReplyForm(comment_div)
+        $.createReplyForm(comment_div);
         $.clearForm(comment_div);
 
         var varID = comment_div.attr('id');
@@ -28,10 +29,10 @@ $(document).ready(function () {
         // Need to change the absolute URL depending on the article you're looking at
 
         var JsonSubjects = portal_url + '/json-subjects';
-        keywordTokenInputActivate('form-widgets-subject' + varID, JsonSubjects, [])
+        keywordTokenInputActivate('form-widgets-subject' + varID, JsonSubjects, []);
 
         // Remove the extra input that is added automatically
-        $('#' + varID + ' .reply fieldset form ul.token-input-list-facebook')[0].remove();
+        $($('#' + varID + ' .reply fieldset form ul.token-input-list-facebook')[0]).remove();
     });
 
 
