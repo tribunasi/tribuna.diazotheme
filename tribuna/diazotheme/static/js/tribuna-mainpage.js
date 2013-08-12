@@ -108,10 +108,17 @@ jQuery17(function () {
         article_url = $this.attr('data-url');
 
         // load content
-        jQuery17('#main').load(article_url + " #article", function () {
+        jQuery17('#main').load(article_url + " #center-column", function () {
 
             // increase text size for comments
             jQuery17(".fit-text").textfill(30);
+
+            // set full width for center column and remove the "content" id
+            // XXX: yes, I'm aware that this is bad ;) (we should probably
+            // do this with diazo instead) I'm a perfectionist, but with
+            // a deadline
+            jQuery17("#center-column").attr("class", "span12");
+            jQuery17("#content").attr("id", "");
 
             // show article comments if we have hash in url
             if(window.location.hash) {
