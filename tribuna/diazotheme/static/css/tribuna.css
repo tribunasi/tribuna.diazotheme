@@ -1350,7 +1350,7 @@ div#center-column, div#content {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     width: 200px;
-    height: 1.2em;
+    height: 20px;
 }
 #search-form-right #searchGadget,
 #search-form #searchGadget {
