@@ -151,7 +151,11 @@ a.selected {
     display: inline-block;
     float: right;
 }
-#entrypage-form .field input, #entrypage-form .text-field {
+.field input[type="text"],
+.field input[type="password"],
+.field textarea,
+#entrypage-form .field input,
+#entrypage-form .text-field {
     border-width: 2px;
     border-right-color: rgb(167, 167, 167);
     border-top-color: rgb(218, 218, 218);
@@ -167,7 +171,7 @@ a.selected {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     width: 200px;
-    height: 1.8em;
+    height: 1.2em;
 }
 #entrypage-form .text-field {
     height: 3em;
@@ -1346,11 +1350,10 @@ div#center-column, div#content {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     width: 200px;
-    height: 1.8em;
+    height: 1.2em;
 }
 #search-form-right #searchGadget,
 #search-form #searchGadget {
-    height: 15px;
     width: 150px;
 }
 #search-form form div .submit-widget.button-field {
