@@ -1348,6 +1348,11 @@ div#center-column, div#content {
     width: 200px;
     height: 1.8em;
 }
+#search-form-right #searchGadget,
+#search-form #searchGadget {
+    height: 15px;
+    width: 150px;
+}
 #search-form form div .submit-widget.button-field {
     background-color: Cyan;
     color: black;
