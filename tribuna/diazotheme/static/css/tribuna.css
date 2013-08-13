@@ -957,6 +957,7 @@ img.navigate {
 #close-articles {
     float: right;
     margin-top: 10px;
+    margin-right: -12px;
 }
 .template-articles #main {
     margin-top: 30px;
@@ -970,6 +971,9 @@ img.navigate {
     border-width: 1px;
     border-color: yellow;
     box-shadow: 2px 2px 1px #888888;
+}
+.comment-text {
+    color: black;
 }
 .article-image {
     margin-bottom: 40px;
