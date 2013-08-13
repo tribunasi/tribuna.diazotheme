@@ -3,3 +3,6 @@
        import all css files into plone_css registry*/
     top: 40px !important;
 }
+#search-form-right {
+    top: 50px !important;
+}

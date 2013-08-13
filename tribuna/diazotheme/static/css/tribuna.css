@@ -1313,19 +1313,22 @@ div#center-column, div#content {
 #search-form-right form div .text-widget.required.textline-field,
 #search-form-right #searchGadget,
 #search-form #searchGadget{
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    border-width: 1px;
-    border-color: #ccc;
+    border-width: 2px;
+    border-right-color: rgb(167, 167, 167);
+    border-top-color: rgb(218, 218, 218);
+    border-left-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(112, 112, 112);
+    box-shadow: none;
     border-radius: 0;
-    box-shadow: 2px 2px 1px #888888;
+    /*padding: 10px;
+    padding-left: 15px;*/
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
+/*    -moz-box-sizing: border-box;*/
     -o-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     width: 200px;
-    height: 2em;
+    height: 1.8em;
 }
 #search-form form div .submit-widget.button-field {
     background-color: Cyan;
