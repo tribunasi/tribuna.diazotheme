@@ -66,7 +66,7 @@ form#login_form {
     margin-left: 230px;
 }
 form#login_form label {
-    font-size: 20px;
+    font-size: 15px;
     margin: 0;
     padding: 0;
     width: 50px;
@@ -89,7 +89,7 @@ form#login_form label {
     padding: 0;
     width: 80px;
     height: 20px;
-    font-size: 20px !important;
+    font-size: 15px !important;
 }
 a.login-page-registration {
     color: black;
@@ -171,7 +171,7 @@ a.selected {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     width: 200px;
-    height: 1.2em;
+    height: 20px;
 }
 #entrypage-form .text-field {
     height: 3em;
