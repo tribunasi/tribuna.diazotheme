@@ -983,6 +983,13 @@ img.navigate {
 .comment-text {
     color: black;
 }
+/* Hide content actions in article body (they're rendered with a view
+and moved with diazo to the proper place). Normal content actions viewlet
+doesn't work because we don't have a real article context.
+XXX: Remove this if we drop the fancy ajax loading of articles. */
+#article #content-actions {
+    display: none;
+}
 .article-image {
     margin-bottom: 40px;
 }

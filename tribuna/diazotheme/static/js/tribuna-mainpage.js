@@ -28,6 +28,9 @@ jQuery17(function () {
 
         jQuery17('#main').load(article_url + " #center-column", function () {
 
+            // enable dropdown menus (for content actions e.g.).
+            $(".dropdown-toggle").dropdown();
+
             // increase text size for comments
             jQuery17(".fit-text").textfill(30);
 
