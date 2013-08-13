@@ -40,7 +40,6 @@ jQuery17(function () {
         }
         jQuery17("#form-buttons-filter").click();
 
-
     }
 
     function moveUpDown(){
@@ -125,6 +124,16 @@ jQuery17(function () {
 
     jQuery17(document).ready(function () {
 
+        // set margin for results, depending on selected tags height
+        var articles_margin = $("#selected-tags").height() + 10;
+        $("#center-column #articles_list").css("margin-top", articles_margin);
+
+        // set selected tags class, depending on whether we have a tag
+        // selected or not
+        if ($("#selected-tags-list").children().length > 0) {
+            $("#topside-tags").addClass("has-tags");
+        }
+
         // Setup the alphabetical stuff on all-tags-list ul
         var previousLetter = 0;
         var currentLetter = "#";
@@ -204,7 +213,7 @@ jQuery17(function () {
         jQuery17("#tags-list li > span > a").click( selectOne);
         jQuery17("#all-tags-list li > span > a").click( selectOne);
 
-        if( sessionStorage.getItem("all-tags") == "open") {
+        if( sessionStorage.getItem("all-tags") === "open") {
             runEffect();
             jQuery17('#all-tags-list-close').toggle();
         }

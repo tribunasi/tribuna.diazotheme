@@ -322,6 +322,9 @@ div#topside-tags {
     margin-left: 0;
     margin-top: 10px;
 }
+div#topside-tags.has-tags {
+    margin-bottom: 50px;
+}
 div#selected-tags {
     width: 125px;
 }
@@ -348,6 +351,9 @@ div.text-view {
     /*margin-left: 15px;*/
     background: none;
     border: none;
+}
+#right-column-content .text-view {
+    margin-bottom: 30px;
 }
 div.text-view-article,
 div.text-view-comment,
@@ -401,6 +407,7 @@ div#content p {
     font-size: 16px;
     line-height: 24px;
     font-family: serif;
+    margin-top: 40px;
 }
 /**
  * End settings for the text view
@@ -542,7 +549,8 @@ div.drag-view-article img {
 }
 
 #form-widgets-sort_on {
-    width:auto;
+    width: auto;
+    padding: 0;
 }
 
 #results-num {
@@ -550,6 +558,10 @@ div.drag-view-article img {
 }
 #topside-content-sort_on #formfield-form-widgets-sort_on {
     display: inline-block;
+    margin-bottom: 5px;
+}
+#topside-content-name #articles-header {
+    margin-bottom: 5px;
 }
 #topside-content-sort_on #formfield-form-widgets-sort_on label {
     display: none;
