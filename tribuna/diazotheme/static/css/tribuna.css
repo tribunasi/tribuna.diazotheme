@@ -170,9 +170,14 @@ a.selected {
     -o-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
+}
+.field input[type="text"],
+.field input[type="password"],
+#entrypage-form .field input {
     width: 200px;
     height: 20px;
 }
+
 #entrypage-form .text-field {
     height: 3em;
 }
@@ -1256,6 +1261,7 @@ div.articles-comments {
 }
 #commenting textarea, .articles-comments textarea {
     width: 98%;
+    height: 70px;
 }
 .comment .commentTag {
     font-size: 12px;
