@@ -920,7 +920,6 @@ iframe{
 }
 .content-slider .item-inner > div {
     line-height: 1em;
-    overflow: hidden;
 }
 .content-slider .item-inner p {
     margin: 0;
