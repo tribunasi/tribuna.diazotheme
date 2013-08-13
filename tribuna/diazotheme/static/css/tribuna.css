@@ -409,6 +409,9 @@ div#content p {
     font-family: serif;
     margin-top: 40px;
 }
+.left-padding {
+    padding-left: 15px;
+}
 /**
  * End settings for the text view
  */
