@@ -4,7 +4,7 @@ jQuery17(function () {
     var slider = jQuery17('#article-slider'),
         SLIDER_PREFIX = "slider-",
         LAST_ELEMENT = jQuery17("#article-slider li").last(),
-        LAST_INDEX = LAST_ELEMENT.attr('carousel-index'),
+        LAST_INDEX = LAST_ELEMENT.attr('data-carousel-index'),
         article_id,
         article_uid,
         article_url,
@@ -17,6 +17,9 @@ jQuery17(function () {
         var docViewLeft = jQuery17(window).scrollLeft();
         var docViewRight = docViewLeft + jQuery17(window).width();
 
+        if(!jQuery17(elem).offset() || !jQuery17(elem).width()){
+            return false;
+        }
         var elemLeft = jQuery17(elem).offset().left;
         var elemRight = elemLeft + jQuery17(elem).width();
 
@@ -29,13 +32,13 @@ jQuery17(function () {
         while(isScrolledIntoView(first.next())){
             first = first.next();
         }
-        return(first);
+        return first;
     }
 
     function getStartPage(elem) {
         // Figure out the page on which our selected element is
-        var page = Math.floor(elem.attr('carousel-index') / window.elemOnScreen);
-        var pageStart = jQuery17("[carousel-index = " + page * window.elemOnScreen + "]")
+        var page = Math.floor(elem.attr('data-carousel-index') / window.elemOnScreen);
+        var pageStart = jQuery17("[data-carousel-index = " + page * window.elemOnScreen + "]")
 
         // Hide arrows if needed
         var lastPage = Math.floor(LAST_INDEX / window.elemOnScreen);
@@ -59,9 +62,27 @@ jQuery17(function () {
         // window global variable
         var first = jQuery17("#article-slider li").first();
         window.elemOnScreen = 0;
+
         while(isScrolledIntoView(first)){
             first = first.next();
             window.elemOnScreen += 1;
+        }
+    }
+
+    function nextScroll() {
+        jQuery17("#prev").show();
+        var last = getLastVisible().attr('data-carousel-index');
+        if(last === LAST_INDEX){
+            jQuery17("#next").hide();
+        }
+
+    }
+
+    function prevScroll() {
+        jQuery17("#next").show();
+        var first = jQuery17("#article-slider li").first();
+        if(first.attr('data-carousel-index') === "0"){
+            jQuery17("#prev").hide();
         }
     }
 
@@ -115,7 +136,7 @@ jQuery17(function () {
         });
 
         // If we are on the first/last article, hide appropriate arrows
-        var currIndex = this.attr('carousel-index');
+        var currIndex = this.attr('data-carousel-index');
         if(currIndex === "0"){
             jQuery17("#article-navigation .prev").hide();
         }
@@ -247,36 +268,18 @@ jQuery17(function () {
 
     // slide to the next article
     jQuery17('#article-navigation .next').click(function () {
-        var current = parseInt(jQuery17('#article-slider li.selected').attr('carousel-index'));
-        var next = jQuery17("[carousel-index = " + (current + 1) + "]")
+        var current = parseInt(jQuery17('#article-slider li.selected').attr('data-carousel-index'));
+        var next = jQuery17("[data-carousel-index = " + (current + 1) + "]")
         next.trigger('click');
         return false;
     });
 
     // slide to the previous article
     jQuery17('#article-navigation .prev').click(function () {
-        var current = parseInt(jQuery17('#article-slider li.selected').attr('carousel-index'));
-        var prev = jQuery17("[carousel-index = " + (current - 1) + "]")
+        var current = parseInt(jQuery17('#article-slider li.selected').attr('data-carousel-index'));
+        var prev = jQuery17("[data-carousel-index = " + (current - 1) + "]")
         prev.trigger('click');
         return false;
     });
-
-    function nextScroll() {
-        jQuery17("#prev").show();
-        var last = getLastVisible().attr('carousel-index');
-        if(last === LAST_INDEX){
-            jQuery17("#next").hide();
-        }
-
-    }
-
-    function prevScroll() {
-        jQuery17("#next").show();
-        var first = jQuery17("#article-slider li").first();
-        if(first.attr('carousel-index') === "0"){
-            jQuery17("#prev").hide();
-        }
-    }
-
 
 });
