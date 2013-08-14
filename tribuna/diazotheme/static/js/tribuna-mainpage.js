@@ -65,22 +65,14 @@ jQuery17(function () {
         }
     }
 
-    function nextScroll() {
-        jQuery17("#prev").show();
-        var last = getLastVisible().attr('carousel-index');
-        if(last === LAST_INDEX){
-            jQuery17("#next").hide();
-        }
 
-    }
+    // Make sure that we can still see our selected element when we resize
+    jQuery17(window).resize(function() {
+        // Need to set up again on resize
+        elementsOnScreen();
+        slideToPage(jQuery17("#article-slider li.selected"));
+    })
 
-    function prevScroll() {
-        jQuery17("#next").show();
-        var first = jQuery17("#article-slider li").first();
-        if(first.attr('carousel-index') === "0"){
-            jQuery17("#prev").hide();
-        }
-    }
 
     jQuery17.fn.loadArticle = function() {
 
@@ -132,13 +124,6 @@ jQuery17(function () {
         }
     }
 
-    // Make sure that we can still see our selected element when we resize
-    jQuery17(window).resize(function() {
-        // Need to set up again on resize
-        elementsOnScreen();
-        slideToPage(jQuery17("#article-slider li.selected"));
-    })
-
     jQuery17(document).ready(function () {
 
         // initialize the articles carousel
@@ -154,7 +139,7 @@ jQuery17(function () {
             mousewheel: true,
             swipe: {
                 onMouse: true,
-                onTouch: true
+                onTouch: true,
             },
             prev: "#prev",
             next: "#next",
@@ -276,6 +261,22 @@ jQuery17(function () {
         return false;
     });
 
+    function nextScroll() {
+        jQuery17("#prev").show();
+        var last = getLastVisible().attr('carousel-index');
+        if(last === LAST_INDEX){
+            jQuery17("#next").hide();
+        }
+
+    }
+
+    function prevScroll() {
+        jQuery17("#next").show();
+        var first = jQuery17("#article-slider li").first();
+        if(first.attr('carousel-index') === "0"){
+            jQuery17("#prev").hide();
+        }
+    }
 
 
 });
