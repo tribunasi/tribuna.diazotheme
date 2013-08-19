@@ -983,8 +983,7 @@ iframe{
     position: relative;
 }
 .content-slider-wrapper {
-    width: 92%;
-    margin: 0 auto;
+    padding: 0 30px;
 }
 .content-slider ul li {
     display: block;
