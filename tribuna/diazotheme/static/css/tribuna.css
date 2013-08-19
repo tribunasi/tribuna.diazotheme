@@ -1177,6 +1177,7 @@ div.half-width {
 
 .comment  {
     font-size: 100%;
+    margin-top: 1em;
 }
 #comments input[type='text'] {
     height: 4em;
