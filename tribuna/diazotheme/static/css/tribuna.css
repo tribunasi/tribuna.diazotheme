@@ -7,6 +7,14 @@
     display: none;
 }*/
 
+/*All "title" field letters are too big!*/
+#content .field input[type="text"][name$=".title"] {
+    height: 26px;
+    font-size: 21px;
+    padding: 15px 10px;
+}
+
+
 .template-login_form #action-bar,
 .template-logged_out #action-bar {
     display: none;
@@ -136,6 +144,28 @@ a.selected {
 /**
  * Entry page
  */
+
+body.portaltype-tribuna-content-entrypage {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+body.portaltype-tribuna-content-entrypage .formControls input[type='submit']{
+    width: 100px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    line-height: 20px;
+}
+
+#container .entrypage-top-button {
+    height: 16px; /*20 - border*/
+    line-height: 16px;
+    width: 116px; /*120 - border*/
+    padding: 0px;
+    text-align: center;
+}
+
 #entrypage-form .formControls {
     margin: 0;
 }
@@ -204,9 +234,9 @@ a.selected {
     border-bottom-color: rgb(112, 112, 112);
     box-shadow: none;
     padding: 0.75em;
-    /*padding-left: 15px;*/
-
     z-index: 99;
+    height: auto;
+    text-align: left;
 }
 
 #entrypage-form-container a {
@@ -226,6 +256,10 @@ a.selected {
 
 #entrypage-form .accordion {
     margin-top: 2em;
+    margin-bottom: 8px; /*Base is 18, lower by 10*/
+}
+.accordion-body.collapse form {
+    margin-bottom: 8px;
 }
 
 #entrypage-form .accordion-group {
@@ -328,7 +362,7 @@ div.entrypage-text-container {
  * Settings for the header
  */
 div#topside-tags {
-    margin-left: 0;
+    margin-left: 0px;
     margin-top: 10px;
 }
 div#topside-tags.has-tags {
@@ -445,6 +479,7 @@ a.drag-comment-header {
 
 p.article-body {
     margin-bottom: 0px;
+    line-height: 20px;
 }
 
 div#drag-view a.comment-header {
@@ -461,12 +496,26 @@ div.drag-view-article, div.drag-view-comment {
 }
 div.drag-view-comment {
     background: transparent;
+    max-width: 360px;
+    min-width: 100px;
 }
 
 div.drag-view-article div#text, div.drag-view-comment div#text {
     padding: 15px;
     font-size: 15px;
     line-height: 17px;
+}
+
+div.drag-view-comment .drag-comment-header p {
+    font-family: Georgia;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+div.drag-view-comment .content-type {
+    font-family: Helvetica;
+    font-size: 15px;
+    line-height: 24px;
 }
 
 div.drag-view-article a, div.drag-view-comment a {
@@ -485,8 +534,11 @@ div.drag-view-comment p{
 div.drag-view-article:hover,
 div.drag-view-comment:hover,
 div.drag-view-comment.ui-draggable-dragging {
-    background-color: #E8E8E8 !important;
-    border: 1px solid black;
+    background-color: white;
+}
+
+div.drag-view-article div#drag-view-type p.content-type {
+    margin-bottom: 0;
 }
 
 div.drag-view-article div#drag-view-tags {
@@ -496,34 +548,44 @@ div.drag-view-article div#drag-view-tags {
 
 /*Hide/show stuff on hover and when dragging*/
 div.drag-view-article a,
-div.drag-view-article p,
-div.drag-view-article:hover img,
-div.drag-view-comment div#drag-view-type,
-div.drag-view-article div#drag-view-tags {
+div.drag-view-article p {
+/*div.drag-view-comment div#drag-view-type,
+div.drag-view-article div#drag-view-tags {*/
     display: none;
 }
 
 /*Change everything to block
 Link should be changed to inline-block so it doesn't stretch over whole div*/
-div.drag-view-article:hover p,
-div.drag-view-article img,
-div.drag-view-comment:hover div#drag-view-type,
-div.drag-view-article:hover div#drag-view-tags,
+
+/*div.drag-view-article img,*/
+div.drag-view-article:hover #text #drag-view-tags {
+/*div.drag-view-comment:hover div#drag-view-type,
 div.drag-view-comment.ui-draggable-dragging div#text,
-div.drag-view-comment.ui-draggable-dragging div#drag-view-type
-{
+div.drag-view-comment.ui-draggable-dragging div#drag-view-type {*/
     display: block;
 }
+
+div.drag-view-article:hover #text #gallery-link a,
+div.drag-view-article:hover #text #drag-view-type p,
+div.drag-view-article:hover #text #drag-view-tags-list {
+    display: inline-block;
+    padding-left: 3px;
+    padding-right: 3px;
+}
 div.drag-view-article.ui-draggable-dragging div#text,
+div.drag-view-article div#drag-view-tags,
 div.drag-view-article.ui-draggable-dragging div#drag-view-tags,
 div.drag-view-article.ui-draggable-dragging p {
     display: none;
 }
-div.drag-view-article:hover a {
-    display: inline-block;
+
+div.drag-view-article:hover #text .article-body {
+    display: inline;
+    padding-left: 3px;
+    padding-right: 3px;
 }
-div.drag-view-comment a {
-    display: inline-block;
+div.drag-view-comment a p {
+    display: inline;
 }
 
 /*Must be after the previous one so it is not overwritten*/
@@ -537,6 +599,17 @@ div.drag-view-article.ui-draggable-dragging img{
 div.drag-view-article img {
     max-width: none;
     max-height: none;
+    z-index: 0;
+    position: absolute;
+}
+div.drag-view-article #text {
+    position: absolute;
+}
+div.drag-view-article #text #gallery-link a,
+div.drag-view-article #text #drag-view-type p,
+div.drag-view-article #text #drag-view-tags-list,
+div.drag-view-article #text .article-body {
+    background-color: white;
 }
 /**
  * End settings for the drag view
@@ -928,7 +1001,8 @@ iframe{
     height: 40px;
 }
 .content-slider .item-inner > div {
-    line-height: 1em;
+    font-size: 12px;
+    line-height: 17px;
 }
 .content-slider .item-inner p {
     margin: 0;
@@ -1000,8 +1074,11 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
     padding: 0;
     margin-bottom: 60px;
 }
-.article-heading h2 {
-    line-height: 1em;
+
+/*XXX: Naj bosta res oba enako velika?*/
+.article-heading h2, .article-heading h3 {
+    font-size: 20px;
+    line-height: 25px;
 }
 .article-display-options label {
     margin-right: 20px;
@@ -1242,9 +1319,11 @@ div.articles-comments {
     left: 50px !important;
 }*/
 
-.articles-article-body {
+.articles-article-body, p.fit-text {
     font-size: 16px;
     line-height: 24px;
+}
+.articles-article-body {
     height: 100%;
 }
 
