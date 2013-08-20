@@ -56,6 +56,10 @@ input[type="submit"] {
     font-family: Helvetica, Arial, Sans-Serif;
     text-decoration: none;
     vertical-align: middle;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    padding-top: 0px;
 }
 
 .button:hover, input[type="submit"]:hover {
@@ -395,6 +399,10 @@ div.text-view {
     background: none;
     border: none;
 }
+div.text-view .content-type {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
 #right-column-content .text-view {
     margin-bottom: 30px;
 }
@@ -513,7 +521,7 @@ div.drag-view-comment .drag-comment-header p {
 }
 
 div.drag-view-comment .content-type {
-    font-family: Helvetica;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 15px;
     line-height: 24px;
 }
@@ -596,9 +604,15 @@ div.drag-view-article.ui-draggable-dragging{
 div.drag-view-article.ui-draggable-dragging img{
     display: block;
 }
+
+div#articles_list img {
+    max-width: 800px;
+    max-height: 800px;
+}
+
 div.drag-view-article img {
-    max-width: none;
-    max-height: none;
+    /*max-width: none;
+    max-height: none;*/
     z-index: 0;
     position: absolute;
 }
@@ -640,6 +654,7 @@ div.drag-view-article #text .article-body {
 
 #results-num {
     margin-right: 16px;
+    font-size: 12px;
 }
 #topside-content-sort_on #formfield-form-widgets-sort_on {
     display: inline-block;
@@ -1078,6 +1093,7 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
 .article-heading h2, .article-heading h3 {
     font-size: 20px;
     line-height: 25px;
+    font-family: Helvetica, Arial, sans-serif;
 }
 .article-display-options label {
     margin-right: 20px;
