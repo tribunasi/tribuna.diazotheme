@@ -194,7 +194,7 @@ jQuery17(function () {
         // show/hide comments
         jQuery17("#main").on("change", ".activate-comments", function () {
             comments = jQuery17('#comments-' + article_uid);
-            text = jQuery17('.content-core');
+            text = jQuery17('.article-text');
 
             // load comments if they haven't been loaded yet
             if (comments.children().length === 0) {
@@ -214,7 +214,7 @@ jQuery17(function () {
                 if (text.is(":visible")) {
                     comments.removeClass("span7");
                     comments.addClass("span5");
-                    text.removeClass("span9");
+                    text.removeClass("span7");
                     text.addClass("span6");
                 }
                 else {
@@ -225,25 +225,25 @@ jQuery17(function () {
             else {
                 comments.hide();
                 text.removeClass("span6");
-                text.addClass("span9");
+                text.addClass("span7");
             }
         });
 
         // show/hide article text
         jQuery17("#main").on("change", ".activate-text", function () {
-            text = jQuery17('.content-core');
+            text = jQuery17('.article-text');
             comments = jQuery17('#comments-' + article_uid);
             if (jQuery17(this).prop("checked")) {
                 text.show();
                 if (comments.is(":visible")) {
-                    text.removeClass("span9");
+                    text.removeClass("span7");
                     text.addClass("span6");
                     comments.removeClass("span7");
                     comments.addClass("span5");
                 }
                 else {
                     text.removeClass("span6");
-                    text.addClass("span9");
+                    text.addClass("span7");
                 }
             }
             else {

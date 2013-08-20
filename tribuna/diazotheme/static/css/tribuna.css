@@ -1090,7 +1090,7 @@ img.navigate {
 .template-articles #main {
     margin-top: 30px;
 }
-.article-display-options.span4 {
+.article-display-options {
     background-color: yellow;
     padding-left: 10px;
     width: 200px;
@@ -1099,6 +1099,8 @@ img.navigate {
     border-width: 1px;
     border-color: yellow;
     box-shadow: 2px 2px 1px #888888;
+    position: absolute;
+    right: 20px;
 }
 .comment-text {
     color: black;
