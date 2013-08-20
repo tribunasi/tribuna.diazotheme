@@ -106,21 +106,11 @@ jQuery17(function () {
                          });
                     }
 
-    function runEffectClose(e) {
-        // Show the div if it's hidden, hide if it it's shown
-        // console.info(e.target.id);
-        // console.info(e.target.parentNode.id);
-        // if(e.target.id === 'all-tags-list'){
-        //     // console.info("Ne zapret!");
-        // }
-        // else{
-        if(e.target.id !== 'all-tags-list'){
-            var all_tags = $( "#all-tags-list" );
-            if(all_tags.css("display") !== "none"){
-              jQuery17( "#all-tags-list" ).hide("fast");
-            }
+    function runEffectClose() {
+        var all_tags = $( "#all-tags-list" );
+        if(all_tags.css("display") !== "none"){
+          jQuery17( "#all-tags-list" ).hide("fast");
         }
-        // }
     }
 
     jQuery17(document).ready(function () {
@@ -129,6 +119,7 @@ jQuery17(function () {
         var articles_margin = $("#selected-tags").height() + 10;
         $("#center-column #articles_list").css("margin-top", articles_margin);
 
+        // XXX: We do this in CSS now
         // set selected tags class, depending on whether we have a tag
         // selected or not
         // if ($("#selected-tags-list").children().length > 0) {
@@ -232,10 +223,6 @@ jQuery17(function () {
             runEffect();
             jQuery17('#all-tags-list-close').toggle();
         });
-        // jQuery17(document).click( function(e) {
-        //   runEffectClose(e);
-        //   return false;
-        // })
 
         // Set up the click functions for filters, hardcoded for now
         jQuery17("#types-list #all").change( function(){
@@ -276,6 +263,25 @@ jQuery17(function () {
             jQuery17("#form-buttons-filter").click();
         });
         jQuery17("#form-widgets-search").attr("placeholder", "Search ...");
+
+
+        jQuery17(document).click(function(event) {
+            if(event.isTrigger == undefined){
+                var is_inside = $(event.target).parents("#all-tags-list").length != 0 || $(event.target).attr('id') == "all-tags-list";
+                if(!is_inside){
+                    runEffectClose();
+                    jQuery17('#all-tags-list-close').hide();
+                    sessionStorage.setItem("all-tags", "closed");
+                }
+            }
+
+        })
+
+        jQuery17("div.ui-widget-content").click(function(){
+            runEffectClose();
+            jQuery17('#all-tags-list-close').hide();
+            sessionStorage.setItem("all-tags", "closed");
+        })
 
     });
 
