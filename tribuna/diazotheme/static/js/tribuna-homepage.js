@@ -262,6 +262,8 @@ jQuery17(function () {
             jQuery17("#form-widgets-sort_on-noform").val(this.value);
             jQuery17("#form-buttons-filter").click();
         });
+
+        // XXX: Why do we need this? (natan)
         jQuery17("#form-widgets-search").attr("placeholder", "Search ...");
 
 
