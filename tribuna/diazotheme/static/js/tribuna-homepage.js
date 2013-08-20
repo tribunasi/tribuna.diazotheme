@@ -5,6 +5,7 @@ jQuery17(function () {
         // When clicking on name, push it to top and remove everything else
         var myname = jQuery17(this.parentNode.parentNode).attr('id');
         var alreadySelected = false;
+        // jQuery17("#topside-tags").addClass("has-tags");
         jQuery17('#selected-tags-list > li > span').each( function() {
             var name = jQuery17(this.parentNode).attr('id');
             if(name === myname){
@@ -130,9 +131,9 @@ jQuery17(function () {
 
         // set selected tags class, depending on whether we have a tag
         // selected or not
-        if ($("#selected-tags-list").children().length > 0) {
-            $("#topside-tags").addClass("has-tags");
-        }
+        // if ($("#selected-tags-list").children().length > 0) {
+        //     $("#topside-tags").addClass("has-tags");
+        // }
 
         // Setup the alphabetical stuff on all-tags-list ul
         var previousLetter = 0;
@@ -157,36 +158,40 @@ jQuery17(function () {
         // Setup the all-tags-list height
         var allTagsList = jQuery17("ul#all-tags-list");
         // var oldHeight = allTagsList.height();
-        var topHeight = jQuery17("div#topside-tags").height();
-        allTagsList.css('max-height', (jQuery17(window).height()*4/5 - topHeight));
-        allTagsList.css("top", topHeight);
+        if(allTagsList.length){
+            var topHeight = jQuery17("div#topside-tags").height();
+            allTagsList.css('max-height', (jQuery17(window).height()*4/5 - topHeight));
+            allTagsList.css("top", topHeight);
 
-        allTagsList.width(jQuery17(window).width()/3);
+            allTagsList.width(jQuery17(window).width()/3);
 
-        jQuery17("#articles_list").css("min-height", jQuery17(window).height());
-        jQuery17("div#homepage-div").css("float", "left");
-        jQuery17("div#homepage-div").css("width", "100%");
+            var tmpheight = jQuery17(window).height() - parseInt(jQuery17("#articles_list").css("margin-top"), 10) - jQuery17("#topside-content-name").height() - 15;
+            jQuery17("#articles_list").css("height", tmpheight);
+            jQuery17("div#homepage-div").css("height", tmpheight - 10);
+            jQuery17("div#homepage-div").css("float", "left");
+            jQuery17("div#homepage-div").css("width", "100%");
 
-        // Split the list into columns
-        var columns = Math.floor((allTagsList.width()-40)/160);
-        var columnWidth = Math.floor((allTagsList.width()-40) / columns - 10);
-        var numEntries = jQuery17("ul#all-tags-list li").length;
-        var entriesInColumn = Math.ceil(numEntries/columns);
+            // Split the list into columns
+            var columns = Math.floor((allTagsList.width()-40)/160);
+            var columnWidth = Math.floor((allTagsList.width()-40) / columns - 10);
+            var numEntries = jQuery17("ul#all-tags-list li").length;
+            var entriesInColumn = Math.ceil(numEntries/columns);
 
 
-        allTagsList.html(allTagsList.html().replace('</a>', '</a><ul id="tmp-ul-tag" style="width: ' + columnWidth + 'px;">') + "</ul>");
+            allTagsList.html(allTagsList.html().replace('</a>', '</a><ul id="tmp-ul-tag" style="width: ' + columnWidth + 'px;">') + "</ul>");
 
 
-        var size = entriesInColumn,
-            $ul  = $("ul#tmp-ul-tag"),
-            $lis = $ul.children().filter(':gt(' + (size - 1) + ')'),
-            loop = columns,
-            i    = 0;
+            var size = entriesInColumn,
+                $ul  = $("ul#tmp-ul-tag"),
+                $lis = $ul.children().filter(':gt(' + (size - 1) + ')'),
+                loop = columns,
+                i    = 0;
 
-        $ul.css('float', 'left').wrap("<div style='overflow: hidden;'></div>");
+            $ul.css('float', 'left').wrap("<div style='overflow: hidden;'></div>");
 
-        for (; i < loop; i = i + 1) {
-            $ul = $("<ul style='width: " + columnWidth + "px; margin-left: 5px; margin-right: 5px' />").css('float', 'left').append($lis.slice(i * size, (i * size) + size)).insertAfter($ul);
+            for (; i < loop; i = i + 1) {
+                $ul = $("<ul style='width: " + columnWidth + "px; margin-left: 5px; margin-right: 5px' />").css('float', 'left').append($lis.slice(i * size, (i * size) + size)).insertAfter($ul);
+            }
         }
 
 
@@ -233,16 +238,27 @@ jQuery17(function () {
         // })
 
         // Set up the click functions for filters, hardcoded for now
-        jQuery17("#types-list #article").change( function(){
+        jQuery17("#types-list #all").change( function(){
+            var checked = jQuery17(this).prop('checked');
             jQuery17("#form-widgets-content_filters-0").click();
+            jQuery17("#formfield-form-widgets-content_filters input.checkbox-widget").each(function (){
+                jQuery17(this).prop('checked', checked);
+            });
+            jQuery17("#types-list input").each(function (){
+                jQuery17(this).prop('checked', checked);
+            });
             jQuery17("#form-buttons-filter").click();
         });
-        jQuery17("#types-list #comment").change( function(){
+        jQuery17("#types-list #article").change( function(){
             jQuery17("#form-widgets-content_filters-1").click();
             jQuery17("#form-buttons-filter").click();
         });
-        jQuery17("#types-list #image").change( function(){
+        jQuery17("#types-list #comment").change( function(){
             jQuery17("#form-widgets-content_filters-2").click();
+            jQuery17("#form-buttons-filter").click();
+        });
+        jQuery17("#types-list #image").change( function(){
+            jQuery17("#form-widgets-content_filters-3").click();
             jQuery17("#form-buttons-filter").click();
         });
 

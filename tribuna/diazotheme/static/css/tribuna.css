@@ -163,7 +163,7 @@ body.portaltype-tribuna-content-entrypage .formControls input[type='submit']{
 }
 
 #container .entrypage-top-button {
-    height: 16px; /*20 - border*/
+    /*height: 16px; 20 - border*/
     line-height: 16px;
     width: 116px; /*120 - border*/
     padding: 0px;
@@ -224,12 +224,14 @@ body.portaltype-tribuna-content-entrypage .formControls input[type='submit']{
     margin: 20px 0 0;
     padding: 0.75em;
     width: 9em;
-
+    z-index: 1;
+    position: absolute;
 }
 
 #entrypage-form-container.expanded {
     background-color: white;
     width: auto;
+    height: auto;
     border-style: solid;
     border-width: 2px;
     border-left-color: rgb(131, 131, 131);
@@ -237,9 +239,7 @@ body.portaltype-tribuna-content-entrypage .formControls input[type='submit']{
     border-right-color: rgb(238, 238, 238);
     border-bottom-color: rgb(112, 112, 112);
     box-shadow: none;
-    padding: 0.75em;
-    z-index: 99;
-    height: auto;
+    /*padding: 0.75em;*/
     text-align: left;
 }
 
@@ -277,11 +277,17 @@ body.portaltype-tribuna-content-entrypage .formControls input[type='submit']{
 div.entrypage-text-container {
     position: relative;
     width: 100%;
-    height: 100%;
-    margin-top: 10%;
+    margin-top: 140px;
     z-index: -1;
-
+    word-wrap: break-word;
 }
+div.entrypage-text-container p#entrypage-text {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-size: 800px;
+}
+
 #entrypage-author-title {
     position: fixed;
     left: 0;
@@ -317,7 +323,7 @@ div.entrypage-text-container {
 #text-container p{
     text-align: center;
     color:#000;
-    font: 95px/1 "Times New Roman";
+    font: 95px/1 Arial;
     display: block;
     /*text-shadow:#000000 -1px 1px 0,
     #000000 -2px 2px 0,
@@ -326,12 +332,26 @@ div.entrypage-text-container {
 }
 
 #text-container p.arial {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
+}
+#text-container p.times {
+    font-family: Times, "Times New Roman", Arial;
+}
+#text-container p.helvetica {
+    font-family: Helvetica, Arial, sans-serif;
+}
+#text-container p.impact {
+    font-family: Impact, Arial, sans-serif;
+}
+#text-container p.cursive {
+    font-family: cursive, Arial, sans-serif;
+}
+#text-container p.lucida {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, sans-serif;
 }
 
-#text-container p.helvetica {
-    font-family: Helvetica, Arial,sans-serif;
-}
+
+
 
 #form-widgets-picture-input {
     border-width: 2px;
@@ -368,10 +388,16 @@ div.entrypage-text-container {
 div#topside-tags {
     margin-left: 0px;
     margin-top: 10px;
+    margin-bottom: 0px;
 }
-div#topside-tags.has-tags {
+ul#selected-tags-list {
     margin-bottom: 50px;
 }
+/*XXX: Might not work in IE8, would need to use jQuery for that*/
+ul#selected-tags-list:empty {
+    margin-bottom: 0px;
+}
+
 div#selected-tags {
     width: 125px;
 }
@@ -401,6 +427,8 @@ div.text-view {
 }
 div.text-view .content-type {
     font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 25px;
 }
 
 #right-column-content .text-view {
@@ -712,6 +740,9 @@ div#sidebar-portlet {
 div#sidebar-portlet ul {
     margin-bottom: 0;
 }
+div#sidebar-portlet ul#tags-list {
+    margin-bottom: 20px;
+}
 div#sidebar-portlet form {
     margin-bottom: 0;
 }
@@ -734,7 +765,7 @@ div#sidebar-portlet a, div#topside-tags a {
     margin-right: 5px;
 }
 div#sidebar-portlet a#show-all-tags {
-    margin-left: 17px;
+    margin-left: 0px;
 }
 div#sidebar-portlet span a, div#topside-tags span a {
     margin-left: 0;
@@ -920,7 +951,8 @@ ul.content-list li {
 }
 
 div#homepage-div {
-    min-height: 600px;
+    /*min-height: 600px;*/
+    height: 100%;
     max-width: 100%;
     position: relative;
     float: right;
