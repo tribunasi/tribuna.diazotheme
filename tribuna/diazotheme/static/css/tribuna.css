@@ -255,7 +255,7 @@ body.portaltype-tribuna-content-entrypage .formControls input[type='submit']{
     border-bottom-color: rgb(112, 112, 112);
     box-shadow: none;
     text-align: left;
-    width: 240px;
+    width: 260px;
 }
 
 #entrypage-form-container a {
@@ -724,7 +724,7 @@ so we use this) */
     }
 }
 
-@media (max-width: 710px) {
+@media (max-width: 730px) {
     div#entrypage-home-link {
         position: absolute;
         bottom: 20px;
