@@ -1153,12 +1153,15 @@ a.content-link:hover {
     color: black;
     font-weight: bold;
 }
-#comment-info {
+#comment-info, #article-info, #image-info {
     margin-bottom: 0;
     margin-top: 15px;
 }
 .fit-text {
     padding-top: 1px;
+}
+.articleTag {
+    color: Blue;
 }
 /**
  * End of articles (aka main) page
@@ -1476,7 +1479,13 @@ div#center-column, div#content {
     float: right;
     width: auto;
 }
-#search-form form, #search-form form div {
+#search-button {
+    margin-bottom: 19px;
+}
+#search-form-right #search-button {
+    display: none;
+}
+#search-form form, #search-form .formControls, #search-form .LSBox {
     display:inline;
 }
 #search-form form div .text-widget.required.textline-field,
@@ -1504,11 +1513,18 @@ div#center-column, div#content {
 #search-form #searchGadget {
     width: 150px;
 }
+#search-form #searchGadget {
+    height: 30px;
+}
 #search-form form div .submit-widget.button-field {
     background-color: Cyan;
     color: black;
     height: 1.5em;
-    border: 0;
+}
+#search-button:hover {
+    border-top-color: Cyan;
+    background: Cyan;
+    color: Cyan;
 }
 .LSBox {
     position: relative;
@@ -1524,6 +1540,7 @@ div#center-column, div#content {
     left: 90px;
     right: auto;
 }
+
 #center-column .advancedsearchlink {
     display: none;
 }
