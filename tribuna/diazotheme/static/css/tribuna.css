@@ -508,7 +508,7 @@ a.comment-header {
 }
 
 a.drag-comment-header {
-    font-family: Georgia, Arial;
+    font-family: Georgia, serif;
 }
 
 p.article-body {
@@ -541,7 +541,7 @@ div.drag-view-article div#text, div.drag-view-comment div#text {
 }
 
 div.drag-view-comment .drag-comment-header p {
-    font-family: Georgia;
+    font-family: Georgia, serif;
     font-size: 16px;
     line-height: 24px;
 }
@@ -562,7 +562,7 @@ div.drag-view-article p, div.drag-view-comment p {
 }
 
 div.drag-view-comment p{
-    font-family: Georgia, Arial;
+    font-family: Georgia, serif;
 }
 
 div.drag-view-article:hover,
@@ -1446,7 +1446,7 @@ div.articles-comments {
 div#center-column, div#content {
     margin-top: 0;
     padding: 0;
-    font-family: Georgia, Arial, sans-serif;
+    font-family: Georgia, serif;
 }
 
 .gv-panel #selected-tags-list span {
