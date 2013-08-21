@@ -1088,6 +1088,7 @@ iframe{
 .content-slider .item-inner > div {
     font-size: 12px;
     line-height: 14px;
+    overflow: hidden;
 }
 .content-slider .item-inner p {
     margin: 0;
