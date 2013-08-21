@@ -475,6 +475,9 @@ div#gallery-link p {
     margin-bottom: 0;
 }
 
+a.article-author, a.article-header, a.article-subtitle {
+    font-family: Helvetica, Arial, sans-serif;
+}
 a.article-author {
     margin-bottom: 10px;
 }
@@ -667,6 +670,10 @@ div.drag-view-article #text #drag-view-type p,
 div.drag-view-article #text #drag-view-tags-list,
 div.drag-view-article #text .article-body {
     background-color: white;
+}
+
+#drag-comment-info {
+    font-family: Helvetica, Arial, sans-serif;
 }
 /**
  * End settings for the drag view
