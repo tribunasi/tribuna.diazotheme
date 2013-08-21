@@ -24,29 +24,31 @@ jQuery17(function () {
         });
 
 
-        // Set the appropriate height
-        var tmpheight = $(window).height() - 145;
-        $('#text-container').height(tmpheight);
+        // Set the appropriate height, only run if we have the text-container
+        if($("#text-container").length){
+            var tmpheight = $(window).height() - 145;
+            $('#text-container').height(tmpheight);
 
-        // Trim and replace new lines with <br />
-        var newtext = $("#entrypage-text").text().trim().replace(/\n/g, '<br>');
-        $("#entrypage-text").html(newtext);
+            // Trim and replace new lines with <br />
+            var newtext = $("#entrypage-text").text().trim().replace(/\n/g, '<br>');
+            $("#entrypage-text").html(newtext);
 
-        var $h = $('#entrypage-text');
-        var $d = $('<div/>');
-        $h.wrapInner($d);
-        var $i = $('#entrypage-text div')[0];
-        var height = $h.height();
-        var innerHeight = $i.scrollHeight;
-        while(innerHeight > height) {
-            var size = parseInt($h.css("font-size"), 10);
-            $h.css("font-size", size - 10);
-            innerHeight = $i.scrollHeight;
-        }
-        // $('p em').text(height);
-        // $('p strong').text(innerHeight);
-        if(height > innerHeight) {
-            $h.height(innerHeight);
+            var $h = $('#entrypage-text');
+            var $d = $('<div/>');
+            $h.wrapInner($d);
+            var $i = $('#entrypage-text div')[0];
+            var height = $h.height();
+            var innerHeight = $i.scrollHeight;
+            while(innerHeight > height) {
+                var size = parseInt($h.css("font-size"), 10);
+                $h.css("font-size", size - 10);
+                innerHeight = $i.scrollHeight;
+            }
+            // $('p em').text(height);
+            // $('p strong').text(innerHeight);
+            if(height > innerHeight) {
+                $h.height(innerHeight);
+            }
         }
 
 

@@ -32,13 +32,11 @@ jQuery17(function () {
             jQuery17("#formfield-form-widgets-all_tags [value='" + myname + "']").click();
             jQuery17("#formfield-form-widgets-tags [value='" + myname + "']").click();
         }
+
         jQuery17(".plusminus").css("display", "inline-block");
-        if (jQuery17(".selected").size() > 0){
-            jQuery17(".plusminus").css("display", "inline-block");
-        }
-        else {
-            jQuery17(".plusminus").css("display", "none");
-        }
+        jQuery17("#show-all-tags").css("margin-left", 17);
+        jQuery17("#selected-tags-list").css("margin-bottom", 50);
+
         jQuery17("#form-buttons-filter").click();
 
     }
@@ -79,11 +77,10 @@ jQuery17(function () {
         jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
         jQuery17("#form-buttons-filter").click();
         //scrollToContainer();
-        if (jQuery17(".selected").size() > 0){
-            jQuery17(".plusminus").css("display", "inline-block");
-        }
-        else {
+        if (!jQuery17("#selected-tags-list li").length){
             jQuery17(".plusminus").css("display", "none");
+            jQuery17("#show-all-tags").css("margin-left", 0);
+            jQuery17("#selected-tags-list").css("margin-bottom", 0);
         }
     }
 
@@ -189,11 +186,13 @@ jQuery17(function () {
 
 
         // Setup for moving tags up and down via +/-
-        if (jQuery17(".selected").size() > 0){
+        if (jQuery17("#selected-tags-list li").length){
             jQuery17(".plusminus").css("display", "inline-block");
+            jQuery17("#show-all-tags").css("margin-left", 17);
+            jQuery17("#selected-tags-list").css("margin-bottom", 50);
         }
 
-        if (jQuery17("#homepage-div").size() > 0){
+        if (jQuery17("#homepage-div").length){
             jQuery17("#form-buttons-drag").addClass("selected");
         }
         else {

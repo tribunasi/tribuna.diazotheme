@@ -14,6 +14,10 @@
     padding: 15px 5px;
 }
 
+/*Hide the useless search box*/
+#topsearchbox {
+    display: none;
+}
 
 .template-login_form #action-bar,
 .template-logged_out #action-bar {
@@ -56,7 +60,8 @@ input[type="submit"] {
     font-family: Helvetica, Arial, Sans-Serif;
     text-decoration: none;
     vertical-align: middle;
-    width: 100px;
+    /*width: 100px;*/
+    width: auto;
     height: 20px;
     line-height: 20px;
     padding-top: 0px;
@@ -388,13 +393,6 @@ div.entrypage-text-container p#entrypage-text {
 div#topside-tags {
     margin-left: 0px;
     margin-top: 10px;
-    margin-bottom: 0px;
-}
-ul#selected-tags-list {
-    margin-bottom: 50px;
-}
-/*XXX: Might not work in IE8, would need to use jQuery for that*/
-ul#selected-tags-list:empty {
     margin-bottom: 0px;
 }
 
@@ -986,6 +984,14 @@ div#tag-description-div {
 
 .plusminus {
     width: 7px;
+}
+div#sidebar-portlet .plusminus {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+div#sidebar-portlet .selected .plusminus {
+    margin-left: 6px;
+    margin-right: 4px;
 }
 
 /**
