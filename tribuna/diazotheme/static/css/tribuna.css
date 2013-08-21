@@ -652,8 +652,8 @@ div.drag-view-article.ui-draggable-dragging img{
 }
 
 div#articles_list img {
-    max-width: 800px;
-    max-height: 800px;
+    max-width: 600px;
+    max-height: 600px;
 }
 
 div.drag-view-article img {
