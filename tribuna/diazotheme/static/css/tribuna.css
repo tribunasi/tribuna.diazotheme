@@ -475,8 +475,15 @@ div#gallery-link p {
     margin-bottom: 0;
 }
 
+a.article-author {
+    margin-bottom: 10px;
+}
+
 a.article-header {
     font-weight: bold;
+}
+
+#gallery-link {
     margin-bottom: 15px;
 }
 
@@ -612,7 +619,7 @@ div.drag-view-comment.ui-draggable-dragging div#drag-view-type {*/
 div.drag-view-article:hover #text #gallery-link a,
 div.drag-view-article:hover #text #drag-view-type p,
 div.drag-view-article:hover #text #drag-view-tags-list {
-    display: inline-block;
+    display: block;
     padding-left: 3px;
     padding-right: 3px;
 }
