@@ -1,46 +1,34 @@
 jQuery17(function () {
     "use strict";
 
-    jQuery17(document).ready(function () {
-        jQuery17('#entrypage-link').click(function () {
-            var currPadding = jQuery17('#entrypage-form-container').css('padding-top');
-            if (currPadding == "0px"){
-                jQuery17('#entrypage-form-container').animate({padding: "0.75em"}, 400);
-            }else{
-                jQuery17('#entrypage-form-container').animate({padding: "0px"}, 300);
-            }
-            jQuery17('#entrypage-form-container').toggleClass('expanded');
-            jQuery17('#entrypage-form-close').toggle();
-        });
-        jQuery17('#entrypage-form-close').click(function () {
-            jQuery17('#entrypage-form-container').toggleClass('expanded');
+    /**
+     * Set the correct padding on the #entrypage-form-container with an animation
+     */
+    function setPadding(){
+        var currPadding = jQuery17('#entrypage-form-container').css('padding-top');
+        if (currPadding === "0px") {
+            jQuery17('#entrypage-form-container').animate({padding: "0.75em"}, 400);
+        } else {
             jQuery17('#entrypage-form-container').animate({padding: "0px"}, 300);
-            jQuery17('#entrypage-form-close').toggle();
-        });
-        $(".accordion-toggle").click(function() {
-            $(this).toggleClass('selected');
-            $(".accordion-toggle").not(this).each(function(){
-                $(this).removeClass('selected');
-            });
-        });
+        }
+    }
 
-        resizeText(true);
+    /**
+     * Expend or retract the container and show/hide the close button
+     */
+    function openCloseContainer(){
+        jQuery17('#entrypage-form-container').toggleClass('expanded');
+        jQuery17('#entrypage-form-close').toggle();
+    }
 
-        $('input[type=file]').bootstrapFileInput();
-        $(".textarea-widget").attr("maxlength", "150");
-        $(".text-widget").attr("maxlength", "20");
-    });
-});
-
-// XXX: Has some minor problems on resize so we won't do it like this for now,
-// left for phase 2
-// jQuery17(window).resize(function () {
-//     resizeText(false);
-// })
-
-function resizeText(replace){
-    // Set the appropriate height, only run if we have the text-container
-    if($("#text-container").length){
+    /**
+     * Resize the text to fit inside the container while being as large as
+     * possible
+     *
+     * @param  {boolean} replace Should we replace the text with <br> or not
+     */
+    function resizeText(replace){
+        // Set the appropriate height
         var tmpheight = $(window).height() - 145;
         $('#text-container').height(tmpheight);
 
@@ -53,8 +41,6 @@ function resizeText(replace){
         var $h = $('#entrypage-text');
         var $d = $('<div/>');
         $h.wrapInner($d);
-
-
         var $i = $('#entrypage-text div')[0];
         var height = $h.height();
         var innerHeight = $i.scrollHeight;
@@ -69,4 +55,24 @@ function resizeText(replace){
             $h.height(innerHeight);
         }
     }
-}
+
+    jQuery17(document).ready(function () {
+        jQuery17('#entrypage-link, #entrypage-form-close').click(function () {
+            setPadding();
+            openCloseContainer();
+        });
+
+        $(".accordion-toggle").click(function() {
+            $(this).toggleClass('selected');
+            $(".accordion-toggle").not(this).each(function(){
+                $(this).removeClass('selected');
+            });
+        });
+
+        if ($("#text-container").length) resizeText(true);
+
+        $('input[type=file]').bootstrapFileInput();
+        $(".textarea-widget").attr("maxlength", "150");
+        $(".text-widget").attr("maxlength", "20");
+    });
+});
