@@ -7,6 +7,28 @@
     display: none;
 }*/
 
+
+/*Register forms*/
+body.template-register #content input {
+    height: 20px;
+    line-height: 20px;
+    font-size: 17px;
+    padding: 0px 5px 0px 5px;
+}
+
+/*All "title" field letters are too big!*/
+#content .field input[type="text"][name$=".title"] {
+    height: 26px;
+    line-height: 26px;
+    font-size: 21px;
+    padding: 0px 5px 0px 5px;
+}
+
+/*Hide the useless search box*/
+#topsearchbox {
+    display: none;
+}
+
 .template-login_form #action-bar,
 .template-logged_out #action-bar {
     display: none;
@@ -48,6 +70,11 @@ input[type="submit"] {
     font-family: Helvetica, Arial, Sans-Serif;
     text-decoration: none;
     vertical-align: middle;
+    /*width: 100px;*/
+    width: auto;
+    height: 20px;
+    line-height: 20px;
+    padding-top: 0px;
 }
 
 .button:hover, input[type="submit"]:hover {
@@ -136,6 +163,28 @@ a.selected {
 /**
  * Entry page
  */
+
+body.portaltype-tribuna-content-entrypage {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+body.portaltype-tribuna-content-entrypage .formControls input[type='submit']{
+    width: 100px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    line-height: 20px;
+}
+
+#container .entrypage-top-button {
+    /*height: 16px; 20 - border*/
+    line-height: 16px;
+    width: 116px; /*120 - border*/
+    padding: 0px;
+    text-align: center;
+}
+
 #entrypage-form .formControls {
     margin: 0;
 }
@@ -171,8 +220,8 @@ a.selected {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
 }
-.field input[type="text"],
-.field input[type="password"],
+/*.field input[type="text"],
+.field input[type="password"],*/
 #entrypage-form .field input {
     width: 200px;
     height: 20px;
@@ -190,12 +239,14 @@ a.selected {
     margin: 20px 0 0;
     padding: 0.75em;
     width: 9em;
-
+    z-index: 1;
+    position: absolute;
+    left: 20px;
 }
 
 #entrypage-form-container.expanded {
     background-color: white;
-    width: auto;
+    height: auto;
     border-style: solid;
     border-width: 2px;
     border-left-color: rgb(131, 131, 131);
@@ -203,10 +254,8 @@ a.selected {
     border-right-color: rgb(238, 238, 238);
     border-bottom-color: rgb(112, 112, 112);
     box-shadow: none;
-    padding: 0.75em;
-    /*padding-left: 15px;*/
-
-    z-index: 99;
+    text-align: left;
+    width: 260px;
 }
 
 #entrypage-form-container a {
@@ -226,6 +275,10 @@ a.selected {
 
 #entrypage-form .accordion {
     margin-top: 2em;
+    margin-bottom: 8px; /*Base is 18, lower by 10*/
+}
+.accordion-body.collapse form {
+    margin-bottom: 8px;
 }
 
 #entrypage-form .accordion-group {
@@ -239,11 +292,17 @@ a.selected {
 div.entrypage-text-container {
     position: relative;
     width: 100%;
-    height: 100%;
-    margin-top: 10%;
+    margin-top: 140px;
     z-index: -1;
-
+    word-wrap: break-word;
 }
+div.entrypage-text-container p#entrypage-text {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-size: 800px;
+}
+
 #entrypage-author-title {
     position: fixed;
     left: 0;
@@ -266,7 +325,7 @@ div.entrypage-text-container {
 
 #entrypage-home-link {
     background-color: cyan;
-    margin: 20px 30% 0;
+    margin: 20px 40% 0;
     padding: 0.75em;
     width: 9em;
     position: absolute;
@@ -279,7 +338,7 @@ div.entrypage-text-container {
 #text-container p{
     text-align: center;
     color:#000;
-    font: 95px/1 "Times New Roman";
+    font: 95px/1 Arial;
     display: block;
     /*text-shadow:#000000 -1px 1px 0,
     #000000 -2px 2px 0,
@@ -288,12 +347,26 @@ div.entrypage-text-container {
 }
 
 #text-container p.arial {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
+}
+#text-container p.times {
+    font-family: Times, "Times New Roman", Arial;
+}
+#text-container p.helvetica {
+    font-family: Helvetica, Arial, sans-serif;
+}
+#text-container p.impact {
+    font-family: Impact, Arial, sans-serif;
+}
+#text-container p.cursive {
+    font-family: cursive, Arial, sans-serif;
+}
+#text-container p.lucida {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, sans-serif;
 }
 
-#text-container p.helvetica {
-    font-family: Helvetica, Arial,sans-serif;
-}
+
+
 
 #form-widgets-picture-input {
     border-width: 2px;
@@ -328,12 +401,11 @@ div.entrypage-text-container {
  * Settings for the header
  */
 div#topside-tags {
-    margin-left: 0;
+    margin-left: 0px;
     margin-top: 10px;
+    margin-bottom: 0px;
 }
-div#topside-tags.has-tags {
-    margin-bottom: 50px;
-}
+
 div#selected-tags {
     width: 125px;
 }
@@ -361,6 +433,12 @@ div.text-view {
     background: none;
     border: none;
 }
+div.text-view .content-type {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 25px;
+}
+
 #right-column-content .text-view {
     margin-bottom: 30px;
 }
@@ -397,8 +475,18 @@ div#gallery-link p {
     margin-bottom: 0;
 }
 
+a.article-author, a.article-header, a.article-subtitle {
+    font-family: Helvetica, Arial, sans-serif;
+}
+a.article-author {
+    margin-bottom: 10px;
+}
+
 a.article-header {
     font-weight: bold;
+}
+
+#gallery-link {
     margin-bottom: 15px;
 }
 
@@ -440,11 +528,12 @@ a.comment-header {
 }
 
 a.drag-comment-header {
-    font-family: Georgia, Arial;
+    font-family: Georgia, serif;
 }
 
 p.article-body {
     margin-bottom: 0px;
+    line-height: 20px;
 }
 
 div#drag-view a.comment-header {
@@ -461,12 +550,26 @@ div.drag-view-article, div.drag-view-comment {
 }
 div.drag-view-comment {
     background: transparent;
+    max-width: 360px;
+    min-width: 100px;
 }
 
 div.drag-view-article div#text, div.drag-view-comment div#text {
     padding: 15px;
     font-size: 15px;
     line-height: 17px;
+}
+
+div.drag-view-comment .drag-comment-header p {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+div.drag-view-comment .content-type {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
 }
 
 div.drag-view-article a, div.drag-view-comment a {
@@ -479,14 +582,17 @@ div.drag-view-article p, div.drag-view-comment p {
 }
 
 div.drag-view-comment p{
-    font-family: Georgia, Arial;
+    font-family: Georgia, serif;
 }
 
 div.drag-view-article:hover,
 div.drag-view-comment:hover,
 div.drag-view-comment.ui-draggable-dragging {
-    background-color: #E8E8E8 !important;
-    border: 1px solid black;
+    background-color: white;
+}
+
+div.drag-view-article div#drag-view-type p.content-type {
+    margin-bottom: 0;
 }
 
 div.drag-view-article div#drag-view-tags {
@@ -496,34 +602,44 @@ div.drag-view-article div#drag-view-tags {
 
 /*Hide/show stuff on hover and when dragging*/
 div.drag-view-article a,
-div.drag-view-article p,
-div.drag-view-article:hover img,
-div.drag-view-comment div#drag-view-type,
-div.drag-view-article div#drag-view-tags {
+div.drag-view-article p {
+/*div.drag-view-comment div#drag-view-type,
+div.drag-view-article div#drag-view-tags {*/
     display: none;
 }
 
 /*Change everything to block
 Link should be changed to inline-block so it doesn't stretch over whole div*/
-div.drag-view-article:hover p,
-div.drag-view-article img,
-div.drag-view-comment:hover div#drag-view-type,
-div.drag-view-article:hover div#drag-view-tags,
+
+/*div.drag-view-article img,*/
+div.drag-view-article:hover #text #drag-view-tags {
+/*div.drag-view-comment:hover div#drag-view-type,
 div.drag-view-comment.ui-draggable-dragging div#text,
-div.drag-view-comment.ui-draggable-dragging div#drag-view-type
-{
+div.drag-view-comment.ui-draggable-dragging div#drag-view-type {*/
     display: block;
 }
+
+div.drag-view-article:hover #text #gallery-link a,
+div.drag-view-article:hover #text #drag-view-type p,
+div.drag-view-article:hover #text #drag-view-tags-list {
+    display: block;
+    padding-left: 3px;
+    padding-right: 3px;
+}
 div.drag-view-article.ui-draggable-dragging div#text,
+div.drag-view-article div#drag-view-tags,
 div.drag-view-article.ui-draggable-dragging div#drag-view-tags,
 div.drag-view-article.ui-draggable-dragging p {
     display: none;
 }
-div.drag-view-article:hover a {
-    display: inline-block;
+
+div.drag-view-article:hover #text .article-body {
+    display: inline;
+    padding-left: 3px;
+    padding-right: 3px;
 }
-div.drag-view-comment a {
-    display: inline-block;
+div.drag-view-comment a p {
+    display: inline;
 }
 
 /*Must be after the previous one so it is not overwritten*/
@@ -534,9 +650,30 @@ div.drag-view-article.ui-draggable-dragging{
 div.drag-view-article.ui-draggable-dragging img{
     display: block;
 }
+
+div#articles_list img {
+    max-width: 600px;
+    max-height: 600px;
+}
+
 div.drag-view-article img {
-    max-width: none;
-    max-height: none;
+    /*max-width: none;
+    max-height: none;*/
+    z-index: 0;
+    position: absolute;
+}
+div.drag-view-article #text {
+    position: absolute;
+}
+div.drag-view-article #text #gallery-link a,
+div.drag-view-article #text #drag-view-type p,
+div.drag-view-article #text #drag-view-tags-list,
+div.drag-view-article #text .article-body {
+    background-color: white;
+}
+
+#drag-comment-info {
+    font-family: Helvetica, Arial, sans-serif;
 }
 /**
  * End settings for the drag view
@@ -567,6 +704,7 @@ div.drag-view-article img {
 
 #results-num {
     margin-right: 16px;
+    font-size: 12px;
 }
 #topside-content-sort_on #formfield-form-widgets-sort_on {
     display: inline-block;
@@ -600,6 +738,15 @@ so we use this) */
     }
 }
 
+@media (max-width: 730px) {
+    div#entrypage-home-link {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        margin-left: 0;
+    }
+}
+
 
 input#form-buttons-text:hover, input#form-buttons-drag:hover {
     background-position: center;
@@ -624,6 +771,9 @@ div#sidebar-portlet {
 div#sidebar-portlet ul {
     margin-bottom: 0;
 }
+div#sidebar-portlet ul#tags-list {
+    margin-bottom: 20px;
+}
 div#sidebar-portlet form {
     margin-bottom: 0;
 }
@@ -646,7 +796,7 @@ div#sidebar-portlet a, div#topside-tags a {
     margin-right: 5px;
 }
 div#sidebar-portlet a#show-all-tags {
-    margin-left: 17px;
+    margin-left: 0px;
 }
 div#sidebar-portlet span a, div#topside-tags span a {
     margin-left: 0;
@@ -832,7 +982,8 @@ ul.content-list li {
 }
 
 div#homepage-div {
-    min-height: 600px;
+    /*min-height: 600px;*/
+    height: 100%;
     max-width: 100%;
     position: relative;
     float: right;
@@ -866,6 +1017,14 @@ div#tag-description-div {
 
 .plusminus {
     width: 7px;
+}
+div#sidebar-portlet .plusminus {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+div#sidebar-portlet .selected .plusminus {
+    margin-left: 6px;
+    margin-right: 4px;
 }
 
 /**
@@ -910,8 +1069,7 @@ iframe{
     position: relative;
 }
 .content-slider-wrapper {
-    width: 92%;
-    margin: 0 auto;
+    padding: 0 30px;
 }
 .content-slider ul li {
     display: block;
@@ -928,7 +1086,9 @@ iframe{
     height: 40px;
 }
 .content-slider .item-inner > div {
-    line-height: 1em;
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
 }
 .content-slider .item-inner p {
     margin: 0;
@@ -970,7 +1130,7 @@ img.navigate {
 .template-articles #main {
     margin-top: 30px;
 }
-.article-display-options.span4 {
+.article-display-options {
     background-color: yellow;
     padding-left: 10px;
     width: 200px;
@@ -979,6 +1139,8 @@ img.navigate {
     border-width: 1px;
     border-color: yellow;
     box-shadow: 2px 2px 1px #888888;
+    position: absolute;
+    right: 20px;
 }
 .comment-text {
     color: black;
@@ -1000,8 +1162,12 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
     padding: 0;
     margin-bottom: 60px;
 }
-.article-heading h2 {
-    line-height: 1em;
+
+/*XXX: Naj bosta res oba enako velika?*/
+.article-heading h2, .article-heading h3 {
+    font-size: 20px;
+    line-height: 25px;
+    font-family: Helvetica, Arial, sans-serif;
 }
 .article-display-options label {
     margin-right: 20px;
@@ -1021,12 +1187,15 @@ a.content-link:hover {
     color: black;
     font-weight: bold;
 }
-#comment-info {
+#comment-info, #article-info, #image-info {
     margin-bottom: 0;
     margin-top: 15px;
 }
 .fit-text {
     padding-top: 1px;
+}
+.articleTag {
+    color: Blue;
 }
 /**
  * End of articles (aka main) page
@@ -1100,6 +1269,7 @@ div.half-width {
 
 .comment  {
     font-size: 100%;
+    margin-top: 1em;
 }
 #comments input[type='text'] {
     height: 4em;
@@ -1242,9 +1412,11 @@ div.articles-comments {
     left: 50px !important;
 }*/
 
-.articles-article-body {
+.articles-article-body, p.fit-text {
     font-size: 16px;
     line-height: 24px;
+}
+.articles-article-body {
     height: 100%;
 }
 
@@ -1299,7 +1471,7 @@ div.articles-comments {
 div#center-column, div#content {
     margin-top: 0;
     padding: 0;
-    font-family: Georgia, Arial, sans-serif;
+    font-family: Georgia, serif;
 }
 
 .gv-panel #selected-tags-list span {
@@ -1341,7 +1513,13 @@ div#center-column, div#content {
     float: right;
     width: auto;
 }
-#search-form form, #search-form form div {
+#search-button {
+    margin-bottom: 19px;
+}
+#search-form-right #search-button {
+    display: none;
+}
+#search-form form, #search-form .formControls, #search-form .LSBox {
     display:inline;
 }
 #search-form form div .text-widget.required.textline-field,
@@ -1369,11 +1547,18 @@ div#center-column, div#content {
 #search-form #searchGadget {
     width: 150px;
 }
+#search-form #searchGadget {
+    height: 30px;
+}
 #search-form form div .submit-widget.button-field {
     background-color: Cyan;
     color: black;
     height: 1.5em;
-    border: 0;
+}
+#search-button:hover {
+    border-top-color: Cyan;
+    background: Cyan;
+    color: Cyan;
 }
 .LSBox {
     position: relative;
@@ -1389,6 +1574,7 @@ div#center-column, div#content {
     left: 90px;
     right: auto;
 }
+
 #center-column .advancedsearchlink {
     display: none;
 }
@@ -1411,6 +1597,13 @@ div#center-column, div#content {
 }
 /**
  * End search
+ **/
+
+#form-widgets-subtitle,
+#form-widgets-article_author {
+    width: 100%;
+}
+
 
 /*MOBILE*/
 

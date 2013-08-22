@@ -201,7 +201,7 @@
     </rules>
 
     <replace theme="/html/head/title" content="/html/head/title" />
-    <rules if-not-path="@@articles @@home home plonebrowser" css:if-not-content="#change-form">
+    <rules if-not-path="@@articles @@home home plonebrowser searchreplace" css:if-not-content="#change-form">
       <theme href="tribuna_base.html" css:if-content="#visual-portal-wrapper"/>
       <theme href="dialog.html" css:if-content="#content.dialog-wrapper"/>
       <drop css:content="meta[http-equiv='X-UA-Compatible']"/>

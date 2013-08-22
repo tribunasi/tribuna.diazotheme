@@ -3,6 +3,8 @@ jQuery17(function () {
 
     var slider = jQuery17('#article-slider'),
         SLIDER_PREFIX = "slider-",
+        LAST_ELEMENT = jQuery17("#article-slider li").last(),
+        LAST_INDEX = LAST_ELEMENT.attr('data-carousel-index'),
         article_id,
         article_uid,
         article_url,
@@ -10,6 +12,88 @@ jQuery17(function () {
         comments,
         comments_url,
         text;
+
+    function isScrolledIntoView(elem) {
+        var docViewLeft = jQuery17(window).scrollLeft();
+        var docViewRight = docViewLeft + jQuery17(window).width();
+
+        if(!jQuery17(elem).offset() || !jQuery17(elem).width()){
+            return false;
+        }
+        var elemLeft = jQuery17(elem).offset().left;
+        var elemRight = elemLeft + jQuery17(elem).width();
+
+        return ((elemRight >= docViewLeft) && (elemLeft <= docViewRight)
+          && (elemRight <= docViewRight) &&  (elemLeft >= docViewLeft) );
+    }
+
+    function getLastVisible(first) {
+        var first = jQuery17("#article-slider li").first();
+        while(isScrolledIntoView(first.next())){
+            first = first.next();
+        }
+        return first;
+    }
+
+    function getStartPage(elem) {
+        // Figure out the page on which our selected element is
+        var page = Math.floor(elem.attr('data-carousel-index') / window.elemOnScreen);
+        var pageStart = jQuery17("[data-carousel-index = " + page * window.elemOnScreen + "]")
+
+        // Hide arrows if needed
+        var lastPage = Math.floor(LAST_INDEX / window.elemOnScreen);
+        if(page === 0){
+            jQuery17("#prev").hide();
+        }else if(page === lastPage){
+            jQuery17("#next").hide();
+        }
+
+        return(pageStart);
+    }
+
+    function slideToPage(elem) {
+        var pageStart = getStartPage(elem);
+        // Slide to the start of that page
+        slider.trigger('slideTo', pageStart);
+    }
+
+    function elementsOnScreen() {
+        // Figure out how many elements fit on the screen and save it into
+        // window global variable
+        var first = jQuery17("#article-slider li").first();
+        window.elemOnScreen = 0;
+
+        while(isScrolledIntoView(first)){
+            first = first.next();
+            window.elemOnScreen += 1;
+        }
+    }
+
+    function nextScroll() {
+        jQuery17("#prev").show();
+        var last = getLastVisible().attr('data-carousel-index');
+        if(last === LAST_INDEX){
+            jQuery17("#next").hide();
+        }
+
+    }
+
+    function prevScroll() {
+        jQuery17("#next").show();
+        var first = jQuery17("#article-slider li").first();
+        if(first.attr('data-carousel-index') === "0"){
+            jQuery17("#prev").hide();
+        }
+    }
+
+
+    // Make sure that we can still see our selected element when we resize
+    jQuery17(window).resize(function() {
+        // Need to set up again on resize
+        elementsOnScreen();
+        slideToPage(jQuery17("#article-slider li.selected"));
+    })
+
 
     jQuery17.fn.loadArticle = function() {
 
@@ -19,8 +103,11 @@ jQuery17(function () {
             jQuery17(this).removeClass('selected');
         });
 
-        // slide to the selected element
-        slider.trigger('slideTo', this);
+        jQuery17(".prev").show();
+        jQuery17(".next").show();
+
+        // Slide to appropriate page, hiding arrows if needed
+        slideToPage(this);
 
         // load content
         article_uid = this.attr('data-uid');
@@ -32,7 +119,7 @@ jQuery17(function () {
             $(".dropdown-toggle").dropdown();
 
             // increase text size for comments
-            jQuery17(".fit-text").textfill(30);
+            jQuery17(".fit-text").textfill(30, 16);
 
             // set full width for center column and remove the "content" id
             // XXX: yes, I'm aware that this is bad ;) (we should probably
@@ -47,6 +134,15 @@ jQuery17(function () {
             }
 
         });
+
+        // If we are on the first/last article, hide appropriate arrows
+        var currIndex = this.attr('data-carousel-index');
+        if(currIndex === "0"){
+            jQuery17("#article-navigation .prev").hide();
+        }
+        else if(currIndex === LAST_INDEX){
+            jQuery17("#article-navigation .next").hide();
+        }
     }
 
     jQuery17(document).ready(function () {
@@ -61,14 +157,26 @@ jQuery17(function () {
                 width: 220
             },
             auto: false,
-            prev: '#prev',
-            next: '#next',
             mousewheel: true,
             swipe: {
                 onMouse: true,
-                onTouch: true
+                onTouch: true,
+            },
+            prev: "#prev",
+            next: "#next",
+            scroll: {
+                onAfter: function(data){
+                    if(data.scroll.direction === "prev"){
+                        prevScroll();
+                    }else{
+                        nextScroll();
+                    }
+                }
             }
         });
+
+        // Set up the global variables
+        elementsOnScreen();
 
         // load article (from url)
         article_id = jQuery17("#main").attr('data-id');
@@ -86,7 +194,7 @@ jQuery17(function () {
         // show/hide comments
         jQuery17("#main").on("change", ".activate-comments", function () {
             comments = jQuery17('#comments-' + article_uid);
-            text = jQuery17('.content-core');
+            text = jQuery17('.article-text');
 
             // load comments if they haven't been loaded yet
             if (comments.children().length === 0) {
@@ -106,7 +214,7 @@ jQuery17(function () {
                 if (text.is(":visible")) {
                     comments.removeClass("span7");
                     comments.addClass("span5");
-                    text.removeClass("span9");
+                    text.removeClass("span7");
                     text.addClass("span6");
                 }
                 else {
@@ -117,25 +225,25 @@ jQuery17(function () {
             else {
                 comments.hide();
                 text.removeClass("span6");
-                text.addClass("span9");
+                text.addClass("span7");
             }
         });
 
         // show/hide article text
         jQuery17("#main").on("change", ".activate-text", function () {
-            text = jQuery17('.content-core');
+            text = jQuery17('.article-text');
             comments = jQuery17('#comments-' + article_uid);
             if (jQuery17(this).prop("checked")) {
                 text.show();
                 if (comments.is(":visible")) {
-                    text.removeClass("span9");
+                    text.removeClass("span7");
                     text.addClass("span6");
                     comments.removeClass("span7");
                     comments.addClass("span5");
                 }
                 else {
                     text.removeClass("span6");
-                    text.addClass("span9");
+                    text.addClass("span7");
                 }
             }
             else {
@@ -159,24 +267,19 @@ jQuery17(function () {
     });
 
     // slide to the next article
-    // XXX: should not be circular
     jQuery17('#article-navigation .next').click(function () {
-        var current = jQuery17('#article-slider li.selected');
-        var next = current.next();
-        slider.trigger('slideTo', next);
+        var current = parseInt(jQuery17('#article-slider li.selected').attr('data-carousel-index'));
+        var next = jQuery17("[data-carousel-index = " + (current + 1) + "]")
         next.trigger('click');
         return false;
     });
 
     // slide to the previous article
-    // XXX: should not be circular
     jQuery17('#article-navigation .prev').click(function () {
-        var current = jQuery17('#article-slider li.selected');
-        var prev = current.prev();
-        slider.trigger('slideTo', prev);
+        var current = parseInt(jQuery17('#article-slider li.selected').attr('data-carousel-index'));
+        var prev = jQuery17("[data-carousel-index = " + (current - 1) + "]")
         prev.trigger('click');
         return false;
     });
-
 
 });
