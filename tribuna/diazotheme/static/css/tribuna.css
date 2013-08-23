@@ -529,6 +529,8 @@ a.comment-header {
 
 a.drag-comment-header {
     font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 p.article-body {
@@ -622,7 +624,7 @@ div.drag-view-comment.ui-draggable-dragging div#drag-view-type {*/
 div.drag-view-article:hover #text #gallery-link a,
 div.drag-view-article:hover #text #drag-view-type p,
 div.drag-view-article:hover #text #drag-view-tags-list {
-    display: block;
+    display: inline;
     padding-left: 3px;
     padding-right: 3px;
 }
@@ -674,6 +676,8 @@ div.drag-view-article #text .article-body {
 
 #drag-comment-info {
     font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
 }
 /**
  * End settings for the drag view
