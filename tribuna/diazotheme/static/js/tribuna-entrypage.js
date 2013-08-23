@@ -4,7 +4,7 @@ jQuery17(function () {
     /**
      * Set the correct padding on the #entrypage-form-container with an animation
      */
-    function setPadding(){
+    function setPadding() {
         var currPadding = jQuery17('#entrypage-form-container').css('padding-top');
         if (currPadding === "0px") {
             jQuery17('#entrypage-form-container').animate({padding: "0.75em"}, 400);
@@ -13,48 +13,69 @@ jQuery17(function () {
         }
     }
 
+
     /**
-     * Expend or retract the container and show/hide the close button
+     * Expand or retract the container and show/hide the close button
      */
-    function openCloseContainer(){
+    function openCloseContainer() {
         jQuery17('#entrypage-form-container').toggleClass('expanded');
         jQuery17('#entrypage-form-close').toggle();
     }
+
+
+    /**
+     * Opens or closes the accordion
+     *
+     * @this  {Object}  An accordion we will open/close
+     */
+    function openCloseAccordion() {
+        jQuery17(this).toggleClass('selected');
+        jQuery17(".accordion-toggle").not(this).each(function () {
+            jQuery17(this).removeClass('selected');
+        });
+    }
+
 
     /**
      * Resize the text to fit inside the container while being as large as
      * possible
      *
-     * @param  {boolean} replace Should we replace the text with <br> or not
+     * @param   {Boolean}  replace  Should we replace the '\n' with <br> or not
+     * @param   {Number}   step     Step for lowering font-size, defaults to 10
      */
-    function resizeText(replace){
+    function resizeText(replace, step) {
+        // Set default value for step
+        step = step || 10;
+
         // Set the appropriate height
-        var tmpheight = $(window).height() - 145;
-        $('#text-container').height(tmpheight);
+        var tmpheight = $(window).height() - 145,
+            $h = jQuery17('#entrypage-text'),
+            $d = jQuery17('<div/>'),
+            size;
+        jQuery17('#text-container').height(tmpheight);
 
         // Trim and replace new lines with <br />
-        if(replace){
-            var newtext = $("#entrypage-text").text().trim().replace(/\n/g, '<br>');
-            $("#entrypage-text").html(newtext);
+        if (replace) {
+            $h.html($h.text().trim().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\r\n|\r|\n/g, "<br />"));
         }
 
-        var $h = $('#entrypage-text');
-        var $d = $('<div/>');
         $h.wrapInner($d);
-        var $i = $('#entrypage-text div')[0];
-        var height = $h.height();
-        var innerHeight = $i.scrollHeight;
+        var $i = jQuery17('#entrypage-text div')[0],
+            height = $h.height(),
+            innerHeight = $i.scrollHeight;
 
-        while(innerHeight > height) {
-            var size = parseInt($h.css("font-size"), 10);
-            $h.css("font-size", size - 10);
+        // Resize the text while it's still in the bounds
+        while (innerHeight > height) {
+            size = parseInt($h.css("font-size"), 10);
+            $h.css("font-size", size - step);
             innerHeight = $i.scrollHeight;
         }
 
-        if(height > innerHeight) {
+        if (height > innerHeight) {
             $h.height(innerHeight);
         }
     }
+
 
     jQuery17(document).ready(function () {
         jQuery17('#entrypage-link, #entrypage-form-close').click(function () {
@@ -62,17 +83,16 @@ jQuery17(function () {
             openCloseContainer();
         });
 
-        $(".accordion-toggle").click(function() {
-            $(this).toggleClass('selected');
-            $(".accordion-toggle").not(this).each(function(){
-                $(this).removeClass('selected');
-            });
-        });
+        jQuery17(".accordion-toggle").click( openCloseAccordion());
 
-        if ($("#text-container").length) resizeText(true);
+        if (jQuery17("#text-container").length) {
+            resizeText(true);
+        }
 
+        // This needs to be $ and not jQuery17
         $('input[type=file]').bootstrapFileInput();
-        $(".textarea-widget").attr("maxlength", "150");
-        $(".text-widget").attr("maxlength", "20");
+        // Limit the maxlength of inputs
+        jQuery17(".textarea-widget").attr("maxlength", "150");
+        jQuery17(".text-widget").attr("maxlength", "20");
     });
 });
