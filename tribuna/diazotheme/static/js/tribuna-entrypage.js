@@ -46,7 +46,7 @@ function resizeText(replace){
 
         // Trim and replace new lines with <br />
         if(replace){
-            var newtext = $("#entrypage-text").text().trim().replace(/\n/g, '<br>');
+            var newtext = $("#entrypage-text").text().trim().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\r\n|\r|\n/g, "<br />");
             $("#entrypage-text").html(newtext);
         }
 
