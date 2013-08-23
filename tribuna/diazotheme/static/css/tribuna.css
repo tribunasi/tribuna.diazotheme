@@ -527,7 +527,7 @@ a.comment-header {
     font-family: serif;
 }
 
-a.drag-comment-header {
+a.drag-comment-header, p.article-body {
     font-family: Georgia, serif;
     font-size: 16px;
     line-height: 24px;
@@ -535,7 +535,6 @@ a.drag-comment-header {
 
 p.article-body {
     margin-bottom: 0px;
-    line-height: 20px;
 }
 
 div#drag-view a.comment-header {
