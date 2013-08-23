@@ -83,7 +83,7 @@ jQuery17(function () {
             openCloseContainer();
         });
 
-        jQuery17(".accordion-toggle").click( openCloseAccordion());
+        jQuery17(".accordion-toggle").click(openCloseAccordion());
 
         if (jQuery17("#text-container").length) {
             resizeText(true);
