@@ -524,10 +524,15 @@ div.ui-widget-content {
 }
 
 a.comment-header {
-    font-family: serif;
+    font-family: Georgia, serif;
+}
+p.article-body {
+    font-size: 20px;
+    line-height: 25px;
+    font-family:  Helvetica, Arial, sans-serif;
 }
 
-a.drag-comment-header, p.article-body {
+a.drag-comment-header{
     font-family: Georgia, serif;
     font-size: 16px;
     line-height: 24px;
@@ -1181,6 +1186,14 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
     padding-top: 0;
     border: none;
 }
+
+#article-comment {
+    width: 650px;
+    margin: 0 auto;
+    border: none;
+    margin-top: 150px;
+    padding-top: 0;
+}
 ul.token-input-list-facebook {
     width: 100%;
     visibility: visible !important;
@@ -1194,10 +1207,13 @@ a.content-link:hover {
     margin-bottom: 0;
     margin-top: 15px;
 }
+#comment-info, #comment-tags-info, .redTag, .oneCommentTag {
+    font-family: Helvetica, Arial, sans-serif;
+}
 .fit-text {
     padding-top: 1px;
 }
-.articleTag {
+.articleTag, .oneCommentTag {
     color: Blue;
 }
 /**
@@ -1274,6 +1290,9 @@ div.half-width {
     font-size: 100%;
     margin-top: 1em;
 }
+.discussion {
+    font-family:  Helvetica, Arial, sans-serif;
+}
 #comments input[type='text'] {
     height: 4em;
     margin-bottom: 0;
@@ -1286,6 +1305,7 @@ div.half-width {
     float: none;
     margin-left: 0;
     font-size: 15px;
+    margin-bottom: 0;
 }
 .commentBody {
     margin: 1em 0 0 1em;
@@ -1332,12 +1352,7 @@ div.half-width {
 }
 
 .context.reply-to-comment-button {
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    border-width: 1px;
-    border-color: #ccc;
     background-color: white;
-    box-shadow: 2px 2px 1px #888888;
     padding:0;
     padding-left: 2%;
     padding-right: 2%;
@@ -1359,7 +1374,39 @@ div.half-width {
     padding-left: 2%;
     padding-right: 2%;
 }
-
+.replyTreeLevel0 {
+    margin-left: 0px;
+}
+.replyTreeLevel1 {
+    margin-left: 20px;
+}
+.replyTreeLevel2 {
+    margin-left: 40px;
+}
+.replyTreeLevel3 {
+    margin-left: 60px;
+}
+.replyTreeLevel4 {
+    margin-left: 80px;
+}
+.replyTreeLevel5 {
+    margin-left: 100px;
+}
+.replyTreeLevel6 {
+    margin-left: 120px;
+}
+.replyTreeLevel7 {
+    margin-left: 140px;
+}
+.replyTreeLevel8 {
+    margin-left: 160px;
+}
+.replyTreeLevel9 {
+    margin-left: 180px;
+}
+.replyTreeLevel10 {
+    margin-left: 200px;
+}
 /*.submit-widget.button-field {
     border-style: solid;
     border-width: 1px 1px 1px 1px;
@@ -1467,6 +1514,18 @@ div.articles-comments {
     visibility: hidden;
 }
 
+#commenting input[type="submit"], .discussion button {
+    text-shadow: none;
+    letter-spacing: 0.075em;
+    font-size: 14px;
+}
+#commenting input[type="submit"], .discussion button, .article-display-options {
+    box-shadow: none;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+}
+
 /**
  * Basic site setup
  */
@@ -1487,7 +1546,7 @@ div#center-column, div#content {
 
 .twitter-share, .facebook-share {
     float:right;
-    margin-right: 2px;
+    margin-left: 12px;
 }
 
 /**
