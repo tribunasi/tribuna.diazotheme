@@ -189,8 +189,88 @@ jQuery17(function () {
         }
     }
 
+    /**
+     * Setup drag-drop for articles and images and randomize their starting
+     * position.
+     * We also need to manually set div width and height to the width and
+     * height of the image so it appears and doesn't get squished when going
+     * over the container border.
+     */
+    function dragDropArticlesImages() {
+        jQuery17("div.drag-view-article").each(function () {
+            var article = $(this),
+                image = $(this).find('img');
+            article.css({'position' : 'absolute'});
+            article.draggable({stack: "div", cancel: "a"});
+            article.draggable("option", "distance", 0);
+
+            image.load(function () {
+                var imageHeight = jQuery17(this).height(),
+                    imageWidth = jQuery17(this).width(),
+                    numRandx = Math.floor(Math.random() * (jQuery17('#homepage-div').width() - imageWidth)),
+                    numRandy = Math.floor(Math.random() * (jQuery17('#homepage-div').height() - imageHeight));
+
+                if (numRandx < 0) {
+                    numRandx = 0;
+                }
+                if (numRandy < 0) {
+                    numRandy = 0;
+                }
+
+                article.css({'height': imageHeight});
+                article.css({'width': imageWidth});
+                article.css({'left': numRandx});
+                article.css({'top': numRandy});
+            });
+            image.one('load', function () {}).each(function () {
+                if (this.complete) {
+                    $(this).load();
+                }
+            });
+        });
+    }
+
+    /**
+     * Setup drag-drop for comments and randomize their starting position.
+     * We also need to move them offscreen (to get the real width that is not
+     * limited with the container) and set the div width attribute to that.
+     */
+    function dragDropComments() {
+        jQuery17("div.drag-view-comment").each(function () {
+            var article = $(this),
+                numRandx = Math.floor(Math.random() * ($('#homepage-div').width() - article.width())),
+                numRandy = Math.floor(Math.random() * ($('#homepage-div').height() - article.height()));
+            article.css({'position' : 'absolute'});
+            article.draggable({stack: "div", cancel: "a"});
+            article.draggable("option", "distance", 0);
+
+
+            if (numRandx < 0) {
+                numRandx = 0;
+            }
+            if (numRandy < 0) {
+                numRandy = 0;
+            }
+
+            // Move it to the left somewhere, get the width and move back
+            article.css('left', -5000);
+            article.css('width', article.width());
+
+            article.css('left', numRandx);
+            article.css('top', numRandy);
+        });
+    }
+
 
     jQuery17(document).ready(function () {
+        // Set the width of topside tag-picture and set the scroll "button" to
+        // scroll to the appropriate region.
+        jQuery17("#tag-picture img").css({"height": window.innerHeight - 100});
+        jQuery17('#scroll').click(function () {
+            jQuery17('html, body').animate({
+                scrollTop: $("#container").offset().top
+            }, 500);
+        });
 
         var articles_margin = $("#selected-tags").height() + 10;
 
@@ -199,8 +279,10 @@ jQuery17(function () {
 
 
         alphabetizeTagsList();
-
         columnizeTagsList();
+
+        dragDropArticlesImages();
+        dragDropComments();
 
         // Mark the appropriate button as selected.
         if (jQuery17("#homepage-div").length) {
@@ -246,7 +328,7 @@ jQuery17(function () {
             runEffect();
         });
 
-        // Set up the click functions for filters, hardcoded for now.
+        // Setup the click functions for filters, hardcoded for now.
         jQuery17("#types-list #all").change(function () {
             var checked = jQuery17(this).prop('checked');
             jQuery17("#form-widgets-content_filters-0").click();
@@ -271,7 +353,7 @@ jQuery17(function () {
             jQuery17("#form-buttons-filter").click();
         });
 
-        // Black magic with sort_on filters.
+        // Setup sorting filters.
         jQuery17("#form-widgets-sort_on").attr('id', 'form-widgets-sort_on-noform');
         if (jQuery17("#form-widgets-sort_on").length === 0) {
             jQuery17("#form-widgets-sort_on-noform").attr('id', 'form-widgets-sort_on');
@@ -279,13 +361,13 @@ jQuery17(function () {
             jQuery17("#formfield-form-widgets-sort_on").attr('id', "formfield-form-widgets-sort_on-noform");
         }
 
-        // Set up the click functions for sorting filter, hardcoded for now.
+        // Setup the click functions for sorting filter, hardcoded for now.
         jQuery17("#form-widgets-sort_on").change(function () {
             jQuery17("#form-widgets-sort_on-noform").val(this.value);
             jQuery17("#form-buttons-filter").click();
         });
 
-        // XXX: Why do we need this? (natan)
+        // XXX: Why do we need this? [natan]
         jQuery17("#form-widgets-search").attr("placeholder", "Search ...");
 
         // If we click outside the 'all-tags' list, close it. Doesn't work on
