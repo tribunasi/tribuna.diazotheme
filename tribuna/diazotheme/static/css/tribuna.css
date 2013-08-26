@@ -405,6 +405,9 @@ div#topside-tags {
     margin-top: 10px;
     margin-bottom: 0px;
 }
+div#topside-tags.has-tags {
+    margin-bottom: 50px;
+}
 
 div#selected-tags {
     width: 125px;
@@ -860,7 +863,7 @@ ul#all-tags-list {
     background-color: white;
     padding: 20px;
     overflow-x: auto;
-    overflow-y: scroll;
+    overflow-y: auto;
     min-height: 100px;
 }
 ul#all-tags-list li.all-tags-list-caption,

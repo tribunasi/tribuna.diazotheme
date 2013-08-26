@@ -1,17 +1,22 @@
 jQuery17(function () {
     "use strict";
 
-    function selectOne(){
-        // When clicking on name, push it to top and remove everything else
-        var myname = jQuery17(this.parentNode.parentNode).attr('id');
-        var alreadySelected = false;
-        // jQuery17("#topside-tags").addClass("has-tags");
-        jQuery17('#selected-tags-list > li > span').each( function() {
+
+    /**
+     * When clicking on the tag name, mark it as selected and unmark every
+     * other tag.
+     * Also take care of moving the tags up/down in the sidebar.
+     */
+    function selectOne() {
+        // When clicking on name, push it to top and remove everything else.
+        var myname = jQuery17(this.parentNode.parentNode).attr('id'),
+            alreadySelected = false;
+
+        jQuery17('#selected-tags-list > li > span').each(function () {
             var name = jQuery17(this.parentNode).attr('id');
-            if(name === myname){
+            if (name === myname) {
                 alreadySelected = true;
-            }
-            else{
+            } else {
                 jQuery17('#tags-list #' + name + ' > a').text('+');
                 jQuery17('#all-tags-list #' + name + ' > a').text('+');
                 jQuery17('#tags-list #' + name).removeClass("selected");
@@ -23,7 +28,7 @@ jQuery17(function () {
 
         });
 
-        if(!alreadySelected){
+        if (!alreadySelected) {
             jQuery17('#tags-list #' + myname + ' > a').text('-');
             jQuery17('#all-tags-list #' + myname + ' > a').text('-');
             jQuery17('#tags-list #' + myname).addClass("selected");
@@ -35,38 +40,40 @@ jQuery17(function () {
 
         jQuery17(".plusminus").css("display", "inline-block");
         jQuery17("#show-all-tags").css("margin-left", 17);
-        jQuery17("#selected-tags-list").css("margin-bottom", 50);
+        jQuery17("#topside-tags").addClass("has-tags");
 
         jQuery17("#form-buttons-filter").click();
 
     }
 
-    function moveUpDown(){
-        // When clicking on +/-, move/remove from top and change sign appropriately
-        var name;
-        if(jQuery17(this.parentNode.parentNode).attr('id') === 'tags-list' ||
-            jQuery17(this.parentNode.parentNode).attr('id') === 'all-tags-list' ||
-            // XXX: Here because we change the structure to make multi columns
-            jQuery17(this.parentNode.parentNode.parentNode.parentNode).attr('id') === 'all-tags-list'){
-            name = jQuery17(this.parentNode).attr('id');
+
+    /**
+     * If selected, mark as not selected. If not selected, mark as selected.
+     * Also take care of moving the tags up/down in the sidebar.
+     */
+    function moveUpDown() {
+        // When clicking on +/-, move/remove from top and change sign
+        // appropriately.
+        var name = jQuery17(this.parentNode).attr('id');
+
+        if (jQuery17(this).parents("ul#tags-list").length ||
+                jQuery17(this).parents("ul#all-tags-list").length) {
+
             var item = jQuery17('#selected-tags-list #' + name);
-            if(!item.attr('id')){
+            if (!item.attr('id')) {
                 jQuery17('#tags-list #' + name + ' > a').text('-');
                 jQuery17('#all-tags-list #' + name + ' > a').text('-');
                 jQuery17('#tags-list #' + name).addClass("selected");
                 jQuery17('#all-tags-list #' + name).addClass("selected");
                 jQuery17(this.parentNode).clone(true).addClass("selected").appendTo('#selected-tags-list');
-            }
-            else{
+            } else {
                 jQuery17('#tags-list #' + name + ' > a').text('+');
                 jQuery17('#all-tags-list #' + name + ' > a').text('+');
                 jQuery17('#tags-list #' + name).removeClass("selected");
                 jQuery17('#all-tags-list #' + name).removeClass("selected");
                 item.remove();
             }
-        }
-        else{
-            name = jQuery17(this.parentNode).attr('id');
+        } else {
             jQuery17('#tags-list #' + name + ' > a').text('+');
             jQuery17('#all-tags-list #' + name + ' > a').text('+');
             jQuery17('#tags-list #' + name).removeClass("selected");
@@ -76,82 +83,80 @@ jQuery17(function () {
         jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
         jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
         jQuery17("#form-buttons-filter").click();
-        //scrollToContainer();
-        if (!jQuery17("#selected-tags-list li").length){
+        if (!jQuery17("#selected-tags-list li").length) {
             jQuery17(".plusminus").css("display", "none");
             jQuery17("#show-all-tags").css("margin-left", 0);
-            jQuery17("#selected-tags-list").css("margin-bottom", 0);
+            jQuery17("#topside-tags").removeClass("has-tags");
         }
     }
 
+
+    /**
+     * Open (if closed) or close (if opened) the 'all-tags-list' with a nice
+     * effect.
+     */
     function runEffect() {
-        // Show the div if it's hidden, hide if it it's shown
-        var all_tags = $( "#all-tags-list" );
-        if(all_tags.css("display") === "none"){
-          sessionStorage.setItem("all-tags", "open");
-          jQuery17( "#all-tags-list" ).show("fast");
+        var all_tags = $("#all-tags-list");
+        if (all_tags.css("display") === "none") {
+            sessionStorage.setItem("all-tags", "open");
+            jQuery17("#all-tags-list").show("fast");
+        } else {
+            jQuery17("#all-tags-list").hide("fast");
+            sessionStorage.setItem("all-tags", "closed");
         }
-        else {
-           jQuery17( "#all-tags-list" ).hide("fast");
-           sessionStorage.setItem("all-tags", "closed");
-        }
+        jQuery17('#all-tags-list-close').toggle();
     }
 
-     function scrollToContainer() {
-                        $('html, body').animate({
-                             scrollTop: $("#container").offset().top
-                         });
-                    }
 
+    /**
+     * Close the 'all-tags-list' with a nice effect.
+     */
     function runEffectClose() {
-        var all_tags = $( "#all-tags-list" );
-        if(all_tags.css("display") !== "none"){
-          jQuery17( "#all-tags-list" ).hide("fast");
+        var all_tags = $("#all-tags-list");
+        if (all_tags.css("display") !== "none") {
+            jQuery17("#all-tags-list").hide("fast");
         }
+        jQuery17('#all-tags-list-close').hide();
+        sessionStorage.setItem("all-tags", "closed");
     }
 
-    jQuery17(document).ready(function () {
 
-        // set margin for results, depending on selected tags height
-        var articles_margin = $("#selected-tags").height() + 10;
-        $("#center-column #articles_list").css("margin-top", articles_margin);
+    /**
+     * Add alphabetical headers to the all-tags list.
+     */
+    function alphabetizeTagsList() {
+        var previousLetter = 0,
+            currentLetter = "#",
+            first = true;
 
-        // XXX: We do this in CSS now
-        // set selected tags class, depending on whether we have a tag
-        // selected or not
-        // if ($("#selected-tags-list").children().length > 0) {
-        //     $("#topside-tags").addClass("has-tags");
-        // }
-
-        // Setup the alphabetical stuff on all-tags-list ul
-        var previousLetter = 0;
-        var currentLetter = "#";
-        var first = true;
-        jQuery17("ul#all-tags-list li").each( function() {
-            if(jQuery17(this).text()[1]){
+        jQuery17("ul#all-tags-list li").each(function () {
+            if (jQuery17(this).text()[1]) {
                 currentLetter = jQuery17(this).text()[1].toLowerCase();
             }
-            if(currentLetter !== previousLetter){
-                if(first){
+            if (currentLetter !== previousLetter) {
+                if (first) {
                     jQuery17(this).before("<li class='all-tags-list-caption-first'>" + currentLetter + "</li>");
                     first = false;
-                }else {
+                } else {
                     jQuery17(this).before("<li class='all-tags-list-caption'>" + currentLetter + "</li>");
                 }
                 previousLetter = currentLetter;
             }
         });
+    }
 
 
-        // Setup the all-tags-list height
+    /**
+     * Change the all-tags list so it has columns.
+     */
+    function columnizeTagsList() {
         var allTagsList = jQuery17("ul#all-tags-list");
-        // var oldHeight = allTagsList.height();
-        if(allTagsList.length){
+        if (allTagsList.length) {
             var topHeight = jQuery17("div#topside-tags").height();
-            allTagsList.css('max-height', (jQuery17(window).height()*4/5 - topHeight));
+            allTagsList.css('max-height', (jQuery17(window).height() * 4 / 5 - topHeight));
             allTagsList.css("top", topHeight);
 
-            allTagsList.width(jQuery17(window).width()/3);
+            allTagsList.width(jQuery17(window).width() / 3);
 
             var tmpheight = jQuery17(window).height() - parseInt(jQuery17("#articles_list").css("margin-top"), 10) - jQuery17("#topside-content-name").height() - 15;
             jQuery17("#articles_list").css("height", tmpheight);
@@ -159,11 +164,11 @@ jQuery17(function () {
             jQuery17("div#homepage-div").css("float", "left");
             jQuery17("div#homepage-div").css("width", "100%");
 
-            // Split the list into columns
-            var columns = Math.floor((allTagsList.width()-40)/160);
-            var columnWidth = Math.floor((allTagsList.width()-40) / columns - 10);
-            var numEntries = jQuery17("ul#all-tags-list li").length;
-            var entriesInColumn = Math.ceil(numEntries/columns);
+            // Split the list into columns.
+            var columns = Math.floor((allTagsList.width() - 40) / 160),
+                columnWidth = Math.floor((allTagsList.width() - 40) / columns - 10),
+                numEntries = jQuery17("ul#all-tags-list li").length,
+                entriesInColumn = Math.ceil(numEntries / columns);
 
 
             allTagsList.html(allTagsList.html().replace('</a>', '</a><ul id="tmp-ul-tag" style="width: ' + columnWidth + 'px;">') + "</ul>");
@@ -180,84 +185,102 @@ jQuery17(function () {
             for (; i < loop; i = i + 1) {
                 $ul = $("<ul style='width: " + columnWidth + "px; margin-left: 5px; margin-right: 5px' />").css('float', 'left').append($lis.slice(i * size, (i * size) + size)).insertAfter($ul);
             }
+
         }
+    }
 
 
+    jQuery17(document).ready(function () {
+
+        var articles_margin = $("#selected-tags").height() + 10;
+
+        // Set margin for results, depending on selected tags height.
+        $("#center-column #articles_list").css("margin-top", articles_margin);
 
 
-        // Setup for moving tags up and down via +/-
-        if (jQuery17("#selected-tags-list li").length){
-            jQuery17(".plusminus").css("display", "inline-block");
-            jQuery17("#show-all-tags").css("margin-left", 17);
-            jQuery17("#selected-tags-list").css("margin-bottom", 50);
-        }
+        alphabetizeTagsList();
 
-        if (jQuery17("#homepage-div").length){
+        columnizeTagsList();
+
+        // Mark the appropriate button as selected.
+        if (jQuery17("#homepage-div").length) {
             jQuery17("#form-buttons-drag").addClass("selected");
-        }
-        else {
+        } else {
             jQuery17("#form-buttons-text").addClass("selected");
         }
 
-        jQuery17("#selected-tags-list  li > a").click( moveUpDown);
-        jQuery17("#tags-list  li > a").click( moveUpDown);
-        jQuery17("#all-tags-list  li > a").click( moveUpDown);
-
-        // Setup for selecting tag via clicking on name
-        jQuery17("#selected-tags-list li > span > a").click( selectOne);
-        jQuery17("#tags-list li > span > a").click( selectOne);
-        jQuery17("#all-tags-list li > span > a").click( selectOne);
-
-        if( sessionStorage.getItem("all-tags") === "open") {
-            runEffect();
-            jQuery17('#all-tags-list-close').toggle();
+        // If we have a tag selected, show the +/- and set a left margin.
+        if (jQuery17("#selected-tags-list li").length) {
+            jQuery17(".plusminus").css("display", "inline-block");
+            jQuery17("#show-all-tags").css("margin-left", 17);
+            jQuery17("#topside-tags").addClass("has-tags");
         }
-        // Click event for show/hide "button" (actually just a link)
-        jQuery17("#show-all-tags" ).click(function() {
-          runEffect();
-          jQuery17('#all-tags-list-close').toggle();
-          return false;
+
+        // If we had the 'all-tags' list opened when we refreshed, reopen it.
+        if (sessionStorage.getItem("all-tags") === "open") {
+            runEffect();
+
+        }
+
+        ///////////////////////////
+        // Click functions setup //
+        ///////////////////////////
+
+
+        // Setup for moving tags up and down via +/-.
+        jQuery17("#selected-tags-list  li > a").click(moveUpDown);
+        jQuery17("#tags-list  li > a").click(moveUpDown);
+        jQuery17("#all-tags-list  li > a").click(moveUpDown);
+
+        // Setup for selecting tag via clicking on name.
+        jQuery17("#selected-tags-list li > span > a").click(selectOne);
+        jQuery17("#tags-list li > span > a").click(selectOne);
+        jQuery17("#all-tags-list li > span > a").click(selectOne);
+
+        // Click event for show/hide "button" (actually just a link).
+        jQuery17("#show-all-tags").click(function () {
+            runEffect();
+            return false;
         });
         jQuery17('#all-tags-list-close').click(function () {
             runEffect();
-            jQuery17('#all-tags-list-close').toggle();
         });
 
-        // Set up the click functions for filters, hardcoded for now
-        jQuery17("#types-list #all").change( function(){
+        // Set up the click functions for filters, hardcoded for now.
+        jQuery17("#types-list #all").change(function () {
             var checked = jQuery17(this).prop('checked');
             jQuery17("#form-widgets-content_filters-0").click();
-            jQuery17("#formfield-form-widgets-content_filters input.checkbox-widget").each(function (){
+            jQuery17("#formfield-form-widgets-content_filters input.checkbox-widget").each(function () {
                 jQuery17(this).prop('checked', checked);
             });
-            jQuery17("#types-list input").each(function (){
+            jQuery17("#types-list input").each(function () {
                 jQuery17(this).prop('checked', checked);
             });
             jQuery17("#form-buttons-filter").click();
         });
-        jQuery17("#types-list #article").change( function(){
+        jQuery17("#types-list #article").change(function () {
             jQuery17("#form-widgets-content_filters-1").click();
             jQuery17("#form-buttons-filter").click();
         });
-        jQuery17("#types-list #comment").change( function(){
+        jQuery17("#types-list #comment").change(function () {
             jQuery17("#form-widgets-content_filters-2").click();
             jQuery17("#form-buttons-filter").click();
         });
-        jQuery17("#types-list #image").change( function(){
+        jQuery17("#types-list #image").change(function () {
             jQuery17("#form-widgets-content_filters-3").click();
             jQuery17("#form-buttons-filter").click();
         });
 
-        // Sort_on
+        // Black magic with sort_on filters.
         jQuery17("#form-widgets-sort_on").attr('id', 'form-widgets-sort_on-noform');
-        if(jQuery17("#form-widgets-sort_on").length === 0){
+        if (jQuery17("#form-widgets-sort_on").length === 0) {
             jQuery17("#form-widgets-sort_on-noform").attr('id', 'form-widgets-sort_on');
-        }
-        else{
+        } else {
             jQuery17("#formfield-form-widgets-sort_on").attr('id', "formfield-form-widgets-sort_on-noform");
         }
 
-        jQuery17("#form-widgets-sort_on").change( function() {
+        // Set up the click functions for sorting filter, hardcoded for now.
+        jQuery17("#form-widgets-sort_on").change(function () {
             jQuery17("#form-widgets-sort_on-noform").val(this.value);
             jQuery17("#form-buttons-filter").click();
         });
@@ -265,24 +288,22 @@ jQuery17(function () {
         // XXX: Why do we need this? (natan)
         jQuery17("#form-widgets-search").attr("placeholder", "Search ...");
 
-
-        jQuery17(document).click(function(event) {
-            if(event.isTrigger == undefined){
-                var is_inside = $(event.target).parents("#all-tags-list").length != 0 || $(event.target).attr('id') == "all-tags-list";
-                if(!is_inside){
+        // If we click outside the 'all-tags' list, close it. Doesn't work on
+        // the drag-drop images, so we need to override that separately.
+        jQuery17(document).click(function (event) {
+            if (event.isTrigger === undefined) {
+                var is_inside = $(event.target).parents("#all-tags-list").length || $(event.target).attr('id') === "all-tags-list";
+                if (!is_inside) {
                     runEffectClose();
-                    jQuery17('#all-tags-list-close').hide();
-                    sessionStorage.setItem("all-tags", "closed");
                 }
             }
 
-        })
+        });
 
-        jQuery17("div.ui-widget-content").click(function(){
+        // Override for clicking on drag-drop images.
+        jQuery17("div.ui-widget-content").click(function () {
             runEffectClose();
-            jQuery17('#all-tags-list-close').hide();
-            sessionStorage.setItem("all-tags", "closed");
-        })
+        });
 
     });
 
