@@ -7,6 +7,9 @@
     display: none;
 }*/
 
+input, button, select, textarea {
+    font-family: Helvetica,Arial,sans-serif;
+}
 
 /*Register forms*/
 body.template-register #content input {
@@ -1192,6 +1195,7 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
 }
 .article-image img {
     height: auto;
+    max-width: 1000px;
 }
 .article-heading {
     padding: 0;
