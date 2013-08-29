@@ -119,7 +119,7 @@ jQuery17(function () {
             $(".dropdown-toggle").dropdown();
 
             // increase text size for comments
-            jQuery17(".fit-text").textfill(30, 16);
+            // jQuery17(".fit-text").textfill(30, 16);
 
             // set full width for center column and remove the "content" id
             // XXX: yes, I'm aware that this is bad ;) (we should probably

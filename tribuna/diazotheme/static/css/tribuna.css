@@ -37,7 +37,7 @@ html {
     overflow-y: auto;
 }
 body {
-    font-family:  Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
 }
 html, body {
     margin: 0;
@@ -457,10 +457,10 @@ div.text-view-comment, div.text-view-comment-one {
     line-height: 25px;
 }
 div.text-view-article-one, div.text-view-comment-one {
-    font-size: 15px;
+    font-size: 14.7px;
     line-height: 20px;
 }
-h3.portlet-header {
+#right-column h3.portlet-header {
     font-size: 20px;
     line-height: 25px;
 }
@@ -486,7 +486,7 @@ a.article-header {
     font-weight: bold;
 }
 
-#gallery-link {
+div.ui-draggable #gallery-link {
     margin-bottom: 15px;
 }
 
@@ -519,23 +519,28 @@ div#content p {
  * Settings for the drag view
  */
 
-div.ui-widget-content {
+div.ui-draggable {
     overflow: hidden;
 }
 
-a.comment-header {
+div.drag-view-article:hover #text p.article-body {
+    display: inline;
+    font-size: 16px;
+    line-height: 24px;
     font-family: Georgia, serif;
 }
-p.article-body {
-    font-size: 20px;
-    line-height: 25px;
-    font-family:  Helvetica, Arial, sans-serif;
-}
+
 
 a.drag-comment-header{
     font-family: Georgia, serif;
     font-size: 16px;
     line-height: 24px;
+}
+
+div.text-view-article p.article-body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 25px;
 }
 
 p.article-body {
@@ -562,7 +567,9 @@ div.drag-view-comment {
 
 div.drag-view-article div#text, div.drag-view-comment div#text {
     padding: 15px;
-    font-size: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14.7px;
     line-height: 17px;
 }
 
@@ -572,11 +579,35 @@ div.drag-view-comment .drag-comment-header p {
     line-height: 24px;
 }
 
-div.drag-view-comment .content-type {
+div.drag-view-comment .content-type,
+#drag-comment-info,
+.drag-view-article .article-author,
+.drag-view-article a.article-header,
+.drag-view-article .content-type p span,
+.drag-view-article #drag-view-tags {
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 15px;
-    line-height: 24px;
+    font-size: 14.7px;
+    line-height: 17px;
 }
+
+
+div.text-view-article-one p.article-body a,
+div.text-view-article-one a.article-header,
+div.text-view-article-one p.content-type span,
+div.text-view-comment-one p.content-type span,
+.comment .documentByLine,
+.comment .commentDate,
+.comment .commentBody {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14.7px;
+    line-height: 20px;
+}
+div.text-view-comment-one a.comment-header {
+    font-size: 16px;
+    line-height: 20px;
+    font-family: Georgia, serif;
+}
+
 
 div.drag-view-article a, div.drag-view-comment a {
     color: black;
@@ -627,10 +658,15 @@ div.drag-view-comment.ui-draggable-dragging div#drag-view-type {*/
 
 div.drag-view-article:hover #text #gallery-link a,
 div.drag-view-article:hover #text #drag-view-type p,
-div.drag-view-article:hover #text #drag-view-tags-list {
+div.drag-view-article:hover #text #drag-view-tags-list,
+div.drag-view-article:hover #text p.article-body {
     display: inline;
-    padding-left: 3px;
-    padding-right: 3px;
+    padding-left: 0px;
+    padding-right: 0px;
+    background: white;
+    box-shadow: 5px 0 0 white,-5px 0 0 white;
+    -moz-box-shadow: 5px 0 0 white,-5px 0 0 white;
+    -webkit-box-shadow: 5px 0 0 white,-5px 0 0 white;
 }
 div.drag-view-article.ui-draggable-dragging div#text,
 div.drag-view-article div#drag-view-tags,
@@ -639,11 +675,6 @@ div.drag-view-article.ui-draggable-dragging p {
     display: none;
 }
 
-div.drag-view-article:hover #text .article-body {
-    display: inline;
-    padding-left: 3px;
-    padding-right: 3px;
-}
 div.drag-view-comment a p {
     display: inline;
 }
@@ -678,11 +709,6 @@ div.drag-view-article #text .article-body {
     background-color: white;
 }
 
-#drag-comment-info {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 15px;
-    line-height: 24px;
-}
 /**
  * End settings for the drag view
  */
@@ -711,6 +737,7 @@ div.drag-view-article #text .article-body {
 }
 
 #results-num {
+    font-family: Helvetica, Arial, sans-serif;
     margin-right: 16px;
     font-size: 12px;
 }
@@ -1191,7 +1218,7 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
     width: 650px;
     margin: 0 auto;
     border: none;
-    margin-top: 150px;
+    margin-top: 120px; /*top already has 30px margin*/
     padding-top: 0;
     float: none;
 }
@@ -1200,11 +1227,7 @@ ul.token-input-list-facebook {
     width: 100%;
     visibility: visible !important;
 }
-a.content-link,
-a.content-link:hover {
-    color: black;
-    font-weight: bold;
-}
+
 #comment-info, #article-info, #image-info {
     margin-bottom: 0;
     margin-top: 15px;
@@ -1306,11 +1329,10 @@ div.half-width {
     font-weight: bold;
     float: none;
     margin-left: 0;
-    font-size: 15px;
     margin-bottom: 0;
 }
 .commentBody {
-    margin: 1em 0 0 1em;
+    margin: 0;
     padding: 0;
     box-shadow: none;
     border: none;
@@ -1417,6 +1439,33 @@ div.half-width {
     background-color: white;
     box-shadow: 2px 2px 1px #888888;
 }*/
+
+a.content-link,
+a.content-link:hover {
+    color: black;
+    font-weight: bold;
+}
+
+div.articles-article-body div.fit-text {
+    font-family: Georgia, serif;
+    font-size: 35px;
+    line-height: 42px;
+    margin-bottom: 35px;
+}
+
+div.articles-article-body a.content-link,
+div.articles-article-body div#comment-info,
+div.articles-article-body div#comment-tags-info p.oneCommentTag,
+div.articles-article-body div.red {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
 /**
  * End of comments
  */
@@ -1482,9 +1531,10 @@ div.articles-comments {
 #formfield-form-widgets-comment-text label {
     display: none;
 }
-/*.comment {
-    margin-bottom: 63px;
-}*/
+
+div.discussion div.comment div.commentBody {
+    margin-bottom: 20px;
+}
 
 .articles-comments .formControls {
     margin-right: 0;
@@ -1494,6 +1544,22 @@ div.articles-comments {
     width: 98%;
     height: 70px;
 }
+#commenting form input#form-widgets-author_name,
+.discussion form input#form-widgets-author_name,
+#commenting form textarea,
+.discussion form textarea,
+#commenting form ul.
+.discussion form ul {
+    width: 330px;
+}
+
+#commenting form textarea,
+.discussion form textarea {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 17px;
+}
+
 .comment .commentTag {
     font-size: 12px;
     margin-right: 12px;
@@ -1517,9 +1583,10 @@ div.articles-comments {
 }
 
 #commenting input[type="submit"], .discussion button {
+    font-family: Helvetica, Arial, sans-serif;
     text-shadow: none;
     letter-spacing: 0.075em;
-    font-size: 14px;
+    font-size: 12.5px;
 }
 #commenting input[type="submit"], .discussion button, .article-display-options {
     box-shadow: none;
