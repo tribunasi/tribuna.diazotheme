@@ -1552,7 +1552,7 @@ div.discussion div.comment div.commentBody {
 .discussion form input#form-widgets-author_name,
 #commenting form textarea,
 .discussion form textarea,
-#commenting form ul.
+#commenting form ul,
 .discussion form ul {
     width: 330px;
 }
