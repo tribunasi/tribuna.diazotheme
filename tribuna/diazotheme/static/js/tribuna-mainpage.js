@@ -235,6 +235,7 @@ jQuery17(function () {
             comments = jQuery17('#comments-' + article_uid);
             if (jQuery17(this).prop("checked")) {
                 text.show();
+                jQuery17(".article-image").show();
                 if (comments.is(":visible")) {
                     text.removeClass("span7");
                     text.addClass("span6");
@@ -248,6 +249,7 @@ jQuery17(function () {
             }
             else {
                 text.hide();
+                jQuery17(".article-image").hide();
                 comments.removeClass("span5");
                 comments.addClass("span7");
             }

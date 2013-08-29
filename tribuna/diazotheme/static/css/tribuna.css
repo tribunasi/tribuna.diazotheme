@@ -582,12 +582,15 @@ div.drag-view-comment .drag-comment-header p {
     line-height: 24px;
 }
 
-div.drag-view-comment .content-type,
-#drag-comment-info,
-.drag-view-article .article-author,
-.drag-view-article a.article-header,
-.drag-view-article .content-type p span,
-.drag-view-article #drag-view-tags {
+
+div.drag-view-comment .content-type span,
+div.drag-view-article .article-author,
+div.drag-view-article .article-header,
+div.drag-view-article .article-subtitle,
+div.drag-view-article .image-header,
+div.drag-view-article .content-type span,
+div.drag-view-article #drag-view-tags,
+#drag-comment-info {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14.7px;
     line-height: 17px;
