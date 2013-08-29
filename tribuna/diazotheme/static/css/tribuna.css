@@ -1534,6 +1534,7 @@ div.articles-comments {
 }
 .reply {
     margin-top: 40px;
+    clear: both;
 }
 #formfield-form-widgets-comment-text label {
     display: none;
@@ -1589,9 +1590,14 @@ div.discussion div.comment div.commentBody {
     visibility: hidden;
 }
 
+#commenting .formControls {
+    margin-left: 0;
+}
+
 #commenting .submit-widget,
 #discussion .submit-widget  {
     float:left;
+    margin-left: 0;
 }
 
 #commenting input[type="submit"], .discussion button,
