@@ -1586,13 +1586,22 @@ div.discussion div.comment div.commentBody {
     visibility: hidden;
 }
 
-#commenting input[type="submit"], .discussion button {
+#commenting .submit-widget,
+#discussion .submit-widget  {
+    float:left;
+}
+
+#commenting input[type="submit"], .discussion button,
+#commenting .submit-widget,
+#discussion .submit-widget  {
     font-family: Helvetica, Arial, sans-serif;
     text-shadow: none;
     letter-spacing: 0.075em;
     font-size: 12.5px;
 }
-#commenting input[type="submit"], .discussion button, .article-display-options {
+#commenting input[type="submit"], .discussion button, .article-display-options,
+#commenting .submit-widget,
+#discussion .submit-widget  {
     box-shadow: none;
     border-color: black;
     border-style: solid;
