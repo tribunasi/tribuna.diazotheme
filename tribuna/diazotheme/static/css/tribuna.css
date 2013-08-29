@@ -1193,7 +1193,9 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
     border: none;
     margin-top: 150px;
     padding-top: 0;
+    float: none;
 }
+
 ul.token-input-list-facebook {
     width: 100%;
     visibility: visible !important;
