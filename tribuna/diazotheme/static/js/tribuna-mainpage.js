@@ -163,7 +163,7 @@ jQuery17(function () {
             $(".dropdown-toggle").dropdown();
 
             // Change text size of comments responsively.
-            jQuery17(".fit-text").textfill(30, 16);
+            // jQuery17(".fit-text").textfill(30, 16);
 
             // Set full width for center column and remove the "content" id
             // XXX: yes, I'm aware that this is bad ;) (we should probably
@@ -277,6 +277,7 @@ jQuery17(function () {
             comments = jQuery17('#comments-' + article_uid);
             if (jQuery17(this).prop("checked")) {
                 text.show();
+                jQuery17(".article-image").show();
                 if (comments.is(":visible")) {
                     text.removeClass("span7");
                     text.addClass("span6");
@@ -288,6 +289,7 @@ jQuery17(function () {
                 }
             } else {
                 text.hide();
+                jQuery17(".article-image").hide();
                 comments.removeClass("span5");
                 comments.addClass("span7");
             }

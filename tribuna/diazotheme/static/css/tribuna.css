@@ -7,6 +7,9 @@
     display: none;
 }*/
 
+input, button, select, textarea {
+    font-family: Helvetica,Arial,sans-serif;
+}
 
 /*Register forms*/
 body.template-register #content input {
@@ -37,7 +40,7 @@ html {
     overflow-y: auto;
 }
 body {
-    font-family:  Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
 }
 html, body {
     margin: 0;
@@ -460,10 +463,10 @@ div.text-view-comment, div.text-view-comment-one {
     line-height: 25px;
 }
 div.text-view-article-one, div.text-view-comment-one {
-    font-size: 15px;
+    font-size: 14.7px;
     line-height: 20px;
 }
-h3.portlet-header {
+#right-column h3.portlet-header {
     font-size: 20px;
     line-height: 25px;
 }
@@ -489,7 +492,7 @@ a.article-header {
     font-weight: bold;
 }
 
-#gallery-link {
+div.ui-draggable #gallery-link {
     margin-bottom: 15px;
 }
 
@@ -522,18 +525,28 @@ div#content p {
  * Settings for the drag view
  */
 
-div.ui-widget-content {
+div.ui-draggable {
     overflow: hidden;
 }
 
-a.comment-header {
-    font-family: serif;
+div.drag-view-article:hover #text p.article-body {
+    display: inline;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: Georgia, serif;
 }
 
-a.drag-comment-header, p.article-body {
+
+a.drag-comment-header{
     font-family: Georgia, serif;
     font-size: 16px;
     line-height: 24px;
+}
+
+div.text-view-article p.article-body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 25px;
 }
 
 p.article-body {
@@ -560,7 +573,9 @@ div.drag-view-comment {
 
 div.drag-view-article div#text, div.drag-view-comment div#text {
     padding: 15px;
-    font-size: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14.7px;
     line-height: 17px;
 }
 
@@ -570,11 +585,38 @@ div.drag-view-comment .drag-comment-header p {
     line-height: 24px;
 }
 
-div.drag-view-comment .content-type {
+
+div.drag-view-comment .content-type span,
+div.drag-view-article .article-author,
+div.drag-view-article .article-header,
+div.drag-view-article .article-subtitle,
+div.drag-view-article .image-header,
+div.drag-view-article .content-type span,
+div.drag-view-article #drag-view-tags,
+#drag-comment-info {
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 15px;
-    line-height: 24px;
+    font-size: 14.7px;
+    line-height: 17px;
 }
+
+
+div.text-view-article-one p.article-body a,
+div.text-view-article-one a.article-header,
+div.text-view-article-one p.content-type span,
+div.text-view-comment-one p.content-type span,
+.comment .documentByLine,
+.comment .commentDate,
+.comment .commentBody {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14.7px;
+    line-height: 20px;
+}
+div.text-view-comment-one a.comment-header {
+    font-size: 16px;
+    line-height: 20px;
+    font-family: Georgia, serif;
+}
+
 
 div.drag-view-article a, div.drag-view-comment a {
     color: black;
@@ -625,10 +667,15 @@ div.drag-view-comment.ui-draggable-dragging div#drag-view-type {*/
 
 div.drag-view-article:hover #text #gallery-link a,
 div.drag-view-article:hover #text #drag-view-type p,
-div.drag-view-article:hover #text #drag-view-tags-list {
+div.drag-view-article:hover #text #drag-view-tags-list,
+div.drag-view-article:hover #text p.article-body {
     display: inline;
-    padding-left: 3px;
-    padding-right: 3px;
+    padding-left: 0px;
+    padding-right: 0px;
+    background: white;
+    box-shadow: 5px 0 0 white,-5px 0 0 white;
+    -moz-box-shadow: 5px 0 0 white,-5px 0 0 white;
+    -webkit-box-shadow: 5px 0 0 white,-5px 0 0 white;
 }
 div.drag-view-article.ui-draggable-dragging div#text,
 div.drag-view-article div#drag-view-tags,
@@ -637,11 +684,6 @@ div.drag-view-article.ui-draggable-dragging p {
     display: none;
 }
 
-div.drag-view-article:hover #text .article-body {
-    display: inline;
-    padding-left: 3px;
-    padding-right: 3px;
-}
 div.drag-view-comment a p {
     display: inline;
 }
@@ -676,11 +718,6 @@ div.drag-view-article #text .article-body {
     background-color: white;
 }
 
-#drag-comment-info {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 15px;
-    line-height: 24px;
-}
 /**
  * End settings for the drag view
  */
@@ -709,6 +746,7 @@ div.drag-view-article #text .article-body {
 }
 
 #results-num {
+    font-family: Helvetica, Arial, sans-serif;
     margin-right: 16px;
     font-size: 12px;
 }
@@ -1184,23 +1222,32 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
     padding-top: 0;
     border: none;
 }
+
+#article-comment {
+    width: 650px;
+    margin: 0 auto;
+    border: none;
+    margin-top: 120px; /*top already has 30px margin*/
+    padding-top: 0;
+    float: none;
+}
+
 ul.token-input-list-facebook {
     width: 100%;
     visibility: visible !important;
 }
-a.content-link,
-a.content-link:hover {
-    color: black;
-    font-weight: bold;
-}
+
 #comment-info, #article-info, #image-info {
     margin-bottom: 0;
     margin-top: 15px;
 }
+#comment-info, #comment-tags-info, .redTag, .oneCommentTag {
+    font-family: Helvetica, Arial, sans-serif;
+}
 .fit-text {
     padding-top: 1px;
 }
-.articleTag {
+.articleTag, .oneCommentTag {
     color: Blue;
 }
 /**
@@ -1277,6 +1324,9 @@ div.half-width {
     font-size: 100%;
     margin-top: 1em;
 }
+.discussion {
+    font-family:  Helvetica, Arial, sans-serif;
+}
 #comments input[type='text'] {
     height: 4em;
     margin-bottom: 0;
@@ -1288,10 +1338,10 @@ div.half-width {
     font-weight: bold;
     float: none;
     margin-left: 0;
-    font-size: 15px;
+    margin-bottom: 0;
 }
 .commentBody {
-    margin: 1em 0 0 1em;
+    margin: 0;
     padding: 0;
     box-shadow: none;
     border: none;
@@ -1335,12 +1385,7 @@ div.half-width {
 }
 
 .context.reply-to-comment-button {
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    border-width: 1px;
-    border-color: #ccc;
     background-color: white;
-    box-shadow: 2px 2px 1px #888888;
     padding:0;
     padding-left: 2%;
     padding-right: 2%;
@@ -1362,7 +1407,39 @@ div.half-width {
     padding-left: 2%;
     padding-right: 2%;
 }
-
+.replyTreeLevel0 {
+    margin-left: 0px;
+}
+.replyTreeLevel1 {
+    margin-left: 20px;
+}
+.replyTreeLevel2 {
+    margin-left: 40px;
+}
+.replyTreeLevel3 {
+    margin-left: 60px;
+}
+.replyTreeLevel4 {
+    margin-left: 80px;
+}
+.replyTreeLevel5 {
+    margin-left: 100px;
+}
+.replyTreeLevel6 {
+    margin-left: 120px;
+}
+.replyTreeLevel7 {
+    margin-left: 140px;
+}
+.replyTreeLevel8 {
+    margin-left: 160px;
+}
+.replyTreeLevel9 {
+    margin-left: 180px;
+}
+.replyTreeLevel10 {
+    margin-left: 200px;
+}
 /*.submit-widget.button-field {
     border-style: solid;
     border-width: 1px 1px 1px 1px;
@@ -1371,6 +1448,33 @@ div.half-width {
     background-color: white;
     box-shadow: 2px 2px 1px #888888;
 }*/
+
+a.content-link,
+a.content-link:hover {
+    color: black;
+    font-weight: bold;
+}
+
+div.articles-article-body div.fit-text {
+    font-family: Georgia, serif;
+    font-size: 35px;
+    line-height: 42px;
+    margin-bottom: 35px;
+}
+
+div.articles-article-body a.content-link,
+div.articles-article-body div#comment-info,
+div.articles-article-body div#comment-tags-info p.oneCommentTag,
+div.articles-article-body div.red {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
 /**
  * End of comments
  */
@@ -1432,13 +1536,15 @@ div.articles-comments {
 }
 .reply {
     margin-top: 40px;
+    clear: both;
 }
 #formfield-form-widgets-comment-text label {
     display: none;
 }
-/*.comment {
-    margin-bottom: 63px;
-}*/
+
+div.discussion div.comment div.commentBody {
+    margin-bottom: 20px;
+}
 
 .articles-comments .formControls {
     margin-right: 0;
@@ -1448,6 +1554,22 @@ div.articles-comments {
     width: 98%;
     height: 70px;
 }
+#commenting form input#form-widgets-author_name,
+.discussion form input#form-widgets-author_name,
+#commenting form textarea,
+.discussion form textarea,
+#commenting form ul,
+.discussion form ul {
+    width: 330px;
+}
+
+#commenting form textarea,
+.discussion form textarea {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 17px;
+}
+
 .comment .commentTag {
     font-size: 12px;
     margin-right: 12px;
@@ -1470,6 +1592,33 @@ div.articles-comments {
     visibility: hidden;
 }
 
+#commenting .formControls {
+    margin-left: 0;
+}
+
+#commenting .submit-widget,
+#discussion .submit-widget  {
+    float:left;
+    margin-left: 0;
+}
+
+#commenting input[type="submit"], .discussion button,
+#commenting .submit-widget,
+#discussion .submit-widget  {
+    font-family: Helvetica, Arial, sans-serif;
+    text-shadow: none;
+    letter-spacing: 0.075em;
+    font-size: 12.5px;
+}
+#commenting input[type="submit"], .discussion button, .article-display-options,
+#commenting .submit-widget,
+#discussion .submit-widget  {
+    box-shadow: none;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+}
+
 /**
  * Basic site setup
  */
@@ -1490,7 +1639,7 @@ div#center-column, div#content {
 
 .twitter-share, .facebook-share {
     float:right;
-    margin-right: 2px;
+    margin-left: 12px;
 }
 
 /**
