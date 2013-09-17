@@ -159,6 +159,15 @@ jQuery17(function () {
 
         jQuery17('#main').load(article_url + " #center-column", function () {
 
+            // initialize annotator
+            var annotator_content = $("#annotator").annotator();
+
+            annotator_content.annotator('addPlugin', 'Tags');
+            annotator_content.annotator('addPlugin', 'Store', {
+                  // The endpoint of the store on your server.
+                  prefix: '/Tribuna',
+             });
+
             // Enable dropdown menus (for content actions e.g.).
             $(".dropdown-toggle").dropdown();
 
