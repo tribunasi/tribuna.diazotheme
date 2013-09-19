@@ -306,7 +306,7 @@ jQuery17(function () {
         jQuery17('#article-slider li').click(function () {
             $(this).loadArticle();
 
-            article_id = this.id.replace(SLIDER_PREFIX, "");
+            article_id = this.id.replace(SLIDER_PREFIX, "") + document.location.search;
             window.history.replaceState(null, null, article_id);
 
         });

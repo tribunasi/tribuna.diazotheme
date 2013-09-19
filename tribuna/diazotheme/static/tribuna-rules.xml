@@ -192,8 +192,8 @@
     <before css:theme="#container" css:content="#tag-picture" css:if-content="#tag-picture" />
 
 
-    <theme href="tribuna_mainpage.html" if-path="@@articles"/>
-    <rules if-path="@@articles">
+    <theme href="tribuna_mainpage.html" if-path="articles articles"/>
+    <rules if-path="articles articles">
       <replace css:theme-children="#header" css:content-children="#header" />
       <replace css:theme="#main" css:content="#main" />
       <replace css:theme="#close-articles" css:content="#close-articles" />
@@ -201,7 +201,7 @@
     </rules>
 
     <replace theme="/html/head/title" content="/html/head/title" />
-    <rules if-not-path="@@articles @@home home  @@tags tags @@search search plonebrowser searchreplace" css:if-not-content="#change-form">
+    <rules if-not-path="articles articles @@home home  @@tags tags @@search search plonebrowser searchreplace" css:if-not-content="#change-form">
       <theme href="tribuna_base.html" css:if-content="#visual-portal-wrapper"/>
       <theme href="dialog.html" css:if-content="#content.dialog-wrapper"/>
       <drop css:content="meta[http-equiv='X-UA-Compatible']"/>
