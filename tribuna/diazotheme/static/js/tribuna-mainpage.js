@@ -136,6 +136,9 @@ jQuery17(function () {
      * Load the Article/Image/Comment inside the div#main, mark the appropriate
      * carousel list element as selected and slide the carousel to the right
      * page.
+     * After loading the article it loads the Annotator, sets it up and
+     * overrides the invertY function beacuse we do not want to use it and we
+     * could not find a way to disable it via options.
      * Needs to be called on a carousel list element.
      */
     jQuery17.fn.loadArticle = function () {
@@ -159,7 +162,12 @@ jQuery17(function () {
 
         jQuery17('#main').load(article_url + " #center-column", function () {
 
-            // initialize annotator
+            // Override invertY so the editor cannot be turned around
+            Annotator.Editor.prototype.invertY = function() {
+                return this;
+            };
+
+            // Initialize annotator
             var annotator_content = $("#annotator").annotator();
 
             annotator_content.annotator('addPlugin', 'Tags');
@@ -167,6 +175,7 @@ jQuery17(function () {
                   // The endpoint of the store on your server.
                   prefix: '/Tribuna',
              });
+
 
             // Enable dropdown menus (for content actions e.g.).
             $(".dropdown-toggle").dropdown();
@@ -185,6 +194,32 @@ jQuery17(function () {
             if (window.location.hash) {
                 jQuery17(".activate-comments").trigger("click");
             }
+
+            // Change placeholder for annotator tags field and save button
+            jQuery17("#annotator-field-1").attr('placeholder', "dodaj tag (optional)");
+            jQuery17(".annotator-save").text("počrtaj!");
+
+            jQuery17(".twitter-share").clone().removeClass('twitter-share').addClass('twitter-share-annotator').insertAfter('.annotator-controls');
+            jQuery17(".facebook-share").clone().removeClass('facebook-share').addClass('facebook-share-annotator').insertAfter('.annotator-controls');
+
+            // Parse the selection and append the needed data in facebook and
+            // twitter buttons.
+            jQuery17(".annotator-adder").click(function () {
+                // Get selection and remove newlines (change them to a space)
+                var quote = window.getSelection().toString().replace(/(\r\n|\r|\n)+/g, " ");
+                // Facebook
+                var first = jQuery17(".facebook-share").attr('onclick').split("[summary]")[0],
+                    second = jQuery17(".facebook-share").attr('onclick').split("[summary]")[1];
+                second = second.substring(second.indexOf("&p"));
+                jQuery17(".facebook-share-annotator").attr('onclick', first + "[summary]=" + quote + second);
+
+                // Twitter
+                var first = jQuery17(".twitter-share").attr('onclick').split("?text=")[0],
+                    second = jQuery17(".twitter-share").attr('onclick').split("?text=")[1];
+                second = second.substring(second.indexOf("&"));
+                jQuery17(".twitter-share-annotator").attr('onclick', first + "?text=" + quote + second);
+            });
+
         });
 
         // If we are on the first/last article, hide appropriate arrows
@@ -337,6 +372,18 @@ jQuery17(function () {
                 prev = jQuery17("[data-carousel-index = " + (current - 1) + "]");
             prev.trigger('click');
             return false;
+        });
+
+        jQuery17(document).click(function (event) {
+            if (event.isTrigger === undefined) {
+                var is_inside = $(event.target).parents(".annotator-editor").length || $(event.target).hasClass("annotator-editor") || $(event.target).parents(".annotator-adder").length || $(event.target).hasClass("annotator-adder");
+                if (!is_inside) {
+                    // runEffectClose();
+                    // jQuery17(".annotator-editor").hide();
+                    jQuery17(".annotator-cancel").click();
+                }
+            }
+
         });
 
     });
