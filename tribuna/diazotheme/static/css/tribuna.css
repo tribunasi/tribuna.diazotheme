@@ -952,6 +952,7 @@ div#formfield-form-widgets-all_tags,
 div#formfield-form-widgets-sort_on,
 div#formfield-form-widgets-sort_order,
 div#formfield-form-widgets-content_filters,
+div#formfield-form-widgets-view_type,
 #form-widgets-sort_on-noform {
     display: none;
 }
@@ -962,7 +963,7 @@ div#formfield-form-widgets-content_filters,
 
 /*Limit button (it's an image) size so it doesn't overflow*/
 input#form-buttons-filter {
-    display:none;
+    display: none;
 }
 
 input#form-buttons-text {

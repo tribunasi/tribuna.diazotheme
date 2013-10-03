@@ -367,6 +367,14 @@ jQuery17(function () {
             jQuery17("#form-buttons-filter").click();
         });
 
+        // Setup the click functions for view_type, hardcoded for now.
+        jQuery17("#form-buttons-text").click(function () {
+            jQuery17("#form-widgets-view_type").val("text");
+        })
+        jQuery17("#form-buttons-drag").click(function () {
+            jQuery17("#form-widgets-view_type").val("drag");
+        })
+
         // XXX: Why do we need this? [natan]
         jQuery17("#form-widgets-search").attr("placeholder", "Search ...");
 
