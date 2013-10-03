@@ -131,6 +131,67 @@ jQuery17(function () {
         }
     }
 
+    /**
+     * Loads the annotator and annotations, adds the required plugins and the
+     * share buttons and changes placeholders to what we need.
+     */
+    function loadAnnotator() {
+        // Override invertY so the editor cannot be turned around
+        Annotator.Editor.prototype.invertY = function() {
+            return this;
+        };
+
+        // Initialize annotator
+        var annotator_content = $("#annotator").annotator();
+
+        annotator_content.annotator('addPlugin', 'Tags');
+        annotator_content.annotator('addPlugin', 'Store', {
+              // The endpoint of the store on your server.
+              prefix: '/Tribuna',
+        });
+
+        // XXX:
+        // Everytime we change to another article, annotator-editor field ID's
+        // go up by one. We change them back to 0 and 1
+        var foo = jQuery17("li.annotator-item textarea"),
+            bar = foo.attr('id').split('-');
+        bar[2] = parseInt(bar[2], 10) % 2;
+        foo.attr('id', bar.join('-'));
+
+        var foo = jQuery17("li.annotator-item input"),
+            bar = foo.attr('id').split('-');
+        bar[2] = parseInt(bar[2], 10) % 2;
+        foo.attr('id', bar.join('-'));
+
+
+        // Change placeholder for annotator tags field and save button
+        jQuery17("#annotator-field-1").attr('placeholder', "dodaj tag (optional)");
+        jQuery17(".annotator-save").text("počrtaj!");
+
+        jQuery17(".twitter-share").clone().removeClass('twitter-share').addClass('twitter-share-annotator').insertAfter('.annotator-controls');
+        jQuery17(".facebook-share").clone().removeClass('facebook-share').addClass('facebook-share-annotator').insertAfter('.annotator-controls');
+
+        // Parse the selection and append the needed data in facebook and
+        // twitter buttons.
+        jQuery17(".annotator-adder").click(function () {
+            // Get selection and remove newlines (change them to a space)
+            var quote = window.getSelection().toString().replace(/(\r\n|\r|\n)+/g, " ");
+            // Facebook
+            var first = jQuery17(".facebook-share").attr('onclick').split("[summary]")[0],
+                second = jQuery17(".facebook-share").attr('onclick').split("[summary]")[1];
+            second = second.substring(second.indexOf("&p"));
+            jQuery17(".facebook-share-annotator").attr('onclick', first + "[summary]=" + quote + second);
+
+            // Twitter
+            var first = jQuery17(".twitter-share").attr('onclick').split("?text=")[0],
+                second = jQuery17(".twitter-share").attr('onclick').split("?text=")[1];
+            second = second.substring(second.indexOf("&"));
+            jQuery17(".twitter-share-annotator").attr('onclick', first + "?text=" + quote + second);
+        });
+
+        annotator_content.prop("loaded", true);
+
+    }
 
     /**
      * Load the Article/Image/Comment inside the div#main, mark the appropriate
@@ -162,21 +223,6 @@ jQuery17(function () {
 
         jQuery17('#main').load(article_url + " #center-column", function () {
 
-            // Override invertY so the editor cannot be turned around
-            Annotator.Editor.prototype.invertY = function() {
-                return this;
-            };
-
-            // Initialize annotator
-            var annotator_content = $("#annotator").annotator();
-
-            annotator_content.annotator('addPlugin', 'Tags');
-            annotator_content.annotator('addPlugin', 'Store', {
-                  // The endpoint of the store on your server.
-                  prefix: '/Tribuna',
-             });
-
-
             // Enable dropdown menus (for content actions e.g.).
             $(".dropdown-toggle").dropdown();
 
@@ -190,35 +236,13 @@ jQuery17(function () {
             jQuery17("#center-column").attr("class", "");
             jQuery17("#content").attr("id", "");
 
+            // loadAnnotator();
+
             // Show article comments if we have a comment hash in the url.
             if (window.location.hash) {
                 jQuery17(".activate-comments").trigger("click");
             }
 
-            // Change placeholder for annotator tags field and save button
-            jQuery17("#annotator-field-1").attr('placeholder', "dodaj tag (optional)");
-            jQuery17(".annotator-save").text("počrtaj!");
-
-            jQuery17(".twitter-share").clone().removeClass('twitter-share').addClass('twitter-share-annotator').insertAfter('.annotator-controls');
-            jQuery17(".facebook-share").clone().removeClass('facebook-share').addClass('facebook-share-annotator').insertAfter('.annotator-controls');
-
-            // Parse the selection and append the needed data in facebook and
-            // twitter buttons.
-            jQuery17(".annotator-adder").click(function () {
-                // Get selection and remove newlines (change them to a space)
-                var quote = window.getSelection().toString().replace(/(\r\n|\r|\n)+/g, " ");
-                // Facebook
-                var first = jQuery17(".facebook-share").attr('onclick').split("[summary]")[0],
-                    second = jQuery17(".facebook-share").attr('onclick').split("[summary]")[1];
-                second = second.substring(second.indexOf("&p"));
-                jQuery17(".facebook-share-annotator").attr('onclick', first + "[summary]=" + quote + second);
-
-                // Twitter
-                var first = jQuery17(".twitter-share").attr('onclick').split("?text=")[0],
-                    second = jQuery17(".twitter-share").attr('onclick').split("?text=")[1];
-                second = second.substring(second.indexOf("&"));
-                jQuery17(".twitter-share-annotator").attr('onclick', first + "?text=" + quote + second);
-            });
 
         });
 
@@ -338,6 +362,32 @@ jQuery17(function () {
                 comments.addClass("span7");
             }
         });
+
+        // Show/hide annotations
+        jQuery17('#main').on("change", ".activate-annotations", function () {
+            text = jQuery17('.article-text');
+
+            // XXX: Setting it to readOnly doesn't seem to work, didn't find
+            // an options to disable it either ... For now we're doing this
+            // manually by hiding appropriate divs until we find a better way
+            // $("#annotator").annotator({
+            //     readOnly: true
+            // });
+            if (jQuery17(this).prop("checked")) {
+                if (jQuery17("#annotator").prop("loaded")) {
+                    jQuery17(".annotator-editor").removeAttr('style');
+                    jQuery17("span.annotator-hl").removeAttr('style');
+                    jQuery17(".annotator-adder").removeAttr('style');
+                } else {
+                    loadAnnotator();
+                }
+            } else {
+                jQuery17(".annotator-editor").hide();
+                jQuery17("span.annotator-hl").css("background", "transparent");
+                jQuery17(".annotator-adder").css("visibility", "hidden");
+            }
+
+        })
 
 
 
