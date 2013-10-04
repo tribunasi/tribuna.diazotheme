@@ -197,7 +197,7 @@ jQuery17(function () {
      * over the container border.
      */
     function dragDropArticlesImages() {
-        jQuery17("div.drag-view-article").each(function () {
+        jQuery17("div.drag-view-article, div.drag-view-image").each(function () {
             var article = $(this),
                 image = $(this).find('img');
             article.css({'position' : 'absolute'});
@@ -231,12 +231,13 @@ jQuery17(function () {
     }
 
     /**
-     * Setup drag-drop for comments and randomize their starting position.
-     * We also need to move them offscreen (to get the real width that is not
-     * limited with the container) and set the div width attribute to that.
+     * Setup drag-drop for comments and annotations and randomize their
+     * starting position. We also need to move them offscreen (to get the real
+     * width that is not limited with the container) and set the div width
+     * attribute to that.
      */
     function dragDropComments() {
-        jQuery17("div.drag-view-comment").each(function () {
+        jQuery17("div.drag-view-comment, div.drag-view-annotation").each(function () {
             var article = $(this),
                 numRandx = Math.floor(Math.random() * ($('#homepage-div').width() - article.width())),
                 numRandy = Math.floor(Math.random() * ($('#homepage-div').height() - article.height()));

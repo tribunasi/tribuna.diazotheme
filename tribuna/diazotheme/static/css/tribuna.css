@@ -450,19 +450,26 @@ div.text-view .content-type {
 }
 div.text-view-article,
 div.text-view-comment,
+div.text-view-annotation,
 div.text-view-article-one,
 div.text-view-comment-one,
+div.text-view-annotation-one,
 div#articles h5 {
     font-size: 20px;
     line-height: 25px;
     font-family: sans-serif;
 }
-div.text-view-comment, div.text-view-comment-one {
+div.text-view-comment,
+div.text-view-comment-one,
+div.text-view-annotation,
+div.text-view-annotation-one {
     font-family: Georgia, serif;
     font-size: 22px;
     line-height: 25px;
 }
-div.text-view-article-one, div.text-view-comment-one {
+div.text-view-article-one,
+div.text-view-comment-one,
+div.text-view-annotation-one {
     font-size: 14.7px;
     line-height: 20px;
 }
@@ -529,7 +536,8 @@ div.ui-draggable {
     overflow: hidden;
 }
 
-div.drag-view-article:hover #text p.article-body {
+div.drag-view-article:hover #text p.article-body,
+div.drag-view-image:hover #text p.article-body {
     display: inline;
     font-size: 16px;
     line-height: 24px;
@@ -537,10 +545,14 @@ div.drag-view-article:hover #text p.article-body {
 }
 
 
-a.drag-comment-header{
+a.drag-comment-header,
+a.drag-annotation-header {
     font-family: Georgia, serif;
     font-size: 16px;
     line-height: 24px;
+}
+a.drag-annotation-header, a.annotation-header {
+    background: yellow;
 }
 
 div.text-view-article p.article-body {
@@ -553,25 +565,33 @@ p.article-body {
     margin-bottom: 0px;
 }
 
-div#drag-view a.comment-header {
+div#drag-view a.comment-header,
+div#drag-view a.annotation-header {
     font-size: 16px;
     line-height: 24px;
 }
 
-div.drag-view-article, div.drag-view-comment {
+div.drag-view-article,
+div.drag-view-image,
+div.drag-view-comment,
+div.drag-view-annotation {
     margin: 0px;
     float: left;
     background: none;
     border: none;
     color: black;
 }
-div.drag-view-comment {
+div.drag-view-comment,
+div.drag-view-annotation {
     background: transparent;
     max-width: 360px;
     min-width: 100px;
 }
 
-div.drag-view-article div#text, div.drag-view-comment div#text {
+div.drag-view-article div#text,
+div.drag-view-image div#text,
+div.drag-view-comment div#text,
+div.drag-view-annotation div#text {
     padding: 15px;
     padding-left: 20px;
     padding-right: 20px;
@@ -579,7 +599,8 @@ div.drag-view-article div#text, div.drag-view-comment div#text {
     line-height: 17px;
 }
 
-div.drag-view-comment .drag-comment-header p {
+div.drag-view-comment .drag-comment-header p,
+div.drag-view-annotation .drag-annotation-header p {
     font-family: Georgia, serif;
     font-size: 16px;
     line-height: 24px;
@@ -587,13 +608,21 @@ div.drag-view-comment .drag-comment-header p {
 
 
 div.drag-view-comment .content-type span,
+div.drag-view-annotation .content-type span,
 div.drag-view-article .article-author,
 div.drag-view-article .article-header,
 div.drag-view-article .article-subtitle,
 div.drag-view-article .image-header,
 div.drag-view-article .content-type span,
 div.drag-view-article #drag-view-tags,
-#drag-comment-info {
+div.drag-view-image .article-author,
+div.drag-view-image .article-header,
+div.drag-view-image .article-subtitle,
+div.drag-view-image .image-header,
+div.drag-view-image .content-type span,
+div.drag-view-image #drag-view-tags,
+#drag-comment-info,
+#drag-annotation-info {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14.7px;
     line-height: 17px;
@@ -604,6 +633,7 @@ div.text-view-article-one p.article-body a,
 div.text-view-article-one a.article-header,
 div.text-view-article-one p.content-type span,
 div.text-view-comment-one p.content-type span,
+div.text-view-annotation-one p.content-type span,
 .comment .documentByLine,
 .comment .commentDate,
 .comment .commentBody {
@@ -611,44 +641,59 @@ div.text-view-comment-one p.content-type span,
     font-size: 14.7px;
     line-height: 20px;
 }
-div.text-view-comment-one a.comment-header {
+div.text-view-comment-one a.comment-header,
+div.text-view-annotation-one a.annotation-header {
     font-size: 16px;
     line-height: 20px;
     font-family: Georgia, serif;
 }
 
 
-div.drag-view-article a, div.drag-view-comment a {
+div.drag-view-article a,
+div.drag-view-image a,
+div.drag-view-comment a,
+div.drag-view-annotation a {
     color: black;
     text-decoration: none;
 }
 
-div.drag-view-article p, div.drag-view-comment p {
+div.drag-view-article p,
+div.drag-view-image p,
+div.drag-view-comment p,
+div.drag-view-annotation p {
     color: black;
 }
 
-div.drag-view-comment p{
+div.drag-view-comment p,
+div.drag-view-annotation p {
     font-family: Georgia, serif;
 }
 
 div.drag-view-article:hover,
+div.drag-view-image:hover,
 div.drag-view-comment:hover,
-div.drag-view-comment.ui-draggable-dragging {
+div.drag-view-comment.ui-draggable-dragging,
+div.drag-view-annotation:hover,
+div.drag-view-annotation.ui-draggable-dragging {
     background-color: white;
 }
 
-div.drag-view-article div#drag-view-type p.content-type {
+div.drag-view-article div#drag-view-type p.content-type,
+div.drag-view-image div#drag-view-type p.content-type {
     margin-bottom: 0;
 }
 
-div.drag-view-article div#drag-view-tags {
+div.drag-view-article div#drag-view-tags,
+div.drag-view-image div#drag-view-tags {
     color: blue;
     margin-bottom: 20px;
 }
 
 /*Hide/show stuff on hover and when dragging*/
 div.drag-view-article a,
-div.drag-view-article p {
+div.drag-view-article p,
+div.drag-view-image a,
+div.drag-view-image p {
 /*div.drag-view-comment div#drag-view-type,
 div.drag-view-article div#drag-view-tags {*/
     display: none;
@@ -658,7 +703,8 @@ div.drag-view-article div#drag-view-tags {*/
 Link should be changed to inline-block so it doesn't stretch over whole div*/
 
 /*div.drag-view-article img,*/
-div.drag-view-article:hover #text #drag-view-tags {
+div.drag-view-article:hover #text #drag-view-tags,
+div.drag-view-image:hover #text #drag-view-tags {
 /*div.drag-view-comment:hover div#drag-view-type,
 div.drag-view-comment.ui-draggable-dragging div#text,
 div.drag-view-comment.ui-draggable-dragging div#drag-view-type {*/
@@ -668,7 +714,11 @@ div.drag-view-comment.ui-draggable-dragging div#drag-view-type {*/
 div.drag-view-article:hover #text #gallery-link a,
 div.drag-view-article:hover #text #drag-view-type p,
 div.drag-view-article:hover #text #drag-view-tags-list,
-div.drag-view-article:hover #text p.article-body {
+div.drag-view-article:hover #text p.article-body,
+div.drag-view-image:hover #text #gallery-link a,
+div.drag-view-image:hover #text #drag-view-type p,
+div.drag-view-image:hover #text #drag-view-tags-list,
+div.drag-view-image:hover #text p.article-body {
     display: inline;
     padding-left: 0px;
     padding-right: 0px;
@@ -680,20 +730,27 @@ div.drag-view-article:hover #text p.article-body {
 div.drag-view-article.ui-draggable-dragging div#text,
 div.drag-view-article div#drag-view-tags,
 div.drag-view-article.ui-draggable-dragging div#drag-view-tags,
-div.drag-view-article.ui-draggable-dragging p {
+div.drag-view-article.ui-draggable-dragging p,
+div.drag-view-image.ui-draggable-dragging div#text,
+div.drag-view-image div#drag-view-tags,
+div.drag-view-image.ui-draggable-dragging div#drag-view-tags,
+div.drag-view-image.ui-draggable-dragging p {
     display: none;
 }
 
-div.drag-view-comment a p {
+div.drag-view-comment a p,
+div.drag-view-annotation a p {
     display: inline;
 }
 
 /*Must be after the previous one so it is not overwritten*/
-div.drag-view-article.ui-draggable-dragging{
+div.drag-view-article.ui-draggable-dragging,
+div.drag-view-image.ui-draggable-dragging {
     border: 0;
     background: transparent;
 }
-div.drag-view-article.ui-draggable-dragging img{
+div.drag-view-article.ui-draggable-dragging img,
+div.drag-view-image.ui-draggable-dragging img  {
     display: block;
 }
 
@@ -702,19 +759,25 @@ div#articles_list img {
     max-height: 600px;
 }
 
-div.drag-view-article img {
+div.drag-view-article img,
+div.drag-view-image img{
     /*max-width: none;
     max-height: none;*/
     z-index: 0;
     position: absolute;
 }
-div.drag-view-article #text {
+div.drag-view-article #text,
+div.drag-view-image #text {
     position: absolute;
 }
 div.drag-view-article #text #gallery-link a,
 div.drag-view-article #text #drag-view-type p,
 div.drag-view-article #text #drag-view-tags-list,
-div.drag-view-article #text .article-body {
+div.drag-view-article #text .article-body,
+div.drag-view-image #text #gallery-link a,
+div.drag-view-image #text #drag-view-type p,
+div.drag-view-image #text #drag-view-tags-list,
+div.drag-view-image #text .article-body {
     background-color: white;
 }
 
@@ -1919,6 +1982,11 @@ div.annotation-tags a {
     line-height: 12px;
     margin-right: 15px;
     margin-top: 10px;
+    text-decoration: none;
+}
+div.annotation-tags a.selected {
+    color: white;
+    background: blue;
 }
 
 /*XXX: Only here to see if everything is ok easier*/
