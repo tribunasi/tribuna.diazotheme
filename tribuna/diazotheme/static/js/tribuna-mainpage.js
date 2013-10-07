@@ -236,12 +236,61 @@ jQuery17(function () {
             jQuery17("#center-column").attr("class", "");
             jQuery17("#content").attr("id", "");
 
-            // loadAnnotator();
+            // Show/hide annotations. Only allow annotations when we aren't
+            // already filtering, as it causes some problems.
+            // This needs to be here so we can get the
+            // number of selected annotation tags.
+            if (jQuery17(".annotation-tags-item.selected").length === 0) {
+
+                // Hide the annotation tags/header until we need it (on clicking
+                // the annotation checkbox).
+                jQuery17(".annotation-tags").hide();
+                jQuery17(".annotation-tags-header").hide();
+
+                jQuery17('#main').on("change", ".activate-annotations",
+                                     function () {
+
+                    text = jQuery17('.article-text');
+
+                    // XXX: Setting it to readOnly doesn't seem to work, didn't
+                    // find an options to disable it either ... For now we're
+                    // doing this manually by hiding appropriate divs until we
+                    // find a better way.
+                    // $("#annotator").annotator({
+                    //     readOnly: true
+                    // });
+                    if (jQuery17(this).prop("checked")) {
+                        jQuery17(".annotation-tags").show();
+                        jQuery17(".annotation-tags-header").show();
+                        if (jQuery17("#annotator").prop("loaded")) {
+                            jQuery17(".annotator-editor").removeAttr('style');
+                            jQuery17("span.annotator-hl").removeAttr('style');
+                            jQuery17(".annotator-adder").removeAttr('style');
+                        } else {
+                            loadAnnotator();
+                        }
+                    } else {
+                        jQuery17(".annotator-editor").hide();
+                        jQuery17("span.annotator-hl").css("background", "transparent");
+                        jQuery17(".annotator-adder").css("visibility", "hidden");
+                        jQuery17(".annotation-tags").hide();
+                        jQuery17(".annotation-tags-header").hide();
+                    }
+
+                })
+            } else {
+                jQuery17(".activate-annotations").prop("disabled", "true");
+            }
 
             // Show article comments if we have a comment hash in the url.
             if (window.location.hash) {
-                jQuery17(".activate-comments").trigger("click");
+                if (window.location.hash === "#enableannotations") {
+                    jQuery17(".activate-annotations").trigger("click");
+                } else {
+                    jQuery17(".activate-comments").trigger("click");
+                }
             }
+
 
 
         });
@@ -253,6 +302,9 @@ jQuery17(function () {
         } else if (currIndex === LAST_INDEX) {
             jQuery17("#article-navigation .next").hide();
         }
+
+
+
     };
 
 
@@ -362,33 +414,6 @@ jQuery17(function () {
                 comments.addClass("span7");
             }
         });
-
-        // Show/hide annotations
-        jQuery17('#main').on("change", ".activate-annotations", function () {
-            text = jQuery17('.article-text');
-
-            // XXX: Setting it to readOnly doesn't seem to work, didn't find
-            // an options to disable it either ... For now we're doing this
-            // manually by hiding appropriate divs until we find a better way
-            // $("#annotator").annotator({
-            //     readOnly: true
-            // });
-            if (jQuery17(this).prop("checked")) {
-                if (jQuery17("#annotator").prop("loaded")) {
-                    jQuery17(".annotator-editor").removeAttr('style');
-                    jQuery17("span.annotator-hl").removeAttr('style');
-                    jQuery17(".annotator-adder").removeAttr('style');
-                } else {
-                    loadAnnotator();
-                }
-            } else {
-                jQuery17(".annotator-editor").hide();
-                jQuery17("span.annotator-hl").css("background", "transparent");
-                jQuery17(".annotator-adder").css("visibility", "hidden");
-            }
-
-        })
-
 
 
         ///////////////////////////

@@ -1282,7 +1282,7 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
 }
 .article-heading {
     padding: 0;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
 }
 
 /*XXX: Naj bosta res oba enako velika?*/
@@ -1939,9 +1939,9 @@ div.annotator-editor a.twitter-share-annotator::after {
     display: none;
 }
 
-/*div.annotator-viewer {
+div.annotator-viewer {
     display: none;
-}*/
+}
 
 div.annotator-editor a.facebook-share-annotator,
 div.annotator-editor a.twitter-share-annotator {
@@ -1973,6 +1973,7 @@ div.annotator-editor a.twitter-share-annotator img {
 }
 
 div.annotation-tags a {
+    color: blue;
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -1983,13 +1984,38 @@ div.annotation-tags a {
     margin-right: 15px;
     margin-top: 10px;
     text-decoration: none;
+    font-family: Helvetica,Arial,sans-serif;
 }
 div.annotation-tags a.selected {
     color: white;
     background: blue;
 }
 
-/*XXX: Only here to see if everything is ok easier*/
-div.annotation-selected-quote-block {
-    border: solid 1px red;
+p.annotation-selected-quote-text {
+    padding: 0px;
+    margin: 0px;
 }
+
+div.annotation-selected-quote-divider {
+    padding: 0px;
+    margin: 0px;
+    height: 30px;
+    width: 50px;
+    border-bottom: 4px solid black;
+    margin-bottom: 30px;
+}
+
+div.annotation-tags-header {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/*div.annotation-tags,
+div.annotation-tags-header {
+    display: none;
+}*/
