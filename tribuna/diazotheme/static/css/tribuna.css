@@ -1279,6 +1279,8 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
 }
 .article-image img {
     height: auto;
+    max-width: 1000px;
+    max-height: 1000px;
 }
 .article-heading {
     padding: 0;

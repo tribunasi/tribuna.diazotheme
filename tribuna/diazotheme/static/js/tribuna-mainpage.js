@@ -201,28 +201,35 @@ jQuery17(function () {
      * overrides the invertY function beacuse we do not want to use it and we
      * could not find a way to disable it via options.
      * Needs to be called on a carousel list element.
+     *
+     * @param   {Boolean}  filter  When calling from annotation tag filtering,
+     *                             set filter to true so we do not mess up the
+     *                             top bar.
      */
-    jQuery17.fn.loadArticle = function () {
+    jQuery17.fn.loadArticle = function (filter) {
+        filter = filter || false;
 
-        // Add/remove 'selected' class.
-        this.addClass('selected');
-        jQuery17("#article-slider li").not(this).each(function () {
-            jQuery17(this).removeClass('selected');
-        });
+        // If we are just filtering, do not do anything with the top bar
+        if (!filter) {
+            // Add/remove 'selected' class.
+            this.addClass('selected');
+            jQuery17("#article-slider li").not(this).each(function () {
+                jQuery17(this).removeClass('selected');
+            });
 
-        // Show all arrows.
-        jQuery17(".prev").show();
-        jQuery17(".next").show();
+            // Show all arrows.
+            jQuery17(".prev").show();
+            jQuery17(".next").show();
 
-        // Slide to appropriate page, hiding carousel arrows if needed.
-        slideToPage(this);
+            // Slide to appropriate page, hiding carousel arrows if needed.
+            slideToPage(this);
+        }
 
         // Load the content.
         article_uid = this.attr('data-uid');
         article_url = this.attr('data-url');
 
         jQuery17('#main').load(article_url + " #center-column", function () {
-
             // Enable dropdown menus (for content actions e.g.).
             $(".dropdown-toggle").dropdown();
 
@@ -282,7 +289,15 @@ jQuery17(function () {
                 jQuery17(".activate-annotations").prop("disabled", "true");
             }
 
-            // Show article comments if we have a comment hash in the url.
+            // Load the article, but do not change the URL, so our selected
+            // filters aren't moved around when we go to another article
+            jQuery17('.annotation-tags a').click(function () {
+                $(this).loadArticle(true);
+            });
+
+            // Show article comments if we have a comment hash in the url. If
+            // we have a special hash ("enableannotation") enable annotations
+            // instead.
             if (window.location.hash) {
                 if (window.location.hash === "#enableannotations") {
                     jQuery17(".activate-annotations").trigger("click");

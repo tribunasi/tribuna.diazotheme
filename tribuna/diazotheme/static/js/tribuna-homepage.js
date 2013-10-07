@@ -353,6 +353,10 @@ jQuery17(function () {
             jQuery17("#form-widgets-content_filters-3").click();
             jQuery17("#form-buttons-filter").click();
         });
+        jQuery17("#types-list #annotation").change(function () {
+            jQuery17("#form-widgets-content_filters-4").click();
+            jQuery17("#form-buttons-filter").click();
+        });
 
         // Setup sorting filters.
         jQuery17("#form-widgets-sort_on").attr('id', 'form-widgets-sort_on-noform');
