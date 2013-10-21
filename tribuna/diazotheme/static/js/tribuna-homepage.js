@@ -42,6 +42,7 @@ jQuery17(function () {
         jQuery17("#show-all-tags").css("margin-left", 17);
         jQuery17("#topside-tags").addClass("has-tags");
 
+        jQuery17("#form-widgets-clicked_tag-0").prop("checked", true);
         jQuery17("#form-buttons-filter").click();
 
     }
@@ -82,6 +83,7 @@ jQuery17(function () {
         }
         jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
         jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
+        jQuery17("#form-widgets-clicked_tag-0").prop("checked", true);
         jQuery17("#form-buttons-filter").click();
         if (!jQuery17("#selected-tags-list li").length) {
             jQuery17(".plusminus").css("display", "none");
@@ -398,6 +400,18 @@ jQuery17(function () {
         // Override for clicking on drag-drop images.
         jQuery17("div.ui-widget-content").click(function () {
             runEffectClose();
+        });
+
+
+        jQuery17('#searchGadget').keyup(function (e) {
+            // If we pressed enter
+            if (e.keyCode == 13) {
+                // Copy the query to the sidebar and click the submit button
+                var searchValue = jQuery17(this).prop("value");
+                jQuery17("#form-widgets-query").prop("value", searchValue);
+                console.log("Testity test!");
+                e.stopPropagation();
+            }
         });
 
     });
