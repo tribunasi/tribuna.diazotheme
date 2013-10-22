@@ -19,6 +19,9 @@
             <xi:include href="navigation-rules.xml"/>
         </xsl:for-each>
     </replace> -->
+
+    <!-- Base tag --> <replace theme="/html/head/base" content="/html/head/base" />
+
     <merge attributes="class" css:content="body" css:theme="body"/>
     <replace css:theme-children="#personaltool-menu"
         css:content-children="#portal-personaltools ul"/>

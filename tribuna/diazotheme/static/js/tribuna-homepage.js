@@ -7,7 +7,8 @@ jQuery17(function () {
      * other tag.
      * Also take care of moving the tags up/down in the sidebar.
      */
-    function selectOne() {
+    function selectOne(e) {
+        e.preventDefault()
         // When clicking on name, push it to top and remove everything else.
         var myname = jQuery17(this.parentNode.parentNode).attr('id'),
             alreadySelected = false;
@@ -52,7 +53,8 @@ jQuery17(function () {
      * If selected, mark as not selected. If not selected, mark as selected.
      * Also take care of moving the tags up/down in the sidebar.
      */
-    function moveUpDown() {
+    function moveUpDown(e) {
+        e.preventDefault()
         // When clicking on +/-, move/remove from top and change sign
         // appropriately.
         var name = jQuery17(this.parentNode).attr('id');
