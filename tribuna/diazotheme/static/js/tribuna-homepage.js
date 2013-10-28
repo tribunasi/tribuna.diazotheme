@@ -8,7 +8,7 @@ jQuery17(function () {
      * Also take care of moving the tags up/down in the sidebar.
      */
     function selectOne(e) {
-        e.preventDefault()
+        e.preventDefault();
         // When clicking on name, push it to top and remove everything else.
         var myname = jQuery17(this.parentNode.parentNode).attr('id'),
             alreadySelected = false;
@@ -54,7 +54,7 @@ jQuery17(function () {
      * Also take care of moving the tags up/down in the sidebar.
      */
     function moveUpDown(e) {
-        e.preventDefault()
+        e.preventDefault();
         // When clicking on +/-, move/remove from top and change sign
         // appropriately.
         var name = jQuery17(this.parentNode).attr('id');
@@ -85,7 +85,7 @@ jQuery17(function () {
         }
         jQuery17("#formfield-form-widgets-all_tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
         jQuery17("#formfield-form-widgets-tags [value='" + jQuery17(this.parentNode).attr('id') + "']").click();
-        jQuery17("#form-widgets-clicked_tag-0").prop("checked", true);
+        // jQuery17("#form-widgets-clicked_tag-0").prop("checked", true);
         jQuery17("#form-buttons-filter").click();
         if (!jQuery17("#selected-tags-list li").length) {
             jQuery17(".plusminus").css("display", "none");
@@ -391,30 +391,48 @@ jQuery17(function () {
         // the drag-drop images, so we need to override that separately.
         jQuery17(document).click(function (event) {
             if (event.isTrigger === undefined) {
-                var is_inside = $(event.target).parents("#all-tags-list").length || $(event.target).attr('id') === "all-tags-list";
-                if (!is_inside) {
+                var is_inside_tags = $(event.target).parents("#all-tags-list").length || $(event.target).attr('id') === "all-tags-list";
+                if (!is_inside_tags) {
                     runEffectClose();
+                }
+
+                var clicked_on_advanced_search = $(event.target).hasClass('advancedsearchlink')
+                if (clicked_on_advanced_search) {
+                    var searchValue = jQuery17('#searchGadget').prop("value");
+                    jQuery17("#form-widgets-query").prop("value", searchValue);
+                    console.log("Testity test!");
+                    event.preventDefault();
+                    event.stopPropagation();
+                    jQuery17("#form-buttons-filter").click();
+                    return false;
                 }
             }
 
         });
+
+        // XXX: napacen ID
+        jQuery17("#searchGadget").prop('value', jQuery17("#form-widgets-clicked_tag-0").prop('value'));
 
         // Override for clicking on drag-drop images.
         jQuery17("div.ui-widget-content").click(function () {
             runEffectClose();
         });
 
-
-        jQuery17('#searchGadget').keyup(function (e) {
+        jQuery17('#searchGadget').keydown(function (e) {
             // If we pressed enter
             if (e.keyCode == 13) {
                 // Copy the query to the sidebar and click the submit button
                 var searchValue = jQuery17(this).prop("value");
                 jQuery17("#form-widgets-query").prop("value", searchValue);
                 console.log("Testity test!");
+                e.preventDefault();
                 e.stopPropagation();
+                jQuery17("#form-buttons-filter").click();
+                return false;
             }
         });
+
+
 
     });
 
