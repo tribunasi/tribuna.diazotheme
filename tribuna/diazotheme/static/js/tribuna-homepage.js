@@ -335,8 +335,9 @@ jQuery17(function () {
 
         // Setup the click functions for filters, hardcoded for now.
         jQuery17("#types-list #all").change(function () {
-            var checked = jQuery17(this).prop('checked');
-            jQuery17("#form-widgets-content_filters-0").click();
+            var checked = this.checked;
+            console.log(checked);
+            jQuery17("#form-widgets-content_filters-0").prop("checked", checked);
             jQuery17("#formfield-form-widgets-content_filters input.checkbox-widget").each(function () {
                 jQuery17(this).prop('checked', checked);
             });
@@ -346,19 +347,19 @@ jQuery17(function () {
             jQuery17("#form-buttons-filter").click();
         });
         jQuery17("#types-list #article").change(function () {
-            jQuery17("#form-widgets-content_filters-1").click();
+            jQuery17("#form-widgets-content_filters-1").prop("checked", this.checked);
             jQuery17("#form-buttons-filter").click();
         });
         jQuery17("#types-list #comment").change(function () {
-            jQuery17("#form-widgets-content_filters-2").click();
+            jQuery17("#form-widgets-content_filters-2").prop("checked", this.checked);
             jQuery17("#form-buttons-filter").click();
         });
         jQuery17("#types-list #image").change(function () {
-            jQuery17("#form-widgets-content_filters-3").click();
+            jQuery17("#form-widgets-content_filters-3").prop("checked", this.checked);
             jQuery17("#form-buttons-filter").click();
         });
         jQuery17("#types-list #annotation").change(function () {
-            jQuery17("#form-widgets-content_filters-4").click();
+            jQuery17("#form-widgets-content_filters-4").prop("checked", this.checked);
             jQuery17("#form-buttons-filter").click();
         });
 
@@ -384,8 +385,16 @@ jQuery17(function () {
             jQuery17("#form-widgets-view_type").val("drag");
         })
 
+        jQuery17("#search-use-filters").prop('checked', jQuery17("#form-widgets-use_filters-0")[0].checked);
+
+        jQuery17("#search-use-filters").click(function () {
+            jQuery17("#form-widgets-use_filters-0").prop("checked", this.checked);
+            jQuery17("#form-buttons-filter").click();
+        })
+
         // XXX: Why do we need this? [natan]
         jQuery17("#form-widgets-search").attr("placeholder", "Search ...");
+
 
         // If we click outside the 'all-tags' list, close it. Doesn't work on
         // the drag-drop images, so we need to override that separately.
@@ -400,7 +409,6 @@ jQuery17(function () {
                 if (clicked_on_advanced_search) {
                     var searchValue = jQuery17('#searchGadget').prop("value");
                     jQuery17("#form-widgets-query").prop("value", searchValue);
-                    console.log("Testity test!");
                     event.preventDefault();
                     event.stopPropagation();
                     jQuery17("#form-buttons-filter").click();
@@ -410,8 +418,7 @@ jQuery17(function () {
 
         });
 
-        // XXX: napacen ID
-        jQuery17("#searchGadget").prop('value', jQuery17("#form-widgets-clicked_tag-0").prop('value'));
+        jQuery17("#searchGadget").prop('value', jQuery17("#form-widgets-query").prop('value'));
 
         // Override for clicking on drag-drop images.
         jQuery17("div.ui-widget-content").click(function () {
@@ -424,12 +431,20 @@ jQuery17(function () {
                 // Copy the query to the sidebar and click the submit button
                 var searchValue = jQuery17(this).prop("value");
                 jQuery17("#form-widgets-query").prop("value", searchValue);
-                console.log("Testity test!");
                 e.preventDefault();
                 e.stopPropagation();
                 jQuery17("#form-buttons-filter").click();
                 return false;
             }
+        });
+
+        jQuery17("#search-button").click(function (e) {
+            var searchValue = jQuery17("#searchGadget").prop("value");
+            jQuery17("#form-widgets-query").prop("value", searchValue);
+            e.preventDefault();
+            e.stopPropagation();
+            jQuery17("#form-buttons-filter").click();
+            return false;
         });
 
 

@@ -1016,6 +1016,9 @@ div#formfield-form-widgets-sort_on,
 div#formfield-form-widgets-sort_order,
 div#formfield-form-widgets-content_filters,
 div#formfield-form-widgets-view_type,
+div#formfield-form-widgets-query,
+div#formfield-form-widgets-clicked_tag,
+div#formfield-form-widgets-use_filters,
 #form-widgets-sort_on-noform {
     display: none;
 }
@@ -1297,6 +1300,7 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
 
 #article #commenting {
     margin-top: 0;
+    margin-bottom: 20px;
     padding-top: 0;
     border: none;
 }
@@ -1413,6 +1417,8 @@ div.half-width {
 .comment  {
     font-size: 100%;
     margin-top: 1em;
+    display: block;
+    clear: both;
 }
 .discussion {
     font-family:  Helvetica, Arial, sans-serif;
@@ -2022,3 +2028,10 @@ div.annotation-tags-header {
 div.annotation-tags-header {
     display: none;
 }*/
+
+#search-form label#search-use-filters-label {
+    display: inline;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 10px;
+
+}
