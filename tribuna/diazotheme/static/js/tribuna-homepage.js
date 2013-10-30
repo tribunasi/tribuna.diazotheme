@@ -266,6 +266,23 @@ jQuery17(function () {
         });
     }
 
+    /**
+     * Override default search form submission to push the data into sidebar
+     * and click on filter. This way, everything is done through the sidebar,
+     * which acts like a central hub for getting the data
+     *
+     * @param  {jQuery Event}   event        The click event
+     * @param  {String}         searchValue  What was inputted into search
+     *
+     */
+    function setSearch(event, searchValue) {
+        jQuery17("#form-widgets-query").prop("value", searchValue);
+        event.preventDefault();
+        event.stopPropagation();
+        jQuery17("#form-buttons-filter").click();
+        return false;
+    }
+
 
     jQuery17(document).ready(function () {
         // Set the width of topside tag-picture and set the scroll "button" to
@@ -407,12 +424,7 @@ jQuery17(function () {
 
                 var clicked_on_advanced_search = $(event.target).hasClass('advancedsearchlink')
                 if (clicked_on_advanced_search) {
-                    var searchValue = jQuery17('#searchGadget').prop("value");
-                    jQuery17("#form-widgets-query").prop("value", searchValue);
-                    event.preventDefault();
-                    event.stopPropagation();
-                    jQuery17("#form-buttons-filter").click();
-                    return false;
+                    setSearch(event, jQuery17('#searchGadget').prop("value"));
                 }
             }
 
@@ -429,22 +441,12 @@ jQuery17(function () {
             // If we pressed enter
             if (e.keyCode == 13) {
                 // Copy the query to the sidebar and click the submit button
-                var searchValue = jQuery17(this).prop("value");
-                jQuery17("#form-widgets-query").prop("value", searchValue);
-                e.preventDefault();
-                e.stopPropagation();
-                jQuery17("#form-buttons-filter").click();
-                return false;
+                setSearch(event, jQuery17(this).prop("value"));
             }
         });
 
         jQuery17("#search-button").click(function (e) {
-            var searchValue = jQuery17("#searchGadget").prop("value");
-            jQuery17("#form-widgets-query").prop("value", searchValue);
-            e.preventDefault();
-            e.stopPropagation();
-            jQuery17("#form-buttons-filter").click();
-            return false;
+            setSearch(event, jQuery17("#searchGadget").prop("value"));
         });
 
 
