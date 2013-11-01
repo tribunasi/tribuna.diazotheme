@@ -437,15 +437,15 @@ jQuery17(function () {
             runEffectClose();
         });
 
-        jQuery17('#searchGadget').keydown(function (e) {
+        jQuery17('#searchGadget').keydown(function (event) {
             // If we pressed enter
-            if (e.keyCode == 13) {
+            if (event.keyCode == 13) {
                 // Copy the query to the sidebar and click the submit button
                 setSearch(event, jQuery17(this).prop("value"));
             }
         });
 
-        jQuery17("#search-button").click(function (e) {
+        jQuery17("#search-button").click(function (event) {
             setSearch(event, jQuery17("#searchGadget").prop("value"));
         });
 
