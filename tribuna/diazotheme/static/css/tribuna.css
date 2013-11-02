@@ -1809,6 +1809,8 @@ div#center-column, div#content {
 #search-form-right #searchGadget,
 #search-form #searchGadget {
     width: 150px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 #search-form #searchGadget {
     height: 30px;
@@ -1828,6 +1830,7 @@ div#center-column, div#content {
 }
 #LSResult {
     margin: 0 0 0 -7em;
+    z-index: 1000;
     /*display: block !important;*/
 }
 .LSTable {
