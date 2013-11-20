@@ -12,4 +12,11 @@
     enabled="on" expression="" id="++theme++tribuna.diazotheme/css/tribuna-admin.css" media="screen" rel="stylesheet"
     rendering="import"/>
 
+ <!-- Allow annonymous access to annotator.css -->
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++tribuna.annotator/annotator.css" media="screen"
+    rel="stylesheet" rendering="import"/>
+
 </object>
