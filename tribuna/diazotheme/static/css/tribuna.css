@@ -408,6 +408,9 @@ div#topside-tags {
     margin-top: 10px;
     margin-bottom: 0px;
 }
+div#topside-tags.has-tags {
+    margin-bottom: 50px;
+}
 
 div#selected-tags {
     width: 125px;
@@ -447,19 +450,26 @@ div.text-view .content-type {
 }
 div.text-view-article,
 div.text-view-comment,
+div.text-view-annotation,
 div.text-view-article-one,
 div.text-view-comment-one,
+div.text-view-annotation-one,
 div#articles h5 {
     font-size: 20px;
     line-height: 25px;
     font-family: sans-serif;
 }
-div.text-view-comment, div.text-view-comment-one {
+div.text-view-comment,
+div.text-view-comment-one,
+div.text-view-annotation,
+div.text-view-annotation-one {
     font-family: Georgia, serif;
     font-size: 22px;
     line-height: 25px;
 }
-div.text-view-article-one, div.text-view-comment-one {
+div.text-view-article-one,
+div.text-view-comment-one,
+div.text-view-annotation-one {
     font-size: 14.7px;
     line-height: 20px;
 }
@@ -526,7 +536,8 @@ div.ui-draggable {
     overflow: hidden;
 }
 
-div.drag-view-article:hover #text p.article-body {
+div.drag-view-article:hover #text p.article-body,
+div.drag-view-image:hover #text p.article-body {
     display: inline;
     font-size: 16px;
     line-height: 24px;
@@ -534,10 +545,14 @@ div.drag-view-article:hover #text p.article-body {
 }
 
 
-a.drag-comment-header{
+a.drag-comment-header,
+a.drag-annotation-header {
     font-family: Georgia, serif;
     font-size: 16px;
     line-height: 24px;
+}
+a.drag-annotation-header, a.annotation-header {
+    background: yellow;
 }
 
 div.text-view-article p.article-body {
@@ -550,25 +565,33 @@ p.article-body {
     margin-bottom: 0px;
 }
 
-div#drag-view a.comment-header {
+div#drag-view a.comment-header,
+div#drag-view a.annotation-header {
     font-size: 16px;
     line-height: 24px;
 }
 
-div.drag-view-article, div.drag-view-comment {
+div.drag-view-article,
+div.drag-view-image,
+div.drag-view-comment,
+div.drag-view-annotation {
     margin: 0px;
     float: left;
     background: none;
     border: none;
     color: black;
 }
-div.drag-view-comment {
+div.drag-view-comment,
+div.drag-view-annotation {
     background: transparent;
     max-width: 360px;
     min-width: 100px;
 }
 
-div.drag-view-article div#text, div.drag-view-comment div#text {
+div.drag-view-article div#text,
+div.drag-view-image div#text,
+div.drag-view-comment div#text,
+div.drag-view-annotation div#text {
     padding: 15px;
     padding-left: 20px;
     padding-right: 20px;
@@ -576,7 +599,8 @@ div.drag-view-article div#text, div.drag-view-comment div#text {
     line-height: 17px;
 }
 
-div.drag-view-comment .drag-comment-header p {
+div.drag-view-comment .drag-comment-header p,
+div.drag-view-annotation .drag-annotation-header p {
     font-family: Georgia, serif;
     font-size: 16px;
     line-height: 24px;
@@ -584,13 +608,21 @@ div.drag-view-comment .drag-comment-header p {
 
 
 div.drag-view-comment .content-type span,
+div.drag-view-annotation .content-type span,
 div.drag-view-article .article-author,
 div.drag-view-article .article-header,
 div.drag-view-article .article-subtitle,
 div.drag-view-article .image-header,
 div.drag-view-article .content-type span,
 div.drag-view-article #drag-view-tags,
-#drag-comment-info {
+div.drag-view-image .article-author,
+div.drag-view-image .article-header,
+div.drag-view-image .article-subtitle,
+div.drag-view-image .image-header,
+div.drag-view-image .content-type span,
+div.drag-view-image #drag-view-tags,
+#drag-comment-info,
+#drag-annotation-info {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14.7px;
     line-height: 17px;
@@ -601,6 +633,7 @@ div.text-view-article-one p.article-body a,
 div.text-view-article-one a.article-header,
 div.text-view-article-one p.content-type span,
 div.text-view-comment-one p.content-type span,
+div.text-view-annotation-one p.content-type span,
 .comment .documentByLine,
 .comment .commentDate,
 .comment .commentBody {
@@ -608,44 +641,59 @@ div.text-view-comment-one p.content-type span,
     font-size: 14.7px;
     line-height: 20px;
 }
-div.text-view-comment-one a.comment-header {
+div.text-view-comment-one a.comment-header,
+div.text-view-annotation-one a.annotation-header {
     font-size: 16px;
     line-height: 20px;
     font-family: Georgia, serif;
 }
 
 
-div.drag-view-article a, div.drag-view-comment a {
+div.drag-view-article a,
+div.drag-view-image a,
+div.drag-view-comment a,
+div.drag-view-annotation a {
     color: black;
     text-decoration: none;
 }
 
-div.drag-view-article p, div.drag-view-comment p {
+div.drag-view-article p,
+div.drag-view-image p,
+div.drag-view-comment p,
+div.drag-view-annotation p {
     color: black;
 }
 
-div.drag-view-comment p{
+div.drag-view-comment p,
+div.drag-view-annotation p {
     font-family: Georgia, serif;
 }
 
 div.drag-view-article:hover,
+div.drag-view-image:hover,
 div.drag-view-comment:hover,
-div.drag-view-comment.ui-draggable-dragging {
+div.drag-view-comment.ui-draggable-dragging,
+div.drag-view-annotation:hover,
+div.drag-view-annotation.ui-draggable-dragging {
     background-color: white;
 }
 
-div.drag-view-article div#drag-view-type p.content-type {
+div.drag-view-article div#drag-view-type p.content-type,
+div.drag-view-image div#drag-view-type p.content-type {
     margin-bottom: 0;
 }
 
-div.drag-view-article div#drag-view-tags {
+div.drag-view-article div#drag-view-tags,
+div.drag-view-image div#drag-view-tags {
     color: blue;
     margin-bottom: 20px;
 }
 
 /*Hide/show stuff on hover and when dragging*/
 div.drag-view-article a,
-div.drag-view-article p {
+div.drag-view-article p,
+div.drag-view-image a,
+div.drag-view-image p {
 /*div.drag-view-comment div#drag-view-type,
 div.drag-view-article div#drag-view-tags {*/
     display: none;
@@ -655,7 +703,8 @@ div.drag-view-article div#drag-view-tags {*/
 Link should be changed to inline-block so it doesn't stretch over whole div*/
 
 /*div.drag-view-article img,*/
-div.drag-view-article:hover #text #drag-view-tags {
+div.drag-view-article:hover #text #drag-view-tags,
+div.drag-view-image:hover #text #drag-view-tags {
 /*div.drag-view-comment:hover div#drag-view-type,
 div.drag-view-comment.ui-draggable-dragging div#text,
 div.drag-view-comment.ui-draggable-dragging div#drag-view-type {*/
@@ -665,7 +714,11 @@ div.drag-view-comment.ui-draggable-dragging div#drag-view-type {*/
 div.drag-view-article:hover #text #gallery-link a,
 div.drag-view-article:hover #text #drag-view-type p,
 div.drag-view-article:hover #text #drag-view-tags-list,
-div.drag-view-article:hover #text p.article-body {
+div.drag-view-article:hover #text p.article-body,
+div.drag-view-image:hover #text #gallery-link a,
+div.drag-view-image:hover #text #drag-view-type p,
+div.drag-view-image:hover #text #drag-view-tags-list,
+div.drag-view-image:hover #text p.article-body {
     display: inline;
     padding-left: 0px;
     padding-right: 0px;
@@ -677,20 +730,27 @@ div.drag-view-article:hover #text p.article-body {
 div.drag-view-article.ui-draggable-dragging div#text,
 div.drag-view-article div#drag-view-tags,
 div.drag-view-article.ui-draggable-dragging div#drag-view-tags,
-div.drag-view-article.ui-draggable-dragging p {
+div.drag-view-article.ui-draggable-dragging p,
+div.drag-view-image.ui-draggable-dragging div#text,
+div.drag-view-image div#drag-view-tags,
+div.drag-view-image.ui-draggable-dragging div#drag-view-tags,
+div.drag-view-image.ui-draggable-dragging p {
     display: none;
 }
 
-div.drag-view-comment a p {
+div.drag-view-comment a p,
+div.drag-view-annotation a p {
     display: inline;
 }
 
 /*Must be after the previous one so it is not overwritten*/
-div.drag-view-article.ui-draggable-dragging{
+div.drag-view-article.ui-draggable-dragging,
+div.drag-view-image.ui-draggable-dragging {
     border: 0;
     background: transparent;
 }
-div.drag-view-article.ui-draggable-dragging img{
+div.drag-view-article.ui-draggable-dragging img,
+div.drag-view-image.ui-draggable-dragging img  {
     display: block;
 }
 
@@ -699,19 +759,25 @@ div#articles_list img {
     max-height: 600px;
 }
 
-div.drag-view-article img {
+div.drag-view-article img,
+div.drag-view-image img{
     /*max-width: none;
     max-height: none;*/
     z-index: 0;
     position: absolute;
 }
-div.drag-view-article #text {
+div.drag-view-article #text,
+div.drag-view-image #text {
     position: absolute;
 }
 div.drag-view-article #text #gallery-link a,
 div.drag-view-article #text #drag-view-type p,
 div.drag-view-article #text #drag-view-tags-list,
-div.drag-view-article #text .article-body {
+div.drag-view-article #text .article-body,
+div.drag-view-image #text #gallery-link a,
+div.drag-view-image #text #drag-view-type p,
+div.drag-view-image #text #drag-view-tags-list,
+div.drag-view-image #text .article-body {
     background-color: white;
 }
 
@@ -898,7 +964,7 @@ ul#all-tags-list {
     background-color: white;
     padding: 20px;
     overflow-x: auto;
-    overflow-y: scroll;
+    overflow-y: auto;
     min-height: 100px;
 }
 ul#all-tags-list li.all-tags-list-caption,
@@ -949,6 +1015,10 @@ div#formfield-form-widgets-all_tags,
 div#formfield-form-widgets-sort_on,
 div#formfield-form-widgets-sort_order,
 div#formfield-form-widgets-content_filters,
+div#formfield-form-widgets-view_type,
+div#formfield-form-widgets-query,
+div#formfield-form-widgets-clicked_tag,
+div#formfield-form-widgets-use_filters,
 #form-widgets-sort_on-noform {
     display: none;
 }
@@ -959,7 +1029,7 @@ div#formfield-form-widgets-content_filters,
 
 /*Limit button (it's an image) size so it doesn't overflow*/
 input#form-buttons-filter {
-    display:none;
+    display: none;
 }
 
 input#form-buttons-text {
@@ -1173,17 +1243,31 @@ img.navigate {
 }
 .article-display-options {
     background-color: yellow;
-    padding-left: 10px;
-    width: 200px;
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    border-width: 1px;
-    border-color: yellow;
-    box-shadow: 2px 2px 1px #888888;
+    width: auto;
     position: absolute;
     right: 20px;
+    margin: 0px;
+    padding: 0px 10px;
 }
-.comment-text {
+.article-display-options label {
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+}
+.article-display-options label span {
+    font-size: 11px;
+    line-height: 11px;
+}
+/* We have 5px less then in the design, so it looks like in the design in the
+end */
+input.activate-text {
+    margin-right: 30px;
+}
+input.activate-comments {
+    margin-right: 35px;
+}
+.comment-text,
+.annotation-text {
     color: black;
 }
 /* Hide content actions in article body (they're rendered with a view
@@ -1198,10 +1282,13 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
 }
 .article-image img {
     height: auto;
+    width: 1000px;
+    max-width: 100%;
+    max-height: 1000px;
 }
 .article-heading {
     padding: 0;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
 }
 
 /*XXX: Naj bosta res oba enako velika?*/
@@ -1210,17 +1297,16 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
     line-height: 25px;
     font-family: Helvetica, Arial, sans-serif;
 }
-.article-display-options label {
-    margin-right: 20px;
-}
 
 #article #commenting {
     margin-top: 0;
+    margin-bottom: 20px;
     padding-top: 0;
     border: none;
 }
 
-#article-comment {
+#article-comment,
+#article-annotation {
     width: 650px;
     margin: 0 auto;
     border: none;
@@ -1228,24 +1314,35 @@ XXX: Remove this if we drop the fancy ajax loading of articles. */
     padding-top: 0;
     float: none;
 }
+#article-annotation div.fit-text p {
+    background: yellow;
+    display: inline;
+}
+
 
 ul.token-input-list-facebook {
     width: 100%;
     visibility: visible !important;
 }
 
-#comment-info, #article-info, #image-info {
+#comment-info, #article-info, #image-info, #annotation-info {
     margin-bottom: 0;
     margin-top: 15px;
 }
-#comment-info, #comment-tags-info, .redTag, .oneCommentTag {
+#comment-info,
+#comment-tags-info,
+.redTag,
+.oneCommentTag,
+#annotation-info,
+#annotation-tags-info,
+.annotationTag {
     font-family: Helvetica, Arial, sans-serif;
 }
 .fit-text {
     padding-top: 1px;
 }
-.articleTag, .oneCommentTag {
-    color: Blue;
+.articleTag, .oneCommentTag, .annotationTag {
+    color: blue;
 }
 /**
  * End of articles (aka main) page
@@ -1320,6 +1417,8 @@ div.half-width {
 .comment  {
     font-size: 100%;
     margin-top: 1em;
+    display: block;
+    clear: both;
 }
 .discussion {
     font-family:  Helvetica, Arial, sans-serif;
@@ -1361,13 +1460,21 @@ div.half-width {
     margin-left: 0;
     padding:0;
 }
-.commentTag {
+.commentTag,
+li.token-input-token-facebook {
+    background: white;
     color: blue;
-    border:1px solid blue;
+    border: 1px solid blue;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
     width: auto;
     float: left;
     padding-left: 1em;
     padding-right: 1em;
+}
+li.token-input-token-facebook span.token-input-delete-token-facebook {
+    color: blue;
 }
 
 .comment  ul{
@@ -1452,7 +1559,8 @@ a.content-link:hover {
     font-weight: bold;
 }
 
-div.articles-article-body div.fit-text {
+div.articles-article-body div.fit-text,
+div#article-annotation div.fit-text p {
     font-family: Georgia, serif;
     font-size: 35px;
     line-height: 42px;
@@ -1461,7 +1569,9 @@ div.articles-article-body div.fit-text {
 
 div.articles-article-body a.content-link,
 div.articles-article-body div#comment-info,
+div.articles-article-body div#annotation-info,
 div.articles-article-body div#comment-tags-info p.oneCommentTag,
+div.articles-article-body div#annotation-tags-info p.annotationTag,
 div.articles-article-body div.red {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 20px;
@@ -1567,11 +1677,12 @@ div.discussion div.comment div.commentBody {
     line-height: 17px;
 }
 
-.comment .commentTag {
-    font-size: 12px;
+.comment .commentTag,
+li.token-input-token-facebook {
+    font-size: 12.5px;
     margin-right: 12px;
     margin-bottom: 12px;
-    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
 }
 .twitter-share, .facebook-share,
 .context.reply-to-comment-button
@@ -1698,6 +1809,8 @@ div#center-column, div#content {
 #search-form-right #searchGadget,
 #search-form #searchGadget {
     width: 150px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 #search-form #searchGadget {
     height: 30px;
@@ -1717,6 +1830,7 @@ div#center-column, div#content {
 }
 #LSResult {
     margin: 0 0 0 -7em;
+    z-index: 1000;
     /*display: block !important;*/
 }
 .LSTable {
@@ -1761,4 +1875,166 @@ div#center-column, div#content {
 
 @media only screen and (max-width: 760px) {
   #form-buttons-drag { display: none; }
+}
+
+
+/* ANNOTATOR */
+div.annotator-editor textarea#annotator-field-0,
+div.annotator-editor span.annotator-resize {
+    display: none;
+}
+
+div.annotator-editor form.annotator-widget {
+    width: 150px;
+    min-width: 150px;
+    height: 100px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    border: 1px solid black;
+    background: white;
+}
+
+div.annotator-editor input#annotator-field-1 {
+    background: white;
+    height: 15px;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 0px;
+    padding-left: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    width: 115px;
+    min-width: 115px;
+    border: 1px solid black;
+}
+
+div.annotator-editor div.annotator-controls {
+    background: white;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+div.annotator-editor div.annotator-controls a.annotator-cancel {
+    display: none;
+}
+
+div.annotator-editor div.annotator-controls a.annotator-save {
+    background: yellow;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    border: 1px solid black;
+    float: left;
+    margin: 0px;
+    margin-left: 15px;
+    padding: 0px;
+    height: 20px;
+    width: 90px;
+    color: black;
+    text-align: center;
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.075em;
+}
+
+div.annotator-editor div.annotator-controls a.annotator-save::after,
+div.annotator-editor form.annotator-widget::after,
+div.annotator-editor a.facebook-share-annotator::after,
+div.annotator-editor a.twitter-share-annotator::after {
+    display: none;
+}
+
+div.annotator-viewer {
+    display: none;
+}
+
+div.annotator-editor a.facebook-share-annotator,
+div.annotator-editor a.twitter-share-annotator {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    border: none;
+    float: left;
+    margin: 0px;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding: 0px;
+    height: 15px;
+    width: 15px;
+}
+
+div.annotator-editor a.facebook-share-annotator {
+    clear: left;
+}
+
+div.annotator-editor a.twitter-share-annotator {
+    margin-left: 10px;
+}
+
+div.annotator-editor a.facebook-share-annotator img,
+div.annotator-editor a.twitter-share-annotator img {
+    width: 15px;
+    height: 15px;
+}
+
+div.annotation-tags a {
+    color: blue;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: solid 1px blue;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 12px;
+    margin-right: 15px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-family: Helvetica,Arial,sans-serif;
+}
+div.annotation-tags a.selected {
+    color: white;
+    background: blue;
+}
+
+p.annotation-selected-quote-text {
+    padding: 0px;
+    margin: 0px;
+}
+
+div.annotation-selected-quote-divider {
+    padding: 0px;
+    margin: 0px;
+    height: 30px;
+    width: 50px;
+    border-bottom: 4px solid black;
+    margin-bottom: 30px;
+}
+
+div.annotation-tags-header {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/*div.annotation-tags,
+div.annotation-tags-header {
+    display: none;
+}*/
+
+#search-form label#search-use-filters-label {
+    display: inline;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 10px;
+
 }
