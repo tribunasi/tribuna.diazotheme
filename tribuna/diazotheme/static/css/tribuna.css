@@ -1889,14 +1889,16 @@ div#center-column, div#content {
     padding: 0.2em;
     margin-bottom: 10px;
 }
+#search-form label#search-use-filters-label {
+    display: inline;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 10px;
+
+}
+
 /**
  * End search
  **/
-
-#form-widgets-subtitle,
-#form-widgets-article_author {
-    width: 100%;
-}
 
 
 /*MOBILE*/
@@ -2060,9 +2062,12 @@ div.annotation-tags-header {
     display: none;
 }*/
 
-#search-form label#search-use-filters-label {
-    display: inline;
-    font-family: Helvetica,Arial,sans-serif;
-    font-size: 10px;
+/* Misc */
+#form-widgets-subtitle,
+#form-widgets-article_author {
+    width: 100%;
+}
 
+.template-view.portaltype-tribuna-content-tag #commenting {
+    display: none;
 }
