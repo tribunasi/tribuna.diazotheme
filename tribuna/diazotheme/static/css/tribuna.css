@@ -286,6 +286,7 @@ body.portaltype-tribuna-content-entrypage .formControls input[type='submit']{
     color: black;
     font-weight: bold;
     cursor: pointer;
+    overflow: hidden;
 }
 
 #entrypage-form-container #entrypage-link {
@@ -300,6 +301,7 @@ body.portaltype-tribuna-content-entrypage .formControls input[type='submit']{
 #entrypage-form .accordion {
     margin-top: 2em;
     margin-bottom: 8px; /*Base is 18, lower by 10*/
+    float:left;
 }
 .accordion-body.collapse form {
     margin-bottom: 8px;
@@ -307,6 +309,9 @@ body.portaltype-tribuna-content-entrypage .formControls input[type='submit']{
 
 #entrypage-form .accordion-group {
     border: none;
+}
+#entrypage-form.in.collapse{
+    height: auto !important;
 }
 
 #entrypage-form .accordion-heading .accordion-toggle {
@@ -407,6 +412,8 @@ div.entrypage-text-container p#entrypage-text {
 .accordion-body.collapse form {
     margin-left: 30px;
 }
+
+
 /**
  * End entry page
  */
