@@ -11,6 +11,16 @@ input, button, select, textarea {
     font-family: Helvetica,Arial,sans-serif;
 }
 
+/* Content types */
+.icons-on .contenttype-tribuna-content-tag,
+.icons-on .contenttype-tribuna-content-article,
+.icons-on .contenttype-tribuna-content-entrypage {
+    display: inline-block;
+    line-height: 2em;
+    padding-left: 20px !important;
+    background: url("../img/contenttypes-sprite.png") no-repeat scroll 0 4px transparent;
+}
+
 /*Register forms*/
 body.template-register #content input {
     height: 20px;
