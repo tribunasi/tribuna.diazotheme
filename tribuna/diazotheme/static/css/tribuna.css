@@ -12,13 +12,24 @@ input, button, select, textarea {
 }
 
 /* Content types */
-.icons-on .contenttype-tribuna-content-tag,
 .icons-on .contenttype-tribuna-content-article,
 .icons-on .contenttype-tribuna-content-entrypage {
     display: inline-block;
     line-height: 2em;
     padding-left: 20px !important;
     background: url("../img/contenttypes-sprite.png") no-repeat scroll 0 4px transparent;
+}
+.icons-on .contenttype-tribuna-annotator-annotation {
+    display: inline-block;
+    line-height: 2em;
+    padding-left: 20px !important;
+    background: url("++theme++tribuna.diazotheme/img/annotation_icon.png") no-repeat scroll 0 transparent;
+}
+.icons-on .contenttype-tribuna-content-tag {
+    display: inline-block;
+    line-height: 2em;
+    padding-left: 20px !important;
+    background: url("++theme++tribuna.diazotheme/img/tag_icon.png") no-repeat scroll 0 transparent;
 }
 
 /*Register forms*/
