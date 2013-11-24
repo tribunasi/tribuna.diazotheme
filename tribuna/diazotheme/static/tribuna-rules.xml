@@ -102,78 +102,8 @@
           </div>
         </before>
 
-        <replace css:theme-children="#tags-list">
-            <xsl:for-each css:select="#formfield-form-widgets-tags .option">
-                <xsl:element name="li">
-                    <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
-                    <xsl:choose>
-                      <xsl:when test="input/@checked='checked'">
-                        <xsl:attribute name="class">selected</xsl:attribute>
-                        <a href="#" class="plusminus" style="display: none">-</a>
-                      </xsl:when>
-                      <xsl:otherwise>
-                        <a href="#" class="plusminus" style="display: none">+</a>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                     <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
-                 </xsl:element>
-            </xsl:for-each>
-        </replace>
-        <replace css:theme-children="#types-list">
-            <xsl:for-each css:select="#formfield-form-widgets-content_filters .option">
-                <xsl:element name="input">
-                  <xsl:attribute name="type">checkbox</xsl:attribute>
-                  <xsl:attribute name="name"><xsl:value-of select="label/span/text()" /></xsl:attribute>
-                  <xsl:attribute name="id"><xsl:value-of select="input/@value" /></xsl:attribute>
-                  <xsl:if test="input/@checked='checked'">
-                    <xsl:attribute name="checked">checked</xsl:attribute>
-                  </xsl:if>
-                </xsl:element>
-                <span class="red"><xsl:copy-of select="label/span/text()"/></span>
-                <br />
-            </xsl:for-each>
-        </replace>
-        <drop css:theme="#all-tags-list li" />
-        <after css:theme="#all-tags-list-close">
-            <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
-                <xsl:element name="li">
-                    <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
-                    <xsl:choose>
-                      <xsl:when test="input/@checked='checked'">
-                        <xsl:attribute name="class">selected</xsl:attribute>
-                        <a href="#" class="plusminus" style="display: none">-</a>
-                      </xsl:when>
-                      <xsl:otherwise>
-                        <a href="#" class="plusminus" style="display: none">+</a>
-                      </xsl:otherwise>
-                    </xsl:choose>
-                     <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
-                 </xsl:element>
-            </xsl:for-each>
-        </after>
-        <replace css:theme-children="#selected-tags-list">
-            <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
-                <xsl:if test="input/@checked='checked'">
-                  <xsl:element name="li">
-                      <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
-                      <xsl:attribute name="class">selected</xsl:attribute>
-                          <a href="#">-</a>
-                          <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
-                  </xsl:element>
-                </xsl:if>
-            </xsl:for-each>
-        </replace>
-
-        <replace css:content="#form-buttons-text">
-            <input id="form-buttons-text" name="form.buttons.text" class="submit-widget button-field" value="" type="submit"/>
-        </replace>
-
-        <replace css:content="#form-buttons-drag">
-          <input id="form-buttons-drag" name="form.buttons.drag" class="submit-widget button-field" value="" type="submit" />
-        </replace>
-
-        <after css:theme="#types-list" css:content=".kssattr-formname-my-form" />
-        <after css:theme-children="#sidebar-section" css:content="#home-link" />
+       <!-- Sidebar rules -->
+       <rules><xi:include href="sidebar.xml" /></rules>
 
          <!-- <rules css:if-content="#tag-description-div"> -->
         <rules css:if-content=".articles-intersection">
@@ -194,14 +124,8 @@
 
     <before css:theme="#container" css:content="#tag-picture" css:if-content="#tag-picture" />
 
-
-    <theme href="tribuna_mainpage.html" if-path="articles articles"/>
-    <rules if-path="articles articles">
-      <replace css:theme-children="#header" css:content-children="#header" />
-      <replace css:theme="#main" css:content="#main" />
-      <replace css:theme="#close-articles" css:content="#close-articles" />
-      <after css:theme="#main" css:content="#article-navigation" />
-    </rules>
+    <!--Main page rules-->
+    <rules if-path="articles"><xi:include href="mainpage.xml" /></rules>
 
     <replace theme="/html/head/title" content="/html/head/title" />
     <rules if-not-path="articles articles @@home home  @@tags tags @@search search plonebrowser searchreplace" css:if-not-content="#change-form">

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Rules for the sidebar with tags, content filters etc.-->
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <!-- Tags list -->
+  <replace css:theme-children="#tags-list">
+    <xsl:for-each css:select="#formfield-form-widgets-tags .option">
+      <xsl:element name="li">
+        <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
+        <xsl:choose>
+          <xsl:when test="input/@checked='checked'">
+            <xsl:attribute name="class">selected</xsl:attribute>
+            <a href="#" class="plusminus" style="display: none">-</a>
+          </xsl:when>
+          <xsl:otherwise>
+            <a href="#" class="plusminus" style="display: none">+</a>
+          </xsl:otherwise>
+        </xsl:choose>
+        <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
+      </xsl:element>
+    </xsl:for-each>
+  </replace>
+
+  <!-- Types list -->
+  <replace css:theme-children="#types-list">
+    <xsl:for-each css:select="#formfield-form-widgets-content_filters .option">
+      <xsl:element name="input">
+        <xsl:attribute name="type">checkbox</xsl:attribute>
+        <xsl:attribute name="name"><xsl:value-of select="label/span/text()" /></xsl:attribute>
+        <xsl:attribute name="id"><xsl:value-of select="input/@value" /></xsl:attribute>
+        <xsl:if test="input/@checked='checked'">
+          <xsl:attribute name="checked">checked</xsl:attribute>
+        </xsl:if>
+      </xsl:element>
+      <span class="red"><xsl:copy-of select="label/span/text()"/></span>
+      <br />
+    </xsl:for-each>
+  </replace>
+
+  <!-- All tags -->
+  <drop css:theme="#all-tags-list li" />
+  <after css:theme="#all-tags-list-close">
+    <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
+      <xsl:element name="li">
+        <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
+        <xsl:choose>
+          <xsl:when test="input/@checked='checked'">
+            <xsl:attribute name="class">selected</xsl:attribute>
+            <a href="#" class="plusminus" style="display: none">-</a>
+          </xsl:when>
+          <xsl:otherwise>
+            <a href="#" class="plusminus" style="display: none">+</a>
+          </xsl:otherwise>
+        </xsl:choose>
+        <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
+      </xsl:element>
+    </xsl:for-each>
+  </after>
+
+  <!-- Selected tags -->
+  <replace css:theme-children="#selected-tags-list">
+    <xsl:for-each css:select="#formfield-form-widgets-all_tags .option">
+      <xsl:if test="input/@checked='checked'">
+        <xsl:element name="li">
+          <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
+          <xsl:attribute name="class">selected</xsl:attribute>
+          <a href="#">-</a>
+          <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
+        </xsl:element>
+      </xsl:if>
+    </xsl:for-each>
+  </replace>
+
+  <!-- Text/drag buttons -->
+  <replace css:content="#form-buttons-text">
+    <input id="form-buttons-text" name="form.buttons.text" class="submit-widget button-field" value="" type="submit"/>
+  </replace>
+  <replace css:content="#form-buttons-drag">
+    <input id="form-buttons-drag" name="form.buttons.drag" class="submit-widget button-field" value="" type="submit" />
+  </replace>
+
+  <!-- Misc -->
+  <after css:theme="#types-list" css:content=".kssattr-formname-my-form" />
+  <after css:theme-children="#sidebar-section" css:content="#home-link" />
+
+</rules>
