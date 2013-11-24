@@ -50,26 +50,9 @@
     </xsl:for-each>
   </replace> -->
 
-  <theme href="tribuna_entrypage.html"
-         css:if-content="#entrypage-home-link"/>
-  <replace css:content-children="#entrypage-home-link"
-           css:theme-children="#entrypage-home-link"/>
-  <drop css:theme="#entrypage-form-container"
-        css:if-not-content="#change-form"/>
-  <replace css:content-children="#entrypage-author-title"
-           css:theme-children="#entrypage-author-title"/>
-  <merge attributes="style"
-         css:content="#background-placeholder" css:theme="body" />
-  <rules css:if-content="#text-container">
-    <append theme="/html/body" css:content="#text-container" />
-  </rules>
-  <rules css:if-content="#change-form">
-    <replace css:content-children="#picture-change"
-             css:theme-children="#collapseOne"/>
-    <replace css:content-children="#text-change"
-             css:theme-children="#collapseTwo"/>
-    <replace css:content-children="#old-pages"
-             css:theme-children="#collapseThree"/>
+  <!-- Entry page rules -->
+  <rules css:if-content="#entrypage-home-link">
+    <xi:include href="entrypage.xml" />
   </rules>
 
   <theme href="tribuna_homepage_2cols.html"
