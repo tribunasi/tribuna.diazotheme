@@ -5,23 +5,9 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xi="http://www.w3.org/2001/XInclude">
 
-  <!-- <drop css:theme-children="#header" /> -->
-
-  <!-- <after theme-children="/html/head" content="/html/head/script" />
-       <after theme-children="/html/head" content="/html/head/link | /html/head/style" />
-  -->
-
-  <!-- <replace css:theme="#logo" css:content="#portal-logo"/> -->
-
-  <!-- <replace css:theme-children="#nav">
-    <xsl:for-each css:select="#portal-globalnav > li">
-      <xi:include href="navigation-rules.xml"/>
-    </xsl:for-each>
-  </replace> -->
-
+  <!-- Common rules -->
   <replace theme="/html/head/base" content="/html/head/base" />
   <replace theme="/html/head/title" content="/html/head/title" />
-
   <merge attributes="class" css:content="body" css:theme="body"/>
   <replace css:theme-children="#personaltool-menu"
            css:content-children="#portal-personaltools ul"/>
@@ -35,20 +21,8 @@
         css:content="#portal-searchbox form" attributes="action"/>
   <replace css:theme-children="#nav"
            css:content-children="#navbar-template" />
-
   <after css:theme="meta[http-equiv='X-UA-Compatible']"
          content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" />
-  <!-- <before css:theme="head" content="/html/head/script" /> -->
-  <!-- <before css:theme="head" content="/html/head/link" /> -->
-
-  <!-- <copy css:theme=".navbar-fixed-top .brand" css:content="#portal-logo" attributes="href"/>
-  <replace css:theme-children=".breadcrumb">
-    <xsl:for-each css:select="#portal-breadcrumbs > span">
-      <li>
-        <xsl:copy-of select="node()"/>
-      </li>
-    </xsl:for-each>
-  </replace> -->
 
   <!-- Entry page rules -->
   <rules css:if-content="#entrypage-home-link">
@@ -79,9 +53,6 @@
             css:content="#search-form" css:if-content="#search-view" />
     <before css:theme="#container"
             css:content="#tag-picture" css:if-content="#tag-picture" />
-    <!-- <replace css:content=".portlet.portletSidebar"
-                  css:theme="#sidebar-portlet" /> -->
-    <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
 
     <!-- Action bar -->
     <before css:theme="#center-column-content" css:if-content="#edit-bar">
@@ -109,7 +80,7 @@
       </div>
     </before>
 
-    <!-- Sidebar rules -->
+    <!-- Sidebar -->
     <rules><xi:include href="sidebar.xml" /></rules>
 
     <!-- Results -->
@@ -148,75 +119,27 @@
   <!-- Default rules (for pages excluding the "special" tribuna views, like
        home, tags etc.) -->
   <rules if-not-path="articles articles @@home home  @@tags tags @@search search plonebrowser searchreplace" css:if-not-content="#change-form">
-    <theme href="tribuna_base.html" css:if-content="#visual-portal-wrapper"/>
+
     <theme href="dialog.html" css:if-content="#content.dialog-wrapper"/>
     <drop css:content="meta[http-equiv='X-UA-Compatible']"/>
     <rules css:if-content="#content.dialog-wrapper">
-      <prepend theme="/html/head" content="/html/head/base"/>
       <!-- <after css:theme="meta[http-equiv='X-UA-Compatible']"
            content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" /> -->
+      <prepend theme="/html/head" content="/html/head/base"/>
       <replace theme="/html/body" content="/html/body"/>
     </rules>
-    <theme href="html5slides/template/index.html"
-           css:if-content=".presentation"/>
-    <rules css:if-content=".presentation">
-      <replace css:theme-children="section">
-        <xsl:for-each css:select=".slide">
-          <article><xsl:attribute name="class">
-            <xsl:if test="position()=1">
-              slide-firstpage
-            </xsl:if>
-          </xsl:attribute>
-          <xsl:copy-of select="current()"/>
-          </article>
-        </xsl:for-each>
-      </replace>
-    </rules>
 
+    <theme href="tribuna_base.html" css:if-content="#visual-portal-wrapper"/>
     <rules css:if-content="#visual-portal-wrapper">
-
       <prepend theme="/html/head" content="/html/head/base"/>
       <merge attributes="class" css:content="body" css:theme="body"/>
-
       <replace theme="//*[@id='logo']/h1" content="//*[@id='content']/h1"/>
-
-      <append css:theme="#header">
-        <xsl:if css:test=".AbovePortletManager1">
-          <div id="portletHeader">
-            <xsl:for-each css:select=".AbovePortletManager1 .portletWrapper">
-              <xi:include href="portlet-rules.xml"/>
-            </xsl:for-each>
-          </div>
-        </xsl:if>
-      </append>
-
-      <prepend css:theme="#content-columns">
-        <div class="row-fluid">
-          <div class="span12">
-            <xsl:if css:test=".AbovePortletManager2">
-              <div id="portletHeader">
-                <xsl:for-each css:select=".AbovePortletManager2 .portletWrapper">
-                  <xi:include href="portlet-rules.xml"/>
-                </xsl:for-each>
-              </div>
-            </xsl:if>
-          </div>
-        </div>
-      </prepend>
-
       <replace css:theme="#center-column">
         <div id="center-column"><xsl:attribute name="class">
           <xsl:if test='contains(//*[@id="portal-column-content"]/@class,"width-3:4")'>twocolumns span9</xsl:if>
           <xsl:if test='contains(//*[@id="portal-column-content"]/@class,"width-1:2")'>threecolumns span6</xsl:if>
           <xsl:if test='contains(//*[@id="portal-column-content"]/@class,"width-full")'>nocolumns span12</xsl:if>
         </xsl:attribute>
-        <xsl:if css:test=".AbovePortletManager3">
-          <div id="portletAboveContent">
-            <xsl:for-each css:select=".AbovePortletManager3 .portletWrapper">
-              <xi:include href="portlet-rules.xml"/>
-            </xsl:for-each>
-          </div>
-        </xsl:if>
         <div id="#viewlet-above-content">
           <xsl:for-each css:select="#viewlet-above-content > *">
             <xsl:if test="@id">
@@ -270,13 +193,6 @@
             </xsl:if>
           </xsl:for-each>
         </div>
-        <xsl:if css:test=".BelowPortletManager5">
-          <div id="portletBelowContent">
-            <xsl:for-each css:select=".BelowPortletManager5 .portletWrapper">
-              <xi:include href="portlet-rules.xml"/>
-            </xsl:for-each>
-          </div>
-        </xsl:if>
         </div>
       </replace>
       <drop css:content="#enable_cookies_message"/>
@@ -285,12 +201,10 @@
             css:if-not-content="#portal-column-one"/>
       <drop css:theme="#right-column"
             css:if-not-content="#portal-column-two"/>
-
       <append css:theme=".footer" css:content-children="#portal-footer"/>
       <append css:theme=".footer" css:content="#portal-colophon"/>
       <append css:theme=".footer"
               css:content="div#visual-portal-wrapper > div.row > script"/>
-
       <append css:theme="#left-column-content"
               css:content="#portletmanager-plone-leftcolumn"/>
       <replace css:theme-children="#left-column-content">
@@ -301,7 +215,6 @@
           <xsl:copy-of css:select="#portal-column-one .managePortletsLink"/>
         </div>
       </replace>
-
       <append css:theme="#right-column-content"
               css:content="#portletmanager-plone-rightcolumn"/>
       <replace css:theme-children="#right-column-content">
@@ -312,78 +225,19 @@
           <xsl:copy-of css:select="#portal-column-two .managePortletsLink"/>
         </div>
       </replace>
-
-      <replace css:theme-children="#portletBelowContentA">
-        <xsl:for-each css:select=".BelowPortletManager1 .portletWrapper">
-          <xi:include href="portlet-rules.xml"/>
-        </xsl:for-each>
-        <div style="visibility: hidden">.</div>
-      </replace>
-      <replace css:theme-children="#portletBelowContentB">
-        <xsl:for-each css:select=".BelowPortletManager2 .portletWrapper">
-          <xi:include href="portlet-rules.xml"/>
-        </xsl:for-each>
-        <div style="visibility: hidden">.</div>
-      </replace>
-      <replace css:theme-children="#portletBelowContentC">
-        <xsl:for-each css:select=".BelowPortletManager3 .portletWrapper">
-          <xi:include href="portlet-rules.xml"/>
-        </xsl:for-each>
-        <div style="visibility: hidden">.</div>
-      </replace>
-      <replace css:theme-children="#portletBelowContentD">
-        <xsl:for-each css:select=".BelowPortletManager4 .portletWrapper">
-          <xi:include href="portlet-rules.xml"/>
-        </xsl:for-each>
-      </replace>
-      <replace css:theme-children="#portletFooterA">
-        <xsl:for-each css:select=".FooterPortletManager1 .portletWrapper">
-          <xi:include href="portlet-rules.xml"/>
-        </xsl:for-each>
-        <div style="visibility: hidden">.</div>
-      </replace>
-
-      <replace css:theme-children="#portletFooterB">
-        <xsl:for-each css:select=".FooterPortletManager2 .portletWrapper">
-          <xi:include href="portlet-rules.xml"/>
-        </xsl:for-each>
-        <div style="visibility: hidden">.</div>
-      </replace>
-
-      <replace css:theme-children="#portletFooterC">
-        <xsl:for-each css:select=".FooterPortletManager3 .portletWrapper">
-          <xi:include href="portlet-rules.xml"/>
-        </xsl:for-each>
-        <div style="visibility: hidden">.</div>
-      </replace>
-
-      <replace css:theme-children="#portletFooterD">
-        <xsl:for-each css:select=".FooterPortletManager4 .portletWrapper">
-          <xi:include href="portlet-rules.xml"/>
-        </xsl:for-each>
-        <div style="visibility: hidden">.</div>
-      </replace>
-
-      <replace css:theme-children="#portletFooterE">
-        <xsl:for-each css:select=".FooterPortletManager5 .portletWrapper">
-          <xi:include href="portlet-rules.xml"/>
-        </xsl:for-each>
-        <div style="visibility: hidden">.</div>
-      </replace>
-
-      <replace css:theme-children="#portletFooterF">
-        <xsl:for-each css:select=".FooterPortletManager6 .portletWrapper">
-          <xi:include href="portlet-rules.xml"/>
-        </xsl:for-each>
-        <div style="visibility: hidden">.</div>
-      </replace>
-
       <xi:include href="facetednavigation-rules.xml"/>
       <append css:theme="#site-scripts"
               css:content="#portal-footer-wrapper > div > script"/>
     </rules>
-
     <drop css:theme="#left-column" />
+    <!-- Bread crumbs -->
+    <!--replace css:theme-children=".breadcrumb">
+      <xsl:for-each css:select="#portal-breadcrumbs > span">
+        <li>
+          <xsl:copy-of select="node()"/>
+        </li>
+      </xsl:for-each>
+    </replace-->
   </rules>
 
 </rules>
