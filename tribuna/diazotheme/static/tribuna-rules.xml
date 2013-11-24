@@ -19,8 +19,8 @@
     </xsl:for-each>
   </replace> -->
 
-  <!-- Base tag -->
   <replace theme="/html/head/base" content="/html/head/base" />
+  <replace theme="/html/head/title" content="/html/head/title" />
 
   <merge attributes="class" css:content="body" css:theme="body"/>
   <replace css:theme-children="#personaltool-menu"
@@ -55,7 +55,10 @@
     <xi:include href="entrypage.xml" />
   </rules>
 
-  <!-- Home, tags and search rules -->
+  <!-- Home, tags and search rules
+       XXX: can't put into a separate file due to a Diazo limitation, see
+       http://stackoverflow.com/questions/17202134/diazo-xsltemplate-not-applying-when-inside-secondary-rules-file
+  -->
   <theme href="tribuna_homepage_2cols.html"
          if-path="@@home home @@tags tags @@search search"
          css:if-content="#tag-description-div"/>
@@ -74,6 +77,8 @@
              css:if-not-content="#search-view" />
     <before css:theme="#topside-content-sort_on"
             css:content="#search-form" css:if-content="#search-view" />
+    <before css:theme="#container"
+            css:content="#tag-picture" css:if-content="#tag-picture" />
     <!-- <replace css:content=".portlet.portletSidebar"
                   css:theme="#sidebar-portlet" /> -->
     <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
@@ -138,16 +143,15 @@
     </rules>
   </rules>
 
-  <before css:theme="#container"
-          css:content="#tag-picture" css:if-content="#tag-picture" />
-
-  <!--Main page rules-->
+  <!-- Main page rules -->
   <rules if-path="articles"><xi:include href="mainpage.xml" /></rules>
 
-  <replace theme="/html/head/title" content="/html/head/title" />
+  <!-- Default rules (for pages excluding the "special" tribuna views, like
+       home, tags etc.) -->
   <rules if-not-path="articles articles @@home home  @@tags tags @@search search plonebrowser searchreplace" css:if-not-content="#change-form">
     <theme href="tribuna_base.html" css:if-content="#visual-portal-wrapper"/>
     <theme href="dialog.html" css:if-content="#content.dialog-wrapper"/>
+
     <drop css:content="meta[http-equiv='X-UA-Compatible']"/>
     <rules css:if-content="#content.dialog-wrapper">
       <prepend theme="/html/head" content="/html/head/base"/>
@@ -176,7 +180,6 @@
 
       <prepend theme="/html/head" content="/html/head/base"/>
       <merge attributes="class" css:content="body" css:theme="body"/>
-
       <replace theme="//*[@id='logo']/h1" content="//*[@id='content']/h1"/>
 
       <append css:theme="#header">
