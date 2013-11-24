@@ -55,6 +55,7 @@
     <xi:include href="entrypage.xml" />
   </rules>
 
+  <!-- Home, tags and search rules -->
   <theme href="tribuna_homepage_2cols.html"
          if-path="@@home home @@tags tags @@search search"
          css:if-content="#tag-description-div"/>
@@ -76,6 +77,8 @@
     <!-- <replace css:content=".portlet.portletSidebar"
                   css:theme="#sidebar-portlet" /> -->
     <!-- <drop css:theme=".navbar.navbar-fixed-top" /> -->
+
+    <!-- Action bar -->
     <before css:theme="#center-column-content" css:if-content="#edit-bar">
       <div id="action-bar">
         <ul class="nav nav-tabs">
@@ -86,7 +89,7 @@
             <li class="dropdown pull-right" data-dropdown="dropdown">
               <a class="dropdown-toggle" href="#">
                 <xsl:attribute name="href">
-                <xsl:value-of select="dl/dt/a/@href"/>
+                  <xsl:value-of select="dl/dt/a/@href"/>
                 </xsl:attribute>
                 <xsl:copy-of select="dl/dt/a/span"/>
                 <b class="caret"></b>
@@ -105,7 +108,7 @@
     <!-- Sidebar rules -->
     <rules><xi:include href="sidebar.xml" /></rules>
 
-    <!-- <rules css:if-content="#tag-description-div"> -->
+    <!-- Results -->
     <rules css:if-content=".articles-intersection">
       <replace css:if-not-content="#empty-results"
                css:theme-children="#topside-content-sort_on"
@@ -376,7 +379,8 @@
       </replace>
 
       <xi:include href="facetednavigation-rules.xml"/>
-      <append css:theme="#site-scripts" css:content="#portal-footer-wrapper > div > script"/>
+      <append css:theme="#site-scripts"
+              css:content="#portal-footer-wrapper > div > script"/>
     </rules>
 
     <drop css:theme="#left-column" />
