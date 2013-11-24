@@ -92,13 +92,12 @@
           </xsl:for-each>
           <xsl:for-each css:select="#contentActionMenus > li">
             <li class="dropdown pull-right" data-dropdown="dropdown">
-              <a class="dropdown-toggle" href="#">
-                <xsl:attribute name="href">
+                <a class="dropdown-toggle" href="#"><xsl:attribute name="href">
                   <xsl:value-of select="dl/dt/a/@href"/>
                 </xsl:attribute>
                 <xsl:copy-of select="dl/dt/a/span"/>
                 <b class="caret"></b>
-              </a>
+                </a>
               <ul class="dropdown-menu" style="min-width:150px;">
                 <xsl:for-each css:select=".actionMenuContent > ul > li">
                   <xsl:copy-of select="current()"/>
@@ -151,7 +150,6 @@
   <rules if-not-path="articles articles @@home home  @@tags tags @@search search plonebrowser searchreplace" css:if-not-content="#change-form">
     <theme href="tribuna_base.html" css:if-content="#visual-portal-wrapper"/>
     <theme href="dialog.html" css:if-content="#content.dialog-wrapper"/>
-
     <drop css:content="meta[http-equiv='X-UA-Compatible']"/>
     <rules css:if-content="#content.dialog-wrapper">
       <prepend theme="/html/head" content="/html/head/base"/>
@@ -164,13 +162,12 @@
     <rules css:if-content=".presentation">
       <replace css:theme-children="section">
         <xsl:for-each css:select=".slide">
-          <article>
-            <xsl:attribute name="class">
-              <xsl:if test="position()=1">
-                slide-firstpage
-              </xsl:if>
-            </xsl:attribute>
-            <xsl:copy-of select="current()"/>
+          <article><xsl:attribute name="class">
+            <xsl:if test="position()=1">
+              slide-firstpage
+            </xsl:if>
+          </xsl:attribute>
+          <xsl:copy-of select="current()"/>
           </article>
         </xsl:for-each>
       </replace>
@@ -180,6 +177,7 @@
 
       <prepend theme="/html/head" content="/html/head/base"/>
       <merge attributes="class" css:content="body" css:theme="body"/>
+
       <replace theme="//*[@id='logo']/h1" content="//*[@id='content']/h1"/>
 
       <append css:theme="#header">
@@ -242,12 +240,11 @@
               </xsl:for-each>
               <xsl:for-each css:select="#contentActionMenus > li">
                 <li class="dropdown pull-right" data-dropdown="dropdown">
-                  <a class="dropdown-toggle" href="#">
-                    <xsl:attribute name="href">
-                      <xsl:value-of select="dl/dt/a/@href"/>
-                    </xsl:attribute>
-                    <xsl:copy-of select="dl/dt/a/span"/>
-                    <b class="caret"></b>
+                  <a class="dropdown-toggle" href="#"><xsl:attribute name="href">
+                    <xsl:value-of select="dl/dt/a/@href"/>
+                  </xsl:attribute>
+                  <xsl:copy-of select="dl/dt/a/span"/>
+                  <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu" style="min-width:150px;">
                     <xsl:for-each css:select=".actionMenuContent > ul > li">
