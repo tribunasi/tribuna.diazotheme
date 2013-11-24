@@ -13,13 +13,14 @@
 
   <!-- <replace css:theme="#logo" css:content="#portal-logo"/> -->
 
-  <!--replace css:theme-children="#nav">
+  <!-- <replace css:theme-children="#nav">
     <xsl:for-each css:select="#portal-globalnav > li">
       <xi:include href="navigation-rules.xml"/>
     </xsl:for-each>
-  </replace-->
+  </replace> -->
 
-  <!-- Base tag --> <replace theme="/html/head/base" content="/html/head/base" />
+  <!-- Base tag -->
+  <replace theme="/html/head/base" content="/html/head/base" />
 
   <merge attributes="class" css:content="body" css:theme="body"/>
   <replace css:theme-children="#personaltool-menu"
@@ -40,21 +41,17 @@
   <!-- <before css:theme="head" content="/html/head/script" /> -->
   <!-- <before css:theme="head" content="/html/head/link" /> -->
 
-  <!--copy css:theme=".navbar-fixed-top .brand" css:content="#portal-logo" attributes="href"/-->
-  <!--replace css:theme-children=".breadcrumb">
+  <!-- <copy css:theme=".navbar-fixed-top .brand" css:content="#portal-logo" attributes="href"/>
+  <replace css:theme-children=".breadcrumb">
     <xsl:for-each css:select="#portal-breadcrumbs > span">
       <li>
         <xsl:copy-of select="node()"/>
       </li>
     </xsl:for-each>
-  </replace-->
+  </replace> -->
 
-  <merge attributes="class"
-         css:content="#homepage-div" css:theme="#right-column" />
-  <merge attributes="class"
-         css:content="#homepage-div" css:theme="#topside-content" />
-
-  <theme href="tribuna_entrypage.html" css:if-content="#entrypage-home-link"/>
+  <theme href="tribuna_entrypage.html"
+         css:if-content="#entrypage-home-link"/>
   <replace css:content-children="#entrypage-home-link"
            css:theme-children="#entrypage-home-link"/>
   <drop css:theme="#entrypage-form-container"
@@ -82,6 +79,10 @@
          if-path="@@home home @@tags tags @@search search"
          css:if-not-content="#tag-description-div"/>
   <rules if-path="@@home home @@tags tags @@search search">
+    <merge attributes="class"
+           css:content="#homepage-div" css:theme="#right-column" />
+    <merge attributes="class"
+           css:content="#homepage-div" css:theme="#topside-content" />
     <drop css:theme="#right-column #search-form-right"
           css:if-content="#search-view" />
     <replace css:theme-children="#search-form-right"
