@@ -141,6 +141,48 @@ jQuery17(function () {
             return this;
         };
 
+        // Override api request method for annotator ajax calls, so we fix
+        // problems with caching in IE
+        Annotator.Plugin.Store.prototype._apiRequestOptions = function(action, obj, onSuccess) {
+          var data, method, opts;
+          method = this._methodFor(action);
+          opts = {
+            type: method,
+            headers: this.element.data('annotator:headers'),
+            dataType: "json",
+            success: onSuccess || function() {},
+            error: this._onError,
+            cache: false
+          };
+          if (this.options.emulateHTTP && (method === 'PUT' || method === 'DELETE')) {
+            opts.headers = $.extend(opts.headers, {
+              'X-HTTP-Method-Override': method
+            });
+            opts.type = 'POST';
+          }
+          if (action === "search") {
+            opts = $.extend(opts, {
+              data: obj
+            });
+            return opts;
+          }
+          data = obj && this._dataFor(obj);
+          if (this.options.emulateJSON) {
+            opts.data = {
+              json: data
+            };
+            if (this.options.emulateHTTP) {
+              opts.data._method = method;
+            }
+            return opts;
+          }
+          opts = $.extend(opts, {
+            data: data,
+            contentType: "application/json; charset=utf-8"
+          });
+          return opts;
+        };
+
         // Initialize annotator
         var annotator_content = $("#annotator").annotator();
 
