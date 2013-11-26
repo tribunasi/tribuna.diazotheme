@@ -347,6 +347,10 @@ jQuery17(function () {
                     jQuery17(".activate-comments").trigger("click");
                 }
             }
+            // Changing site title and description in relation to loaded article
+            document.title = jQuery17(".article-text.title h2").text();
+            $('meta[name="description"]').attr('content',
+                jQuery17(".article-text.content-core .description").text());
 
 
 
@@ -483,7 +487,8 @@ jQuery17(function () {
             $(this).loadArticle();
 
             article_id = this.id.replace(SLIDER_PREFIX, "") + document.location.search;
-            window.history.replaceState(null, null, article_id);
+            history.pushState(null, null, article_id);
+            return false;
 
         });
 
