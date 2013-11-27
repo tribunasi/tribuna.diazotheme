@@ -360,7 +360,8 @@ jQuery17(function () {
         var currIndex = this.attr('data-carousel-index');
         if (currIndex === "0") {
             jQuery17("#article-navigation .prev").hide();
-        } else if (currIndex === LAST_INDEX) {
+        }
+        if (currIndex === LAST_INDEX) {
             jQuery17("#article-navigation .next").hide();
         }
 
