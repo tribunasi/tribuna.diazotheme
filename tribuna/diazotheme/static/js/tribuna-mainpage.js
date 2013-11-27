@@ -404,7 +404,9 @@ jQuery17(function () {
 
         // Load article (from url)
         article_id = jQuery17("#main").attr('data-id');
-        jQuery17('#' + SLIDER_PREFIX + article_id).loadArticle();
+        if(jQuery17("#no-load").length == 0) {
+            jQuery17('#' + SLIDER_PREFIX + article_id).loadArticle();
+        }
 
         // Show spinner when loading
         jQuery17('#ajax-spinner')
