@@ -117,7 +117,9 @@
   <rules if-path="articles"><xi:include href="mainpage.xml" /></rules>
 
   <!-- Default rules (for pages excluding the "special" tribuna views, like
-       home, tags etc.) -->
+       home, tags etc.)
+       XXX: can't put into a separate file due to a Diazo limitation, see
+       http://stackoverflow.com/questions/17202134/diazo-xsltemplate-not-applying-when-inside-secondary-rules-file -->
   <rules if-not-path="articles articles @@home home  @@tags tags @@search search plonebrowser searchreplace" css:if-not-content="#change-form">
 
     <theme href="dialog.html" css:if-content="#content.dialog-wrapper"/>
