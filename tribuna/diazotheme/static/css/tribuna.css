@@ -860,10 +860,15 @@ so we use this) */
     z-index: 100;
 }
 
+
 @media (max-width: 767px) {
     .sidebar-nav-fixed {
         width:auto;
     }
+    #LSResult {
+        display: none !important;
+    }
+
 }
 
 @media (max-width: 979px) {
@@ -984,7 +989,7 @@ ul#tags-list li.selected a, ul#all-tags-list li.selected a{
 }
 
 ul#all-tags-list {
-    position: absolute;
+    position: fixed;
     z-index: 400;
     display: none;
     margin-top: 19px;
