@@ -34,12 +34,12 @@
     <replace css:theme-children="#nav" css:content-children="#navbar-template" />
 
     <after css:theme="meta[http-equiv='X-UA-Compatible']"
-              content="/html/head/link | /html/head/style | /html/head/script" />
+           content="/html/head/link | /html/head/style | /html/head/script" />
     <!-- XXX meta description included for all pages except Entrypage, where we keep it the same as in template-->
-    <after css:theme="meta[http-equiv='X-UA-Compatible']" content="meta[description]">
-      css:if-not-content="#entrypage-home-link"/>
-    <after css:theme="meta[http-equiv='X-UA-Compatible']" content="meta[author]">
-      <after css:theme="meta[http-equiv='X-UA-Compatible']" content="meta[viewport]">
+    <after css:theme="meta[http-equiv='X-UA-Compatible']" content="meta[description]"
+           css:if-not-content="#entrypage-home-link"/>
+    <after css:theme="meta[http-equiv='X-UA-Compatible']" content="meta[author]" />
+      <after css:theme="meta[http-equiv='X-UA-Compatible']" content="meta[viewport]" />
     <!-- <before css:theme="head" content="/html/head/script" /> -->
     <!-- <before css:theme="head" content="/html/head/link" /> -->
 
