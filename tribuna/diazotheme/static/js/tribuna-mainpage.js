@@ -232,6 +232,7 @@ jQuery17(function () {
         });
 
         annotator_content.prop("loaded", true);
+        window.scrollTo(0, $(".article-heading").offset().top);
 
     }
 
@@ -436,6 +437,9 @@ jQuery17(function () {
                     // the url.
                     if (window.location.hash) {
                         window.location.href = window.location.hash;
+                    }
+                    else {
+                        window.scrollTo(0, $(".article-heading").offset().top);
                     }
 
                 });
