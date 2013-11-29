@@ -491,10 +491,14 @@ jQuery17(function () {
         // Load content from selected article, slide to it and change the URL
         // to the new article with HTML5 replaceState.
         jQuery17('#article-slider li').click(function () {
-            $(this).loadArticle();
-
             article_id = this.id.replace(SLIDER_PREFIX, "") + document.location.search;
-            history.pushState(null, null, article_id);
+            if (window.history && window.history.pushState) {
+                $(this).loadArticle();
+                window.history.pushState(null, null, article_id);
+            }
+            else {
+                window.location.href = article_id;
+            }
             return false;
 
         });
