@@ -2076,3 +2076,53 @@ div.annotation-tags-header {
 .template-view.portaltype-tribuna-content-tag #commenting {
     display: none;
 }
+.cc-cookies {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-family: Impact;
+    font-size: 150px;
+    color: blue;
+    width: 1000px;
+    height: 350px;
+    text-align:center;
+    line-height: 90%;
+    background-color: black;
+}
+
+.cc-cookies p {
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.cc-cookies a.cc-cookie-accept, .cc-cookies a.cc-cookie-decline {
+    width: 100px;
+    height: 100px;
+    margin-left: 350px;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.cc-cookies a.cc-cookie-accept {
+    color: green;
+}
+
+.cc-cookies a.cc-cookie-decline {
+    margin-top: 20px;
+    color: red;
+}
+.cc-cookies a.cc-cookie-accept:hover, .cc-cookies a.cc-cookie-decline:hover {
+    color: white;
+    background: none;
+    padding: none;
+    border-radius: none;
+    box-shadow: none;
+}
