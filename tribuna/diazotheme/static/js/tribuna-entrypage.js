@@ -20,6 +20,16 @@ jQuery17(function () {
     function openCloseContainer() {
         jQuery17('#entrypage-form-container').toggleClass('expanded');
         jQuery17('#entrypage-form-close').toggle();
+        // Fix for firefox, that doesn't handle showing and hiding correctly
+        if (jQuery17('#entrypage-form-container').hasClass('expanded') ) {
+            jQuery17('#entrypage-form').height("auto");
+            jQuery17('#entrypage-form').show();
+        }
+        else {
+            jQuery17('#entrypage-form').height(0);
+            jQuery17('#entrypage-form').hide();
+        }
+
     }
 
 
