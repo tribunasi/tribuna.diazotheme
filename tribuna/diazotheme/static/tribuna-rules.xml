@@ -18,7 +18,7 @@
   </replace>
   <copy css:theme="#topsearchbox"
         css:content="#portal-searchbox form" attributes="action"/>
-  <replace css:theme-children="#nav"
+  <replace css:theme="#nav"
            css:content-children="#navbar-template" />
   <after css:theme="meta[http-equiv='X-UA-Compatible']"
          content="/html/head/link | /html/head/style | /html/head/script" />
