@@ -141,6 +141,48 @@ jQuery17(function () {
             return this;
         };
 
+        // Override api request method for annotator ajax calls, so we fix
+        // problems with caching in IE
+        Annotator.Plugin.Store.prototype._apiRequestOptions = function(action, obj, onSuccess) {
+          var data, method, opts;
+          method = this._methodFor(action);
+          opts = {
+            type: method,
+            headers: this.element.data('annotator:headers'),
+            dataType: "json",
+            success: onSuccess || function() {},
+            error: this._onError,
+            cache: false
+          };
+          if (this.options.emulateHTTP && (method === 'PUT' || method === 'DELETE')) {
+            opts.headers = $.extend(opts.headers, {
+              'X-HTTP-Method-Override': method
+            });
+            opts.type = 'POST';
+          }
+          if (action === "search") {
+            opts = $.extend(opts, {
+              data: obj
+            });
+            return opts;
+          }
+          data = obj && this._dataFor(obj);
+          if (this.options.emulateJSON) {
+            opts.data = {
+              json: data
+            };
+            if (this.options.emulateHTTP) {
+              opts.data._method = method;
+            }
+            return opts;
+          }
+          opts = $.extend(opts, {
+            data: data,
+            contentType: "application/json; charset=utf-8"
+          });
+          return opts;
+        };
+
         // Initialize annotator
         var annotator_content = $("#annotator").annotator();
 
@@ -190,6 +232,7 @@ jQuery17(function () {
         });
 
         annotator_content.prop("loaded", true);
+        window.scrollTo(0, $(".article-heading").offset().top);
 
     }
 
@@ -305,6 +348,10 @@ jQuery17(function () {
                     jQuery17(".activate-comments").trigger("click");
                 }
             }
+            // Changing site title and description in relation to loaded article
+            document.title = jQuery17(".article-text.title h2").text();
+            $('meta[name="description"]').attr('content',
+                jQuery17(".article-text.content-core .description").text());
 
 
 
@@ -314,7 +361,8 @@ jQuery17(function () {
         var currIndex = this.attr('data-carousel-index');
         if (currIndex === "0") {
             jQuery17("#article-navigation .prev").hide();
-        } else if (currIndex === LAST_INDEX) {
+        }
+        if (currIndex === LAST_INDEX) {
             jQuery17("#article-navigation .next").hide();
         }
 
@@ -358,7 +406,9 @@ jQuery17(function () {
 
         // Load article (from url)
         article_id = jQuery17("#main").attr('data-id');
-        jQuery17('#' + SLIDER_PREFIX + article_id).loadArticle();
+        if(jQuery17("#no-load").length == 0) {
+            jQuery17('#' + SLIDER_PREFIX + article_id).loadArticle();
+        }
 
         // Show spinner when loading
         jQuery17('#ajax-spinner')
@@ -387,6 +437,9 @@ jQuery17(function () {
                     // the url.
                     if (window.location.hash) {
                         window.location.href = window.location.hash;
+                    }
+                    else {
+                        window.scrollTo(0, $(".article-heading").offset().top);
                     }
 
                 });
@@ -441,7 +494,8 @@ jQuery17(function () {
             $(this).loadArticle();
 
             article_id = this.id.replace(SLIDER_PREFIX, "") + document.location.search;
-            window.history.replaceState(null, null, article_id);
+            history.pushState(null, null, article_id);
+            return false;
 
         });
 

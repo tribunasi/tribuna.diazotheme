@@ -163,7 +163,7 @@ jQuery17(function () {
             allTagsList.width(jQuery17(window).width() / 3);
 
             var tmpheight = jQuery17(window).height() - parseInt(jQuery17("#articles_list").css("margin-top"), 10) - jQuery17("#topside-content-name").height() - 15;
-            jQuery17("#articles_list").css("height", tmpheight);
+            // jQuery17("#articles_list").css("height", tmpheight);
             jQuery17("div#homepage-div").css("height", tmpheight - 10);
             jQuery17("div#homepage-div").css("float", "left");
             jQuery17("div#homepage-div").css("width", "100%");

@@ -14,13 +14,13 @@
         <xsl:choose>
           <xsl:when test="input/@checked='checked'">
             <xsl:attribute name="class">selected</xsl:attribute>
-            <a href="#" class="plusminus" style="display: none">-</a>
+            <a href="javascript:;" class="plusminus" style="display: none">-</a>
           </xsl:when>
           <xsl:otherwise>
-            <a href="#" class="plusminus" style="display: none">+</a>
+            <a href="javascript:;" class="plusminus" style="display: none">+</a>
           </xsl:otherwise>
         </xsl:choose>
-        <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
+        <span><a href="javascript:;"><xsl:copy-of select="label/span/text()"/></a></span>
       </xsl:element>
     </xsl:for-each>
   </replace>
@@ -50,13 +50,13 @@
         <xsl:choose>
           <xsl:when test="input/@checked='checked'">
             <xsl:attribute name="class">selected</xsl:attribute>
-            <a href="#" class="plusminus" style="display: none">-</a>
+            <a href="javascript:;" class="plusminus" style="display: none">-</a>
           </xsl:when>
           <xsl:otherwise>
-            <a href="#" class="plusminus" style="display: none">+</a>
+            <a href="javascript:;" class="plusminus" style="display: none">+</a>
           </xsl:otherwise>
         </xsl:choose>
-        <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
+        <span><a href="javascript:;"><xsl:copy-of select="label/span/text()"/></a></span>
       </xsl:element>
     </xsl:for-each>
   </after>
@@ -68,8 +68,8 @@
         <xsl:element name="li">
           <xsl:attribute name="id"> <xsl:value-of select="input/@value"/></xsl:attribute>
           <xsl:attribute name="class">selected</xsl:attribute>
-          <a href="#">-</a>
-          <span><a href="#"><xsl:copy-of select="label/span/text()"/></a></span>
+          <a href="javascript:;">-</a>
+          <span><a href="javascript:;"><xsl:copy-of select="label/span/text()"/></a></span>
         </xsl:element>
       </xsl:if>
     </xsl:for-each>

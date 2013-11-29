@@ -7,7 +7,6 @@
 
   <!-- Common rules -->
   <replace theme="/html/head/base" content="/html/head/base" />
-  <replace theme="/html/head/title" content="/html/head/title" />
   <merge attributes="class" css:content="body" css:theme="body"/>
   <replace css:theme-children="#personaltool-menu"
            css:content-children="#portal-personaltools ul"/>
@@ -22,7 +21,19 @@
   <replace css:theme-children="#nav"
            css:content-children="#navbar-template" />
   <after css:theme="meta[http-equiv='X-UA-Compatible']"
-         content="/html/head/link | /html/head/style | /html/head/script | /html/head/meta" />
+         content="/html/head/link | /html/head/style | /html/head/script" />
+  <!-- XXX title meta description included for all pages except Entrypage,
+       where we keep it the same as in template-->
+  <replace theme="/html/head/title"
+           css:if-not-content="#entrypage-home-link"
+           content="/html/head/title" />
+  <after css:theme="meta[http-equiv='X-UA-Compatible']"
+         content="meta[description]"
+         css:if-not-content="#entrypage-home-link"/>
+  <after css:theme="meta[http-equiv='X-UA-Compatible']"
+         content="meta[author]" />
+  <after css:theme="meta[http-equiv='X-UA-Compatible']"
+         content="meta[viewport]" />
 
   <!-- Entry page rules -->
   <rules css:if-content="#entrypage-home-link">
@@ -63,7 +74,7 @@
           </xsl:for-each>
           <xsl:for-each css:select="#contentActionMenus > li">
             <li class="dropdown pull-right" data-dropdown="dropdown">
-                <a class="dropdown-toggle" href="#"><xsl:attribute name="href">
+                <a class="dropdown-toggle" href="javascript:;"><xsl:attribute name="href">
                   <xsl:value-of select="dl/dt/a/@href"/>
                 </xsl:attribute>
                 <xsl:copy-of select="dl/dt/a/span"/>
@@ -165,7 +176,7 @@
               </xsl:for-each>
               <xsl:for-each css:select="#contentActionMenus > li">
                 <li class="dropdown pull-right" data-dropdown="dropdown">
-                  <a class="dropdown-toggle" href="#"><xsl:attribute name="href">
+                  <a class="dropdown-toggle" href="javascript:;"><xsl:attribute name="href">
                     <xsl:value-of select="dl/dt/a/@href"/>
                   </xsl:attribute>
                   <xsl:copy-of select="dl/dt/a/span"/>
