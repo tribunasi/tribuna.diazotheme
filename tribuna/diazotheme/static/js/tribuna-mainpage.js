@@ -200,8 +200,8 @@ jQuery17(function () {
         bar[2] = parseInt(bar[2], 10) % 2;
         foo.attr('id', bar.join('-'));
 
-        var foo = jQuery17("li.annotator-item input"),
-            bar = foo.attr('id').split('-');
+        foo = jQuery17("li.annotator-item input");
+        bar = foo.attr('id').split('-');
         bar[2] = parseInt(bar[2], 10) % 2;
         foo.attr('id', bar.join('-'));
 
@@ -225,8 +225,8 @@ jQuery17(function () {
             jQuery17(".facebook-share-annotator").attr('onclick', first + "[summary]=" + quote + second);
 
             // Twitter
-            var first = jQuery17(".twitter-share").attr('onclick').split("?text=")[0],
-                second = jQuery17(".twitter-share").attr('onclick').split("?text=")[1];
+            first = jQuery17(".twitter-share").attr('onclick').split("?text=")[0];
+            second = jQuery17(".twitter-share").attr('onclick').split("?text=")[1];
             second = second.substring(second.indexOf("&"));
             jQuery17(".twitter-share-annotator").attr('onclick', first + "?text=" + quote + second);
         });
@@ -327,7 +327,7 @@ jQuery17(function () {
                         jQuery17(".annotation-tags-header").hide();
                     }
 
-                })
+                });
             } else {
                 jQuery17(".activate-annotations").prop("disabled", "true");
             }
@@ -406,7 +406,7 @@ jQuery17(function () {
 
         // Load article (from url)
         article_id = jQuery17("#main").attr('data-id');
-        if(jQuery17("#no-load").length == 0) {
+        if(jQuery17("#no-load").length === 0) {
             jQuery17('#' + SLIDER_PREFIX + article_id).loadArticle();
         }
 
