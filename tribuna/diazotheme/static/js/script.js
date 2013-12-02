@@ -23,17 +23,4 @@ jQuery17(function () {
         jQuery17('.carousel').carousel();
 
     });
-
-    // $(window).load( function() {
-    //     setTimeout(function() {
-    //         // Crappy monkey fix that we will change ASAP
-    //         $('#form-widgets-IBodyText-text_parent').attr('id', 'blablakrentagtosmjst');
-    //         $('#blablakrentagtosmjst').attr('style', 'display: block');
-    //         $('#form-widgets-IBodyText-text_parent').remove();
-    //         $('#blablakrentagtosmjst').attr('id', 'form-widgets-IBodyText-text_parent');
-    //     }, 500);
-
-    // })
-
-
 })
