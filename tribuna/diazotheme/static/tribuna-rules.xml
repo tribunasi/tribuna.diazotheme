@@ -9,9 +9,9 @@
   <rules css:if-content=".template-default_error_message">
     <replace css:theme-children="#container" css:content-children="#content"
              if-path="articles" />
-    <replace css:theme-children="#center-column" css:content-children="#content"
+    <replace css:theme-children="#center-column"
+             css:content-children="#content"
              if-path="home tags search" />
-
   </rules>
 
   <!-- Common rules -->
