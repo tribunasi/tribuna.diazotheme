@@ -1,277 +1,269 @@
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]>
-<html class="no-js ie6 oldie" lang="en">
-  <![endif]-->
-  <!--[if IE 7]>
-  <html class="no-js ie7 oldie" lang="en">
-    <![endif]-->
-    <!--[if IE 8]>
-    <html class="no-js ie8 oldie" lang="en">
-      <![endif]-->
-      <!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
-      <!--[if gt IE 8]>
-      <!-->
-      <html class="no-js" lang="en">
-        <!--<![endif]-->
-<head>
-        <meta charset="utf-8"/>
-        <base href="." /><!--[if lt IE 7]></base><![endif]-->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8"/>
+    <base href="." /><!--[if lt IE 7]></base><![endif]-->
 
-        <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+    <!-- Use the .htaccess and remove these lines to avoid edge case issues.
          More info: h5bp.com/b/378 -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-        <title>Tribuna homepage 2 cols</title>
-        <meta name="description" content=""/>
-        <meta name="author" content=""/>
+    <title>Tribuna homepage 2 cols</title>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
 
-        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-        <!-- CSS: implied media=all -->
-        <!-- CSS concatenated and minified via ant build script-->
-        <link rel="stylesheet" href="css/public.css"/>
-        <link rel="stylesheet" href="css/reset.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" media="screen"/>
+    <!-- CSS: implied media=all -->
+    <!-- CSS concatenated and minified via ant build script-->
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" media="screen"/>
 
-        <link rel="stylesheet" href="openid-selector/css/openid.css"/>
-        <link rel="stylesheet" href="css/theme.css"/>
-        <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" href="openid-selector/css/openid.css"/>
+    <link rel="stylesheet" href="css/theme.css"/>
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css"/>
 
-        <link rel="stylesheet" href="css/style.css"/>
-        <link rel="stylesheet" href="css/tribuna.css"/>
-        <!-- end CSS-->
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/tribuna.css"/>
+    <!-- end CSS-->
 
-        <!-- More ideas for your <head>
-        here: h5bp.com/d/head-Tips -->
-        <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+    <!-- More ideas for your <head>
+         here: h5bp.com/d/head-Tips -->
+    <!-- All JavaScript at the bottom, except for Modernizr / Respond.
          Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
          For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
-        <script src="js/libs/modernizr-2.0.6.min.js"></script>
+    <script src="js/libs/modernizr-2.0.6.min.js"></script>
 
 </head>
 
 <body>
 
-        <div class="navbar navbar-fixed-top">
-          <div class="navbar-inner">
-            <div class="container-fluid">
-              <a class="btn btn-navbar" data-toggle="collapse"
-             data-target="#topnav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="btn btn-navbar" data-toggle="collapse"
+           data-target="#topnav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+
+        <div class="nav-collapse" id="topnav-collapse">
+          <ul id="nav" class="nav">
+            <li><a class="brand" href=""><img src="img/home.png" alt="Home"/></a></li>
+            <li><a href="">Home page</a></li>
+            <li><a href="">Add article</a></li>
+            <li><a href="">Edit entry page</a></li>
+            <li><a href="">Add tag</a></li>
+            <li><a href="">Manage articles</a></li>
+            <li><a href="">Manage tags</a></li>
+          </ul>
+          <ul id="secondary-nav" class="nav pull-right">
+            <li class="dropdown" data-dropdown="dropdown">
+              <a class="dropdown-toggle" href="#">
+                <span id="personaltool-menuheader">User</span> <b class="caret"></b>
               </a>
-
-              <div class="nav-collapse" id="topnav-collapse">
-                <ul id="nav" class="nav">
-                  <li><a class="brand" href=""><img src="img/home.png" alt="Home"/></a></li>
-                  <li><a href="">Home page</a></li>
-                  <li><a href="">Add article</a></li>
-                  <li><a href="">Edit entry page</a></li>
-                  <li><a href="">Add tag</a></li>
-                  <li><a href="">Manage articles</a></li>
-                  <li><a href="">Manage tags</a></li>
-                </ul>
-                <ul id="secondary-nav" class="nav pull-right">
-                  <li class="dropdown" data-dropdown="dropdown">
-                    <a class="dropdown-toggle" href="#">
-                      <span id="personaltool-menuheader">User</span> <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu" id="personaltool-menu">
-                      <li>
-                        <a href="#">Dashboard</a>
-                      </li>
-                      <li>
-                        <a href="#">Logout</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-                <form id="topsearchbox" class="navbar-search pull-right">
-                  <input class="search-query" name="SearchableText" placeholder="Search"/>
-                </form>
-              </div>
-            </div>
-          </div>
+              <ul class="dropdown-menu" id="personaltool-menu">
+                <li>
+                  <a href="#">Dashboard</a>
+                </li>
+                <li>
+                  <a href="#">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form id="topsearchbox" class="navbar-search pull-right">
+            <input class="search-query" name="SearchableText" placeholder="Search" />
+          </form>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div id="container" class="container-fluid">
-          <!--div id="header"> </div-->
+  <div id="container" class="container-fluid">
+    <!--div id="header"> </div-->
 
-        <div id="main" role="main" class="icons-on">
-          <div>
-            <ul class="breadcrumb">
-              <li>
-                <a href="#">Home</a>
-                <span class="divider">/</span>
-              </li>
-              <li class="active">Plone</li>
-            </ul>
-          </div>
-          <div id="content-columns">
-            <!--div id="topside" class="row-fluid">
+    <div id="main" role="main" class="icons-on">
+      <div>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Home</a>
+            <span class="divider">/</span>
+          </li>
+          <li class="active">Plone</li>
+        </ul>
+      </div>
+      <div id="content-columns">
+        <!--div id="topside" class="row-fluid">
             <div id="topside-content"></div>
-          </div-->
-          <div class="row-fluid">
-            <div id="left-column" class="span2">
-              <div id="left-column-content" class="sidebar-nav-fixed span2">
-                <div id="topside-tags">
-                  <div id="selected-tags">
-                    <ul class="unstyled" id="selected-tags-list"></ul>
-                  </div>
-                </div>
-                <div id="sidebar-portlet">
-                  <section id="sidebar-section" class="bordered">
-                    <ul class="unstyled" id="tags-list">
-                      <li class="selected" id="hlorem">
-                        <a href="#">-</a>
-                        <span>
-                          <a href="#">HLorem</a>
-                        </span>
-                      </li>
-                      <li id="hipsum">
-                        <a href="#">+</a>
-                        <span>
-                          <a href="#">HIpsum</a>
-                        </span>
-                      </li>
-                      <li id="hdolor">
-                        <a href="#">+</a>
-                        <span>
-                          <a href="#">HDolor</a>
-                        </span>
-                      </li>
-                    </ul>
-                    <ul class="bordered" id="all-tags-list">
-                      <a id="all-tags-list-close"
-                         data-target="#all-tags-list"
-                         style="display: none;">
-                        <img style="width: 12px; height:12px"
-                             src="img/x-sign.png" alt="Close" /></a>
-                      <li id="hgabor">
-                        <a href="#">+</a>
-                        <span>
-                          <a href="#">HGabor</a>
-                        </span>
-                      </li>
-                      <li id="hvitae">
-                        <a href="#">+</a>
-                        <span>
-                          <a href="#">HVitae</a>
-                        </span>
-                      </li>
-                      <li class="selected" id="lorem">
-                        <a href="#">-</a>
-                        <span>
-                          <a href="#">Lorem</a>
-                        </span>
-                      </li>
-                      <li id="ipsum">
-                        <a href="#">+</a>
-                        <span>
-                          <a href="#">Ipsum</a>
-                        </span>
-                      </li>
-                      <li id="dolor">
-                        <a href="#">+</a>
-                        <span>
-                          <a href="#">Dolor</a>
-                        </span>
-                      </li>
-                      <li id="gabor">
-                        <a href="#">+</a>
-                        <span>
-                          <a href="#">Gabor</a>
-                        </span>
-                      </li>
-                      <li id="vitae">
-                        <a href="#">+</a>
-                        <span>
-                          <a href="#">Vitae</a>
-                        </span>
-                      </li>
-                      <li id="more_words__test">
-                        <a href="#">+</a>
-                        <span>
-                          <a href="#">MoRe WORds  teSt</a>
-                        </span>
-                      </li>
-                    </ul>
-                    <a href="javascript:;" id="show-all-tags">
-                      <span>vsi tagi</span>
-                      &gt;
-                    </a>
-                    <div id="types-list">
-                      <form>
-                        <input type="checkbox" name="type" value="vse" />
-                        <span class="red">vse</span>
-                        <br />
-                        <input class="red" type="checkbox" name="type" value="tekst" />
-                        <span class="red">tekst</span>
-                        <br />
-                        <input class="red" type="checkbox" name="type" value="fork">
-                        <span class="red">fork</span>
-                        <br />
-                        <input class="red" type="checkbox" name="type" value="komentar">
-                        <span class="red">komentar</span>
-                        <br />
-                      </form>
-                    </div>
-                  </section>
+        </div-->
+        <div class="row-fluid">
+          <div id="left-column" class="span2">
+            <div id="left-column-content" class="sidebar-nav-fixed span2">
+              <div id="topside-tags">
+                <div id="selected-tags">
+                  <ul class="unstyled" id="selected-tags-list"></ul>
                 </div>
               </div>
-            </div>
-            <div id="center-column" class="twocolumns span7">
-              <div id="center-column-content">
-                <article>
-                  <div id="content">
-                    <!-- Example row of columns -->
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis erat dolor,
-                      ut tristique ante. Ut rutrum diam et odio interdum luctus. Curabitur convallis
-                      dolor non lacus auctor vitae varius odio dignissim. Pellentesque aliquam
-                      condimentum magna, et placerat orci pretium et. Cras et erat sit amet elit
-                      ultrices scelerisque. Etiam vehicula mauris ac tortor convallis id mollis urna
-                      egestas. Proin lobortis diam sit amet diam ultrices facilisis vitae volutpat
-                      ligula. Quisque nec tellus ac libero pellentesque viverra. Cras at elit justo.
-                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-                      turpis egestas. Maecenas leo erat, ullamcorper eget venenatis eu, porttitor nec
-                      orci. Praesent rhoncus auctor nulla. Nulla dictum semper ornare.
-                    </p>
-                    <p>
-                      Vestibulum volutpat scelerisque accumsan. Aliquam euismod felis eu erat
-                      lobortis vestibulum. Nullam accumsan, orci non dignissim tempus, risus erat
-                      porta dolor, at viverra magna sapien non lacus. Aliquam scelerisque varius
-                      erat, ac placerat felis ultricies quis. Nunc vel imperdiet lorem. Curabitur
-                      consectetur urna in ipsum mollis elementum. Praesent vitae metus justo.
-                      Vestibulum eu ipsum nec justo semper posuere at id lectus. Quisque nulla augue,
-                      congue vitae hendrerit id, euismod nec orci. Class aptent taciti sociosqu ad
-                      litora torquent per conubia nostra, per inceptos himenaeos. Sed feugiat massa
-                      varius libero sodales eget lacinia odio ultrices. Vestibulum ante ipsum primis
-                      in faucibus orci luctus et ultrices posuere cubilia Curae; Duis accumsan
-                      egestas metus id iaculis. Aliquam ut diam massa. Morbi viverra tortor non massa
-                      congue facilisis.
-                    </p>
-                    <p>
-                      Suspendisse id condimentum mauris. Curabitur suscipit diam enim, vel
-                      consectetur mi. Curabitur quis est a justo malesuada condimentum laoreet et
-                      orci. Nullam commodo, libero et ultrices interdum, tellus tellus ultrices elit,
-                      id condimentum sapien nisi id nibh. Quisque mattis lectus eget dui ornare eget
-                      eleifend lectus ornare.
-                    </p>
+              <div id="sidebar-portlet">
+                <section id="sidebar-section" class="bordered">
+                  <ul class="unstyled" id="tags-list">
+                    <li class="selected" id="hlorem">
+                      <a href="#">-</a>
+                      <span>
+                        <a href="#">HLorem</a>
+                      </span>
+                    </li>
+                    <li id="hipsum">
+                      <a href="#">+</a>
+                      <span>
+                        <a href="#">HIpsum</a>
+                      </span>
+                    </li>
+                    <li id="hdolor">
+                      <a href="#">+</a>
+                      <span>
+                        <a href="#">HDolor</a>
+                      </span>
+                    </li>
+                  </ul>
+                  <ul class="bordered" id="all-tags-list">
+                    <a id="all-tags-list-close"
+                       data-target="#all-tags-list"
+                       style="display: none;">
+                      <img style="width: 12px; height:12px"
+                           src="img/x-sign.png" alt="Close" /></a>
+                    <li id="hgabor">
+                      <a href="#">+</a>
+                      <span>
+                        <a href="#">HGabor</a>
+                      </span>
+                    </li>
+                    <li id="hvitae">
+                      <a href="#">+</a>
+                      <span>
+                        <a href="#">HVitae</a>
+                      </span>
+                    </li>
+                    <li class="selected" id="lorem">
+                      <a href="#">-</a>
+                      <span>
+                        <a href="#">Lorem</a>
+                      </span>
+                    </li>
+                    <li id="ipsum">
+                      <a href="#">+</a>
+                      <span>
+                        <a href="#">Ipsum</a>
+                      </span>
+                    </li>
+                    <li id="dolor">
+                      <a href="#">+</a>
+                      <span>
+                        <a href="#">Dolor</a>
+                      </span>
+                    </li>
+                    <li id="gabor">
+                      <a href="#">+</a>
+                      <span>
+                        <a href="#">Gabor</a>
+                      </span>
+                    </li>
+                    <li id="vitae">
+                      <a href="#">+</a>
+                      <span>
+                        <a href="#">Vitae</a>
+                      </span>
+                    </li>
+                    <li id="more_words__test">
+                      <a href="#">+</a>
+                      <span>
+                        <a href="#">MoRe WORds  teSt</a>
+                      </span>
+                    </li>
+                  </ul>
+                  <a href="javascript:;" id="show-all-tags">
+                    <span>vsi tagi</span>
+                    &gt;
+                  </a>
+                  <div id="types-list">
+                    <form>
+                      <input type="checkbox" name="type" value="vse" />
+                      <span class="red">vse</span>
+                      <br />
+                      <input class="red" type="checkbox" name="type" value="tekst" />
+                      <span class="red">tekst</span>
+                      <br />
+                      <input class="red" type="checkbox" name="type" value="fork" />
+                      <span class="red">fork</span>
+                      <br />
+                      <input class="red" type="checkbox" name="type" value="komentar" />
+                      <span class="red">komentar</span>
+                      <br />
+                    </form>
                   </div>
-                </article>
+                </section>
               </div>
             </div>
-            <div id="right-column" class="span3">
-              <div id="search-form-right" class="top">
-                <form>
-                  <input type="text" value="Search..."></input>
+          </div>
+          <div id="center-column" class="twocolumns span7">
+            <div id="center-column-content">
+              <article>
+                <div id="content">
+                  <!-- Example row of columns -->
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis erat dolor,
+                    ut tristique ante. Ut rutrum diam et odio interdum luctus. Curabitur convallis
+                    dolor non lacus auctor vitae varius odio dignissim. Pellentesque aliquam
+                    condimentum magna, et placerat orci pretium et. Cras et erat sit amet elit
+                    ultrices scelerisque. Etiam vehicula mauris ac tortor convallis id mollis urna
+                    egestas. Proin lobortis diam sit amet diam ultrices facilisis vitae volutpat
+                    ligula. Quisque nec tellus ac libero pellentesque viverra. Cras at elit justo.
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+                    turpis egestas. Maecenas leo erat, ullamcorper eget venenatis eu, porttitor nec
+                    orci. Praesent rhoncus auctor nulla. Nulla dictum semper ornare.
+                  </p>
+                  <p>
+                    Vestibulum volutpat scelerisque accumsan. Aliquam euismod felis eu erat
+                    lobortis vestibulum. Nullam accumsan, orci non dignissim tempus, risus erat
+                    porta dolor, at viverra magna sapien non lacus. Aliquam scelerisque varius
+                    erat, ac placerat felis ultricies quis. Nunc vel imperdiet lorem. Curabitur
+                    consectetur urna in ipsum mollis elementum. Praesent vitae metus justo.
+                    Vestibulum eu ipsum nec justo semper posuere at id lectus. Quisque nulla augue,
+                    congue vitae hendrerit id, euismod nec orci. Class aptent taciti sociosqu ad
+                    litora torquent per conubia nostra, per inceptos himenaeos. Sed feugiat massa
+                    varius libero sodales eget lacinia odio ultrices. Vestibulum ante ipsum primis
+                    in faucibus orci luctus et ultrices posuere cubilia Curae; Duis accumsan
+                    egestas metus id iaculis. Aliquam ut diam massa. Morbi viverra tortor non massa
+                    congue facilisis.
+                  </p>
+                  <p>
+                    Suspendisse id condimentum mauris. Curabitur suscipit diam enim, vel
+                    consectetur mi. Curabitur quis est a justo malesuada condimentum laoreet et
+                    orci. Nullam commodo, libero et ultrices interdum, tellus tellus ultrices elit,
+                    id condimentum sapien nisi id nibh. Quisque mattis lectus eget dui ornare eget
+                    eleifend lectus ornare.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div id="right-column" class="span3">
+            <div id="search-form-right" class="top">
+              <form>
+                <input type="text" value="Search..."></input>
               </form>
             </div>
             <div id="topside-content-name">
@@ -352,10 +344,10 @@
 
   <!-- JavaScript at the bottom for fast page loading -->
   <!-- scripts concatenated and minified via ant build script-->
-<script>var jQuery14 = jQuery;</script>
-<script src="jquery-1.7.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.js"></script>
-<script>
+  <script>var jQuery14 = jQuery;</script>
+  <script src="jquery-1.7.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.js"></script>
+  <script>
       var jQuery17 = jQuery;
       $ = jQuery14;
       jQuery = jQuery14;
@@ -363,20 +355,20 @@
           jQuery17('.dropdown-toggle').dropdown();
       });
     </script>
-<script defer src="js/plugins.js"></script>
-<script defer src="js/script.js"></script>
-<script defer src="js/tribuna-homepage.js"></script>
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/tribuna-homepage.js"></script>
 
-<div id="site-scripts"></div>
+  <div id="site-scripts"></div>
 
-<!-- end scripts-->
+  <!-- end scripts-->
 
-<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-         chromium.org/developers/how-tos/chrome-frame-getting-started -->
-<!--[if lt IE 7 ]>
-<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-<![endif]-->
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+      <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+      <![endif]-->
 
 </body>
 </html>
