@@ -2081,32 +2081,40 @@ div.annotation-tags-header {
     display: none;
 }
 .cc-cookies {
-    position: absolute;
+    position: fixed;
     top:0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
     font-family: Impact;
-    font-size: 150px;
+    font-size: 100px;
     color: blue;
-    width: 1000px;
-    height: 350px;
+    width: 50%;
+    height: 50%;
     text-align:center;
-    line-height: 90%;
     background-color: black;
 }
 
 .cc-cookies p {
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    width: 100%;
+    max-width: 100%;
+    height: 33%;
     padding-left: 3%;
     padding-right: 3%;
+    margin: auto;
+    margin-top: 3%;
+    display: block;
+    -webkit-margin-before:0em;
+    -webkit-margin-after:0em;
 }
 
 .cc-cookies a.cc-cookie-accept, .cc-cookies a.cc-cookie-decline {
-    width: 100px;
-    height: 100px;
-    margin-left: 350px;
+    width: 100%;
+    height: 33%;
+    margin: auto;
+    margin-top: 3%;
     background: none;
     padding: 0;
     border-radius: 0;
@@ -2120,7 +2128,6 @@ div.annotation-tags-header {
 }
 
 .cc-cookies a.cc-cookie-decline {
-    margin-top: 20px;
     color: red;
 }
 .cc-cookies a.cc-cookie-accept:hover, .cc-cookies a.cc-cookie-decline:hover {
@@ -2131,8 +2138,33 @@ div.annotation-tags-header {
     box-shadow: none;
 }
 
+@media only screen and (max-width: 1100px), screen and (max-height: 500px){
+                    .cc-cookies p,
+                    .cc-cookies a.cc-cookie-accept,
+                    .cc-cookies a.cc-cookie-decline {
+                        font-size:60%;
+                    }
+        }
+
+@media only screen and (max-width: 680px), screen and (max-height: 300px) {
+                    .cc-cookies p,
+                    .cc-cookies a.cc-cookie-accept,
+                    .cc-cookies a.cc-cookie-decline {
+                        font-size:40%;
+                    }
+        }
+
+@media only screen and (max-width: 460px),  screen and (max-height: 200px) {
+                    .cc-cookies p,
+                    .cc-cookies a.cc-cookie-accept,
+                    .cc-cookies a.cc-cookie-decline {
+                        font-size:30%;
+                    }
+        }
+
 /*Error message for articles*/
 .tribuna-error-message {
     display: none;
     margin-top: 20px;
 }
+
