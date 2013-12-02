@@ -42,36 +42,34 @@
   </head>
 
   <body>
-<article>
-  <div id="content">
-    <form id="login_form">
-      <div id="login-form">
-        <div>
-          <div class="login-form-inside-div">
-            <label class="login-page">ime</label>
-            <input id="login-user" class="login-page" type="text">
+    <article>
+      <div id="content">
+        <form id="login_form">
+          <div id="login-form">
+            <div>
+              <div class="login-form-inside-div">
+                <label class="login-page">ime</label>
+                <input id="login-user" class="login-page" type="text">
+              </div>
+              <div class="login-form-inside-div">
+                <label class="login-page">geslo</label>
+                <input id="login-password"class="login-page" type="text">
+              </div>
+            </div>
+            <div class="login-form-inside-div-submit">
+              <input class="login-page" type="submit" value="prijava">
+            </div>
           </div>
-
-          <div class="login-form-inside-div">
-            <label class="login-page">geslo</label>
-            <input id="login-password"class="login-page" type="text">
-          </div>
+        </form>
+        <div class="login-page-registration login-form-inside-div">
+          <a class="login-page-registration" href="#">registracija</a>
         </div>
-        <div class="login-form-inside-div-submit">
-          <input class="login-page" type="submit" value="prijava">
+        <div class="login-page-forgot-password login-form-inside-div">
+          <a class="login-page-forgot-password" href="#">pozabil sem geslo!</a>
         </div>
-
-
       </div>
-    </form>
-    <div class="login-page-registration login-form-inside-div">
-      <a class="login-page-registration" href="#">registracija</a>
-    </div>
-    <div class="login-page-forgot-password login-form-inside-div">
-      <a class="login-page-forgot-password" href="#">pozabil sem geslo!</a>
-    </div>
-</div>
-</article>
+    </article>
+
     <!-- JavaScript at the bottom for fast page loading -->
     <!-- scripts concatenated and minified via ant build script-->
     <script>
@@ -92,7 +90,6 @@
     <script defer src="js/tribuna-homepage.js"></script>
 
     <div id="site-scripts"></div>
-
 
   </body>
 </html>
