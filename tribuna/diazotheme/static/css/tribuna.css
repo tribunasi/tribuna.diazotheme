@@ -2130,3 +2130,9 @@ div.annotation-tags-header {
     border-radius: none;
     box-shadow: none;
 }
+
+/*Error message for articles*/
+.tribuna-error-message {
+    display: none;
+    margin-top: 20px;
+}

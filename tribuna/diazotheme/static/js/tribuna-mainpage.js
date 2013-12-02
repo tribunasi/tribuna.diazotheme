@@ -272,7 +272,12 @@ jQuery17(function () {
         article_uid = this.attr('data-uid');
         article_url = this.attr('data-url');
 
-        jQuery17('#main').load(article_url + " #center-column", function () {
+        jQuery17('#main').load(article_url + " #center-column", function (responseText, textStatus, req) {
+
+            if (textStatus == 'error') {
+                jQuery17(".tribuna-error-message").show();
+            }
+
             // Enable dropdown menus (for content actions e.g.).
             $(".dropdown-toggle").dropdown();
 
@@ -372,7 +377,6 @@ jQuery17(function () {
 
 
     jQuery17(document).ready(function () {
-
         // Initialize the articles carousel
         slider.carouFredSel({
             circular: false,

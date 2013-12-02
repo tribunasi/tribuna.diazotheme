@@ -5,6 +5,15 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xi="http://www.w3.org/2001/XInclude">
 
+  <!-- Rules for error messages -->
+  <rules css:if-content=".template-default_error_message">
+    <replace css:theme-children="#container" css:content-children="#content"
+             if-path="articles" />
+    <replace css:theme-children="#center-column" css:content-children="#content"
+             if-path="home tags search" />
+
+  </rules>
+
   <!-- Common rules -->
   <replace theme="/html/head/base" content="/html/head/base" />
   <merge attributes="class" css:content="body" css:theme="body"/>
