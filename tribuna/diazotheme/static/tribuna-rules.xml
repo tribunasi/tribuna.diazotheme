@@ -20,6 +20,8 @@
         css:content="#portal-searchbox form" attributes="action"/>
   <replace css:theme="#nav"
            css:content-children="#navbar-template" />
+  <drop theme="/html/head/link" />
+  <drop theme="/html/head/style" />
   <after css:theme="meta[http-equiv='X-UA-Compatible']"
          content="/html/head/link | /html/head/style | /html/head/script" />
   <!-- XXX title meta description included for all pages except Entrypage,
