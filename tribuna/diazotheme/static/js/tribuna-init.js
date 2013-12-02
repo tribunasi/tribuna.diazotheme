@@ -1,3 +1,7 @@
+/**
+ * Initialization code for tribuna
+ */
+
 jQuery17(function () {
     "use strict";
 
@@ -7,6 +11,9 @@ jQuery17(function () {
                 $(el).remove();
             }
         });
+
+        // init navigation dropdown menu
+        jQuery17('.dropdown-toggle').dropdown();
         jQuery17('.dropdown-toggle').click(function () {
             var self = $(this).parent();
             $('.dropdown.open').each(function (idx, item) {
@@ -15,6 +22,8 @@ jQuery17(function () {
                 }
             });
         });
+
+        // init carousel
         jQuery17('.carousel').carousel();
     });
 });
