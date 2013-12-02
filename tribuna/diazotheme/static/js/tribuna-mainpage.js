@@ -358,8 +358,6 @@ jQuery17(function () {
             $('meta[name="description"]').attr('content',
                 jQuery17(".article-text.content-core .description").text());
 
-
-
         });
 
         // If we are on the first/last article, hide appropriate arrows
@@ -370,8 +368,6 @@ jQuery17(function () {
         if (currIndex === LAST_INDEX) {
             jQuery17("#article-navigation .next").hide();
         }
-
-
 
     };
 
@@ -539,8 +535,6 @@ jQuery17(function () {
         });
 
     });
-
-
 
     // On resizing, set up the elemOnScreen again and move to the selected
     // article page
