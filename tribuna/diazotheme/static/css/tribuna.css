@@ -1669,7 +1669,7 @@ div.articles-comments {
 .articles-article-body {
     height: 100%;
 }
-.articles-article-body li {
+.article-text li {
     display: list-item;
     line-height: 1.5em;
     margin-bottom: 0.25em;
