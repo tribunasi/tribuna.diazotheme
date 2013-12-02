@@ -1,13 +1,9 @@
-/* Author:
-
-*/
-
 jQuery17(function () {
     "use strict";
 
     $(document).ready(function () {
         $('.field.error').each(function (idx, el) {
-            if ($.trim($(el).text()) == '') {
+            if ($.trim($(el).text()) === '') {
                 $(el).remove();
             }
         });
@@ -17,10 +13,8 @@ jQuery17(function () {
                 if ($(item)[0] != self[0]) {
                     $(item).removeClass('open');
                 }
-            })
+            });
         });
-
         jQuery17('.carousel').carousel();
-
     });
-})
+});
