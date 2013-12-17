@@ -394,9 +394,6 @@ div.entrypage-text-container p#entrypage-text {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, sans-serif;
 }
 
-
-
-
 #form-widgets-picture-input {
     border-width: 2px;
     border-right-color: rgb(167, 167, 167);
@@ -553,7 +550,6 @@ div#content p {
 /**
  * End settings for the text view
  */
-
 
 
 /**
@@ -1613,11 +1609,10 @@ div.articles-article-body div.red {
     padding: 0px;
 }
 
-
-
 /**
  * End of comments
  */
+
 
 /**
  * Gallery view
@@ -2138,29 +2133,29 @@ div.annotation-tags-header {
     box-shadow: none;
 }
 
-@media only screen and (max-width: 1100px), screen and (max-height: 500px){
-                    .cc-cookies p,
-                    .cc-cookies a.cc-cookie-accept,
-                    .cc-cookies a.cc-cookie-decline {
-                        font-size:60%;
-                    }
-        }
+@media only screen and (max-width: 1100px), screen and (max-height: 500px) {
+    .cc-cookies p,
+    .cc-cookies a.cc-cookie-accept,
+    .cc-cookies a.cc-cookie-decline {
+        font-size:60%;
+    }
+}
 
 @media only screen and (max-width: 680px), screen and (max-height: 300px) {
-                    .cc-cookies p,
-                    .cc-cookies a.cc-cookie-accept,
-                    .cc-cookies a.cc-cookie-decline {
-                        font-size:40%;
-                    }
-        }
+    .cc-cookies p,
+    .cc-cookies a.cc-cookie-accept,
+    .cc-cookies a.cc-cookie-decline {
+        font-size:40%;
+    }
+}
 
 @media only screen and (max-width: 460px),  screen and (max-height: 200px) {
-                    .cc-cookies p,
-                    .cc-cookies a.cc-cookie-accept,
-                    .cc-cookies a.cc-cookie-decline {
-                        font-size:30%;
-                    }
-        }
+    .cc-cookies p,
+    .cc-cookies a.cc-cookie-accept,
+    .cc-cookies a.cc-cookie-decline {
+        font-size:30%;
+    }
+}
 
 /*Error message for articles*/
 .tribuna-error-message {
