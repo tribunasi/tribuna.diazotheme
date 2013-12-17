@@ -2133,8 +2133,8 @@ div.annotation-tags-header {
 .cc-cookies a.cc-cookie-accept:hover, .cc-cookies a.cc-cookie-decline:hover {
     color: white;
     background: none;
-    padding: none;
-    border-radius: none;
+    padding: 0;
+    border-radius: 0;
     box-shadow: none;
 }
 
