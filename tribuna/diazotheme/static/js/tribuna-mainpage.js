@@ -186,10 +186,30 @@ jQuery17(function () {
         // Initialize annotator
         var annotator_content = $("#annotator").annotator();
 
+        // This will allow us to get the prefix needed for the annotator.
+        //
+        // First we take the portal_url, split it on // and take the second
+        // part (aka we get rid of the http:// part).
+        //
+        // We now split on / and take everything except the first part (the
+        // base URL to the .com, .si or whatever) and join it together with /.
+        //
+        // If the prefix is not empty, we need to prepend it with a /
+        //
+        // EXAMPLE:
+        // http://localhost:8080/Tribuna -> '/Tribuna'
+        // http://dev.tribuna.si -> ''
+        // https://test.com/just/a/test -> '/just/a/test'
+        var prefix = portal_url.split('//')[1].split('/').slice(1).join('/');
+
+        if (prefix.length) {
+            prefix = '/' + prefix;
+        }
+
         annotator_content.annotator('addPlugin', 'Tags');
         annotator_content.annotator('addPlugin', 'Store', {
               // The endpoint of the store on your server.
-              prefix: '/Tribuna',
+              prefix: prefix
         });
 
         // XXX:
