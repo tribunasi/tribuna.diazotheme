@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from setuptools import setup, find_packages
 
 version = '0.1'
@@ -13,7 +15,7 @@ setup(
     classifiers=[
         "Programming Language :: Python",
     ],
-    author='Termitnjak Ltd.',
+    author='Termitnjak d.o.o.',
     author_email='info@termitnjak.com',
     url='',
     license='BSD',
