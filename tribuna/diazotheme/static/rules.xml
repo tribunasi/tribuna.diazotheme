@@ -56,7 +56,7 @@
        http://stackoverflow.com/questions/17202134/diazo-xsltemplate-not-applying-when-inside-secondary-rules-file
   -->
   <theme href="tribuna_homepage_2cols.html"
-         if-path="@@home home @@tags tags @@search search"
+         if-path="@@tags tags"
          css:if-content="#tag-description-div"/>
   <theme href="tribuna_homepage_1col.html"
          if-path="@@home home @@tags tags @@search search"
