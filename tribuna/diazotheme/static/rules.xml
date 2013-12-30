@@ -67,12 +67,12 @@
     <merge attributes="class"
            css:content="#homepage-div" css:theme="#topside-content" />
     <drop css:theme="#right-column #search-form-right"
-          css:if-content="#search-view" />
+          css:if-content="body.template-search" />
     <replace css:theme-children="#search-form-right"
              css:content-children="#search-form"
-             css:if-not-content="#search-view" />
+             css:if-not-content="body.template-search" />
     <before css:theme="#topside-content-sort_on"
-            css:content="#search-form" css:if-content="#search-view" />
+            css:content="#search-form" css:if-content="body.template-search" />
     <before css:theme="#container"
             css:content="#tag-picture" css:if-content="#tag-picture" />
 
