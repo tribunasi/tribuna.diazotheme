@@ -162,11 +162,11 @@ jQuery17(function () {
 
             allTagsList.width(jQuery17(window).width() / 3);
 
-            var tmpheight = jQuery17(window).height() - parseInt(jQuery17("#articles_list").css("margin-top"), 10) - jQuery17("#topside-content-name").height() - 15;
-            // jQuery17("#articles_list").css("height", tmpheight);
-            jQuery17("div#homepage-div").css("height", tmpheight - 10);
-            jQuery17("div#homepage-div").css("float", "left");
-            jQuery17("div#homepage-div").css("width", "100%");
+            var tmpheight = jQuery17(window).height() - parseInt(jQuery17("#articles-list").css("margin-top"), 10) - jQuery17("#topside-content-name").height() - 15;
+            // jQuery17("#articles-list").css("height", tmpheight);
+            jQuery17(".dragdrop").css("height", tmpheight - 10);
+            jQuery17(".dragdrop").css("float", "left");
+            jQuery17(".dragdrop").css("width", "100%");
 
             // Split the list into columns.
             var columns = Math.floor((allTagsList.width() - 40) / 160),
@@ -211,8 +211,8 @@ jQuery17(function () {
             image.load(function () {
                 var imageHeight = jQuery17(this).height(),
                     imageWidth = jQuery17(this).width(),
-                    numRandx = Math.floor(Math.random() * (jQuery17('#homepage-div').width() - imageWidth)),
-                    numRandy = Math.floor(Math.random() * (jQuery17('#homepage-div').height() - imageHeight));
+                    numRandx = Math.floor(Math.random() * (jQuery17('.dragdrop').width() - imageWidth)),
+                    numRandy = Math.floor(Math.random() * (jQuery17('.dragdrop').height() - imageHeight));
 
                 if (numRandx < 0) {
                     numRandx = 0;
@@ -243,8 +243,8 @@ jQuery17(function () {
     function dragDropComments() {
         jQuery17("div.drag-view-comment, div.drag-view-annotation").each(function () {
             var article = $(this),
-                numRandx = Math.floor(Math.random() * ($('#homepage-div').width() - article.width())),
-                numRandy = Math.floor(Math.random() * ($('#homepage-div').height() - article.height()));
+                numRandx = Math.floor(Math.random() * ($('.dragdrop').width() - article.width())),
+                numRandy = Math.floor(Math.random() * ($('.dragdrop').height() - article.height()));
             article.css({'position' : 'absolute'});
             article.draggable({stack: "div", cancel: "a"});
             article.draggable("option", "distance", 0);
@@ -297,8 +297,7 @@ jQuery17(function () {
         var articles_margin = $("#selected-tags").height() + 10;
 
         // Set margin for results, depending on selected tags height.
-        $("#center-column #articles_list").css("margin-top", articles_margin);
-
+        $("#center-column #articles-list").css("margin-top", articles_margin);
 
         alphabetizeTagsList();
         columnizeTagsList();
@@ -307,7 +306,8 @@ jQuery17(function () {
         dragDropComments();
 
         // Mark the appropriate button as selected.
-        if (jQuery17("#homepage-div").length) {
+        // XXX: we should read this setting from the request
+        if (jQuery17(".dragdrop").length) {
             jQuery17("#form-buttons-drag").addClass("selected");
         } else {
             jQuery17("#form-buttons-text").addClass("selected");
@@ -411,7 +411,6 @@ jQuery17(function () {
 
         // XXX: Why do we need this? [natan]
         jQuery17("#form-widgets-search").attr("placeholder", "Search ...");
-
 
         // If we click outside the 'all-tags' list, close it. Doesn't work on
         // the drag-drop images, so we need to override that separately.

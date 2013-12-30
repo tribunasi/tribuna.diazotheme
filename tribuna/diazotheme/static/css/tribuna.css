@@ -778,7 +778,7 @@ div.drag-view-image.ui-draggable-dragging img  {
     display: block;
 }
 
-div#articles_list img {
+div#articles-list img {
     max-width: 600px;
     max-height: 600px;
 }
@@ -1121,7 +1121,7 @@ ul.content-list li {
     color: red;
 }
 
-div#homepage-div {
+.dragdrop {
     /*min-height: 600px;*/
     height: 100%;
     max-width: 100%;

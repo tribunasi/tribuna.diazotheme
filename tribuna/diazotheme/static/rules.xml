@@ -62,10 +62,6 @@
          if-path="@@home home @@tags tags @@search search"
          css:if-not-content="#tag-description-div"/>
   <rules if-path="@@home home @@tags tags @@search search">
-    <merge attributes="class"
-           css:content="#homepage-div" css:theme="#right-column" />
-    <merge attributes="class"
-           css:content="#homepage-div" css:theme="#topside-content" />
     <drop css:theme="#right-column #search-form-right"
           css:if-content="body.template-search" />
     <replace css:theme-children="#search-form-right"
@@ -106,7 +102,8 @@
     <rules><xi:include href="sidebar.xml" /></rules>
 
     <!-- Results -->
-    <rules css:if-content=".articles-intersection">
+    <!-- Text mode -->
+    <rules css:if-not-content=".dragdrop">
       <replace css:if-not-content="#empty-results"
                css:theme-children="#topside-content-sort_on"
                css:content="#formfield-form-widgets-sort_on" />
@@ -121,17 +118,18 @@
                css:theme-children="#union-articles"/>
       <replace css:if-content="#empty-results"
                css:content="#empty-results"
-               css:theme-children="#articles_list"/>
+               css:theme-children="#articles-list"/>
       <replace css:content-children="#tag-description-div"
                css:theme-children="#content" />
     </rules>
-    <rules css:if-not-content=".articles-intersection">
+    <!-- Drag-drop mode -->
+    <rules css:if-content=".dragdrop">
       <drop css:theme="#topside-content-sort_on" />
       <replace css:content-children="#tag-description-div"
                css:theme-children="#content"
                css:if-content="#tag-description-div" />
-      <replace css:content="#homepage-div"
-               css:theme-children="#articles_list"/>
+      <replace css:content="#articles-list"
+               css:theme="#articles-list"/>
     </rules>
   </rules>
 
