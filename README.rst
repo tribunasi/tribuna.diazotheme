@@ -4,36 +4,22 @@ tribuna.diazotheme
 
 One of the packages used for Tribuna webpage. Managed by ``tribuna.buildout``.
 
+This is a Plone diazo theme based on
+https://pypi.python.org/pypi/diazotheme.bootstrap/0.3
+
 * `Source code @ GitHub <https://github.com/termitnjak/tribuna.content>`_
 
 Installation
 ============
 
-Installed using the ``tribuna.buildout`` package.
+Installed using the ``tribuna.policy`` package.
 
 Features
 =========
 
-* Turn your site into a pretty Bootstrap based theme, and also simplifies
-  templating of customization addons.
 * Portlets are converted to ``div`` elements instead of ``dl``, ``dt``, ``dd``
-* ``presentation_view`` is enhanced with Google's HTML5 slides
 * Included carousel portlet provides a way to display images using Bootstrap's
   carousel
-* ``Products.ContentWellPortlets`` is supported, however with some
-  modifications.
-
-  * PortletAboveContentA will appear full width right below logo
-  * PortletAboveContentB will appear full width right below breadcrumbs
-  * PortletAboveContentC will appear fluid width right above content center
-    column
-  * PortletBelowContentA, PortletBelowContentB, PortletBelowContentC will
-    appear as a 3 column portlet slots right below content and sidebar area
-  * PortletBelowContentD will appear full width right below
-    PortletBelowContentA, PortletBelowContentB, and PortletBelowContentC
-  * PortletBelowContentE will appear right below content center column
-  * All PortletFooter will appear as a 6 column slot within the footer area
-
 * ``eea.facetednavigation`` is also supported, with some enhancements.
 
   * The diazo rules rewrite facetednavigation templates to take advantage of
@@ -59,3 +45,13 @@ instance
     });
 
 to activate the tooltip plugin on elements with the class "tooltipped".
+
+Copyright and licence
+=====================
+
+Copyright 2012-2013 2012-2013 Študentska organizacija Slovenije and Termitnjak d.o.o.
+Copyright 2011 Mohd Izhar Firdaus Ismail
+
+tribuna.diazotheme was funded by the Študentska organizacija
+Slovenije and is licensed under the Apache License 2.0. More details under
+docs/LICENSE.rst.

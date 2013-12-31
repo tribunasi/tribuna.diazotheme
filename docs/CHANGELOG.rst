@@ -1,8 +1,8 @@
-tribuna.diazotheme
+Changelog
+=========
+
+0.1 (2013-12-31)
 ------------------
 
-0.1
-^^^
+ - Initial release [termitnjak]
 
-- Initial release.
-  [Termitnjak d.o.o.]
