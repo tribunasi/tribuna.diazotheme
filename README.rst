@@ -7,7 +7,7 @@ One of the packages used for Tribuna webpage. Managed by ``tribuna.buildout``.
 This is a Plone diazo theme based on
 https://pypi.python.org/pypi/diazotheme.bootstrap/0.3
 
-* `Source code @ GitHub <https://github.com/termitnjak/tribuna.content>`_
+* `Source code @ GitHub <https://github.com/tribunasi/tribuna.diazotheme>`_
 
 Installation
 ============
