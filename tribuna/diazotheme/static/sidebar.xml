@@ -84,7 +84,7 @@
   </replace>
 
   <!-- Misc -->
-  <after css:theme="#types-list" css:content=".kssattr-formname-my-form" />
+  <after css:theme="#types-list" css:content=".kssattr-formname-tribuna-sidebar" />
   <after css:theme-children="#sidebar-section" css:content="#home-link" />
 
 </rules>
