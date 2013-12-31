@@ -1,3 +1,4 @@
+Copyright 2012-2013 2012-2013 Študentska organizacija Slovenije and Termitnjak d.o.o.
 Copyright 2011 Mohd Izhar Firdaus Ismail
 
 Licensed under the Apache License, Version 2.0 (the "License");
