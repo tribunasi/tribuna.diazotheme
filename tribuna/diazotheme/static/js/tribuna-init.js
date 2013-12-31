@@ -5,20 +5,20 @@
 jQuery17(function () {
     "use strict";
 
-    $(document).ready(function () {
-        $('.field.error').each(function (idx, el) {
-            if ($.trim($(el).text()) === '') {
-                $(el).remove();
+    jQuery17(document).ready(function () {
+        jQuery17('.field.error').each(function (idx, el) {
+            if (jQuery17.trim(jQuery17(el).text()) === '') {
+                jQuery17(el).remove();
             }
         });
 
         // init navigation dropdown menu
         jQuery17('.dropdown-toggle').dropdown();
         jQuery17('.dropdown-toggle').click(function () {
-            var self = $(this).parent();
-            $('.dropdown.open').each(function (idx, item) {
-                if ($(item)[0] != self[0]) {
-                    $(item).removeClass('open');
+            var self = jQuery17(this).parent();
+            jQuery17('.dropdown.open').each(function (idx, item) {
+                if (jQuery17(item)[0] != self[0]) {
+                    jQuery17(item).removeClass('open');
                 }
             });
         });
