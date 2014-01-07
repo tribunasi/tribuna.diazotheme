@@ -2091,18 +2091,28 @@ div.annotation-tags-header {
     background-color: black;
 }
 
-.cc-cookies p {
+.cc-cookies p.cookie-header {
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
     width: 100%;
     max-width: 100%;
-    height: 33%;
-    padding-left: 3%;
-    padding-right: 3%;
+    height: 40%;
+    padding: 0;
     margin: auto;
     margin-top: 3%;
     display: block;
     -webkit-margin-before:0em;
     -webkit-margin-after:0em;
+}
+
+.cc-cookies .cc-cookies-more {
+    font-size: 16px;
+    display: block;
+    color: white;
+    font-weight: initial;
+    text-shadow: none;
+    font-family: Helvetica,Arial,sans-serif;
+    text-decoration: none;
+    margin-top: 4.5%;
 }
 
 .cc-cookies a.cc-cookie-accept, .cc-cookies a.cc-cookie-decline {
@@ -2133,11 +2143,70 @@ div.annotation-tags-header {
     box-shadow: none;
 }
 
+.cc-cookies .modal {
+    width: 75%;
+    height: 75%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 0;
+    min-width: 200px;
+}
+.cc-cookies .modal.fade.in {
+    top: 0;
+}
+
+.cc-cookies .modal-header,
+.cc-cookies .modal-header img {
+    height: 12px;
+}
+
+.cc-cookies .modal li {
+    display: list-item;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: left;
+}
+
+.cc-cookies .modal-header {
+    border: none;
+}
+
+.cc-cookies .modal-header a {
+    opacity: 1;
+}
+
+.cc-cookies .modal-body {
+    color: black;
+    font-weight: initial;
+    max-height: none;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.cc-cookies .modal-body p {
+    font-size: 25px;
+    line-height: 30px;
+    text-align: left;
+    font-family: Georgia, serif;
+    margin-bottom: 25px;
+}
+
 @media only screen and (max-width: 1100px), screen and (max-height: 500px) {
     .cc-cookies p,
     .cc-cookies a.cc-cookie-accept,
     .cc-cookies a.cc-cookie-decline {
         font-size:60%;
+    }
+    .cc-cookies-more {
+        margin-top: 3%;
+    }
+    .cc-cookies .modal-body p,
+    .cc-cookies .modal li {
+        font-size: 20px;
+        line-height: 25px;
     }
 }
 
@@ -2147,6 +2216,14 @@ div.annotation-tags-header {
     .cc-cookies a.cc-cookie-decline {
         font-size:40%;
     }
+    .cc-cookies-more {
+        margin-top: 2%;
+    }
+    .cc-cookies .modal-body p,
+    .cc-cookies .modal li {
+        font-size: 18px;
+        line-height: 22px;
+    }
 }
 
 @media only screen and (max-width: 460px),  screen and (max-height: 200px) {
@@ -2155,6 +2232,22 @@ div.annotation-tags-header {
     .cc-cookies a.cc-cookie-decline {
         font-size:30%;
     }
+    .cc-cookies-more {
+        margin-top: 1%;
+    }
+    .cc-cookies .modal-body p,
+    .cc-cookies .modal li {
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
+
+.cc-cookies .modal-body h1 {
+    font-size: 30px;
+    color: blue;
+    font-weight: initial;
+    margin-bottom: 35px;
+    font-family: Helvetica,Arial,sans-serif;
 }
 
 /*Error message for articles*/
