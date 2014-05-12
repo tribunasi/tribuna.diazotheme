@@ -5,6 +5,11 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xi="http://www.w3.org/2001/XInclude">
 
+
+  <!-- Append the GA script -->
+  <append css:theme="#site-scripts"
+          css:content="#portal-footer-wrapper > div > script"/>
+
   <!-- Rules for error messages -->
   <rules css:if-content=".template-default_error_message">
     <replace css:theme-children="#container" css:content-children="#content"
@@ -250,6 +255,7 @@
       <xi:include href="facetednavigation-rules.xml"/>
       <append css:theme="#site-scripts"
               css:content="#portal-footer-wrapper > div > script"/>
+
     </rules>
     <drop css:theme="#left-column" />
     <!-- Bread crumbs -->
